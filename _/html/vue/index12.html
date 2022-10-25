@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue3일차 - 반복문2 + 제어문</title>
+<script src="vue.js"></script>
+<style>
+    #listbox{
+        height: auto;
+    }
+    #listbox > div{
+        width: 200px; height: 40px; text-align: center; line-height: 40px;
+        background-color: cornflowerblue; color: #fff;
+    }
+    #listbox > ul{
+        width: 360px; height: auto; list-style: none; margin: 0; padding: 0; 
+        margin-top: 15px;
+    }
+    #listbox > ul > li{
+        width: 100%; height: auto; 
+    }
+    #listbox > ul > li > span{ text-align: center; line-height: 30px;
+        width: 80px; height: 30px; display: block; float: left;
+        background-color: cornflowerblue; color: #fff; border: 1px solid #ccc; box-sizing: border-box;
+    }
+    #listbox > ul > li > span:nth-of-type(3){
+        width: 200px; 
+    }
+    #listbox > ol{
+        clear: both; width: 360px; height: auto; list-style: none; 
+        margin: 0; padding: 0; padding-top: 5px;
+    }
+    #listbox > ol > li{
+        width: 100%; height: auto;
+    }
+    #listbox > ol > li > span{ text-align: center; line-height: 30px;
+        width: 80px; height: 30px; display: block; float: left; 
+        border: 1px solid #ccc; box-sizing: border-box;
+    }
+    #listbox > ol > li > span:nth-of-type(3){
+        width: 200px; 
+    }
+</style>
+</head>
+<body>
+<section id="box">
+    <p>전체 데이터 총 {{ data_ea }}개 입니다.</p>
+    <button v-on:click="abc" v-text="btn"></button>
+    <ul v-if="ul">
+        <li v-for="aa,index in arr" v-text="aa"></li>
+    </ul>
+</section>
+<br><br>
+<!-- 응용문제2. -->
+<section id="listbox">
+    <div v-text="b_msg" v-on:click="btn"></div>
+    <ul v-if="ul" >
+        <li>
+            <span>{{s1}}</span>
+            <span>{{s2}}</span>
+            <span>{{s3}}</span>
+        </li>
+    </ul>
+    <ol v-if="ul">
+        <li v-for="ff,index in array.travel_list">
+            <span v-text="list1"></span>
+            <span v-text="ff.name"></span>
+            <span v-text="ff.distance"></span>
+        </li>
+    </ol>
+</section>
+</body>
+<script>
+    const datas = [1,2,3,4,5,6];
+    const travel = { "travel_list":[
+        {"name": '수원', "distance": '차로 1시간'},
+        {"name": '대전', "distance": '차로 1시간 30분'},
+        {"name": '광주', "distance": '차로 2시간'},
+        {"name": '강릉', "distance": '차로 2시간 30분'},
+        {"name": '부산', "distance": '차로 5시간'},
+        {"name": '여주', "distance": '차로 5시간 40분'}
+    ]};
+
+    let a = new Vue({
+        el:"#box",
+        data:{
+            arr:null,
+            ul:false,
+            btn:"출력",
+            data_ea:null
+        },
+        methods:{
+            abc:function(){
+                var ea = datas.length;
+                this.data_ea = ea;
+                this.arr = datas.splice(0,3);    //배열 노드 0~4까지만 출력 후 한번 더 클릭시 그 다음 배열이 출력 됨
+                this.ul = true;
+            }
+        }
+    });
+
+    let b = new Vue({
+        el:"#listbox",
+        data:{
+            b_msg:"한국도로공사 정보확인",
+            s1:"출발",
+            s2:"도착",
+            s3:"시간",
+            list1:"서울",
+            array:null,
+            ul:false
+        },
+        methods:{
+            btn:function(){
+                this.ul = true;
+                this.array = travel;
+            }
+        }
+    });
+</script>
+</html>

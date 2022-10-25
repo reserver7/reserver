@@ -1,0 +1,76 @@
+<html>
+<head>      
+<meta charset="utf-8">
+<title>HTML 1일차-3.0</title>
+</head>
+<body>
+    <!-- table : 표를 만드는 태그-->
+    <!-- tr : 줄,  td :칸-->  
+<table border="1">
+<tr>
+    <td colspan="4">123</td>
+    
+</tr>
+<tr>
+    <td colspan="2">789</td>
+    <td>456</td>
+    <td rowspan="2">123</td>
+</tr>
+<tr>
+    <td>789</td>
+    <td colspan="2">123</td>
+    
+    
+</tr>
+</table>
+<br>
+<!-- table 속성 : border(외각선 부분) bgcolor(배경색상)-->
+<table border="1" bgcolor="blue">
+<!-- td 첫번째 부분에 width 속성 값을 적용하면
+모든 tr에 있는 첫번째 td width값이 변경 됩니다.
+
+td첫번째 칸에 height를 적용하면 해당 tr 라인에 있는
+모든 td 높이가 변하게 됩니다.
+
+align : 정령 방식 (left, center, right) 기본값은 left
+colspan : 가로 칸을 합칠때 사용
+rowspan : 세로 칸을 합칠때 사용-->
+    <tr>
+        <td width="100">123</td>
+        <td width="400" colspan="4" align="center">
+        <font color="yellow">123</font></td> 
+    </tr>
+    <tr align="center">
+        <td height="50">123</td>
+        <td>123</td>
+        <td>123</td>
+        <td>123</td>
+        <td align="right">123</td>
+   </tr>
+    <tr>
+        <td>123</td>
+        <td>123</td>
+        <td>123</td>
+        <td colspan="2" align="right">123</td>
+   </tr>
+</table>
+<br><br>
+<!-- cellspacing : 두줄 한줄로 변경하게 됨
+     cellpadding : 두줄을 한줄로 변경시 여백을 없앨 때 사용하게 됨-->
+<table border="1" cellspacing="0" cellpadding="0">
+<tr align="center" height="30">
+    <td bgcolor="yellow" width="100">아이디</td>
+    <td width="200">입력부분</td>
+    <td width="150" rowspan="2">로그인</td>
+</tr>
+<tr align="center">
+    <td bgcolor="yellow">패스워드</td>
+    <td>입력부분</td>
+    
+</tr>
+<tr align="center">
+    <td colspan="3">회원가입/아이디 비밀번호 찾기</td>
+</tr>
+</table>
+</body>
+</html>

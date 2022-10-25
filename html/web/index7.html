@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(복습1)</title>
+<script>
+    function abc(){
+        var a = document.getElementById("s").value;
+        if(a=="1"){
+            location.href="http://naver.com";
+        }
+        else if(a=="2"){
+            location.href="http://nate.com";
+        }
+        else if(a=="3"){
+            location.href="http://google.com";
+        }
+        else{
+            alert("검색할 사이트를 지정해 주세요!");
+        }
+    }
+    function bbb(){
+        var b = document.getElementById("list").value;
+        if(b=="네이버"){
+            location.href="http://naver.com";
+        }
+        else if(b=="네이트"){
+            location.href="http://nate.com";
+        }
+        else if(b=="줌"){
+            location.href="http://zum.com";
+        }
+        else{
+            location.href="http://bing.com";
+        }
+    }
+    function ccc(k,g,h){
+        var j="이순신";
+        alert(k);
+    }
+</script>
+</head>
+<!--
+onclick : button, input type, div, span, lable 등등
+onsubmit : submit (전용) - 검색창(상품,주소,검색어), 로그인, 이벤트 쿠폰번호
+onchange : select (전용)
+-->
+<body>
+    <!--
+<select id="s" onchange="abc();">
+    <option value="">검색형태</option>
+    <option value="1">네이버</option>
+    <option value="2">네이트</option>
+    <option value="3">구글</option>
+</select>
+    -->
+<br>
+<!-- id : Javascript 호출용, HTML끼리 서로 호환하기 위해(label for, datalist id)-->
+<input type="text" id="list" list="data">
+<input type="button" value="검색" onclick="bbb();">
+<datalist id="data">
+    <option value="네이버"></option>
+    <option value="네이트"></option>
+    <option value="구글"></option>
+</datalist>
+<br><br>
+<button type="button" onclick="ccc('홍길동','유관순',10);">결과확인</button>
+</body>
+</html>

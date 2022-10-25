@@ -1,0 +1,40 @@
+<?php
+    $r = date("YmdHis");
+    include "goods.php";
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head> 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>MINIMAL</title>
+<script src="../js/jquery.js?v=1"></script>
+<script src="../js/jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="../js/jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="./css/main.css?v=1">
+<link type="text/css" rel="stylesheet" href="./css/shopmain.css?v=<?php echo $r?>">
+<link type="text/css" rel="stylesheet" href="./css/product.css?v=<?php echo $r?>">
+<script src="../js/menu.js?v=<?php echo $r?>"></script>
+<script src="../js/filter.js?v=5"></script>
+<script src="../js/search.js"></script>
+</head>
+<body>
+    <!-- 상단 배너 -->
+<header class="headercss">
+    <?php include "topbanner.html"; ?>
+</header>
+<!-- 쇼핑몰 메뉴 -->
+<nav class="navcss">
+    <?php include "menu.html"; ?>
+</nav>
+<!-- 상품 상세페이지 -->
+<section class="section_subpage">
+    <?php include "goods.html"; ?>
+</section>
+<!-- 카피라이터 -->
+<footer class="footercss">
+    <?php include "footer.html"; ?>
+</footer>
+</body>
+</html>

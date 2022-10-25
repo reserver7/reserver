@@ -1,0 +1,55 @@
+<?php
+include "minfo.php";
+?>
+<meta charset="UTF-8">
+<div class="menu_css">
+    <label class="menu_top">
+        <ul class="top_category" id="top_category">
+            <li link="0">LOGIN</li>
+            <li link="1">JOIN US</li>
+            <li link="2" style="display: none;">LOGOUT</li>
+            <li link="3">CART</li>
+            <li link="4">ORDER</li>
+            <li link="5">MYPAGE</li>
+        </ul>
+        <ol class="top_search">
+            <li><a href="javascript:void bookmark();">BOOKMARK</a></li>
+            <li>
+                <span><input type="text" placeholder="search" name="search" id="search" class="search_text"></span>
+                <span class="search_btn" id="search_btn"></span>
+            </li>
+        </ol>
+    </label>
+    <label class="menu_bottom">
+        <span class="logo_span" id="logo_span">
+            <img src="./images/logo.gif">
+        </span>
+        <span class="menu_span">
+            <ol class="main_mulist" id="main_mulist">
+
+            </ol>
+        </span>
+    </label>
+</div>
+<script>
+    var user_id = "<?php echo $mid; ?>";
+    var user_nm = "<?php echo $mnm; ?>";
+    var user_level = "<?php echo $mlevel; ?>";
+    var user_idx = "<?php echo $midx; ?>";
+    var user_email = "<?php echo $memail; ?>";
+    var user_tel = "<?php echo $mtel; ?>";
+    var user_addr = "<?php echo $maddr; ?>";
+    var user_addr1 = "<?php echo $maddr2; ?>";
+    var user_addr2 = "<?php echo $maddr3; ?>";
+
+    if(user_id!=""){ //로그인시 작동 부분
+        document.getElementById("top_category").childNodes.item(1).style.display = "none";
+        document.getElementById("top_category").childNodes.item(3).style.display = "none";
+        document.getElementById("top_category").childNodes.item(5).style.display = "block";
+    }
+    else{ //로그아웃시 작동 부분
+        document.getElementById("top_category").childNodes.item(1).style.display = "block";
+        document.getElementById("top_category").childNodes.item(3).style.display = "block";
+        document.getElementById("top_category").childNodes.item(5).style.display = "none";
+    }
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery6 (랜덤배너)</title>
+<script src="../jquery/jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        //Math.round & Math.random 을 이용하여 난수를 설정함
+        var $bs = Math.round(Math.random()*2);
+        var $img = "banner" + $bs + ".png";
+        //banner0.png ~ banner2.png까지 3개중에 한가지를 선택함
+        $("#banner").css("background-image","url("+ $img +")");
+        //#banner안에 배경으로 해당 이미지를 출력함
+        //랜덤배너 만들 경우 이미지크기, 속성을 같게 하고 이름은 숫자만 다르게 해야함     
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .banner{
+        width: 1000px; height: 386px; border: 1px solid black;
+        margin: 0 auto; box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+<div id="banner" class="banner"></div>
+</body>
+</html>

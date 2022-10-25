@@ -1,0 +1,30 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;900&display=swap');
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+@font-face { /* 영문만 사용하는 폰트 */
+    font-family: "ran"; /* font-family: 닉네임; (절대 중복 되지 않아야함) */
+    src:url("./font/Ranchers-Regular.otf") format("opentype"),
+    url("./font/Ranchers-Regular.woff") format("woff"), /* , ; 구분 잘해야 함 */
+    url("./font/Ranchers-Regular.woff2") format("woff2");
+    /* url은 상대경로 적용해주시고, format을 사용하셔야 합니다. */
+    font-weight: normal;
+    font-style: normal;
+    /* 폰트의 굵기, 스타일을 정해서 설정을 합니다. */
+}
+
+body { margin:0; padding:0; }
+span,label { display: block;}
+.clear {clear: both;}
+
+.text {
+    font-family: "ran"; font-size:20px; font-weight: bold;
+}
+.text2 {
+    font-family: 'Noto Sans KR', sans-serif; font-size:30px; 
+    font-weight: 100;
+}
+.text3 {
+    font-family: 'Noto Sans KR', sans-serif; font-size:30px; 
+    font-weight: 900; 
+}

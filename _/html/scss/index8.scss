@@ -1,0 +1,29 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1;
+}
+@mixin colors($w,$h,$c) {
+    width: $w+px; height: $h+px; background-color: $c;
+}
+body{
+    @include base;
+}
+.labelcss{
+    display: block; width: 100px; height: 25px; text-align: center;
+    line-height: 25px; border: 1px solid black;
+    cursor: pointer;
+}
+.labelcss:active+.ck+.box{ //active : 마우스를 클릭하고 있을 때
+    @include colors(300,150,green);
+}
+.ck:checked+.box{ //해당 클래스 체크시 적용할 오브젝트 이름을 설정하면 됨
+    @include colors(300,300,blue);
+}
+.box{
+    @include colors(300,50,yellow);
+    transition: height 5s;
+    transition-delay: 2s;
+    //transition : 모양변화, 회전, 등등 사용하게 되며 CSS전용 애니메이션 형태 적용하게 됨
+    //transition (all:가로,세로 모두 적용, width:가로만 적용, height:세로만 적용)
+    //5s : 5초
+}

@@ -1,0 +1,12 @@
+{
+    "best_product" : [
+        {"product_nm":"스텐 무드 조명","product_money":"19000","product_img":"./product/1000000004_add2_034.jpg","product_url":"product_view.html?goodsno=10"},
+        {"product_nm":"빈티지 미니 다이어리 3EA","product_money":"6000","product_img":"./product/1000000005_add2_096.jpg","product_url":"product_view.html?goodsno=11"},
+        {"product_nm":"아트무비 갤러리 액자","product_money":"10000","product_img":"./product/1000000006_add2_033.jpg","product_url":"product_view.html?goodsno=12"},
+        {"product_nm":"학용품 풀 세트","product_money":"20000","product_img":"./product/1000000007_add2_060.jpg","product_url":"product_view.html?goodsno=13"},
+        {"product_nm":"다이어리 & 미니펜","product_money":"20000","product_img":"./product/1000000003_add2_091.jpg","product_url":"product_view.html?goodsno=14"},
+        {"product_nm":"빈티지 남성 포켓시계","product_money":"50000","product_img":"./product/1000000002_add2_062.jpg","product_url":"product_view.html?goodsno=15"},
+        {"product_nm":"몽블랑 도네이션 만년필","product_money":"88000","product_img":"./product/1000000001_add2_010.jpg","product_url":"product_view.html?goodsno=16"},
+        {"product_nm":"빈티지 노트 2EA","product_money":"10000","product_img":"./product/1000000000_add2_04.jpg","product_url":"product_view.html?goodsno=17"}
+    ]
+}

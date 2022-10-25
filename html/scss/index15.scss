@@ -1,0 +1,61 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+*,body { @include base; }
+
+@mixin obsize($width,$height) {
+    width: $width+px; height: $height+px;
+}
+@mixin position($pos) {
+    @if($pos==1){
+        position: relative;
+    }
+    @else if($pos==2){
+        position: absolute;
+    }   
+    @else if($pos==3){
+        position: fixed;
+    }
+}
+@mixin border($bs,$bl,$bc) {
+    border: $bs+px $bl $bc;
+}
+@mixin move($top,$left) {
+    top: $top+px; left: $left+px;
+}
+.box{
+    @include obsize(300,80);
+    @include position(1);
+    @include border(1,solid,black);
+    margin: 0 auto; font-size: 12px;
+    display: flex; flex-direction: row; justify-content: center;
+    align-items: center;
+}
+.ckbox{ 
+    @include position(1); margin-right: 10px;
+    text-align: center;
+    &:before{
+        content: "";
+        @include obsize(20,20);
+        @include border(2,solid,purple);
+        @include position(2);
+        background-color: white;
+        @include move(-6,-2);
+    }
+    &:after{
+        //content에 모양을 입력시 text로 인식하게 됩니다.
+        //단, url로 적용시 이미지로 적용할 수 있습니다.
+        content: "";
+        @include obsize(10,10);
+        @include position(2);
+        @include move(-1,4);
+        color: purple; font-size: 15px;
+    }
+    &:checked{
+        &:after{
+            content: "✔";
+            //상단 after에 content를 사용하였기에, checked가 될 경우 문자가 적용 됨
+        }
+    }
+}

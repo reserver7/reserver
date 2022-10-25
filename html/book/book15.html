@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + css 실무-6</title>
+<style>
+    body{ margin: 0; padding: 0;}
+    label{ display: inline-block; }
+    .main_header{
+        width: 100%; height: 45px; background-image: url("./image/header_background.png");
+        position: relative;
+    }
+    .main_header > label{
+        height: 32px; background-repeat: no-repeat; background-size: cover;
+        position: absolute;
+    }
+    .main_header > label:nth-child(1){
+        width: 62px;  top: 6px;
+        background-image: url("./image/header_left_button.png");
+    }
+    .main_header > label:nth-child(2){
+        font-size: 30px; font-weight: bolder; 
+        color: #ffffff; left: 50%; margin-left: -30px;
+    }
+    .main_header > label:nth-child(3){
+        width: 32px; right: 0; top: 6px; cursor: pointer;
+        background-image: url("./image/header_right_button.png");
+    }
+    .search{
+        width: 100%; height: 40px; background-color: gray;
+        padding-top: 3px; padding-left: 2.5%; box-sizing: border-box;
+        display: none;
+    }
+    .inputs{
+        width: 95%; height: 30px; background-color: white; border: 1px solid black;
+        text-align: center; line-height: 30px; text-indent: 5px;
+    }
+    #ck { display: none; }
+    #ck:checked + .test > .search{ display: block; }
+    /* #ck 가 체크되었을때 +의 뜻은 =와 같음 .test 안에 .search 를 보이게 해라 */
+
+</style>
+</head>
+<body>
+<input type="checkbox" id="ck"> 
+<!-- 밑에 div를 컨트롤 하기 위해 만듬 id는 햄버거 버튼이랑 연동 하기 위해
+    radio는 컨트롤 하기가 어려움 체크 해제를 못하기 때문에
+-->
+<div class="test">
+<!-- 상단 -->
+    <div class="main_header">
+        <label></label>
+        <label>Mobile</label>
+        <label for="ck"></label>
+    </div>
+
+<!-- 검색 -->
+    <div class="search">
+        <div class="inputs">검색할 상품명을 입렵하세요!</div>
+    </div>
+</div>
+</body>
+</html>

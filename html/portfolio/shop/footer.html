@@ -1,0 +1,84 @@
+<meta charset="UTF-8">
+<script>
+    $(function(){
+        $("#number_check").click(function(){
+            var $links = $(this).attr("data");
+            var $gopages = "https://www.ftc.go.kr/bizCommPop.do?wrkr_no="+$links;
+            window.open($gopages,"_blank");
+        });
+
+        $("#qalink").click(function(){
+            location.href = "./qa.html";
+        });
+        $("#eventlink").click(function(){
+            location.href = "./event.html";
+        });
+    });
+</script>
+<div class="footer_css">
+    <span class="copy_top">
+        <ul class="cpt_list">
+            <li class="cpt_list_1">
+                <label>CS CENTER</label>
+                <label><b>070-1234-5678</b></label>
+                <label>OPEN 10:00 ~ CLOSE 18:00 SAT,SUN OFF</label>
+            </li>
+            <li class="cpt_list_2">
+                <label><b>BANK INFO</b></label>
+                <label>신한은행 000-00-00000</label>
+                <label>예금주: 정우석</label>
+            </li>
+            <li class="cpt_list_3">
+                <label>ABOUT US</label>
+                <label>AGREEMENT</label>
+                <label><b>PRIVATE POLICY</b></label>
+                <label>GUIDE</label>
+            </li>
+            <li class="cpt_list_4">
+                <label>COMMUNITY</label>
+                <div class="community">
+                    <span>
+                        <label><img src="./images/bell_ico.svg"></label>
+                        <label>Notice</label>
+                    </span>
+                    <span>
+                        <label><img src="./images/camera_ico.svg"></label>
+                        <label>Review</label>
+                    </span>
+                    <span id="qalink">
+                        <label><img src="./images/question_ico.svg"></label>
+                        <label>Q&A</label>
+                    </span>
+                    <span id="eventlink">
+                        <label><img src="./images/heart_ico.svg"></label>
+                        <label>Event</label>
+                    </span>
+                    <span>
+                        <label><img src="./images/delivery_ico.svg"></label>
+                        <label>Delivery</label>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </span>
+    <span class="copy_bottom">
+        <label class="cpbl_list">
+            <span>상호명 : MINIMAL</span>
+            <span>주소: 서울특별시 성북구 어딘가</span>
+            <span>대표: 정우석 개인정보관리자: 정우석</span>
+            <span id="number_check" data="4928700724">사업자등록번호: 492-87-00724 [사업자정보확인]</span>
+            <span>통싱판매업신고번호: 제 2017 성북 00000호</span>
+            <span>메일: reserver7@gmail.com</span>
+            <span>Copyright ⒞ 2020 <b>reserver1</b> All Rights Reserved.</span>
+        </label>
+        <script src="https://snapwidget.com/js/snapwidget.js"></script>
+        <ol class="cpbr_list">
+            <li>
+                INSTAGRAM &nbsp;&nbsp;#미니멀 &nbsp;#Front-End&nbsp;#프론트엔드
+            </li>
+            <div class="insta_photo">
+                <iframe src="https://snapwidget.com/embed/322874" frameborder="0" scrolling="0" style="border: 0; overflow: hidden; width: 100%; height: 120px; vertical-align: top; object-fit: cover;" allowtransparency="true"></iframe>
+            </div>
+        </ol>
+    </span>
+</div>

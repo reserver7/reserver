@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Jquery4</title>
+    <script src="../jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#menu>li").mouseenter(function(){
+                var $node = $(this).index();
+                var $menus = "#smenu" + $node;
+                $($menus).slideDown();
+            });
+
+            $("#menu>li").mouseleave(function(){
+                var $node = $(this).index();
+                var $menus = "#smenu" + $node;
+                $($menus).slideUp();
+            });
+        });
+    </script>
+    <style>
+        body { margin: 0; padding: 0;}
+        .ulcss { width:450px; height:40px; list-style: none;
+        margin: 0; padding: 0;
+        }
+        .ulcss>li { width: 150px; height:40px; line-height: 40px;
+        text-align: center; background-color: skyblue;
+        color: white; float: left; cursor: pointer;
+        }
+        .olcss { clear: both; width:150px; height:auto; 
+        list-style: none; margin: 0; padding: 0; display: none;}
+        .olcss > li { width: 150px; height:40px;
+        background-color: darkorange;
+         }
+    </style>
+</head>
+<body>
+<ul class="ulcss" id="menu">
+    <li>MENU1
+        <ol class="olcss" id="smenu0">
+            <li>MENU1</li>
+            <li>MENU2</li>
+            <li>MENU3</li>
+        </ol>
+    </li>
+    <li>MENU2
+        <ol class="olcss" id="smenu1">
+            <li>MENU1</li>
+            <li>MENU2</li>
+            <li>MENU3</li>
+        </ol>
+    </li>
+    <li>MENU3
+        <ol class="olcss" id="smenu2">
+            <li>MENU1</li>
+            <li>MENU2</li>
+            <li>MENU3</li>
+        </ol>
+    </li>
+</ul>
+</body>
+</html>

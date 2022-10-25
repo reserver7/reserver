@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 복습(3)</title>
+<script>
+var tel="SKT";
+var member1="홍길동"; 
+var teluse="Y";
+
+if(tel=="SKT"){
+	if(member1=="홍길동" || member1=="이순신" || member1=="유관순"){
+
+		if(teluse=="Y"){
+		 document.write("해당 사용자는 서비스 사용 중입니다.");
+		}
+		else if(teluse=="N"){
+		  document.write("해당 사용자는 서비스 중지 중입니다.");	
+		}			
+    }
+	else {
+	 document.write("해당 사용자는 SKT 멤버가 아닙니다.");
+	}
+}
+else{
+ document.write("SKT 통신사외에 조회할 수 없습니다.");
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

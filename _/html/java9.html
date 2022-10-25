@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 3일차(반복문-while문 + if문, while문 + while문, while문 + for문)</title>
+<script>
+// 1~100 까지의 합을 출력 : 5050 while문 (응용문제)
+var a=1;  // 시작값
+var b=0;  // 변하는값
+while(a<=100){
+    b = a + b;
+    a++;
+}
+//document.write(b);
+
+var aa=1;   //시작값
+var bb;
+while(aa<11){
+    if(aa==9){
+        //document.write("당첨되었습니다.");
+        //exit; // exit는 for, while, do~while 포함 (강제종료)
+    }          // 만족하는 값을 찾으면 더 이상 출력하지 않음
+              // exit 사용시 아래에 while, for, do~while 문이 있으면
+             // 모두 다 종료가 됨
+    else{
+        //document.write("꽝!");
+    }
+    aa++;
+}
+// while + while (구구단 2단 ~ 4단)
+var tt=2;  // 큰 while문 시작값
+var hh;    // 계산된 값
+while(tt<5){
+    var ff=1;  // 작은 while문 시작값 (ff부분)
+              //(큰 while문 안에 들어가야만 휘방성이 아닌 변수로 사용가능)
+    while(ff<10){
+        hh = tt * ff;
+        //document.write(tt+"*"+ff+"="+hh+"<br>");
+        ff++;
+    }
+    tt++;
+}
+
+//응용문제 while+while * 오름차순 5개 출력
+var kk=1;
+var rr;
+while(kk<=5){
+    var jj=1;
+    while(jj<=kk){
+        //document.write("*");
+        jj++;
+    }
+    //document.write("<br>");
+    kk++;
+}
+//while + for
+var a1=1;
+var b1;
+var c1;
+while(a1<4){
+    for(b1=1;b1<10;b1++){
+        c1 = a1 * b1;
+        //document.write(a1+"*"+b1+"="+c1+"<br>");
+    }
+    a1++;
+}
+//응용문제 * 내림차순 5개 출력
+var a2=5;
+var b2;
+while(a2>=1){
+    for(b2=a2;b2>=1;b2--){
+    //for(b2=1;b2<=a2;b2++){
+        document.write("*");
+    }
+    a2--;
+    document.write("<br>");
+}
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

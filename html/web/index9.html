@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(반복문2)</title>
+<script>
+    /* 응용문제2. 입력값 입력 단, 문자를 입력하면 if문이 작동 x
+       두개의 입력값을 더한 값을 출력 
+    */
+    function abc(){
+        var a = Number(document.getElementById("a").value);//첫번째
+        var b = Number(document.getElementById("b").value);//두번째
+        if(isNaN(a)==true || isNaN(b)==true){
+            alert("숫자만 입력해주세요!");
+        }
+        else{
+            if(a>=b){   
+            //예시 택배일자를 오늘날짜 보다 이전날짜 선택시 제어
+            //예시 예약일자 (호텔 입실~퇴실, 항공권)
+                alert("첫번째 숫자보다 커야 합니다.");
+            }
+            else{
+                /*
+                while(a<=b){  위에 있는 변수 그대로 사용
+                    document.write(a+"<br>");
+                    a++;
+                } 
+
+                var aa;   변수를 새로 만들어야함 for는 초기값이 없기때문에
+                for(aa=a;aa<=b;aa++){
+                    document.write(aa+"<br>");
+                } */
+
+                do{
+                    document.write(a+"<br>");
+                    a++;
+                }while(a<=b);
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<input type="text" id="a" placeholder="첫번째 숫자" maxlength="1">
+<input type="text" id="b" placeholder="두번째 숫자" maxlength="1">
+<input type="button" value="결과확인" onclick="abc();">
+</body>
+</html>

@@ -1,0 +1,126 @@
+@charset "utf-8";
+.main {height:1000px;}
+
+.mainoutline { height:1000px; }
+.mainoutline > article { 
+    width: 1200px; margin:0 auto;
+}
+.mainoutline > article:nth-child(1) {
+    height:500px;
+}
+.mainoutline > article:nth-child(2) {
+    height:500px;
+}
+.product_dl {
+    width:100%; height:auto;
+}
+.product_dl>dt {
+    width:100%; height:50px;
+    text-align: center; line-height:50px;
+    font-family: 'Raleway', sans-serif; font-size:45px;
+}
+.product_dl>dd {
+    position: relative; display: inline-block;
+    margin-right:-30px; 
+}
+.product_box { font-family: 'Poor Story', cursive;
+    width:270px; height:400px; border:1px solid black;
+    overflow: hidden; cursor: pointer;
+}
+.product_box>li {
+    width:270px; text-align: center; font-weight: bold;
+}
+.product_box>li:nth-child(1) {
+    background-size:cover; background-repeat: no-repeat;
+}
+.product_dl>dd:nth-child(2)>.product_box>li:nth-child(1) {
+    height:270px; background-image: url(../product/product1.jpg);
+}
+.product_dl>dd:nth-child(3)>.product_box>li:nth-child(1) {
+    height:270px; background-image: url(../product/product2.jpg);
+}
+.product_dl>dd:nth-child(4)>.product_box>li:nth-child(1) {
+    height:270px; background-image: url(../product/product3.jpg);
+}
+.product_dl>dd:nth-child(5)>.product_box>li:nth-child(1) {
+    height:270px; background-image: url(../product/product4.jpg);
+}
+.product_box>li:nth-child(2) { 
+    height:80px; vertical-align: middle;
+    font-size:22px; display: table-cell;
+}
+.product_box>li:nth-child(3) { 
+    height:50px; font-size:25px; line-height:50px;
+}
+.product_box>li:nth-child(3):before { 
+    content: "균일가";
+    color: orange; padding-right:10px;
+}
+/* 블랙쿠폰 */
+.coupon { position: absolute; top:5px; left:5px;
+    width:50px; height:50px; 
+}
+
+
+/* BEST PRODUCT */
+.best_dl {
+    width:100%; height:auto;
+}
+.best_dl>dt {
+    width:100%; height:50px;
+    font-family: 'Raleway', sans-serif; font-size:45px;
+    text-align: center;
+}
+.best_dl>dd {
+    display: inline-block; overflow: hidden;
+    margin-left:37px; margin-right:-25px;
+}
+.best_ul {
+    width:270px; height:400px; border:1px solid black;
+    font-family: 'Poor Story', cursive; font-weight: bold;
+    cursor: pointer;
+}
+.best_ul>li {
+    width:270px; height:60px; text-align: center;
+    background-repeat: no-repeat; width:270px; height:270px;
+    background-size: cover; background-position-x:-3px;
+}
+.best_dl>dd:nth-child(2)>.best_ul>li:nth-child(1) {
+    background-image: url("../product/bestproduct1.png");
+    
+}
+.best_dl>dd:nth-child(3)>.best_ul>li:nth-child(1) {
+    background-image: url("../product/bestproduct2.png");
+ 
+}
+.best_dl>dd:nth-child(4)>.best_ul>li:nth-child(1) {
+    background-image: url("../product/bestproduct3.png");
+  
+}
+.best_dl>dd:nth-child(5)>.best_ul>li:nth-child(1) {
+    background-image: url("../product/bestproduct4.png");
+
+}
+.best_ul>li:nth-child(2) {
+    font-size:20px; vertical-align: middle;
+    display: table-cell; height:60px;
+}
+.best_ul>li:nth-child(3) { font-size:25px; height:50px;}
+.best_ul>li:nth-child(3):before {
+    content: "31%"; color:red; padding-right:5px;
+}
+.best_ul>li:nth-child(4) {
+    height:20px; font-size:12px;
+}
+.best_ul>li:nth-child(4):before {
+    content: "최대 2.3% 적립"; color: blue; padding-right: 5px;
+}
+.best_dl>dd:nth-child(3)>.best_ul>li:nth-child(3):before {
+    content: "쿠팡특가"; color: red; padding-right:5px;
+}
+.best_dl>dd:nth-child(4)>.best_ul>li:nth-child(3):before {
+    content: "쿠팡특가"; color: red; padding-right:5px;
+}
+.best_dl>dd:nth-child(5)>.best_ul>li:nth-child(3):before {
+    content: "15%"; color: red; padding-right:5px;
+}

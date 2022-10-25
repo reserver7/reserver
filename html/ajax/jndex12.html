@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery-Ajax(5일차)-복습(xml + 페이징 번호찍기)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            url:"./jndex12.xml",
+            cache:false,
+            type:"GET",
+            dataType:"xml",
+            success:function($result){
+                $.fn.listxmls($result);
+            },
+            error:function(){
+                console.log("접근이 잘못되었습니다.");
+            }
+        });
+
+        var $fsubject;
+        var $html;
+        $.fn.listxmls = function($result){
+            $($result).find("freeboard").each(function($node,$name){
+                $fsubject = $(this).find("fsubject").text();
+                //console.log("["+$fsubject+"]");
+            });
+            var $array = $($result).find("fsubject").length; //게시물 총 갯수
+            var $page = 2;  //출력페이지 갯수
+            var $ea = Math.ceil($array / $page);
+            var $num = 1;   
+            while($num<=$ea){
+                console.log($ea);
+                $html = '<span class="spancss">'+$num+'</span> ';
+                $("#box").append($html);
+                $num++;
+            }
+        };
+    });
+</script>
+<style>
+    .spancss { width: 50px; height: 50px; border: 1px solid black;
+    text-align: center; line-height: 50px; display: inline-block;
+    }
+</style>
+</head>
+<body>
+<div class="box" id="box">
+    <!--
+    <span class="spancss">1</span>
+    -->
+</div>
+</body>
+</html>
+<!--
+    json = Object.keys
+    xml = find
+-->

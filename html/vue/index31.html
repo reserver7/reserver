@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue7일차 - VueRouter 페이지 구성</title>
+<script src="./vue.js"></script>
+<script src="./vue-router.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+<style>
+    body { margin: 0; padding: 0; }
+    .divcss{ width: 100%; height: 800px; }
+    iframe { width: 100%; height: 800px; }
+    a:link, a:visited, a:active, a:hover{
+        text-decoration: none; color: black;
+    }
+    .ulcss{ width: 500px; height: 40px; list-style: none; margin: 0; padding: 0;}
+    .ulcss li{ width: calc(500px/3.5); height: 40px; text-align: center; line-height: 40px;
+    display: inline-block; }
+    #memberlist{ width: 500px; height: auto; list-style: none; margin: 0; padding: 0; text-align: center; }
+    #memberlist>li{ 
+        width: calc(500px/4.5); height: 30px; border: 1px solid black; 
+        display: inline-block; text-align: center; line-height: 30px;
+    }
+</style>
+</head>
+<body>
+<section id="box">
+    <ul class="ulcss">
+    <router-link to="/shop" v-html="menu1"></router-link>
+    <router-link to="/nate" v-html="menu2"></router-link>
+    <router-link to="/moel" v-html="menu3"></router-link>
+    </ul>
+    <router-view name="web"></router-view>
+</section>
+</body>
+<script src="vuetest.html"></script>
+<script src="vueboard.html"></script>
+<script>
+    var web = { template: webpage };
+    var web2 = { template: board };
+    var web3 = { template: `<div class='divcss'>
+        <iframe src='http://www.moel.go.kr' border=0></iframe>
+        </div>`};
+
+    var r = new VueRouter({
+        routes : [
+            {
+            path:"/shop",
+            components : {
+                web : web
+            }
+            },
+            {
+            path:"/nate",
+            components : {
+                web : web2
+            }
+            },
+            {
+            path:"/moel",
+            components : {
+                web : web3
+            }
+            }
+        ]
+    });
+    var app = new Vue({
+        el:"#box",
+        router: r,
+        data:{
+            menu1:"<li>EVENT</li>",
+            menu2:"<li>REVIEW</li>",
+            menu3:"<li>NOTICE</li>"
+        }
+    });
+</script>
+</html>
+<!--
+    Vue: 웹에 사용됨
+
+    Vue-router : App(어플웹)
+    .vue
+
+    vue에 쓰는 단어를 만들면 안됨 예) template
+-->

@@ -1,0 +1,38 @@
+@charset "utf-8";
+@import url("./css11test.css");
+
+.tipcss {
+    position: relative; display: inline-block;
+}
+.text1 { 
+    width:250px; height:30px; border-radius:2px;
+    border:2px solid blue; text-indent: 5px;
+}
+.tipcss>.tipview {
+    width:200px; height:40px; background-color: orange;
+    color: white; font-size:13px; line-height:40px;
+    text-align: center; border-radius:3px;
+    top:50px; left:20px;
+    position: absolute; visibility: hidden;
+}
+.tipcss:hover .tipview {
+    visibility: visible;    
+}
+/*
+display, visibility : 두 속성 모두 동일 하게 사라지게 또는 나타나게 할 수
+있음 (hidden = none   visible = block 와 동일)
+*/
+
+.keypoint {
+    background-color: orange; text-align: center;
+    width:300px; height:5px; line-height:50px; overflow: hidden;
+    transition: height 1s;
+}
+/* 
+transform : 회전, 이동, 확대, 축소 
+transition : 애니매이션 (시간에 따라 오브젝트가 변화하도록) 
+- 가로, 세로, 나타나게, 사라지게
+*/
+.keypoint:hover {
+    height:50px;
+}

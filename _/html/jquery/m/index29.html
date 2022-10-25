@@ -1,0 +1,70 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 20일차 - perspective(CSS + Jquery)</title>
+<script src="./jquery1.12.js"></script><!-- 1.4~2.1 버젼에서만 모바일엔진을 사용할 수 있음-->
+<script src="./jquery-ui.js?"></script>
+<!-- <script src="./jquery.mobile-1.4.5.js"></script> -->
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    div { width: 100px; height: 100px; }
+    .box1{ background-color: blue; }
+    .box2{ background-color: black; transform: rotate(45deg); }
+    .box3{ margin: 0 auto; display: inline-block; }
+    .per {
+        display: block; margin: 0 auto; transform-style: preserve-3d;
+        perspective: 50px;
+        /* 
+        3차원 객체로 변환할 때 사용하는 형태 : transform-style: preserve-3d 
+        perspective : 변형을 사용 할 때 이용하는 속성 (원근감) 
+        숫자가 작을수록 원근감이 커짐
+        */
+    }
+    .sbox{ width: 100%; height: 100%; background-color: red; 
+        transform: rotateX(45deg);
+        /*
+        transform: rotateX : 좌,우 부분을 변경함
+        transform: rotateY : 상,하 부분을 변경함
+        */
+    }
+    .box4{
+        width: 100px; height: 100px; background-color: cornflowerblue; margin: 0 auto;
+        perspective: 100px; 
+        /* perspective = width 값과 동일하게 사용하면 좋음 */
+    }
+    .box4:hover{
+        background-color: black;
+        transition: 1s; 
+        /* transition = transform은 같이 사용하게 됩니다. 
+        1s = 1초를 말하며 transform이 작동하기 까지의 시간을 말함
+        */
+        transform: scale(1.5);
+    }
+</style> 
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<br><br><br>
+<div class="box3 per">
+    <div class="sbox"></div>
+</div>
+<br><br><br>
+<div class="box4" id="box4">
+
+</div>
+<input type="button" value="클릭" id="btn">
+</body>
+</html>

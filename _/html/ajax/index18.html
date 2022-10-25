@@ -1,0 +1,113 @@
+<?php
+    $redate = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge,Chrome=1">
+<title>Ajax(4일차)-(Json-쇼핑몰 상품 리스트 출력)</title>
+<script>
+
+</script>
+<style>
+    body{ margin: 0; padding: 0;}
+    *{ box-sizing: border-box;}
+    span,label { display: block; }
+    .sectioncss{ width: 1000px; height: 600px; margin: 0 auto; border: 1px solid black;}
+    .product{ 
+        list-style: none; margin: auto; padding: 0; width: 100%; height: 600px; 
+        display:flex; flex-wrap: wrap; align-items: center; align-content: center; justify-content: center;
+    }
+    .product > li { cursor: pointer; width: 230px; height: 570px; display: inline-block; margin-left: 10px; }
+    .product > li:nth-of-type(1){ margin-left: 0px;}
+    .product > li > span:nth-of-type(1){ 
+        width: 230px; height: 330px;overflow: hidden; position: relative;
+    }
+    .product > li > span:nth-of-type(1) > label{ 
+        position: absolute; width: 100px; height: 30px; 
+        border: 3px double palevioletred; background-color:rgb(253,170,235,0.5);
+        text-align: center; line-height: 20px; top: 5px; left: 5px;
+    }
+    .product > li > span:nth-of-type(2){ width: 230px; height: 240px; border: 1px solid black;}
+    img { width: 230px; height: 330px; object-fit: cover; }
+/*object-fit : 이미지의 상하좌우를 맞춰줌(크기에 맞게 비율을 맞춰줌(픽셀이 깨지지 않게)), 
+width와 height의 크기를 정확하게 잡아준 후에 사용해야 함*/
+    .product > li > span:nth-of-type(2)>label{
+        width: 100%; text-align: center; font-size: 13px;
+    }
+    .product > li > span:nth-of-type(2)>label:nth-child(1){
+        height: 60px; 
+        display: flex; flex-wrap: wrap; align-items: center;
+        align-content: center; justify-content: center;
+    }
+    .product > li > span:nth-of-type(2)>label:nth-child(2){
+        height: 60px; 
+        display: flex; flex-wrap: wrap; align-items: center;
+        align-content: center; justify-content: center;
+        /*소비자가격, 할인가격, 할인율 등은 왼쪽 정렬 하거나, 
+        아이콘을 사용 할 수도 있기 때문에 항상 flex를 사용하는 것은 아님*/
+    }
+    .product > li > span:nth-of-type(2)>label:nth-child(3){
+        height: 40px; line-height: 40px; 
+        text-decoration: line-through; /* CSS전용 취소선 */
+    }
+    .product > li > span:nth-of-type(2)>label:nth-child(4){
+        height: 40px; line-height: 40px;
+    }
+    .product > li > span:nth-of-type(2)>label:nth-child(5){
+        height: 40px; line-height: 40px;
+    }
+
+</style>
+</head>
+<body>
+<section class="sectioncss">
+    <ul class="product" id="ulcss">
+
+    </ul>
+</section>
+</body>
+<script>
+    let pdata;
+    function product(){
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function fileopen(){
+            if(pdata.readyState==XMLHttpRequest.DONE && pdata.status==200){
+                jsonfile(this);
+            }
+        }
+        pdata = windowck();
+        pdata.onreadystatechange = fileopen;
+        pdata.open("GET","./product.json?v=<?php echo $redate?>",true);
+        pdata.send();
+    }
+    product();
+
+    function jsonfile(p){
+        const parse = JSON.parse(p.response);
+        var f;
+        var html;
+        for(f in parse.product){
+            html = document.createElement("li");
+            html.setAttribute("onclick","pagego('"+parse.product[f].p_link+"');");
+            html.innerHTML += "<span><label>♥ "+parse.product[f].p_review+"</label>\
+                <img src="+ parse.product[f].p_img +"></span>\
+                <span><label>"+ parse.product[f].p_name +"</label>\
+                <label>"+ parse.product[f].p_info +"</label>\
+                <label>"+ parse.product[f].p_price +"원</label>\
+                <label>"+ parse.product[f].p_sales +"원</label>\
+                <label>"+ parse.product[f].p_percent +"</label></span>";
+            document.getElementById("ulcss").append(html);
+        } 
+    }
+
+    function pagego(url){
+        location.href = url;
+    }
+</script>
+</html>

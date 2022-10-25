@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery-Ajax(5일차)-복습(json)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            url:"./jndex13.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.select($result);
+            },
+            error:function(){
+                console.log("데이터 접근이 잘못됐습니다.");
+            }
+        });
+
+        var $html;
+        $.fn.select = function($result){
+            $($result.colors).each(function($node,$name){
+                $html = "<option value="+$name["hexValue"]+">"+$name["colorName"]+"</option>";
+                $("#colorpick").append($html);
+                if($node==0){
+                    $("#box").css("background-color",$name["hexValue"]);
+                }
+                //console.log($name["hexValue"]);
+            });
+            
+            $("#colorpick").change(function(){
+                var $color = $(this).val();
+                console.log($color);
+                $("#box").css("background-color",$color);
+            });
+        }
+    });
+</script>
+<!-- ajax로 json파일을 가져옵니다. 해당 배열을 출력하면 colors 라는 키네임이 있으며 
+해당 키네임 안에 colorName,hexValue가 있습니다.
+colorName 단어는 select에 option으로 출력되어야하며 
+해당 option value값은 hexValue로 적용시킵니다.
+사용자가 select로 색상을 선택하면 div box아이디를 가진 오브젝트 배경 색상을 변경해야합니다. 
+-->
+<style>
+    .box { width: 100px; height: 100px; border: 1px solid black; }
+</style>
+</head>
+<body>
+<select id="colorpick">
+    
+</select>
+<br><br>
+<div id="box" class="box">
+
+</div>
+</body>
+</html>
+<!--
+    json = Object.keys
+    xml = find
+    연구원 성별 별로 검색 radio
+    이름만 출력해놨다가 클릭하면 리스트가 다 출력
+-->

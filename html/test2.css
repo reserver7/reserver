@@ -1,0 +1,32 @@
+body { margin: 0; padding: 0;}
+.navcss { height:80px; border: 1px solid red;}
+.navcss>ol { width:600px; height:80px; background: green; 
+    list-style:none; margin:0 auto; padding: 0;
+}
+.navcss>ol>li { width: 100px; height: 80px; float: left; cursor:pointer; 
+    line-height: 80px; text-align: center;
+}
+.navcss>ol>li:nth-child(even) { background-color: yellowgreen;
+}
+.navcss>ol>li:nth-child(odd) { background-color: skyblue;
+}
+.smenu { width:300px; height: 40px;  background-color:black; 
+    display:none;
+}
+.smenu>ul { width:100%; height: 40px; list-style: none; color: white; 
+    margin: 0; padding: 0;
+}
+.smenu>ul>li { float: left; width:100px; height:40px; line-height:40px; 
+    text-align: center; 
+}
+.div6 { float:right;
+}
+.div3 { position: relative; right:100px;}
+.navcss>ol>li:hover #s1 { display: block;
+}
+.navcss>ol>li:hover #s6 { display: block;
+}
+.navcss>ol>li:hover #s3 { display: block;
+}
+.navcss>ol>li:hover #s2 { display: block;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    const arr = [
+        ["배추",10,5000],
+        ["무",8,9500],
+        ["상추",20,5500],
+        ["고구마",11,6000],
+        ["감자",10,4500],
+        ["양파",6,3200]
+    ]
+    arr.forEach(function(a,b,c){
+        var aa = a[0];
+        var bb = a[1];
+        var cc = a[2];
+        var dd = cc - (bb/100) * cc;
+        var ee = aa + " : " + bb+"% " + cc.toLocaleString()+"원" + " " + dd.toLocaleString()+"원";
+        console.log(ee);
+    });
+</script>
+<!--
+    해당 배열리스트에 값중 금액에 맞게 할인된 가격을 출력하시오
+    예) 배추 : 10% 5000 4500
+-->

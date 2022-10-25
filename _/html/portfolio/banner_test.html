@@ -1,0 +1,240 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<script src="./js/jquery.js"></script>
+<script src="./js/jquery-ui.js"></script>
+<!-- Jquery 3 , Jquery-ui -->
+<link type="text/css" rel="stylesheet" href="./css/banner.css?v=<?php echo $date?>">
+<link type="text/css" rel="stylesheet" href="./js/jquery-ui.css">
+<!-- Jquery-ui-css -->
+<title>PC 전용 롤링배너(1000px)</title>
+<script>
+    $(document).ready(function(){
+        var $li_num = $("#banners>li").length;
+        var $li_width = $("#banners>li").eq(0).width();
+        var $fullwidth = $li_num * $li_width;
+        $("#banners").css("width",+$fullwidth+"px");
+        //디스크 초기값
+        var $dno = 0;
+
+        //5초 후에 이동됨
+        var $timer;
+        $.fn.bannerm = function(){
+        $timer = setTimeout(function retimer(){
+            $("#banners").animate({
+                "left":(-$li_width)+"px"
+            },800,function(){
+                var $banner_copy = $("#banners>li").eq(0).clone();
+                $("#banners>li").eq(0).remove();
+                $(this).css("left","0px");
+                $(this).append($banner_copy);
+            });
+            //디스크 이동
+            $("#disc>li").css("background-color","black");
+            $dno++;
+            if($dno>=$li_num){ 
+                $dno = 0;
+            }
+            $("#disc>li").eq($dno).css("background-color","tomato");
+
+            $timer = setTimeout(retimer,5000);       
+        },5000);
+    };   
+    
+        var $banner_list = [
+            ["./banner/banner1.png","http://www.jscook.co.kr/cookfile/menu2/menu1.html","교육과정"],
+            ["./banner/banner2.png","http://www.jscook.co.kr/cookfile/menu2/menu21.html","창업과정"],
+            ["./banner/banner3.png","http://www.jscook.co.kr/cookfile/menu4/menu7.html","직영,관리매장소개"],
+            ["./banner/banner4.png","http://www.jscook.co.kr/bbs/zboard.php?id=cookapply","세미나신청"]
+        ];
+        var $banner_num = $banner_list.length;
+        var $num=0;
+        while($num<$banner_num){
+            $("#banners>li:eq("+$num+")").attr("data",$banner_list[$num][1]);
+            $("#banners>li:eq("+$num+")>img").attr("src",$banner_list[$num][0]);
+            $("#banners>li:eq("+$num+")>img").attr("title",$banner_list[$num][2]);
+            $("#disc").append("<li></li> ");
+            $num++;
+        }
+
+        //이미지 클릭 부분
+        $("#banners").click(function(){
+            $dno = $("#banners>li").eq(0).attr("data");
+            location.href=$dno;
+        });
+        
+        $("#banner_box").bind({
+            "mouseenter":function(){
+                $(".spanbtn").fadeIn();
+                clearTimeout($timer);
+            },
+            "mouseleave":function(){
+                $(".spanbtn").fadeOut();
+                $.fn.bannerm();
+            }
+        });
+
+        $("#right").click(function(){
+            $("#banners").animate({
+                "left":(-$li_width)+"px"
+            },800,function(){
+                var $banner_copy = $("#banners>li").eq(0).clone();
+                $("#banners>li").eq(0).remove();
+                $(this).css("left","0px");
+                $(this).append($banner_copy);
+            });
+
+            //디스크 이동
+            $("#disc>li").css("background-color","black");
+            $dno++;
+
+            if($dno>=$li_num){
+                $dno = 0;
+            }
+            $("#disc>li").eq($dno).css("background-color","tomato");
+        });
+
+        $("#left").click(function(){
+            var $banner_copy = $("#banners>li").eq($li_num-1).clone();
+            $("#banners>li").eq($li_num-1).remove();
+            $("#banners").css("left",(-$li_width)+"px");
+            $("#banners").prepend($banner_copy);
+            $("#banners").animate({
+                "left":"0px"
+            },800);
+
+            //디스크 이동
+            $("#disc>li").css("background-color","black");
+            if($dno==0){
+                $dno = $li_num-1; 
+            }
+            else{
+                $dno--;
+            }
+            $("#disc>li").eq($dno).css("background-color","tomato");
+        });
+
+        $.fn.bannerm();
+
+        //디스크 클릭시 원하는 배너로 이동하는 부분
+        $("#disc>li").click(function(){
+            clearTimeout($timer);
+            var $disc_node = $(this).index();  //해당 디스크 노드값 
+            //해당 디스크 클릭 부분
+            $("#disc>li").css("background-color","black");
+            $("#disc>li").eq($disc_node).css("background-color","tomato")
+            
+            var $ck;
+            var $nodem
+            for($ck=0;$ck<$li_num;$ck++){
+                //반복문으로 해당 노드에 있는 node 속성 값을 모두 검토함
+                $nodem = $("#banners>li").eq($ck).attr("node");
+
+                if($disc_node==$nodem){//검토한 값과 해당 디스크의 노드 값이 같은거를 가져옴
+                    //ex). alert($("#banners>li").eq($ck).attr("data"));
+                    //해당 노드 위치 파악하기
+                    var $offset = String(Math.ceil($("#banners>li").eq($ck).offset().left));
+                    //숫자를 문자화 해야만 length 카운팅을 할 수 있습니다.  String($offset).length
+                    var $count = $offset.length; //숫자 갯수 카운팅
+                    var $substr;    //글자 자를 떄 사용
+                    var $left_offset;   //잡아 당길 위치 값
+
+                    if($count==3){  //3자리 일 경우 (글자를 자를 필요가 없음)
+                        $left_offset = 0;
+                    }
+                    else{   //4자리 일 경우 (string 일 경우 사칙연산이 안됨)
+                        var $clickno = $ck;
+                        //$ck를 임의 변수로 재 전달하여 애니메이션 사용 후 function에서 사용하기 위함
+
+                        //해당 값 중 제일 첫번쨰 숫자 값을 가져옴
+                        $substr = Number($offset.substr(0,1));
+
+                        //배너 크기 * 첫번째 숫자 값을 곱함
+                        $left_offset = $li_width * $substr;
+
+                        //해당 곱한 값만큼 left로 잡아 당김
+                        $("#banners").animate({
+                            "left":(-$left_offset)+"px"
+                        },800,function(){
+                            //$ck를 그대로 사용할 수 없음, 전역변수로 등록하지 않은 
+                            //상황이어서, 새로운 function으로 묶일 경우 
+                            //for문에 맨 마지막 숫자만 출력 되어짐
+
+                            //해당 노드의 순서위치
+                            var $index_no = $("#banners>li").eq($clickno).index();
+                            var $n;
+                            var $disc_copy;
+                            //해당 노드 위치 확인 후 앞에 노드를 모두 삭제하는 반복문
+                            for($n=0;$n<$index_no;$n++){
+                                $disc_copy = $("#banners>li").eq(0).clone();
+                                $("#banners>li").eq(0).remove();
+                                $("#banners").append($disc_copy);
+                            }
+                            $("#banners").css("left","0px");
+                            $dno = $disc_node;  
+                            //해당 클릭 디스크의 값을 전역변수($dno)로 재전달
+                        });
+                    }
+                }
+            }
+        });
+        //마우스 포인터가 화면 밑에서 올라올 경우에도 배너가 정지되도록 함
+        $("#disc").mouseenter(function(){
+            clearTimeout($timer);
+        });
+    });
+</script>
+<style>
+    .banner_part{ height: 500px; margin-top: 50px; }
+    .banner_box{ width: 1000px; height: 500px; margin: 0 auto; border: 1px solid red; position: relative; overflow: hidden; }
+    .banners{ height: 500px; position: absolute; }
+    .banners > li { float: left; width: 1000px; height: 500px; cursor: pointer; }
+    .banner_box > span { 
+        width: 50px; height: 50px; position: absolute; z-index: 10;
+        top: 50%; margin-top: -25px; cursor: pointer; display: none;
+    }
+    #left{ left: 3px; }
+    #right{ right: 3px; }
+    /* 디스크 */
+    .disc{ 
+        width: 100%; height: 30px; line-height: 30px; position: absolute; z-index: 10; 
+        text-align: center; bottom: 10px;
+    }
+    .disc > li { 
+        display: inline-block; width: 10px; height: 10px; background-color: black; 
+        border-radius: 5px; cursor: pointer;
+    }
+    .disc > li:first-child{ background-color: tomato; }
+</style>
+</head>
+<body>
+<section class="banner_part">
+    <aside class="banner_box" id="banner_box">
+        <span class="spanbtn" id="left"><img src="./js/images/icons-svg/carat-l-black.svg"></span>
+        <span class="spanbtn" id="right"><img src="./js/images/icons-svg/carat-r-black.svg"></span>
+        <!-- 이미지 배너 -->
+        <ul class="banners" id="banners">
+            <li data="" node="0"><img src="" title=""></li>
+            <li data="" node="1"><img src="" title=""></li>
+            <li data="" node="2"><img src="" title=""></li>
+            <li data="" node="3"><img src="" title=""></li>
+            <!-- 노드 순서가 바뀌기 때문에 이름을 지정해 줘야함 -->
+        </ul>
+    <!-- 디스크 -->
+    <ol class="disc" id="disc">
+        
+    </ol>
+    </aside>
+</section>
+</body>
+</html>
+<!--
+    네이버 클라우드 주소
+    http://naver.me/GqHpZvLh
+-->

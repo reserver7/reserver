@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 3일차(노드 삭제 및 추가(제일 하단) + 노드복제)</title>
+<script src="./jquery.js"></script><!--Jquery엔진 탑재-->
+<script>
+    $(document).ready(function(){
+        var $cp = "";   //전역변수 (노드 부분을 copy 또는 append을 위한 전역변수)
+
+        $("#node_del").click(function(){
+            /* 
+            remove() : 해당 소스 부분을 완전삭제
+            remove사용시 노드가 삭제되며, 노드는 다시 재정렬하여
+            순서를 다시 맞추게 됨
+            display, visibility : 소스는 그대로 있지만, 보이지 않도록 하는 속성
+            */
+            $("#node > li").eq(0).remove();
+            //$("#node > li").eq(2).css("display","none");
+            //$("#node > li").eq(2).css("visibility","hidden");
+        }); 
+
+        $("#node_add").click(function(){
+            //html = innerHTML : 노드 추가(x), 코드 추가
+            //append : 부모 안에 노드를 추가하는 것을 말함
+            //$("#node").append("<li>6</li>");
+            $("#node").append($cp);
+            //$cp : clone()라는 노드를 카피한 후 적용되는
+            //html 전체 소스코드를 가지고 있는 전역변수
+        });  
+
+        $("#node_copy").click(function(){
+            $cp = $("#node > li").eq(0).clone();
+            //clone() : 해당 노드를 html태그, text모두 전체 복사 하는명령어
+            //$cp : 해당 노드 전체를 복사해서 전역변수 값을 넘기게 됨
+        });
+        
+        //채팅구현 노드 추가하기
+        $("#cbtn").click(function(){
+            var $text = $("#chat_text").val();
+            if($text==""){
+                alert("메세지를 입력해 주세요!");
+            }
+            else{
+                $("#view").append("<li class='viewbox'>"+$text+"</li>");
+                $("#chat_text").val("");
+            }
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .chat{
+        width: 400px; height: 600px; border: 1px solid black;
+        overflow-y:auto;
+    }
+    .view{
+        width: 400px; height: auto; list-style: none;
+        margin: 0; padding: 0;
+    }
+    .view > li{
+        height: 30px; line-height: 30px;
+    }
+    .viewbox{
+        height: 30px; background-color: darkblue;
+        color: white; border-radius: 15px; text-indent: 10px;
+    }
+</style>
+</head>
+<body>
+<ul id="node">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<input type="button" value="노드삭제" id="node_del">
+<input type="button" value="노드추가" id="node_add">
+<input type="button" value="노드복사" id="node_copy">
+<br><br><br>
+<!-- 노드 추가하여 채팅 간단히 구현 -->
+<div class="chat" id="chat">
+    <p>건전한 채팅문화를 선도합니다.!!</p>
+    <ul class="view" id="view"></ul>
+</div>
+<br>
+<input type="text" id="chat_text"><input type="button" value="전송" id="cbtn">
+</body>
+</html>

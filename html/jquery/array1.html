@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 배열 총 복습 (1차원)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        //배열종류 : ["","",""] = 1차원 ( 출력 또는 검색(조건) )
+        var $array = ["hong","홍길동","test@test.com","010-1234-5678","서울시 종로구 3가"];
+        console.log($array);
+        var $ea = $array.length;
+        var $f;
+        var $text;
+        for($f=0;$f<$ea;$f++){
+            $text = $(".info:eq("+$f+")>.span2").text($array[$f]);
+        }
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .labelcss{ display: block; width: 250px; height: 30px; line-height: 30px; }
+    .labelcss>span{display: inline-block;}
+    .span1{width: 80px; height: 30px; background-color: azure; }
+    .span2{width: 140px; height: 30px; }
+</style>
+</head>
+<body>
+<p>MY INFO</p>
+<label class="labelcss info">
+    <span class="span1">아이디</span>
+    <span class="span2"></span>
+</label>
+<label class="labelcss info">
+    <span class="span1">고객명</span>
+    <span class="span2"></span>
+</label>
+<label class="labelcss">
+    <span class="span1">패스워드</span>
+    <span class="span2"><input type="text"></span>
+</label>
+<label class="labelcss info">
+    <span class="span1">이메일</span>
+    <span class="span2"></span>
+</label>
+<label class="labelcss info">
+    <span class="span1">연락처</span>
+    <span class="span2"></span>
+</label>
+<label class="labelcss info">
+    <span class="span1">주소</span>
+    <span class="span2"></span>
+</label>
+</body>
+</html>

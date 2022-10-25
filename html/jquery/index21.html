@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 5일차 - (랜덤 + 지도 API)</title>
+<script src="./jquery.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a5fcc63d299232820c203e82071ac5cd"></script>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            var $a = Math.floor(Math.random()*100); // 숫자 뒤에 +1하면 1부터 100까지 숫자중
+            console.log($a);
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0;}
+    .maps{
+        width: 400px; height: 400px; border: 1px solid black;
+        box-sizing: border-box;
+    }
+    .info{
+        width: 150px; height: 40px; position: absolute; z-index: 100;
+        background-color: black; border-radius: 20px; color: white;
+        font-size: 12px; text-align: center; padding-top: 2px;
+        box-sizing: border-box; top: -10px;
+    }
+</style>
+</head>
+<body>
+<input type="button" value="숫자선택" id="btn">
+<br><br>
+<div id="maps" class="maps">
+    
+</div>
+
+<script>    //지도는 body 아래에 코드 작성 해야 함
+    $(document).ready(function(){
+        var $a = document.getElementById("maps");
+        var $b = {
+            center:new kakao.maps.LatLng(37.569854, 126.990110),
+            //좌표값 (구글 맵 이용하여 출력함)
+            level:3
+        };
+        var $c = new kakao.maps.Map($a,$b); 
+
+        //마크업 출력
+        var $d = new kakao.maps.LatLng(37.569854, 126.990110);
+        var $e = new kakao.maps.Marker({
+            position:$d
+        });
+        $e.setMap($c);
+
+        //인포정보
+        var $info = '<div class="info">국일빌딩 5F<br>[그린아트컴퓨터학원]</div>',
+        $infomap = new kakao.maps.LatLng(37.569854, 126.990110);
+
+        var $infowindow = new kakao.maps.InfoWindow({
+            position:$infomap,
+            content:$info
+        });
+        $infowindow.open($c,$e);
+    });
+</script>
+
+</body>
+</html>

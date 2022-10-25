@@ -1,0 +1,54 @@
+<?php
+    include "session.php";
+    include "mcheck.php";
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compaible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>모바일 전용-로그인</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<script src="./join.js?v=<?php echo $date?>"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="./join.css?v=<?php echo $date?>">
+<script>
+    //backend-code > front-code 변환 (.js 파일 특성상 백엔드 코드 작동하지 않음)
+    $(document).ready(function(){
+        var $mid = "<?php echo $mid; ?>";
+        var $mname = "<?php echo $mnm; ?>";
+
+        if($mid != ""){
+            $("#login_info1").css("display","none");
+            $("#login_info2").css("display","block");
+        }
+    });
+</script>
+</head>
+<body>
+
+    <!-- 상단 -->
+<header class="hcss">
+    <div class="login_info" id="login_info1" style="display: block;">
+        로그인
+    </div>
+    <div class="login_info" id="login_info2" style="display: none;">
+        로그아웃
+    </div>
+</header>
+<!-- 광고 -->
+<nav class="ncss">
+   
+</nav>
+<!-- 상품리스트 -->
+<section class="scss"> 
+    
+</section>
+<!-- 카피라이터 -->
+<footer class="fcss">
+
+</body>
+</html>

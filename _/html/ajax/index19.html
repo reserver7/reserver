@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge,Chrome=1">
+<title>Ajax(4일차)-(외부서버 배열정보 가져오기)-Cross Domain</title>
+<script>
+    function jsonfile(data){
+        var f;
+        for(f in data){
+            console.log(data[f]);
+        }
+        Object.keys(data).forEach(function(a,b,c){
+            console.log(data[a]);
+        });
+    }
+</script>
+<!-- back-end쪽에서 CORS를 오픈하여 배열값을 가져올 수 있도록 통로를 열어줌
+단, 해당 배열 연결 통로는 배열코드 아래에 배치가 되어야만 정상적으로 실행을 할 수 있음
+-->
+<script src="http://reduck.dothome.co.kr/ajax/index19.php"></script>
+<style>
+    body{ margin: 0; padding: 0;}
+</style>
+</head>
+<body>
+
+</body>
+</html>

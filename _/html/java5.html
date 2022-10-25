@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 2일차(반복문-for)</title>
+<script>
+var a;
+for(a=1;a<10;a++){ //a가 1~9까지 1씩 증가하면서 반복
+    //document.write(a+"<br>");
+}
+var aa;
+for(aa=10;aa>0;aa--){ //aa가 10~1까지 1씩 감소하면서 반복
+    //document.write(aa+"<br>");
+} 
+var cc;
+for(cc=1;cc<6;cc++){
+    if(cc==3){
+    //document.write(cc);
+    }
+}
+//응용문제
+//10 ~ 5 까지 내림차순이며, 그 중 숫자 5가 찍힐 경우
+//해당 숫자의 내림차순 마지막 값입니다. 라고 출력
+var bb;
+for(bb=10;bb>4;bb--){
+    if(bb==5){
+        //document.write("해당 숫자의 내림차순 마지막 값입니다.");
+    }
+    else {
+        //document.write(bb+"<br>");
+    }
+}
+
+var h;
+var k=2;
+var j;
+for(h=1;h<10;h++){
+    j = k * h;
+    //document.write(k+"*"+h+"="+j+"<br>");
+}
+//응용문제 구구단 5단
+var q;
+var w=5;
+var e;
+for(q=9;q>4;q--){
+    e = w * q;
+    document.write(w+"*"+q+"="+e+"<br>");
+} 
+
+
+
+
+//var b=5;
+//var c;
+//c = b--; /* 해당 값을 먼저 넘기고 나서 -1을 함 */
+//c = --b; /* -1을 하고나서 값을 넘기게 됨 */
+//c = b++; /* 해당 값을 먼저 넘기고 나서 +1을 함 */
+//c = ++b; /* +1을 하고나서 값을 넘기게 됨 */
+//document.write(c);
+</script>
+</head>
+<body>
+<!--
+    반복문 (javascript 1.0 ~ 2.0)
+    for, while, do ~ while
+    loop, each (javascript 3.0)
+    javascript (4.0 ~ 5.0)
+    for ~ in
+    for ~ of
+    foreach
+    
+    ES5 ~ ES6 (Javascript 5 ~ 6 = Javascript 프레임워크(표준화))
+    typescript (ES5 ~ ES6 공용으로 업그레이드)
+-->
+</body>
+</html>

@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap");
+/*font-family: 'Noto Sans KR', sans-serif;(100,300,400,500)*/
+body, * {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* 애니메이션 */
+.testdiv {
+  width: 250px;
+  height: 80px;
+  margin: 0 auto;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 80px;
+}
+
+.testdiv > #agree {
+  cursor: pointer;
+}
+
+.testdiv > .labelcss {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  width: 180px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-right: 5px;
+}
+
+.testdiv > .labelcss:before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background-image: url("./images/pc_ico.png");
+  background-position: -30px 0;
+  background-repeat: no-repeat;
+  background-size: 170px 155px;
+  left: -25px;
+  top: -2px;
+}
+
+.testdiv > .checks:before {
+  /* Jquery에서 addClass, removeClass, toggleClass 사용시 적용됨 */
+  background-position: 0 0;
+}
+
+.testdiv > #btn {
+  width: 50px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+  border: 0;
+}
+/*# sourceMappingURL=index25.css.map */

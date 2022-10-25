@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 복습 (로그인 및 비회원 로그인)</title>
+<script src="./jquery.js"></script>
+<script>
+
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    label, span { display: block; }
+    p{ text-align: center; font-size: 30px; font-weight: bold;}
+    .logincss{
+        width: 600px; height: 325px; border: 1px solid #ccc;
+        margin: 0 auto; box-sizing: border-box; font-weight: bold;
+    }
+    .logincss > label:nth-child(1){
+        width: 600px; height: 55px; border-bottom: 1px solid #ccc; 
+        border-right: 1px solid #ccc; box-sizing: border-box;
+        line-height: 55px; text-indent: 30px; font-size: 20px;
+        background-image: url("./image/smile.svg"); background-color: #fcfcfc;
+        background-repeat: no-repeat;
+        background-position-y: 16px; background-position-x: 5px;
+    }
+    .logincss > label:nth-child(2){
+        width: 600px; height: 220px; border-bottom: 1px solid #ccc; box-sizing: border-box; 
+        font-size: 16px;
+    }
+    .span1,.span3{
+        width: 100%; height: 45px; line-height: 45px; text-indent: 10px;
+    }
+    .span2,.span4{
+        width: 100%; height: 30px; text-indent: 10px;
+    }
+    .mid,.mpass,.or_tex1,.or_tex2{ 
+        width: 565px; height: 30px; background-image: url("./image/person.svg");
+        background-repeat: no-repeat; background-position-x: 540px;
+        background-position-y: 3px; border: 1px solid #ccc; box-sizing: border-box;
+    }
+    .mpass,.or_tex2{
+        background-image: url("./image/lock.svg");
+    }
+    .ckbtn{
+        width: 100%; height: 70px; list-style: none;
+        margin: 0; padding: 0; line-height: 70px; position: relative;
+    }
+    .ckbtn > li{
+        float: left; position: absolute; 
+    }
+    .ckbtn > li:nth-child(1){ text-indent: 6px; }
+    .ckbtn > li:nth-child(2){ right: 25px; }
+    .btn{ background-color: #e91b23; color: white; border: 0; width: 75px; height: 35px; cursor: pointer; }
+    .logincss > label:nth-child(3){
+        width: 600px; height: 50px;
+    }
+    .olcss{
+        width: 200px; height: 50px; list-style: none;
+        margin: 0 auto; padding: 0; line-height: 50px; position: relative;
+    }
+    .olcss > li{ float: left; position: absolute; background-repeat: no-repeat; width: 100px; cursor: pointer; text-indent: 20px;}
+    .olcss > li:nth-child(1){ 
+        background-image: url("./image/login.svg"); 
+        background-position-x: -5px; background-position-y: 13px;
+    }
+    .olcss > li:nth-child(2){ 
+        right: 0px;
+        background-image: url("./image/search.svg");
+        background-position-x: -3px; background-position-y: 13px;
+    }
+    .ordercss{
+        width: 600px; height: 310px; border: 1px solid #ccc; 
+        margin: 0 auto; box-sizing: border-box; font-weight: bold;
+        margin-top: 15px;
+    }
+    .ordercss > label:nth-child(1){
+        width: 100%; height: 55px; border-bottom: 1px solid #ccc;
+        background-color: #fcfcfc;
+        line-height: 55px; text-indent: 8px; font-size: 20px;
+    }
+    .or_sp1{ width: 100%; height: 35px; font-size: 12px; text-align: center; line-height: 35px;}
+    .or_sp2,.or_sp4{ width: 100%; height: 45px; line-height: 45px; text-indent: 8px; }
+    
+    .or_sp3,.or_sp5 { margin-left: 17px; }
+    .or_sp6{ width: 565px; height: 40px; margin: 0 auto; position: relative;}
+    .btn2{
+        width: 565px; height: 40px; background-color: #e91b23; color: white;
+        text-align: center; line-height: 40px; border: 0; cursor: pointer;
+        position: absolute; top: 15px;
+    }
+    .btndiv{
+        width: 80px; height: 40px; margin: 0 auto;
+    }
+    .btn3{
+        width: 80px; height: 40px; cursor: pointer;
+        background-color: #0f0f0f; color: white; text-align: center;
+        line-height: 40px; margin-top: 25px; border: 0;
+    }
+
+</style>
+</style>
+</head>
+<body>
+    <p>[Jquery 로그인 및 비회원 주문조회]</p>
+    <div class="logincss">
+        <label>회원로그인</label>
+        <label>
+            <span class="span1">아이디</span>
+            <span class="span2"><input type="text" class="mid" maxlength="70"></span>
+            <span class="span3">비밀번호</span>
+            <span class="span4"><input type="password" class="mpass" maxlength="70"></span>
+            <ul class="ckbtn">
+            <li><label for="ck"><input type="checkbox" class="ck" id="ck">자동로그인</label></li>
+            <li><input type="button" value="로그인" class="btn"></li>
+            </ul>
+        </label>
+        <label>
+        <ol class="olcss">
+            <li>회원가입</li>
+            <li>정보찾기</li>
+        </ol>
+        </label>
+    </div>
+
+    <div class="ordercss">
+        <label>비회원 주문조회</label>
+        <label>
+            <span class="or_sp1">메일로 발송해드린 주문서의 주문번호 및 주문 시 이력하신 비밀번호를 정확히 입력해주십시오.</span>
+            <span class="or_sp2">주문서번호</span>
+            <span class="or_sp3"><input type="text" class="or_tex1" maxlength="15"></span>
+            <span class="or_sp4">비밀번호</span>
+            <span class="or_sp5"><input type="text" class="or_tex2" maxlength="70"></span>
+            <span class="or_sp6"><input type="button" value="확인하기" class="btn2"></span>
+        </label>
+    </div>
+    <div class="btndiv"><input type="button" value="메인으로" class="btn3"></div>
+</body>
+</html>

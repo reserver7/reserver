@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제4</title>
+    <style>
+        #point_mng { 
+            height:230px; border:1px solid #ccc; border-radius: 5px; }
+        .h2_frm { text-indent: 20px; }
+        tbody > tr { height:30px; font-size: 12px; }
+        tbody > tr > th { width:150px;
+            background-color: cornflowerblue;}
+        .btn_submit { width:100px; height:30px; border:0;
+        background-color: darkblue; color: white;
+        margin-top: 10px; margin-left:2px;
+        }
+        .sound_only { color: white;}
+        .frm_input { height:30px; border:1px solid #ccc;}
+    </style>
+</head>
+<!--
+    문제4.
+    회원아이디, 포인트 내용필수, 포인트 필수이며, 포인트 반영 클릭시 체크가
+    되며, "해당 포인트를 회원에게 반영 하겠습니까?"라는 메세지 출력을 해야 
+    합니다. 만약 "취소"를 선택하면, 체크박스는 자동 해제 되어야 합니다.
+    "확인" 버튼 클릭시 다음 주소로 데이터 전송이 되어야 합니다.
+    POST로 전송되며, http://mekeyace.dothome.co.kr/pointok.php
+    입니다.
+-->
+<body>
+<form name="f" id="f">
+<section id="point_mng">
+    <h2 class="h2_frm">개별회원 포인트 증감 설정</h2>
+    <div class="tbl_frm01 tbl_wrap">
+        <table>
+        <colgroup>
+            <col class="grid_4">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr>
+            <th scope="row"><label for="mb_id">회원아이디<strong class="sound_only">&nbsp;(필수)</strong></label></th>
+            <td><input type="text" name="mb_id" value="" id="mb_id" class="required frm_input"></td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="po_content">포인트 내용<strong class="sound_only">&nbsp;(필수)</strong></label></th>
+            <td><input type="text" name="po_content" id="po_content" class="required frm_input" size="80" placeholder="최소 10자 이상 80자 이하 입니다."></td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="po_point">포인트<strong class="sound_only">&nbsp;(필수)</strong></label></th>
+            <td>
+				<input type="text" name="po_point" id="po_point" class="required frm_input" placeholder="숫자만 입력하세요!">
+				&nbsp;<label><input type="checkbox" name="po_exp" id="po_exp" value="1" onclick="bbb();"> &nbsp;포인트 반영</label>
+			</td>
+        </tr>
+                </tbody>
+        </table>
+    </div>
+
+    <div class="btn_confirm01 btn_confirm">
+        <input type="button" value="확인" class="btn_submit" onclick="aaa();">
+    </div>
+</section>
+</form>
+</body>
+<script>
+function aaa(){
+    var id = f.mb_id.value;
+    var con = f.po_content.value;
+    var ck_txt = f.po_point.value;
+    if(id=="" || con=="" || ck_txt==""){
+        alert("아이디, 포인트내용, 포인트번호를 정확히 입력해 주세요");
+    }
+    else{
+        if(con.length<10 || con.length>80){
+        alert("포인트 내용은 10자 이상 80자 이하 입니다.");
+        }
+        else{
+            ck();
+        }
+    }  
+}
+
+function ck(){
+    var ck_txt = f.po_point.value;
+    if(isNaN(ck_txt)==true){
+        alert("포인트는 숫자만 입력하세요");
+    }
+    else{
+        f.method = "POST";
+        f.action = "http://mekeyace.dothome.co.kr/pointok.php";
+        f.submit();
+    }
+}
+
+
+function bbb(){
+    if(confirm("해당 포인트를 회원에게 반영 하겠습니까?")){
+            
+    }
+    else{
+        document.getElementById("po_exp").checked=false;
+    }
+}
+</script>
+</html>

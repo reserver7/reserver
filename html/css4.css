@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+body { margin:0; padding:0;}
+span,label { display: block;}
+.clear { clear: both;}
+.menu { 
+    width:300px; height:auto; border:1px solid #cccccc;
+    margin:0; padding:0; cursor: pointer;
+}
+.menu>dt {
+    width:100%; height:40px; line-height:40px; 
+    border-bottom: 1px solid darkmagenta; font-size:15px; font-family:돋움체;
+    text-align:center; font-weight: bold; color: darkmagenta;
+}
+.menu>dd {
+    width:100%; height:30px; margin:0; padding:0; font-family:돋움체;
+    font-size:15px; font-weight: bold; line-height:30px; 
+    text-indent:15px;
+}/* text-indent = &nbsp; 대체 코드속성 px 단위로 설정하게 됩니다. */
+.menu>dd:hover {
+    color:darkmagenta;
+}
+.text1 {
+    width:200px; height:30px; text-indent:10px;
+}
+.product { 
+    width:250px; height:auto; border:1px solid #cccccc; padding:5px;
+    box-sizing: border-box;
+}
+.product_dl {
+    width:99%; height:auto; margin:0; padding:0;
+}
+.product_dl>dt {
+    width:100%; height:190px;
+}
+.img { 
+    width:100%; 
+}
+.product_dl>dd { 
+    text-align: center; font-family:"돋움체"; width:100%; margin:0; padding:0;
+}
+.product_dl>dd:nth-child(2) {
+    height:60px; font-weight: bold; 
+    vertical-align: middle; display: table-cell; overflow: hidden;
+} /* display: table-cell(테이블 형태로 오브젝트 형태를 변화 시킵니다.
+두줄 이상일 경우 사용 vertical-align: middle과 함께 ) */
+.product_dl>dd:nth-child(3) {
+    height:30px; line-height:30px; font-weight: bold; font-size:22px;
+}
+.product2 {
+    width:300px; height:auto; margin:0; padding:0; border:1px solid #cccccc;
+}
+.product2_dl {
+    width:300px; height:auto; margin:0; padding:0; 
+    padding:10px; box-sizing: border-box;
+}
+.img2 {
+    width:100%;
+}
+.product2_dl>dd {
+    text-align: center; font-weight: bold; font-family:"돋움체"; margin:0;
+    padding:0; width:100%;
+}
+.product2_dl>dd:nth-child(2) {
+    height:70px; font-size:25px; 
+    vertical-align: middle; display: table-cell; overflow: hidden;
+}
+.product2_dl>dd:nth-child(3) {
+    height:30px; font-size:15px; color:red; line-height:30px;
+    border:1px solid red;
+}
+.product2_dl>dd:nth-child(4) {
+    height:30px; line-height:30px; font-size:20px;
+    border:1px solid red;
+}

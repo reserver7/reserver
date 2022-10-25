@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>최종복습 (부모창 > 자식창 > 부모창) - callback</title>
+<script>
+    function aaa(){
+        window.open("./repopup.html","","width=500 height=400");
+        //자식창을 호출 window.open
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<!-- 자식창에 있는 값을 부모창으로 가져올 때 form이 무조건 필요함!! -->
+<input type="text" name="a" id="a" readonly>
+<input type="text" name="b" id="b" readonly>
+<input type="button" value="확인" onclick="aaa();">
+</form>
+<!--
+    응용문제.
+    확인 버튼을 클릭시 repopup.html이 오픈 됩니다.
+    해당 제품을 클릭시 부모창 기준으로 a에는 상품명이 입력되며,
+    b에는 제품가격이 입력 되어야 합니다.
+-->
+</body>
+</html>
+
+<!--
+    http://naver.me/FsFZLesW  클라우드 주소
+
+[DB]
+    - Database (사용자 입력 모든 값을 저장공간)
+    - DB종류
+    1. MS-SQL (Microsoft - window DB) - 중,소형
+    2. MY-SQL (Linux DB) - 중,소형
+    3. Oracle (Oracle DB) - 대형
+    4. Orient (몽키 DB) - node.js (채팅)
+    5. MariaDB (MY-SQL 업그레이드 버젼) - 대,중형
+    6. Cubrid (Naver - AI DB)
+
+http://reduck.dothome.co.kr/test.pdf
+
+책 교재
+1. 확실한 자바입문서 - 초보자를 위한 Javascript 200제  (초급)
+
+2. AJAX 대응 JAVA SCRIPT 실무 프로그래밍 책 김은옥 삼양미디어 (중급)
+
+3. Do it! 타입스크립트 프로그래밍 (고급)
+-->

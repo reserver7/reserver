@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Jquery3</title>
+    <script src="../jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#box").click(function(){
+                $(this).fadeOut();
+            });
+
+            $("#box2").click(function(){
+                $("#box2").slideUp();
+            });
+
+            $("#box3").click(function(){
+                $(this).animate({
+                    "width":"500px"
+                },1000);
+            })
+        });
+    </script>
+    <style>
+        :root {
+            --box-w : 100px;
+            --box-h : 100px;
+            --box-color : blue;
+            --box-click : pointer;
+        }
+        /*
+        root : box 100*100 background-color:blue;
+        */
+        body { margin: 0; padding: 0; }
+        .box { width:var(--box-w); height:var(--box-h);
+        background-color: var(--box-color); cursor: var(--box-click);
+        }
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+</div>
+<div class="box" id="box2">
+</div>
+<div class="box" id="box3">
+</div>
+</body>
+</html>

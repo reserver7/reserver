@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>팝업창 데이터 전달</title> 
+<script>
+    function check(){   //팝업창 오픈
+        window.open("./popup.html","","width=600,height=600");
+    }
+
+    function aaa(){ //주소변경 클릭시
+        var addr_num = f.addr_num.value;
+        var addr1 = f.addr1.value;
+        var addr2 = f.addr2.value;
+        if(addr_num=="" || addr1==""){
+            alert("주소찾기를 이용해 주소를 정확히 입력해주세요.");
+        }
+        else if(addr2==""){
+            alert("상세주소를 입력해 주세요.");
+        }
+        else{
+            f.method="POST"; 
+            f.action="http://reduck.dothome.co.kr/book/addrok.php";
+            f.submit();
+        }
+    }
+
+
+</script>
+<style>
+    .address{
+        width: 600px; height: 500px; border: 1px solid black;
+        display: none;
+    }
+</style>
+</head>
+<body>
+<form name="f" id="f">
+<input type="hidden" name="addr_modify" value="user_addr">
+<input type="text" readonly style="width: 100px" name="addr_num" placeholder="우편번호">
+<input type="button" value="주소찾기" style="width: 80px" onclick="check();">
+<br>
+<input type="text" readonly style="width: 200px" name="addr1" placeholder="도로명주소">
+<br>
+<input type="text" style="width: 200px" name="addr2" placeholder="상세주소">
+<br><br>
+<input type="button" value="주소변경" style="width: 80px" onclick="aaa();">
+</form>
+</body>
+</html>
+<!--
+    문제11  page1
+    주소찾기 페이지를 제작해야 합니다.
+    
+    입력사항 다은과 같습니다. 우편번호, 도로명, 상세주소로 나누어지며
+    해당 데이터는 최종적으로 back-end에게 전달이 됩니다.
+    전달방식은 POST로 전달
+    전달 URL : http://reduck.dothome.co.kr/book/addrok.php
+
+    name 값은 다음과 같습니다.
+    도로우편번호 : addr_num
+    도로명 주소 : addr1
+    상세주소 : addr2
+    보안코드(hidden) : addr_modify   value="user_addr"
+
+    주소찾기 버튼 클릭시 검색팝업창이 열려야 합니다.
+    우편번호, 도로명은 readonly 입니다.
+    상세주소는 사용자가 직접 입력하게 됩니다.
+
+    문제11  page2
+    팝업창에서 시작하게 됩니다.
+
+    주소입력부분이 있어야 하며, 주소검색시 배열로 되어 있는 데이터값을 출력해야함
+    우편번호, 도로명주소를 부모창에 전달 되도록 합니다.
+    배열 값은 back-end에서 직접 데이터를 가공해서 줍니다
+    2page에 입력값 name는 자유 입니다.
+    창닫기 버튼 클릭시 팝업창이 닫혀져야 하며 self.close();
+    주소 재검색 버튼 클릭시 다시 검색 할수 있도록 합니다. history.go(-1);
+    배열 주소 : http://reduck.dothome.co.kr/book/address.txt
+
+    힌트
+    var abc = 배열
+    단어 검색 
+    abc[0][1].match("종로");
+-->

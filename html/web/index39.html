@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript + css (FAQ 만들기)</title>
+<script>
+        var faq = [
+            ["Q 주문내역을 삭제하고 싶어요?","A 로그인 후 마이 페이지에 가셔서 주문 내역을 확인 후 삭제 가능합니다."],
+            ["Q 온누리 상품권으로 결제할 수 있나요?","A 온누리 전자상품권은 전국 오프라인 가맹점 및 해당 사이트에서 사용 가능합니다."],
+            ["Q 신용카드(ISP) 결제 시 보여지는 설치 프로그램은 무엇인가요?","A ISP 프로그램은 변경된 일반 결제(ISP) 서비스입니다. 보안수준을 제공합니다."]
+        ];
+</script>
+<style>
+    .divcss{
+        width:100%; height:400px;
+    }
+    .ulcss{
+        width:100%; height:auto; list-style: none; margin: 0; padding: 0;
+    }
+    .faq:nth-child(even){
+        width: 800px; height:30px; background-color: gainsboro; line-height:30px;
+        text-indent: 15px;
+    }
+    .faq:nth-child(odd){
+        width: 800px; height:30px; background-color: gray; line-height:30px;
+    }
+</style>
+</head>
+<body>
+<div class="divcss" id="divcss">
+<ul class="ulcss" id="ulcss">
+</ul>
+</div>
+<script>
+    var b = faq.length; //큰 배열 갯수
+        var c;  //for문
+        var html = document.getElementById("ulcss");
+        for(c=0;c<b;c++){
+            var d = faq[c].length;  //작은 배열 갯수
+            var e = 0;  //while문
+            while(e<d){
+                //html.innerHTML +="<li class='faq'>"+faq[c][e]+"</li>";
+                //각각 있는 형태는 작은 배열 안에 만들수 있음
+                
+                if(e==0){
+                    var qu = faq[c][e];
+                }
+                else if(e==1){
+                    var aw = faq[c][e];
+                }
+                e++;
+            }
+            html.innerHTML += "<li class='faq'>"+qu+"</li><li class='faq'>"+aw+"</li>";
+            //가로로 계속 있을 때는 작은 배열 안에 만들수 없음
+        }
+</script>
+</body>
+</html>

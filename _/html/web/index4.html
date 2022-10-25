@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(checkbox % radio)</title>
+<script>
+    function abc(){
+        if(document.getElementById("r1").checked==false){
+            alert("동의함에 체크 하셔야 합니다.");
+        }
+        else{
+            alert("가입신청이 완료 되었습니다.");
+        }        
+    }
+    function bbb(){
+        /* id 값이 다를경우
+        if(document.getElementById("c1").checked==false){
+            alert("동의함에 체크 하셔야만 서비스 신청이 됩니다.");
+        }
+        else{
+            alert("서비스 신청이 완료 되었습니다.");
+        }
+        */
+        /*노드 사용시 CSS에서는 1부터 카운터, Javascript에서는 0부터 카운터 */
+        var a = f.c[0].checked; //메일 수신
+        var b = f.c[1].checked; //SMS 수신
+        if(a==false && b==false){
+            alert("해당 서비스중 하나는 선택 하셔야 합니다.");
+        }
+        else{
+            alert("감사합니다.");
+        }
+    }
+</script>
+</head>
+<body>
+<form name="f">
+<input type="radio" name="r" id="r1"><label for="r1">동의함</label>
+<input type="radio" name="r" id="r2" checked><label for="r2">동의안함</label>
+<input type="button" value="가입신청" onclick="abc();">
+<br><br>
+[해당 되는 서비스 중 하나 이상을 선택 하세요]<br>
+<input type="checkbox" name="c" id="c1">메일 수신
+<input type="checkbox" name="c" id="c1">SMS 수신
+<input type="button" value="서비스 신청" onclick="bbb();">
+</form>
+</body>
+</html>

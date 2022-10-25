@@ -1,0 +1,47 @@
+@charset "utf-8";
+body{ margin: 0; padding: 0;}
+
+.clear{ clear: both; }
+
+.dlcss { 
+    width:500px; height:auto; margin:0; padding:0; font-weight:bold;
+    font-family: "돋움체"; text-indent:5px; 
+}
+.dlcss>dt { 
+    width:100%; height:35px; font-size:20px; line-height:35px;
+}
+.dlcss>dd { 
+    width:auto; height:30px; line-height:30px;
+    margin:0; padding:0; font-size:15px; 
+}
+dd>input,label {
+    display: inline-block; cursor: pointer;
+}
+.dlcss>dd>label:before {
+    vertical-align: -3px; padding-right:3px;
+    margin: 0 5px 0 5px; 
+}
+.dlcss>dd:nth-child(2) label:before{
+    content: url("./ico/railway.png"); 
+}
+.dlcss>dd:nth-child(3) label:before{
+    content: url("./ico/bus.png"); 
+}
+.dlcss>dd:nth-child(4) label:before{
+    content: url("./ico/boat.png"); 
+}
+.dlcss>dd:nth-child(5) label:before{
+    content: url("./ico/car.png"); 
+}
+.btn {
+    width:400px; height:150px; display: block;
+    position: relative; top:10px; left:30px;
+}
+.btn>button {
+    width:100px; height:40px; background-color:darkblue; color:white;
+    font-size:15px; border:0;
+    border-radius: 10px; cursor: pointer;
+}
+.btn>button:hover {
+    background-color:black; color: white;
+}

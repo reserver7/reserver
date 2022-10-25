@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript</title>
+<script>
+    function bbb(){
+        /* 키보드 보안 코드 */
+        var key = event.keyCode;
+        if(key==13){
+            return false;
+        }
+    }
+
+    function abc(){
+        var a = document.getElementById("aid").value;
+        var b = document.getElementById("bpass").value;
+        
+        if(a==""){  //aid값을 가져와서 변수 a에 넘긴 값을 확인함
+            alert("아이디를 입력해 주세요!");
+            return false;   //값을 확인후 다시 html로 돌려보냄 (실패)
+        }
+        else if(b==""){ //bpass값을 가져와서 변수 b에 넘긴 값을 확인함
+            alert("패스워드를 입력해 주세요!");
+            return false;
+        }
+        else{   //변수 a,b 에 모두 값이 있으면 해당 부분이 출력됨
+            alert("로그인 되었습니다.");
+            return; //값을 확인후 다시 html로 돌려보냄 (성공)
+        }
+    }
+</script>
+</head>
+<body>
+<!-- form & onsubmit : submit (form 안에 onsubmit를 넣어야 함)
+     onclick : button, radio, checkbox, input, div, span, label등등
+     onkeypress : 각종 키보드 키를 말합니다.
+     event.keyCode : 키보드에 각종 키 숫자 값을 확인 하는 명령어
+-->
+    <form action="http://naver.com" onsubmit="return abc();">
+    <input type="text" id="aid" onkeypress="bbb();">
+    <input type="password" id="bpass" onkeypress="bbb();">
+    <input type="submit" value="로그인">
+    </form>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 연습</title>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $array = [
+                ["MicroSD메모리","SD메모리","CF메모리","메모리스틱","XQD메모리"],
+                ["SAN디스크","삼성전자","트랜센드","소닉","랙사","올바른전자","어른나비","도시바","HP"],
+                ["무료배송","카드할인","쿠폰","적립"]
+            ];
+            var $array_ea = $array.length;
+            var $f;
+            var $op;
+            var $f2
+            var $html;
+            for($f=0;$f<$array_ea;$f++){
+                var $ea2 = $array[$f].length;
+                if($f==0){
+                    $op = "cate_";
+                }
+                else if($f==1){
+                    $op = "brand_";
+                }
+                else{
+                    $op = "choice_";
+                }
+                for($f2=0;$f2<$ea2;$f2++){
+                    $html = "<option value="+$op+$f2 +">"+$array[$f][$f2]+"</option>";
+                    var $ids = "#"+$op;
+                    $($ids).append($html);
+                }
+            }
+
+            $("#cate_").change(function(){
+                var $v = $(this).val();
+                if($v!=""){
+                    $("#brand_").css("display","block");
+                }
+                else{
+                    $("#brand_").css("display","none");
+                    $("#choice_").css("display","none");
+                }
+            });
+            $("#brand_").change(function(){
+                var $v = $(this).val();
+                if($v!=""){
+                    $("#choice_").css("display","block");
+                }
+                else{
+                    $("#choice_").css("display","none");
+                    $("#brand_").css("display","none");
+                }
+            });
+        });
+    </script>
+    <style>
+   .gogogo select {
+	width:120px;
+	padding:5px;
+    }
+    .brand { display: none; }
+    .choice { display: none; }
+    </style>
+</head>
+<!--
+    문제3.
+    카테고리를 무조건 선택해야 브랜드가 나옵니다.
+    브랜드 선택 후 혜택이 나오게 됩니다.
+    해당 내용은 배열로 출력 되어야 합니다.
+-->
+<body>
+<div class="gogogo">
+	<select class="cate" id="cate_">
+		<option value="">- 카테고리 -</option>
+
+	</select>
+	<select class="brand" id="brand_">
+		<option value="">- 브랜드 -</option>
+
+	</select>
+	<select class="choice" id="choice_">
+		<option value="">- 혜택 -</option>
+
+	</select>
+</div>
+</body>
+</html>

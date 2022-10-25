@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>모바일 전용-파일 업로드</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js?v=5"></script>
+<script>
+        $(document).ready(function(){
+            var $file=["bmp","jpg","jpge","gif","png"];
+            var $num=$file.length;
+    
+            $("#btn").click(function(){
+                var $a=$("#pic").val();
+                if($a==""){
+                    alert("파일을 선택해주세요");
+                }
+                else{  
+                    var $aa=$a.split(".");
+                    var $aaa=$aa[1].substr(0,4);
+                    var $w=0;
+                    var $ck="no";
+                    while($w<$num){
+                        var $b=$file[$w];
+                        if($b==$aaa){
+                            $ck="yes";
+                        }
+                        $w++;
+                    }
+                    if($ck=="no"){
+                        alert("해당파일은 업로드 할수 없습니다.");
+                    }
+                    else{   //데이터 전송
+                        f.method="POST";    //첨부파일은 무조건 POST
+                        f.action="./fileupok.php";
+                        f.submit();
+                    }
+                }
+    // 파일이 올라갈 특정 디렉토리 만들고, 권한 설정 :777
+    //게시판이 많이 사용
+            });
+        });
+</script>
+</head>
+    <!-- 
+        파일 업로드 기능을 사용하기 위해서를 FTP에 디렉토리를 생성 후 퍼미션을 셋팅 하여야합니다. 셋팅값은 777입니다. 
+        퍼미션 :  파일 읽기, 쓰기, 실행기능을 하는 것을 말합니다.
+        퍼미션의 숫자형태 R:읽기, W:쓰기(수정, 덮어쓰기 등), X:실행(웹페이지에 뜨는 형태 작동만)
+    
+        RWX R-X RW-: 756
+        --X RWX -W-: 172
+        RWX RWX RWX: 777
+    
+        root(소유자) / group(ftp공용사용자) / guest(웹사이트)
+        보통 게스트는 R-X
+        --- 하면 아예 작동 XX
+    
+        -처음 디렉토리 생성시에 숫자는 --- --- --X
+        읽기 4/ 쓰기 2 / 실행 1
+        일반적으로 755
+    
+        파일 업로드는 업로드를 직접해야하기 때문에 (777)
+    -->
+<body>
+<!-- input type 중 file은 무조건 enctype="multipart/form-data"을 써야함(안쓸경우 파일 업로드 불가)-->
+<form name="f" name="f" enctype="multipart/form-data">
+<input type="file" name="pic" id="pic">*해당 이미지 첨부 파일 용량은 2MB 이하 입니다.
+<input type="button" value=" 파일 전송" id="btn">
+</form>
+</body>
+</html>

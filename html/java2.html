@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 1일차(비교문법)</title>
+<script>
+// Javascript는 코드 오류발생시 해당 라인에서 정지
+
+    //var a = "환영합니다.";
+    //var b = "적립금은";
+    //var c = b + 2000 + "원 입니다.";
+    // var c = a + b;
+    // b = a + b;
+    // document.write(c);
+
+    // 시간, 날짜는 문자로 처리 해야만 함
+    //var a1 = "홍길동";
+    //var b1 = "2020-09-21";
+    //var c1 = a1 + "님 이벤트에 신청되셨습니다. 당첨결과는 " + b1 + " 입니다.";
+    //document.write(c1);
+
+    //비교문(조건문)법 처리하기 (if문)
+    /*
+    var aa = 6;
+    var bb = 5;
+    if(aa > bb){ //조건문 시작 무조건 if 부터 시작 if 없이 else 사용 불가능
+        document.write("aa 값이 큽니다.");
+    }
+    else if(aa < bb){ //if의 반대 또는 다른 비교값
+        document.write("bb 값이 큽니다.");
+    }
+    else { //if 또는 else if 둘다 해당이 되지 않는 나머지 한개의 결과
+        document.write("두 값이 같습니다.");
+    } */
+
+    var aaa = 25*3+5;
+    var bbb = 8*12-16;
+    if(aaa > bbb){
+        document.write(aaa);
+    }
+    else if(aaa < bbb){
+        document.write(bbb);
+    }
+    else {
+        document.write("두 값이 같습니다.");
+    }
+    //문자&숫자 비교
+    var abc = "hong"; // 빈칸이 들어갈 경우 빈칸도 다른 문자로 인식
+
+    if(abc=="hong"){ //  == (같다)
+        document.write("이미 해당 아이디는 사용 중입니다.");
+    }
+    else if(abc!="hong"){ //  != (같지 않다)
+        document.write("해당 아이디는 사용할 수 있습니다.");
+    }
+    var abc = 123456; // 빈칸이 들어갈 경우 빈칸도 다른 문자로 인식
+
+    if(abc==123456){ //  == (같다)
+        document.write("쿠폰번호가 정상입니다.");
+    }
+    else if(abc!=123456){ //  != (같지 않다)
+        document.write("해당 쿠폰번호는 사용할 수 없습니다.");
+    }
+    //복합 조건&비교문
+    var mid="kim";
+    var mpass="kim123";
+
+    if(mid=="kim"){
+        if(mpass=="kim123"){
+            document.write("로그인 되었습니다.");
+        }
+        else {
+            document.write("패스워드가 잘못되었습니다.");
+        }
+    }
+    else {
+        document.write("해당 아이디는 가입되지 않았습니다.");
+    }
+
+    var apass="abcdef";
+    var bpass="abcdef";
+
+    if(apass=="abcdef"){
+        if(bpass==apass){
+            document.write("해당 패스워드는 기존과 같습니다.");
+        }
+        else {
+            document.write("패스워드가 정상적으로 변경 되었습니다.");
+        }
+    }
+    else {
+        document.write("올바른 패스워드가 아닙니다.");
+    }
+    
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

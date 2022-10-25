@@ -1,0 +1,39 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 연습</title>
+<script src="./jquery.js"></script>
+<script src="./m/jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="./m/jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        var $a = $("#a").datepicker();   //ui 전용 달력
+        var $b = $("#b").datepicker();
+        $("#btn").click(function(){
+            var $aa = $("#a").val();
+            var $bb = $("#b").val();
+            if($aa>=$bb){
+                alert("종료값이 커야합니다.");
+            }
+            else{
+                location.href="http://naver.com";
+            }
+        }); 
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0;}
+</style>
+</head>
+<body>
+<input type="text" id="a" autocomplete="off"> <!-- autocomplete : 자동완성 off -->
+<input type="text" id="b" autocomplete="off">
+<input type="button" value="검색" id="btn">
+</body>
+</html>

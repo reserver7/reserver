@@ -1,0 +1,47 @@
+<?php
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCSS 8일차 - javascript</title>
+<link rel="stylesheet" type="text/css" href="./index29.css?v=<?php echo $date?>">
+<style>
+    #box{ width: 100px; height: 100px; background-color: red; }
+</style>
+</head>
+<body id="body">
+<div id="box">
+
+</div>
+<input type="button" id="btn" value="연습" onclick="abc();">
+<script>
+    var md = matchMedia("screen and (min-width: 560px)"); 
+    //matchMedia는 css @media 형태를 가지고 있음 단, 해당 범위를 측정하고 나서
+    //조건에 맞는 자바스크립트를 사용할 때 이용 되어 짐
+    if(md.matches){
+        document.write("<script src='./index29.js'><"+"/script>");
+        //해당 js파일을 가져올 때 이용됨
+    }
+    else{
+        //document.getElementById("btn").style.display = "none";
+        document.write("<script src='./index29_m.js'><"+"/script>");
+    }
+
+    //getPropertyValue : css에 있는 속성값을 가져와서 javascript 적용하는 모델
+    //getComputedStyle : 해당 객체에 있는 style 목록을 모두 가져옴
+    var root = document.getElementById("body");
+    var a = getComputedStyle(root).getPropertyValue("width");
+    let number = Number(a.replace("px",""));
+    if(number < 560){
+        //document.getElementById("box").style.backgroundColor = "black";
+        document.getElementById("body").style.display = "none";
+        //alert("해당 접속 페이지는 모바일 전용 페이지 입니다.");
+        //location.href = "http://reserver1.dothome.co.kr/jquery/m/index14.html";
+    }
+    //console.log(number);
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제3</title>
+    <script src="../ajax/jquery.js"></script>
+    <style>
+    *{box-sizing: border-box; margin: 0; padding: 0; }
+    label,span{ display: block;}
+    .spancss{ width: 1000px; height: 150px; border: 1px solid black; display: flex; flex-wrap: wrap;
+        justify-content: center; align-items: center; align-content: center; 
+    }
+    .imgbox{ 
+        width: 300px; height: 130px; float: left;
+    }
+    .imgbox > img { width: 300px; height: 130px; object-fit: cover; }
+    .newstext { width: 550px; height: auto; float: left; margin-left: 30px; }
+    .newstext > ul { 
+        list-style: none; width: 550px; height: 130px; 
+    }
+    .newstext > ul > li { 
+        width: 550px; height: 30px; border: 1px solid #ccc;
+        margin-top: 2px; text-indent:5px; position: relative;
+        letter-spacing: 0.5px; line-height: 30px;
+    }
+    .ntext1{ 
+        width: 100%; height: 30px; position: absolute;
+        font-size: 13px; overflow: hidden;
+    }
+    .ntext1::after{
+        content: attr(data-content); /* after,before 에서만 쓸수 있음 jquery */
+        float: right; margin-right: 50px; letter-spacing: -1px; color: blue;
+    }
+    .ntext2 { 
+        right: 0; width: 30px; height: 30px; position: absolute;
+        padding-top: 1px;
+    }
+    .ntext2::before{
+        background-image: url("../ajax/camera.svg");
+        background-size: 80%; background-repeat: no-repeat;
+        display: inline-block; width: 30px; height: 30px;
+        background-position: center;
+        content: "";
+    }
+    </style>
+</head>
+<body>
+    <span class="spancss">
+        <div class="imgbox">
+            <img src="../ajax/newsimg.jpg">
+        </div>
+        <div class="newstext" >
+            <ul id="newstext">
+                <!--
+                <li>
+                    <label class="ntext1"></label>
+                    <label class="ntext2"></label>
+                </li>
+                <li>
+                    <label class="ntext1"></label>
+                    <label class="ntext2"></label>
+                </li>
+                <li>
+                    <label class="ntext1"></label>
+                    <label class="ntext2"></label>
+                </li>
+                <li>
+                    <label class="ntext1"></label>
+                    <label class="ntext2"></label>
+                </li>
+                -->
+            </ul>
+        </div>
+    </span>
+</body>
+<script>
+    $(function(){
+        var $html;
+        $.ajax({
+            url:"../ajax/news.json",
+            caches:false,
+            data:"GET",
+            dataType:"json",
+            success:function($result){
+                //console.log($result);
+                $($result).each(function($node,$name){
+                    console.log($name);
+                    $html = `<li>
+                        <label class="ntext1">`+$name[0]+`</label>
+                        <label class="ntext2"></label>
+                        </li>`;
+                    $("#newstext").append($html);
+                    $("#newstext>li:eq("+$node+")>label").eq(0).attr("data-content","[ "+$name[1]+" ]");
+                });
+            },
+            error:function(){
+                console.log("데이터 접근오류");
+            }
+        });
+    });
+</script>
+</html>

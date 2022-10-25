@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compitible" content="IE=Edge, chrome=1">
+<title>Javascript & Jquery 특강</title>
+<script src="../jquery/jquery.js"></script>
+<script>
+    $(function(){
+        $("#btn").click(function(){
+            var $data = $.fn.abc(1);
+            var $f;
+            var $ani;
+            for($f=0;$f<$data[1];$f++){
+                //console.log($data[0][$f]);
+                $ani = ".box" + $f;
+                $($ani).stop().delay($data[0][$f]).animate({
+                    "width":$data[0][$f]+"px"
+                },$data[0][$f]);
+            }
+        }); 
+
+        $("#btn2").click(function(){
+            var $data = $.fn.abc(2);
+            var $f;
+            var $ani;
+            for($f=0;$f<$data[1];$f++){
+                //console.log($data[0][$f]);
+                $ani = ".box" + $f;
+                $($ani).stop().delay($data[0][$f]).animate({
+                    "width":$data[0][$f]+"px"
+                },$data[0][$f]);
+            } 
+        });
+
+        $.fn.abc = function($aa){
+            //console.log($aa);
+            //var $a = "test";
+            //return $a;
+            if($aa==1){
+                var $array = [100,200,300];
+                var $ea = $array.length;
+            }
+            else{
+                var $array = [300,500,100];
+                var $ea = $array.length;       
+            }
+            return [$array,$ea];
+        } 
+    });
+</script>
+<style>
+    span { display: block; height: 50px; }
+    .box0 { width: 0; background-color: blue;}
+    .box1 { width: 0; background-color: red;}
+    .box2 { width: 0; background-color: green;}
+</style>
+</head>
+<body>
+    <span class="box0"></span>
+    <span class="box1"></span>
+    <span class="box2"></span>
+    <input type="button" value="3월분 통계자료" id="btn">
+    <input type="button" value="4월분 통계자료" id="btn2">
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제2</title>
+    <style>
+        #mem_pop {
+        background: url(./images/pop_bg.gif) left top repeat-y; }
+        #mem_pop .searhc_box{	width: 450px;height: 200px;font-size: 11px;text-align: center;background: url(./images/pop_bott.gif) left bottom no-repeat;	color: #666;}
+        #mem_pop .searhc_box table{width: 350px;text-align: center;margin: 0 auto;margin-bottom: 10px;border: 1px solid #dadcde;}
+        #mem_pop .searhc_box table .td_bg{padding: 1px 0 0 10px;background: #eaedef;border-right: 1px solid #dadcde;}
+        #mem_pop .searhc_box table td{height: 30px;font-size: 11px;padding: 1px 0 0 5px;text-align: left;border-bottom: 1px solid #dadcde;color: #666;}
+        #mem_pop .searhc_box p{width: 348px;height: 18px;padding-top: 6px;	text-align: center;margin: 0 auto;margin-bottom: 5px;background: #eaedef;border: 1px solid #dadcde;}
+        #mem_pop .searhc_box p label{padding: 0 5px;}
+    </style>
+</head>
+<!--
+문제2. 이름과 이메일을 모두 입력해야만 아이디/비밀번호 찾기가 되도록 합니다.
+-->
+<body>
+    <div id="mem_pop">
+        <h2><img src="./images/pop_search.gif" alt="아이디비번찾기"></h2>
+        <div class="searhc_box" id="form" >
+            <table>
+                <colgroup>
+                    <col width="100">
+                    <col width="*">
+                </colgroup>
+                <tr id="id" style="display:none;">
+                    <td class="td_bg">아이디</th>
+                    <td><input class="dInput" name="m_id" id="m_id" type="text" style="width:147px;" value="" /></td>
+                </tr>
+                <tr>
+                    <td class="td_bg">이름</th>
+                    <td><input class="dInput" name="m_name" id="m_name" type="text" style="width:147px;" value=""/></td>
+                </tr>
+                <tr>
+                    <td class="td_bg">이메일</th>
+                    <td><input class="dInput" name="mail1" id="mail1" type="text" style="width:65px;" value=""/> @ <input class="dInput" name="mail2" id="mail2" type="text" style="width:65px;" value=""/></td>
+                </tr>
+            </table>
+            <span><img src="./images/btn_confirm1.gif" alt="확인" onclick="aaa();"></span>
+        </div>
+    </div>
+</body>
+<script>
+    function aaa(){
+        var a = document.getElementById("m_name").value;
+        var b = document.getElementById("mail1").value;
+        var c = document.getElementById("mail2").value;
+        var d = document.getElementById("id");
+        if(a==""){
+            alert("이름을 입력해주세요");
+        }
+        else if(b==""){
+            alert("이메일을 입력해주세요");
+        }
+        else if(c==""){
+            alert("이메일을 정확히 입력해주세요");
+        }
+        else{
+            d.style.display = "block";
+        }
+    }
+</script>
+</html>

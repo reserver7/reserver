@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge,Chrome=1">
+<title>Ajax(4일차)-접속 승인 후 배열로 받기</title>
+<script>
+    function myinfo_ck(){
+        var i = document.getElementById("mpass").value;
+        const pw = "mpass=" + i;
+        if(i==""){
+            alert("패스워드를 입력해 주세요.");
+            document.getElementById("mpass").focus();
+            return false;
+        }
+        else{
+            ajaxform(pw);
+        }
+    }
+
+    let ck;
+    function ajaxform(pass){
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function fileopen(){
+            if(ck.readyState==XMLHttpRequest.DONE && ck.status==200){
+                var respon = this.response;
+                if(respon=="no"){
+                    alert("패스워드가 틀립니다.");
+                }
+                else{
+                    htmlview(respon);//정상적인 승인이 났을 경우
+                    //htmlview라는 함수에 배열값을 탑재해서 넘기게 됨
+                }
+            }
+        }
+        ck = windowck();
+        ck.onreadystatechange = fileopen;
+        ck.open("POST","index21.php",true);
+        ck.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        ck.send(pass);
+    }
+
+    function htmlview(respon){
+        let array = JSON.parse(respon);
+        document.getElementById("divcss").style.display = "block";
+        var f
+        var z = 0;
+        var html;
+        var ids;
+        if(array!=""){
+        Object.keys(array).forEach(function(name,node,view){
+            html = array[name];
+            ids = "myinfo" + node;
+            document.getElementById(ids).innerHTML = html;
+            //console.log(html);
+        });
+    }
+        /*
+        for(f in array){
+            html = array[f];
+            ids = "myinfo" + z;
+            document.getElementById(ids).append(html);
+            //console.log(html);
+            z++;
+        }
+        */
+    }
+</script>
+<style>
+    body{ margin: 0; padding: 0;}
+    *{box-sizing: border-box;}
+    span,label{ display: block;}
+    .myinfo { width: 300px; height: 30px; margin-left: 30px; }
+    .myinfo>input:nth-of-type(1){ width: 200px; height: 30px; text-indent: 10px; }
+    .myinfo>input:nth-of-type(2){ 
+        width: 80px; height: 30px; border: 0; background-color: lightsalmon;
+        border-radius: 5px; font-weight: bold; cursor: pointer;
+    }
+    .divcss { display: none;
+        width: 350px; height: auto; padding: 5px; border: 1px solid black;
+    }
+    .divcss > label { 
+        width: 310px; height: 30px; margin: 0 auto; 
+        line-height: 30px; margin-top: 5px;
+    }
+    .divcss > label > span{
+        width: 100px; height: 30px; background-color: lightsalmon;
+        line-height: 30px; float: left; text-align: center; font-size: 13px;
+        font-weight: bold; 
+    }
+    .divcss > label > span:nth-of-type(2){
+        width: 200px; height: 30px; background-color: lightgray;
+        margin-left: 10px; line-height: 30px; text-indent: 10px;
+    }
+</style>
+</head>
+<body>
+<p style="font-weight: bold;">[개인정보 출력화면]</p>
+<div class="myinfo">
+    <input type="password" id="mpass" placeholder="패스워드를 입력하세요!">
+    <input type="button" value="확인" onclick="myinfo_ck();">
+</div>
+<br>
+<div class="divcss" id="divcss">
+    <label>
+        <span>아이디</span>
+        <span id="myinfo0"></span>
+    </label>
+    <label>
+        <span>고객명</span>
+        <span id="myinfo1"></span>
+    </label>
+    <label>
+        <span>전화번호</span>
+        <span id="myinfo2"></span>
+    </label>
+    <label>
+        <span>이메일</span>
+        <span id="myinfo3"></span>
+    </label>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 18일차 - setTimeout(자동 호출)</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js?"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        /*
+            변수를 이용하여 setTimeout 함수를 적용합니다.
+            단, setTimeout 함수 재실행 하기 위해서는 임의 함수명을
+            사용하여 적용하게 됩니다. ()가 함수명 뒤에 있으면 안됨!!!!!!!
+        */
+        var $timer = setTimeout(function aaa(){
+            //alert("test");
+            $timer = setTimeout(aaa,1000);
+            //aaa 함수를 1초마다 재실행 되도록 합니다.
+        },5000);    
+        //최초 시작에만 사용되는 시간이며, 재실행 될 시에는 
+        //해당 시간은 더 이상 사용하지 않습니다.
+        /*
+        $.fn.abc = function abc(){
+            alert("test");
+        }
+        abc;  이런 형태는 없음!!!!
+        */
+        //응용문제 1.
+        //파란색 50 * 50 오브젝트가 있음
+        //2초마다 30px씩 이동되는 함수 제작
+        
+        var $timer; //타이머 변수
+        $.fn.abc = function(){
+            $timer = setTimeout(function bbb(){
+                var $left = $(".box").offset().left;
+                $left = $left + 30;
+                $(".box").animate({
+                    "left":$left+"px"
+                },1000);
+            
+                $timer = setTimeout(bbb,2000);
+            });
+        }
+        $.fn.abc();
+
+        $("#stop").click(function(){
+            clearTimeout($timer);   //완전정지
+        });
+
+        $("#restart").click(function(){
+            $timer = "";
+            $.fn.abc();
+            //재시작은 함수로 묶어서 사용해야 함
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box{ width: 50px; height: 50px; background-color: blue; position: absolute; }
+</style>
+</head>
+<body>
+<div class="box"></div><br><br><br>
+<input type="button" value="중지" id="stop">
+<input type="button" value="재시작" id="restart">
+</body>
+</html>
+<!--
+    배너 setInterval (x)
+    
+    setTimeout (o)
+    clearTimeout (o)
+
+    setInterval은 실시간 데이터 확인 시 사용 (ex.채팅, 백엔드에서 받은 값)
+-->

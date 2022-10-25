@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery-Ajax(4일차) + 게시판 만들기</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $("#cancel_btn").click(function(){
+            location.href = "./jndex8.html";
+        });
+        $("#submit_btn").click(function(){
+            if($("#bsubject").val()==""){
+                alert("제목을 입력해 주세요.");
+                $("#bsubject").focus();
+            }
+            else if($("#bname").val()==""){
+                alert("글쓴이를 입력해 주세요.");
+                $("#bname").focus();
+            }
+            else if($("#bpass").val()==""){
+                alert("패스워드를 입력해 주세요.");
+                $("#bpass").focus();
+            }
+            else if($("#btext").val()==""){
+                alert("공지사항 내용을 입력해 주세요.");
+                $("#btext").focus();
+            }
+            else{
+                f.method = "POST";
+                f.action = "insert_board.php";
+                f.submit();
+            }
+        });
+    });
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500&display=swap');
+    body{ margin:0; padding:0;}
+    *{box-sizing: border-box;}
+    span{display: block;}   
+    .scss{ height:auto; }
+    .divcss{ 
+        width: 1000px; height: 500px;  margin:0 auto; font-family: 'Noto Sans KR', sans-serif;
+    }
+    .ulcss{ 
+        list-style: none; margin: 0; padding: 0; width: 990px; height: auto; margin: 0 auto;
+    }
+    .ulcss>li{ 
+        width:100%; height: 50px; line-height: 50px;  font-size: 15px;
+    }
+    .ulcss>li:nth-child(1){ 
+        text-align: center; font-weight: bold; font-size: 25px;
+    }
+    .ulcss>li>span{height: 40px; float: left;}
+    .ulcss>li>span:nth-child(1){ border-radius: 5px;
+        width: 150px; background-color:cornflowerblue; text-align: center; font-weight: bold;  line-height: 40px;
+    }
+    .ulcss>li>span:nth-child(2){
+        width: 830px; margin-left: 10px;  line-height: 35px;
+    }
+    .input{ 
+        height: 38px; width: 830px; text-indent: 10px; border: 1px solid #aaa; border-radius: 5px;
+    }
+    .input2{
+        height: 38px; width: 230px; text-indent: 10px; border: 1px solid  #aaa; border-radius: 5px;
+    }
+    .ulcss>li:nth-child(5){
+        height: 220px; line-height: 220px;
+    }
+    .ulcss>li:nth-child(5)>span:nth-child(1){
+        height: 220px; line-height: 220px;
+    }
+    .ulcss>li:nth-child(5)>span:nth-child(2){height: 220px;}
+    .input3{ 
+        width: 830px; height: 220px; border: 1px solid  #aaa; border-radius: 5px;
+    }
+    .ulcss>li:nth-child(6){text-align: right; line-height: 70px;}
+    .btn{ 
+        width: 100px; height: 40px; border: 0; background-color:cornflowerblue; 
+        font-weight: bold; font-size: 15px; cursor: pointer; color: white;
+        border-radius: 5px;
+    }
+    .btn:nth-of-type(2) { background-color: rgb(109, 106, 106);}
+</style>
+</head>
+<body>
+    <section class="scss">
+        <div class="divcss">
+        <form name="f" id="f">
+        <ul class="ulcss">
+            <li>[공지사항 게시판]</li>
+            <li>
+                <span>제목</span>
+                <span><input type="text" name="bsubject" id="bsubject" class="input"></span>
+            </li>
+            <li>
+                <span>글쓴이</span>
+                <span><input type="text" name="bname" id="bname" class="input2"></span>
+            </li>
+            <li>
+                <span>패스워드</span>
+                <span><input type="password" name="bpass" id="bpass" class="input2"></span>
+            </li>
+            <li>
+                <span>내용</span>
+                <span><textarea name="btext" id="btext" class="input3"></textarea></span>
+            </li>
+            <li>
+                <input type="button" value="등록" class="btn" id="submit_btn">
+                <input type="button" value="취소" class="btn" id="cancel_btn">
+            </li>
+        </ul>
+        </form>
+        </div>
+    </section>
+</body>
+</html>

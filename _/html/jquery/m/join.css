@@ -1,0 +1,87 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap');
+/* 100,300,400 font-family:'Noto Sans KR', sans-serif; */
+
+body{ margin: 0; padding: 0;}
+.hcss{ height: 60px; background-color: black; position: relative;}
+.ncss{
+    height: 60px; display: flex;
+    flex-wrap: wrap; align-items: center; align-content: center;
+}
+.ncss>img{width: 100%;}
+.scss{ height: auto;}
+.fcss{ height: 150px; background-color: gray; }
+
+/* 이용약관 및 동의함 체크박스 */
+.agree { 
+    width: 100%; max-width: 420px; height: auto; 
+    box-sizing: border-box; padding: 5px; }
+.agree_text { 
+    width: 100%; height: 80px; border: 1px solid #ccc; 
+    overflow-y: auto;
+}
+.checkbox { 
+    width: 25px; height: 25px; border:1px solid #ccc;
+    background-color: white; color: black;
+}
+.agree_check{
+    width: 100%; max-width: 420px; height: 40px; text-align: right;
+}
+.agree_check > label{
+    vertical-align: 5px; margin-right: 5px;
+}
+
+/* 회원가입 페이지 */
+.member {
+     width: 100%; max-width: 420px; height: auto; box-sizing: border-box; padding: 5px;
+     font-family:'Noto Sans KR', sans-serif;
+}
+.member>.ulcss{ 
+    list-style: none; margin: 0; padding: 0; width: 100%; max-width: 380px; height: auto; 
+    margin-top: 20px;
+}
+.ulcss>li {
+    width: 100%; height: 40px; text-align: center; line-height: 40px; margin-top: 5px;
+}
+.inputs{ border: 1px solid#ccc; width: 200px; height: 40px; text-indent: 10px;}
+.ulcss>li:last-child>span {
+    display:inline-block; width:200px; height:30px; background-color:rgb(101, 136, 252); color: white;
+    font-weight: 300; line-height: 30px; text-align: center;
+}
+
+/* 회원가입 완료 페이지 */
+.scsslogin{ height: 400px; display: flex; justify-content: center; align-items: center; align-content: center; }
+.login{
+    width: 70%; max-width: 420px; height: auto; border: 1px solid black; box-sizing: border-box;
+    padding: 5px; font-family:'Noto Sans KR', sans-serif; text-align: center; font-size: 19px;
+}
+.login > span{
+    display:inline-block; width:100px; height:40px; background-color:rgb(101, 136, 252); color: white;
+    font-weight: 300; line-height: 40px; text-align: center;
+}
+
+/* 로그인 파트 */
+.login_info{
+    width: 100px; height: 60px; color: white; font-size: 14px; line-height: 60px;
+    position: absolute; right: 10px; text-align: right;
+}
+.login_pg{
+    width: 100%; max-width: 420px; height: auto; box-sizing: border-box; padding: 5px;
+    font-family:'Noto Sans KR', sans-serif; font-size: 16px;
+}
+.login_ul{
+    width: 100%; max-width: 380px; height: auto; list-style: none; margin: 0; padding: 0;
+    border: 1px solid black; margin-top: 5px;
+}
+.login_ul>li{
+    width: 100%; height: 40px; text-align: center; line-height: 40px; margin-top: 5px;
+}
+.inputs_2{
+    width: 90%; max-width: 380px; height: 40px; text-align: center;
+}
+.login_ul>li:last-child>span{
+    width: 200px; height: 30px; background-color:rgb(101, 136, 252); color: white;
+    line-height: 30px; text-align: center; font-weight: 300;
+    display: inline-block;
+}
+

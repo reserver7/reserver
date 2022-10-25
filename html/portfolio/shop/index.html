@@ -1,0 +1,141 @@
+<?php
+include "minfo.php";
+$r = date("YmdHis");
+include "newitem.php";
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head> 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>MINIMAL</title>
+<script src="../js/jquery.js?v=1"></script>
+<link type="text/css" rel="stylesheet" href="./css/main.css?v=1">
+<link type="text/css" rel="stylesheet" href="./css/shopmain.css?v=<?php echo $r?>">
+<script src="../js/menu.js?v=<?php echo $r?>"></script>
+<script src="../js/filter.js?v=5"></script>
+<script src="../js/search.js"></script>
+<link rel="shortcut icon" href="./images/favicon.png">
+<script>
+    //북마크
+    function bookmark(){
+        if(window.sidebar && window.sidebar.addpanel){
+            window.sidebar.addpanel("미니멀","http://reserver1.dothome.co.kr/portfolio/shop/","");
+        }
+        else{
+            if(window.external && ('AddFavorite' in window.external)){
+                window.external.AddFavorite("http://reserver1.dothome.co.kr/portfolio/shop/","미니멀");
+            }
+            else{
+                alert("주소창에 [Ctrl+D]를 누르시면 즐겨찾기에 등록하실 수 있습니다.");
+            }
+        }
+    }
+
+    /* 이벤트 팝업 */
+    function goevent(){
+        window.open("./event.html","_blank","");
+    }
+
+    function closepopup(){
+        var checkuse = document.getElementById("closeday").checked;
+        if(checkuse==true){
+            setcookie("event","true",1); //오늘 하루 그만보기 체크시 쿠키 함수로 보냄
+        }
+        $("#popup").fadeOut(); //Jquery코드를 Javascript에서는 자유롭게 사용할 수 있음
+    }
+
+    function setcookie(key,use,days){   //쿠키를 굽는 파트
+        var today = new Date();
+        today.setDate(today.getDate() + days); //개인 PC 날짜 및 시간을 가져옴
+        //document.cookie = 개인 PC에 해당 정보를 쿠키값으로 저장시키는 공간
+        document.cookie = key + "=" + escape(use) + "; path=/; expires=" + today.toGMTString() + ";";
+    }
+
+    function getcookie(key){
+        //document.cookie : 사용자 PC에 저장된 값을 말함
+        var gc = ""; //쿠키 값을 받아오는 변수
+        var cookie = document.cookie.split(";"); //위에"; path=/; expires=" 파트 나눔 문자를 분리하여 사용
+        cookie.some(function(item){ 
+            //some = 해당 함수는 true,false만 확인하는 리턴 함수 전용
+            //some true가 되었을 때 자동으로 리턴하는 함수
+            //every, some은 일반함수와 다르게 callback함수 전용
+            item = item.replace(" ","");
+            var s = item.split("=");
+            if(key==s[0]){
+                gc = s[1];
+                return true; //some 함수를 사용하여 return true를 이용함. every는 하나라도false가 되면 안되고 some은 하나라도 true가 되면 리턴
+            }
+        });
+        return gc;  //"" or true 두가지의 값을 반환하게 됨
+    }
+
+    /*
+    function abc(){
+        var a=["test","a","b"];
+        var b="";
+        a.some(function(item){ //자체 function에서만 움직임
+            if(item[0]=="test"){
+                return b="a";
+            }
+        });
+        if(b=="a"){
+            alert("확인됨");
+        }
+    }
+    */
+</script>
+</head>
+<body>
+<!-- 이벤트 팝업 -->
+<div class="popup" id="popup">
+    <img src="./event/evt_popup.png" onclick="goevent();">
+    <span class="closecss">
+        <label for="closeday" style="cursor: pointer;"><input type="checkbox" id="closeday">오늘 하루 그만보기</label>
+        <input type="button" value="닫기" class="popbtn" onclick="closepopup();">
+    </span>
+</div>
+<!-- 상단 배너 -->
+<header class="headercss">
+    <?php include "topbanner.html"; ?>
+</header>
+<!-- 쇼핑몰 메뉴 -->
+<nav class="navcss">
+    <?php include "menu.html"; ?>
+</nav>
+<!-- 메인 배너 -->
+<section class="bannercss">
+    <?php include "mainbanner.html"; ?>
+</section>
+<!-- 이달의 추천상품 -->
+<section class="newcss">
+    <?php include "newitem.html"; ?>
+</section>
+<!-- 베스트 상품 -->
+<main class="bestcss">
+    <?php include "bestitem.html"; ?>
+</main>
+<!-- ACC 상품 -->
+<section class="accss">
+    <?php include "accitem.html"; ?>
+</section>
+<!-- 카피라이터 -->
+<footer class="footercss">
+    <?php include "footer.html"; ?>
+</footer>
+</body>
+<script>
+    var pop_cookie = getcookie("event");
+    var top_pop_cookie = getcookie("topbanner");
+    if(pop_cookie==""){ //""일 경우 팝업창이 보이도록 하는 조건문
+        document.getElementById("popup").style.display="block";
+    }
+</script>
+</html>
+<!--
+    쿠키(cookie)
+    - 아이디, 휴대폰 번호, 이메일등 사용자가 입력한 값을
+      PC 어느 부분에 저장을 해놓음 (자동 로그인)
+    - 팝업창 = 오늘 하루 그만 보기 (개인 PC정보 및 개인 PC시간을 저장)
+-->

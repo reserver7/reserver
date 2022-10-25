@@ -1,0 +1,87 @@
+<style>
+	.header_cibi_outline { width:360px; height:40px; margin-top:15px; }
+	.c_cibidiv {width:100%; height:40px;}
+	.c_cibidiv > ul {width:100%; height:40px; list-style:none; margin:0; padding:0;
+        display: flex; flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        align-content: center;
+    }
+	.c_mmenuli1 { height:30px;}
+	.c_menu {width:30px; height:30px; display: block;}
+    .c_menu > img { width: 30px; height: 30px; object-fit: cover;}
+	.c_search {width:30px; height:30px; display: block; }
+    .c_search > img {width:30px; height:30px; object-fit: cover;}
+	.c_mmenuli2 { height:30px;}
+    .c_mmenuli2 > img { width: 100%; height:30px; object-fit: fill; }
+	.c_searchdiv {width:360px; height:60px; background-color:#dbb098; display:none; position:absolute; z-index:750;}
+	.c_searchdiv>ul {width:100%; height:60px; list-style:none; margin:0; padding:0;}
+	.c_seachli1 {width:265px; height:50px; padding:10px 15px 0 15px; float:left;}
+	.c_seachli2 {width:50px; height:50px; padding:10px 15px 0 0; float:left;}
+	.c_searchtxt {width:265px; height:38px; border:0; background-color:white; text-indent:10px;}
+	#c_searchbtn {width:50px; height:40px; background-color:white; border:0; padding: 0;}
+</style>
+
+<div class="header_cibi_outline">
+	<div class="c_cibidiv">
+		<ul>
+			<li class="c_mmenuli1"><span id="c_menu" class="c_menu"><img id="c_mmenu" src="img/mmenu.png"></span></li>
+			<li class="c_mmenuli2"><img id="c_mlogo" src="img/mlogo.png" class="c_mlogo"></li>
+			<li class="c_mmenuli1"><span class="c_search"><img id="c_search" src="img/msearch.png"></span></li>
+		</ul>
+    </div>
+		<div class="c_searchdiv" id="c_searchdiv">
+			<ul>
+				<li class="c_seachli1">
+                    <form name="search_f" id="search_f" method="POST" action="search.php">
+                <input type="text" name="search_name" id="search_name" class="c_searchtxt" placeholder="검색할 상품명을 입력하세요">
+                    </form>
+                </li>
+				<li class="c_seachli2">
+                <button type="button" id="c_searchbtn">검색</button>
+                </li>
+			</ul>
+        </div>
+</div>
+<script>
+    $(function(){
+        $("#c_mlogo").click(function(){
+        location.href = "./index.html";
+    });
+    $("#c_mmenu").click(function(){
+        if($("#pop_menu_bg_outline").is(":visible")){
+            $("#pop_menu_bg_outline").animate({
+                "left":"-360px"
+            },500,function(){
+                $("#pop_menu_bg_outline").css("display","none");
+            });
+        }
+        else {
+            $("#pop_menu_bg_outline").stop().fadeIn()
+            $("#pop_menu_bg_outline").animate({
+                "left":"0px"
+            },500);
+        }
+    });
+
+    $("#c_search").click(function(){
+        let $c_searchdiv = $("#c_searchdiv").is(":visible");
+        if($c_searchdiv==false){
+            $("#c_searchdiv").slideDown();
+        }
+        else{
+            $("#c_searchdiv").slideUp();
+        }
+    });
+    $("#c_searchbtn").click(function(){
+        if($("#search_name").val()==""){
+            alert("검색할 내용을 입력해주세요");
+            $("#search_name").focus();
+        }
+        else{
+            $("#search_f").submit();
+        }
+    });
+    });
+</script>

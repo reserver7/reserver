@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 복습2</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#connect").click(function(){
+            $(".bar").html("<div class='bar_1'></div>");
+            $(".bar > div").animate({
+                "width":"100%"
+            },1000,function(){
+                location.href="http://naver.com";
+            });
+        });
+
+        $("#circle").click(function(){
+            var $check = $("#login_auto").val();
+            if($check=="0"){    //off상태일 때 on상태로 변경
+            alert("자동 로그인으로 전환 됩니다.");
+            $("#login_auto").val("1");//backend 쪽으로 넘기기 위해 0:off, 1:on  
+            $("#circle").animate({
+                "left":"5px"
+            },500,function(){
+                $(this).attr("class","circle2");
+                //해당 line은 class=circle를 class=circle2로 바꾸라는 뜻
+                $(this).text("ON");
+            });
+            }
+            else{   //on상태일 때 off상태로 변경
+                $("#login_auto").val("0");
+                $("#circle").animate({
+                    "left":"65px"
+                },500,function(){
+                    $(this).attr("class","circle");
+                    $(this).text("OFF");
+                });
+            } 
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .bar{
+        width: 200px; height: 50px; border: 1px solid black;
+    }
+    .bar_1{
+        width: 0; height: 50px; background-color: blue;
+    }
+    .round{
+        width: 100px; height: 40px; border-radius: 20px; 
+        background-color: blue; padding: 5px 5px 5px 5px;
+        box-sizing: border-box; position: relative;
+    }
+    .circle{
+        width: 30px; height: 30px; border-radius: 30px;
+        background-color: darkgrey; color: white; line-height: 30px;
+        text-align: center; position: absolute; cursor: pointer;
+        font-size: 12px; right: 5px;
+    }
+    .circle2{
+        width: 30px; height: 30px; border-radius: 30px;
+        background-color: yellow; color: black; line-height: 30px;
+        text-align: center; position: absolute; cursor: pointer;
+        font-size: 12px; 
+    }
+</style>
+</head>
+<body>
+<div class="bar"></div>
+<input type="button" value="접속" id="connect">
+<br><br>
+<input type="hidden" name="login_auto" id="login_auto" value="0">
+<p>자동 로그인 ON/OFF</p>
+<div class="round" id="round">
+    <div class="circle" id="circle">OFF</div>
+</div>
+</body>
+</html>

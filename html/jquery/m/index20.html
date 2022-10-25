@@ -1,0 +1,110 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 17일차 - 갤러리보드</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js?v=5"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        $(".label>img").click(function(){
+            var $imgs = $(this).attr("src");
+            $("#blackscreen").css("display","block");
+            $("#img").css("display","block");
+            //$("#img").css("background-image","url("+imgs+")");
+            $("#img").css({
+            "background-image":"url('"+$imgs+"')",
+            "background-repeat": "no-repeat",
+            "background-size":"contain"
+            });
+        });
+
+        var $node = $(".label>img").length;
+        var $photo;
+        var $f;
+        for($f=0;$f<$node;$f++){
+            $photo = $(".label>img:eq("+$f+")>img").attr("src","http://jiah777.dothome.co.kr/jquery/m/gallery/gallery"+$f+".png");
+        }
+
+        $("#close").click(function(){
+            $("#img").css("display","none");
+            $("#blackscreen").css("display","none");
+        });
+    });
+</script>
+<style>
+body{ margin: 0; padding: 0; }
+.divbox{ 
+    width: 1000px; height: auto; text-align: center; margin: 0 auto; position: relative;
+}
+.divbox>label{ 
+    float: left; width: 300px; height: 300px; border: 1px solid black;
+    cursor: pointer; box-sizing: border-box;
+}
+.blackscreen{
+    width: 100%; box-shadow: 0 0 0 9000px rgb(0, 0, 0 , 0.7); position: absolute;
+    z-index: 10; display: none; 
+}
+img {width:100%;}
+.img{ 
+    width:600px; height: 600px; z-index: 11; background-color:seashell;
+    display: none; position: fixed; margin-left: 50%; left:-300px; margin-top: 5%; 
+    background-repeat: no-repeat; background-size: contain;
+}
+.close{ 
+    width: 40px; height: 40px; text-align: center; line-height: 40px;
+    background-color: black; color: white; position: absolute;
+    right: -45px; cursor: pointer; border-radius: 40px;
+}
+
+</style>
+</head>
+<body>
+    <!--블랙 스크린-->
+<div class="blackscreen" id="blackscreen"></div>
+
+    <!--이미지-->
+<div class="img" id="img">
+    <div class="close" id="close">X</div>
+</div>
+
+    <!--오브젝트-->
+<div class="divbox">
+    <label class="label" id="img0" data="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery1.png">
+        <img src="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery1.png">
+    </label>
+    <label class="label" id="img1" data="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery2.png">
+        <img src="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery2.png">
+    </label>
+    <label class="label" id="img2" data="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery3.png">
+        <img src="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery3.png">
+    </label>
+    <label class="label" id="img3" data="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery4.png">
+        <img src="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery4.png">
+    </label>
+    <label class="label" id="img4" data="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery5.png">
+        <img src="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery5.png">
+    </label>
+    <label class="label" id="img5" data="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery6.png">
+        <img src="http://jiah777.dothome.co.kr/jquery/m/gallery/gallery6.png">
+    </label>
+</div>
+</body>
+</html>
+
+<!-- 
+    page1.완료버튼 클릭시 insertok.php "post"
+    name값
+    gname
+    gpass
+    gsubject
+    gtext
+    gfile
+<input type="hidden" name="callback" value="htttp://">
+ -->

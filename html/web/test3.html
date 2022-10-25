@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제3)</title>
+<script>
+    function aaa(){
+        var aa = f.a.length;
+        var bb = 0; //노드 시작값
+        var cc;
+        if(f.all.checked==false){   //체크해제 일 경우
+            cc = false;
+        }
+        else{   //체크 할 경우
+            cc = true;
+        }
+        do{ //전체체크 시 해당 name에 맞는 노드를 반복적으로 확인
+            f.a[bb].checked=cc;
+            bb++;
+        }while(bb<aa);
+    }
+
+// 1 ~ 4 번을 체크할시 & 체크해제
+    function bbb(h){
+        var g = Number(h)-1;    //value가 1부터 시작 할 경우
+        if(f.a[g].checked==false){
+            f.all.checked=false;
+            //전체선택 선택후 
+            //선택사항 중 하나라도 체크가 해제 되면
+            //전체선택 체크가 해제
+        }
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<input type="checkbox" name="all" value="all" id="all" onclick="aaa();">전체선택
+<input type="checkbox" name="a" value="1" id="a0" onclick="bbb(this.value);">1번체크
+<input type="checkbox" name="a" value="2" id="a1" onclick="bbb(this.value);">2번체크
+<input type="checkbox" name="a" value="3" id="a2" onclick="bbb(this.value);">3번체크
+<input type="checkbox" name="a" value="4" id="a3" onclick="bbb(this.value);">4번체크
+<input type="checkbox" name="a" value="5" id="a4" onclick="bbb(this.value);">5번체크
+</form> 
+<!-- value가 b0, b2 이런식일경우 onclick bbb(0),(1),(2), 혹은 ("0"),("1") 
+    ("0") 이런 식일 경우 Javascript 에서 Number로 변경 
+    이유는 노드는 0부터 시작하기 때문에
+-->
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(반복문3)</title>
+<script>
+    function abc(){
+        var aa = Number(document.getElementById("a").value);//구구단 앞자리
+        var bb=1;
+        var cc;
+        /*
+        for(bb=1;bb<10;bb++){   //구구단 뒷자리
+            cc=aa*bb;
+            document.write(aa+"*"+bb+"="+cc+"<br>");
+        } */
+        //응용문제4. 해당 값 선택시 구구단 완성 단,do~while문 이용
+        do{
+            cc=aa*bb;
+            document.write(aa+"*"+bb+"="+cc+"<br>");
+            bb++;
+        }while(bb<10);
+    }
+</script>
+</head>
+<body>
+<!-- 응용문제3. 1~10 select 제작 버튼 클릭시 abc 함수로 호출-->
+해당 숫자를 선택 하시면 구구단이 출력됩니다.
+<select id="a">
+    <option value="">값을 선택해 주세요</option>
+    <option value="1">1단</option>
+    <option value="2">2단</option>
+    <option value="3">3단</option>
+    <option value="4">4단</option>
+    <option value="5">5단</option>
+    <option value="6">6단</option>
+    <option value="7">7단</option>
+    <option value="8">8단</option>
+    <option value="9">9단</option>
+    <option value="10">10단</option>
+</select>
+<input type="button" value="전송" onclick="abc();">
+</body>
+</html>

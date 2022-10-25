@@ -1,0 +1,77 @@
+<?php
+    include "mcheck.php";
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compaible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>모바일 전용-간편 회원가입</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<script src="./join.js?v=<?php echo $date?>"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="./join.css?v=<?php echo $date?>">
+</head>
+<body>
+<!-- action : joinok.php -->
+<form name="f" id="f">
+<!-- 상단 -->
+<header class="hcss">
+
+</header>
+<!-- 배너,이미지 (약관) -->
+<nav class="ncss">
+    <img src="./images/membership_title.png" class="imgs">
+</nav>
+<!-- 간편회원가입 -->
+<section class="scss">
+    <!-- 이용약관 -->
+    <p style="text-align: center; font-size: 19px;">[서비스 이용약관]</p>
+    <div class="agree">
+        <!-- 이용약관 txt 파일 로드 -->
+        <div class="agree_text" id="agree_text">
+        </div>
+        <div class="agree_check">
+            <input type="checkbox" class="checkbox" name="agree" id="checkbox" value="Y">
+            <label for="checkbox" style="font-size: 17px;">동의함</label>
+        </div>
+    </div>
+    <div class="member">
+        <ul class="ulcss">
+            <li><input type="text" name="mid" placeholder="사용할 아이디 입력" class="inputs"></li>
+            <li><input type="text" name="mnm" placeholder="가입자 명 입력"  class="inputs"></li>
+            <li><input type="password" name="mpass" placeholder="패스워드입력"  class="inputs" autocomplete="off"></li>
+            <li><input type="password" name="mpass_ck" placeholder="동일한 패스워드입력"  class="inputs" autocomplete="off"></li>
+            <li><input type="email" name="memail" placeholder="이메일을 입력해주세요" class="inputs"></li>
+            <li><span id="memberbtn">회원가입</span></li>
+        </ul>
+    </div>
+</section>
+<!-- 카피라이터 -->
+<footer class="fcss">
+
+</footer>
+</form>
+</body>
+</html>
+<!--
+    모바일 실제 가입페이지
+
+    웹디자이너 > 가입페이지 제작(Front-End) > Back-End 해당 정보 DB
+    > DB 저장 완료시 (완료 페이지) 이동 (강제이동) > 가입완료 페이지 제작
+    > 가입자 메일로 발송 (가입완료 문구를 발송) > 로그인 > 
+    로그인 하고 이동 페이지 > main.html (리턴 URL 조정함)
+
+    - mid(아이디), mnm(고객명) , mtel(전화번호)
+    
+    웹 사이트 작업환경 (PC, Mobile)
+    1. HTML & CSS 코드작성
+    2. Javascript & Jquery 검토 코드 작성 (조건문)
+    3. Back-End 쪽으로 데이터 전송 (POST, GET)
+    4. Back-End 리턴 URL 공유 (작성이 완료된 페이지)
+    5. 해당 자료를 출력할 경우 Back-End 코드를 받습니다.
+    6. Back-End 코드를 Front-End 코드로 변경 (Javascript & Jquery)
+-->

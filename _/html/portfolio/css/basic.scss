@@ -1,0 +1,770 @@
+$view_width1:1220px;    //최대 1440
+$view_width2:1024px;
+$view_width3:960px;
+$view_width4:768px;
+$view_width5:600px;
+$view_width6:480px;
+$view_width7:320px;
+
+@mixin pc1 {
+    @media (max-width:$view_width1){
+        .header_mobile{ display: none; }
+    } 
+}
+@mixin pc2 {
+    @media (min-width:$view_width2) and (max-width:($view_width1)-1px){
+        .header_mobile{ display: none; }
+        #myinfo{ @include html5(430px); }
+        #level{ @include html5(430px); }
+        .header_link{ max-width: $view_width2; } 
+        .nav_menu { 
+            max-width: $view_width2;
+            margin: 0 auto;
+        }
+        .myskill { 
+            max-width: $view_width2;
+            padding-left: 7px; padding-right: 10px;
+        }
+        .myskill > ol{
+            flex:auto; margin-left: 5px; margin-right: 5px;
+        }
+        .ul_menu > li {
+            display: inline-block; line-height: 60px; height: 60px;
+            text-align: center;  
+            @include font("gothic",500,20,lightgray);
+            min-width:calc(100%/5.2);
+            box-sizing: content-box;
+            cursor: pointer;
+            //transition: box-shadow 0.25s ease-in-out;
+            transition: box-shadow 0.34s ease, background 0.34s ease;
+        }
+        .portfolio_css{
+            max-width: $view_width2;
+            max-height: 900px;
+        }
+        .info_div{ max-width: $view_width2; }
+        .my_level{ max-width: $view_width2; padding-top: 0px; }
+        .contact_div{ max-width: $view_width2; }
+    } 
+}
+@mixin tab1 {
+    @media (min-width:$view_width3) and (max-width:($view_width2)-1px){
+        .header_mobile{ display: none; }
+        #myinfo{ @include html5(430px); }
+        #level{ @include html5(430px); }
+        .header_link{ max-width: $view_width3; } 
+        .nav_menu { 
+            max-width: $view_width3;
+            margin: 0 auto;
+        }
+        .myskill { 
+            max-width: $view_width3;
+            padding-left: 7px; padding-right: 10px;
+        }
+        .myskill > ol{
+            flex:auto; margin-left: 5px; margin-right: 5px;
+            justify-content: center;
+        }
+        .myskill > ol > li {
+            margin: 5px;
+        }
+        .ul_menu > li {
+            display: inline-block; line-height: 60px; height: 60px;
+            text-align: center;  
+            @include font("gothic",500,20,lightgray);
+            min-width:calc(100%/5.2);
+            box-sizing: content-box;
+            cursor: pointer;
+            //transition: box-shadow 0.25s ease-in-out;
+            transition: box-shadow 0.34s ease, background 0.34s ease;
+        }
+        .portfolio_css{
+            max-width: $view_width3;
+            max-height: 900px;
+        }
+        .info_div{ max-width: $view_width3; }
+        .my_level{ max-width: $view_width3; padding-top: 0px; }
+        .contact_div{ max-width: $view_width3; } 
+        .info_banner{
+            @include sizes(960px,300px,auto,0,"");
+        }
+        .info_btn{ width: $view_width3; } 
+        .contact_box{
+            @include sizes(960px,auto,auto,15px,"");
+        }  
+        .info_ul{ 
+            @include sizes(960px,250px,0,0,0);
+            &>li{
+                @include sizes(960px,250px,0,0,0);
+            } 
+        }
+        .info_img{
+            @include sizes(30%,250px,0,10px,0); padding-top: 80px;
+            @include flex(0,center,row,center,"",""); 
+            &>img{
+                @include sizes(230px,250px,0,0,0);
+            }
+        }
+        .info_list{
+            @include sizes(70%,250px,0,10px,0); padding-top: 25px;
+            @include flex(0,space-around,column,flex-start,"","");
+            &>label{
+                height: 20px; line-height: 20px;
+                @include flex(0,flex-start,row,center,"","");
+                @include font("gothic",600,16,#555);
+                &>em{
+                    @include font("gothic",800,14,#555); margin-right: 10px;
+                }
+            }
+            &>label:last-of-type{
+                height: 40px; margin-top: 30px;
+                line-height: 25px; text-align: left;
+            }
+        }
+        @for $f from 1 to 6{
+            .info_list>label:nth-of-type(#{$f}){
+                @if($f==1){ width: 40%; }
+                @else if($f==4){ width: 20%; }
+                @else{ width: 100%; }
+            }
+        }
+        .contact_box{
+            @include sizes($view_width3,auto,auto,15px,"");
+        }
+    } 
+}
+@mixin tab2 {
+    @media (min-width:$view_width4) and (max-width:($view_width3)-1px){
+        .header_mobile{ display: none; }
+        #myinfo{ @include html5(430px); }
+        #level{ @include html5(430px); }
+        //#portfolio{ @include html5(500px); }
+        .header_link{ max-width: $view_width4; } 
+        .nav_menu { 
+            max-width: $view_width4;
+            margin: 0 auto;
+        }
+        .myskill { 
+            max-width: $view_width4;
+            padding-left: 7px; padding-right: 10px;
+        }
+        .myskill > ol{
+            flex:auto; margin-left: 5px; margin-right: 5px;
+            justify-content: center;
+        }
+        .myskill > ol > li {
+            margin: 5px;
+        }
+        .ul_menu > li {
+            display: inline-block; line-height: 60px; height: 60px;
+            text-align: center;  
+            @include font("gothic",500,20,lightgray);
+            min-width:calc(100%/5.2);
+            box-sizing: content-box;
+            cursor: pointer;
+            //transition: box-shadow 0.25s ease-in-out;
+            transition: box-shadow 0.34s ease, background 0.34s ease;
+        }
+        .portfolio_css{
+            max-width: $view_width4;
+            max-height: 1010px;
+        }
+        .info_div{ max-width: $view_width4; }
+        .my_level{ max-width: $view_width4; padding-top: 0px; }
+        .contact{
+            margin-top: 30px;
+        }
+        .contact_div{ max-width: $view_width4; } 
+        .info_banner{
+            @include sizes(768px,300px,auto,0,"");
+        }
+        .info_btn{ width: $view_width4; }  
+        .my_levelol{ 
+            @include sizes(100%,405px,0,0,0);
+        }
+        .level_li{ width: calc(100%/2); height: 405px; }
+        .level_ul >li{
+            @include sizes(100%,25px,0,0,""); 
+            @include font("gothic",700,13,#555);
+            line-height: 25px; padding-left: 10px;
+            &>em{
+                @include font("gothic",700,11,#555);
+            }
+        }
+        @for $z from 6 to 13{
+            .level_ul >li:nth-of-type(#{$z}){
+                @include sizes(100%,20px,0,0,""); margin-top: 20px;
+                line-height: 20px;
+                &>span{ 
+                    @include sizes(35%,20px,0,0,0); padding-left: 10px;
+                    @include font("gothic",700,13,cornflowerblue);
+                }
+                &>div{
+                    @include sizes(45%,20px,0,0,2px solid #ccc);
+                    @include font("gothic",700,10,""); 
+                    margin-left: 20px;
+                    &>label{
+                        @include position("ab"); z-index: 10;
+                        height: 100%; background-color: #ccc;
+                        border-radius: 10px; box-sizing: border-box; padding-right: 5px;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+        .info_ul{ 
+            @include sizes(768px,200px,0,0,0);
+            &>li{
+                @include sizes(768px,200px,0,0,0);
+            } 
+        }
+        .info_img{
+            @include sizes(30%,250px,0,10px,0); padding-top: 50px;
+            @include flex(0,center,row,center,"",""); 
+            &>img{
+                @include sizes(200px,200px,0,0,0);
+            }
+        }
+        .info_list{
+            @include sizes(70%,280px,0,10px,0); padding-top: 8px;
+            @include flex(0,space-around,column,flex-start,"","");
+            &>label{
+                height: 20px; line-height: 20px;
+                @include flex(0,flex-start,row,center,"","");
+                @include font("gothic",600,12,#555);
+                &>em{
+                    @include font("gothic",800,14,#555); margin-right: 10px;
+                }
+            }
+            &>label:last-of-type{
+                height: 40px; margin-top: 10px;
+                line-height: 17px; text-align: left;
+            }
+        }
+        @for $f from 1 to 6{
+            .info_list>label:nth-of-type(#{$f}){
+                @if($f==1){ width: 40%; }
+                @else if($f==4){ width: 20%; }
+                @else{ width: 100%; }
+            }
+        }
+        .map_li{ 
+            @include position("re");
+            width: calc(100%/2); height: 405px; overflow: hidden; 
+        }
+        .map{ 
+            @include position("ab");
+            width: calc(#{$view_width1}/2); height: 405px;
+        }
+        .contact_box{
+            @include sizes($view_width4,auto,auto,15px,"");
+        }
+    } 
+}
+@mixin tab3 {
+    @media (min-width:$view_width5) and (max-width:($view_width4)-1px){
+        .header_title { 
+            width: 100%; 
+        }
+        .header_mobile{ display: none; }
+        #myinfo{ @include html5(450px); }
+        #level{ @include html5(800px); }
+        //#portfolio{ @include html5(500px); }
+        .header_line{
+            @include sizes(100%,30px,0,0,0); 
+            @include position("re"); background-color:#555;
+        }
+        .header_link{ width: 100%; } 
+        .header_link > span:nth-of-type(3){
+            margin-right: 5px;
+        } 
+        .nav_menu { 
+            width: 100%;
+            margin: 0 auto;
+        }
+        .ul_menu{
+            @include flex(1,space-around,row,center,nowrap,center);
+        }
+        .ul_menu > li {
+            display: block; 
+            width:100%; font-size: 16px;
+        }
+        .ul_menu > li:hover {
+            font-size: 18px;
+        }
+        .myskill { 
+            width: 100%;
+            padding-left: 7px; padding-right: 10px;
+        }
+        .myskill > ol{
+            flex:auto; margin-left: 5px; margin-right: 5px;
+            justify-content: center;
+        }
+        .myskill > ol > li {
+            margin: 5px;
+        }
+        .portfolio_css{
+            width: 100%;
+            max-height: 2200px;
+        }
+        .info_div{ width: 100%; }
+        .my_level{ max-width: $view_width4; padding-top: 0px; } 
+        .info_banner{
+            @include sizes(95%,300px,auto,0,"");
+        }
+        .info_ul{ 
+            @include sizes(95vw,300px,0,0,0);
+            &>li{
+                @include flex(0,center,row,center,"",""); 
+                @include sizes(95vw,300px,0,0,0); float: left; cursor: pointer;
+                &>span{ float: left; }
+            } 
+        }
+        .info_img{
+            @include sizes(30vw,150px,0,10px,0); //padding-top: 100px;
+            @include flex(0,center,row,center,"",""); 
+            &>img{
+                @include sizes(100%,auto,0,0,0);
+            }
+        }
+        .info_list{
+            @include sizes(60vw,200px,0,10px,0); //padding-top: 80px;
+            @include flex(0,space-around,column,flex-start,"","");
+            &>label{
+                height: 5px; width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                @include font("gothic",600,12,#555);
+                &>em{
+                    @include font("gothic",800,10,#555); margin-right: 10px;
+                }
+            }
+            &>label:last-of-type{
+                height: 30px;  width: 100%;
+                line-height: 17px; text-align: left;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+        }
+        .info_btn{ width: 100%; } 
+        #contact{
+            margin-top: 30px;
+        }
+        .contact_div{ max-width: $view_width5; }
+        .contact_box{
+            width: $view_width5;
+        }  
+        .my_level{ width: 100%; margin: 0 auto; }
+        .my_levelol{ 
+            @include sizes(97%,auto,0,0,0); @include bg(1,white,"");
+            margin: 0 auto; 
+            &>li { float: none; }
+        }
+        .level_li{ width: 100%; height: auto; }
+        .level_ul >li{
+            @include sizes(100%,25px,0,0,""); 
+            @include font("gothic",700,16,#555);
+            line-height: 25px; padding-left: 10px;
+            &>em{
+                @include font("gothic",700,14,#555); padding-left: 10px;
+            }
+        }
+        .map_li{ 
+            @include position("re");
+            width: 100%; height: 450px; overflow: hidden; 
+        }
+        .map{ 
+            @include position("ab");
+            width: 100%; height: 450px;
+        }
+        @for $z from 6 to 13{
+            .level_ul >li:nth-of-type(#{$z}){
+                @include sizes(100%,30px,0,0,""); margin-top: 15px;
+                line-height: 30px;
+                &>span{ 
+                    @include sizes(30%,30px,0,0,0); padding-left: 10px;
+                    @include font("gothic",700,18,cornflowerblue);
+                }
+                &>div{
+                    @include sizes(50%,30px,0,0,2px solid #ccc); border-radius: 10px;
+                    @include font("gothic",700,15,""); 
+                    @include position("re"); box-sizing: border-box; text-align: right;
+                    &>label{
+                        @include position("ab"); z-index: 10;
+                        height: 100%; background-color: #ccc;
+                        border-radius: 10px; box-sizing: border-box; padding-right: 5px;
+                        line-height: 25px;
+                    }
+                }
+            }
+        }
+        @for $f from 1 to 6{
+            .info_list>label:nth-of-type(#{$f}){
+                @if($f==1){ width: 40%; }
+                @else if($f==4){ width: 20%; }
+                @else{ width: 100%; }
+            }
+        }
+    } 
+}
+@mixin mob1 {
+    @media (min-width:$view_width6) and (max-width:($view_width5)-1px){
+        .header_title { max-width: 480px; }
+        .header_line{ background-color: transparent; }
+        #header_link>span{ display: none;}
+        #nav { display: none; }
+        .header_mobile{ 
+            display: block;
+            @include sizes(100%,auto,0,0,""); 
+            @include bg(1,#000,"");
+        }
+        .top_menus{
+            @include sizes(40px,40px,0,0,0); overflow: hidden;
+        }
+        .top_menus>img {width: 100%; object-fit: cover;}
+        .mobile_menus{ @include sizes(100%,0px,0,0,0);}
+        .m_ul{
+            @include sizes(100%,auto,0,0,0);
+            @include bg(1,#fff,""); 
+            &>li{
+                @include sizes(95%,30px,auto,0,0); line-height: 30px;
+                @include font("open",600,14,#555);
+                padding-left: 10px;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        .portfolio_css{
+            max-height: 3000px;
+        }
+        .info_div{ width: 100%; }
+        .info_banner{
+            @include sizes(95%,450px,auto,0,"");
+        }
+        .info_ul{ 
+            @include sizes(95vw,auto,0,0,0);
+            &>li{
+                @include sizes(95vw,450px,0,0,0); float: left; cursor: pointer;
+                &>span{ float: left; }
+            } 
+        }
+        .info_img{
+            @include sizes(95vw,200px,0,10px,0); padding-top: 100px;
+            @include flex(0,center,row,center,"",""); 
+            &>img{
+                @include sizes(50%,200px,0,0,0);
+            }
+        }
+        .info_list{
+            @include sizes(95vw,200px,0,10px,0); padding-top: 80px;
+            @include flex(0,space-around,column,flex-start,"","");
+            &>label{
+                height: 20px; line-height: 20px;
+                @include font("gothic",600,12,#555);
+                &>em{
+                    @include font("gothic",800,10,#555); margin-right: 10px;
+                }
+            }
+            &>label:last-of-type{
+                height: 80px; margin-top: 25px;
+                line-height: 17px; text-align: left;
+                font-size: 12px;
+                @include flex(0,flex-start,row,flex-start,"","");
+            }
+        }
+        .info_btn{ width: 100%; }
+        #contact{
+            margin-top: 30px;
+        }
+        .contact_div{ max-width: $view_width5; }
+        .contact_box{
+            width: $view_width6;
+        }  
+        .my_level{ width: 100%; margin: 0 auto; }
+        .my_levelol{ 
+            @include sizes(97%,auto,0,0,0); @include bg(1,white,"");
+            margin: 0 auto; 
+            &>li { float: none; }
+        }
+        .level_li{ width: 100%; height: auto; }
+        .level_ul >li{
+            @include sizes(100%,25px,0,0,""); 
+            @include font("gothic",700,16,#555);
+            line-height: 25px; padding-left: 10px;
+            &>em{
+                @include font("gothic",700,14,#555); padding-left: 10px;
+            }
+        }
+        .map_li{ 
+            @include position("re");
+            width: 100%; height: 450px; overflow: hidden; 
+        }
+        .map{ 
+            @include position("ab");
+            width: 100%; height: 450px;
+        }
+        .contact_div{ width: 100%;}
+        .contact_box{
+            @include sizes(100%,auto,auto,15px,"");
+            &>span{
+                &>input{
+                    font-size: 8px;
+                }
+                &>textarea{
+                    font-size: 8px;
+                }
+            }
+            &>span:nth-of-type(3){
+                &>input{
+                    font-size: 8px;
+                }
+            }
+        }
+    } 
+}
+@mixin mob2 { //모바일 320
+    @media (min-width:$view_width7) and (max-width:($view_width6)-1px){
+        .header_title { max-width: 300px; font-size: 22px; }
+        .header_line{ background-color: transparent; }
+        #header_link>span{ display: none;}
+        #nav { display: none; }
+        #title{ font-size: 11px; }
+        #portfolio{ padding-bottom: 50px;}
+        .header_mobile{ 
+            display: block;
+            @include sizes(100%,auto,0,0,""); 
+            @include bg(1,#000,"");
+        }
+        .top_menus{
+            @include sizes(40px,40px,0,0,0); overflow: hidden;
+        }
+        .top_menus>img {width: 100%; object-fit: cover;}
+        .mobile_menus{ @include sizes(100%,0px,0,0,0);}
+        .m_ul{
+            @include sizes(100%,auto,0,0,0);
+            @include bg(1,#fff,""); 
+            &>li{
+                @include sizes(95%,30px,auto,0,0); line-height: 30px;
+                @include font("open",600,14,#555);
+                padding-left: 10px;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        .myskill{
+            min-height: 180px;
+        }
+        .myskill_ol{ min-height: 180px; }
+        .portfolio_css{
+            max-height: 3000px;
+        }
+        .info_div{ width: 100%; }
+        .info_banner{
+            @include sizes(95%,460px,auto,0,"");
+        }
+        .info_ul{ 
+            @include sizes(95vw,auto,0,0,0);
+            &>li{
+                @include sizes(95vw,450px,0,0,0); float: left; cursor: pointer;
+                &>span{ float: left; }
+            } 
+        }
+        .info_img{
+            @include sizes(95vw,150px,0,10px,0); padding-top: 20px;
+            @include flex(0,center,row,center,"",""); 
+            &>img{
+                @include sizes(60%,150px,0,0,0);
+            }
+        }
+        .info_list{
+            @include sizes(95vw,300px,0,10px,0); padding-top: 30px;
+            @include flex(0,space-around,column,flex-start,"","");
+            &>label{
+                height: 20px; line-height: 20px; width: 100%;
+                @include font("gothic",600,10,#555);
+                &>em{
+                    @include font("gothic",800,10,#555); margin-right: 10px;
+                }
+            }
+            &>label:last-of-type{
+                height: 80px; margin-top: 25px;
+                line-height: 17px; text-align: left;
+                font-size: 12px;
+                @include flex(0,flex-start,row,flex-start,"","");
+            }
+        }
+        @for $f from 1 to 6{
+            .info_list>label:nth-of-type(#{$f}){
+                @if($f==1){ width: 100%; }
+                @else if($f==4){ width: 100%; }
+                @else if($f==3){ width: 100%; font-size: 8px; }
+                @else{ width: 100%; }
+            }
+        }
+        .info_btn{ width: 100%; }
+        #contact{
+            margin-top: 30px;
+        }
+        .contact_div{ max-width: $view_width5; }
+        .contact_box{
+            width: $view_width6;
+        }  
+        .my_level{ width: 100%; margin: 0 auto; }
+        .my_levelol{ 
+            @include sizes(97%,auto,0,0,0); @include bg(1,white,"");
+            margin: 0 auto; 
+            &>li { float: none; }
+        }
+        .level_li{ width: 100%;  }
+        .level_ul >li{
+            @include sizes(100%,25px,0,0,""); 
+            @include font("gothic",700,11,#555);
+            line-height: 25px; padding-left: 5px;
+            &>em{
+                @include font("gothic",700,10,#555); padding-left: 10px;
+            }
+        }
+        .level_ul >li:nth-of-type(5){
+            font-size: 8px; padding-left: -5px; 
+            &>em{ 
+                @include font("gothic",700,8,#555);
+            }
+        }
+        @for $z from 6 to 13{
+            .level_ul >li:nth-of-type(#{$z}){
+                @include sizes(100%,30px,0,0,""); margin-top: 15px;
+                line-height: 30px;
+                &>span{ 
+                    @include sizes(30%,30px,0,0,0); padding-left: 10px;
+                    @include font("gothic",700,11,cornflowerblue);
+                }
+                &>div{
+                    @include sizes(50%,30px,0,0,2px solid #ccc); border-radius: 10px;
+                    @include font("gothic",700,10,""); 
+                    @include position("re"); box-sizing: border-box; text-align: right;
+                    &>label{
+                        @include position("ab"); z-index: 10;
+                        height: 100%; background-color: #ccc;
+                        border-radius: 10px; box-sizing: border-box; padding-right: 5px;
+                        line-height: 25px;
+                    }
+                }
+            }
+        }
+        .map_li{ 
+            @include position("re");
+            width: 100%; height: 450px; overflow: hidden; 
+        }
+        .map{ 
+            @include position("ab");
+            width: 100%; height: 450px;
+        }
+        .contact_div{ width: 100%;}
+        .contact_box{
+            @include sizes(100%,auto,auto,15px,"");
+            &>span{
+                &>input{
+                    font-size: 8px;
+                }
+                &>textarea{
+                    font-size: 8px;
+                }
+            }
+            &>span:nth-of-type(3){
+                &>input{
+                    font-size: 8px;
+                }
+            }
+        }
+    } 
+}
+
+@mixin html5($height){
+    min-height: $height;
+}
+
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+@mixin font($family,$fweight,$fsize,$fcolor) {
+    //(font-weight 100,300,400,500,700,900)
+    $fontfamily:"";
+    @if($family=="noto"){
+        $fontfamily: 'Noto Sans KR', sans-serif;
+    }
+    @else if($family=="pen"){
+        $fontfamily: 'Nanum Pen Script', cursive;
+    }
+    @else if($family=="big"){
+        $fontfamily: 'Big Shoulders Stencil Display', cursive;
+    }
+    @else if($family=="gothic"){
+        $fontfamily: 'Nanum Gothic', sans-serif;
+    }
+    @else if($family=="open"){
+        $fontfamily: 'Open Sans', sans-serif;
+    }
+    font-family: $fontfamily; 
+    font-weight: $fweight;
+    font-size: $fsize+px; 
+    color: $fcolor;
+}
+@mixin flex($flexpart,$just,$direct,$items,$wrap,$content) {
+    display: flex; 
+    justify-content: $just;
+    flex-direction: $direct;
+    align-items: $items;
+    @if($flexpart==1){
+        flex-wrap: $wrap;
+        align-content: $content;
+    }
+}
+@mixin sizes($div_width,$div_height,$div_margin,$div_padding,$div_border) {
+    width: $div_width; height: $div_height;
+    @if($div_margin=="auto"){
+        margin: 0 auto;
+    }
+    @else{
+        margin: $div_margin;
+    }
+    padding: $div_padding; border: $div_border;
+}
+@mixin position($ps) {
+    @if($ps=="ab"){
+        position: absolute;
+    }
+    @else if($ps=="re"){
+        position: relative;
+    }
+    @else if($ps=="fi"){
+        position: fixed;
+    }
+}
+@mixin bg($ap,$bgcolor,$bgurl) {
+    @if($ap==0){
+        background-color: rgba($bgcolor);
+    }
+    @else if($ap==1){
+        background-color: $bgcolor;
+    }
+    @else if($ap==2){
+        background-image: url($bgurl);
+        background-repeat: no-repeat;
+    }
+}
+@mixin btns($bwidth,$bheight,$bboard,$bcolor,$bbgcolor){
+    width:$bwidth;
+    height:$bheight;
+    border:$bboard;
+    color:$bcolor;
+    background-color: $bbgcolor;
+}
+@mixin inputs($in_w,$in_h,$in_b,$in_r){
+    @include font("gothic","",13,#000);
+    width: $in_w; height: $in_h; border: $in_b; border-radius: $in_r;
+    text-indent: 5px;
+}
+$skill_li: 40px, 80px, 80px, 100px, 100px, 80px, 90px, 40px, 40px, 100px, 40px, 120px, 40px ;

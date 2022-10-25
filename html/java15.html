@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 4일차(HTML+Javascript)2</title>
+<script>
+function abc(){
+    /*
+    getElementById : html 전체중에서 id를 검색하게 됨 해당 id를 찾은후
+    값을 get, post형태를 사용하게 됨
+    대소문자 무조건 정확하게 넣어야 함
+    */
+    /* getElementById : post형태 */
+    // var bb="안녕하세요";
+    // document.getElementById("b").value=bb;
+    // document.getElementById("c").value="테스트";
+
+    /* getElementById : get형태 */
+    // var aa= document.getElementById("b").value;
+    // document.getElementById("c").value = aa;
+
+    //name값으로 post,get 사용방법 (단, document 단어는 삭제 하더라도 작동이 됨)
+    //name값으로 전달, 가져올때 꼭!! form을 사용해야만 작동
+    f.a1.value="테스트"; //post
+    var h = f.a1.value; //get 에서
+    f.c1.value=h;      //post 로 보낸거
+}
+</script>   
+</head>
+<body>
+<form name="f" id="f"> <!-- name 값으로 자바스크립트 할때 form 만들어야 함 -->
+<input type="text" name="a1" id="b">
+<input type="text" name="c1" id="b">
+<input type="button" value="확인" onclick="abc();">
+</form>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 10일차 이벤트 핸들링 반복문 사용</title><!--PC&모바일 모두 사용 가능-->
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js?v=5"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        $("#ulcss > li").mouseenter(function(){
+            var $node = $(this).index();
+            var $nodeid = "#olcss" + $node;
+            $(this).css("background-color","orange");
+            $($nodeid).slideDown();
+        });
+        $("#ulcss > li").mouseleave(function(){
+            var $node = $(this).index();
+            var $nodeid = "#olcss" + $node;
+            $(this).css("background-color","");
+            $($nodeid).slideUp();
+        });
+
+        var $f = 0;
+        var $len = $(".olcss").length;
+        var $nodeids;
+        var $link;
+        while($f<$len){
+            $nodeids = "#olcss" + $f + ">li";
+            $($nodeids).click(function(){
+                $link = $(this).attr("link");
+                location.href = $link;
+            });
+            $f++;
+        }
+    });
+</script>
+<style>
+    .ulcss{ 
+        list-style: none; margin: 0; padding: 0;
+    }
+    .ulcss>li{ 
+        width: 100px; height: 40px; line-height: 40px; background-color: skyblue; 
+        float: left; text-align: center; cursor: pointer;
+    }
+    .olcss{
+        width: calc(100*3px); height: 40px; list-style: none; margin: 0; padding: 0; 
+        display: none;
+    }
+    .olcss>li{ 
+        width: 100px; height: 40px; line-height: 40px; background-color: black; 
+        color: white; float: left; cursor: pointer;
+    }
+    .olcss:nth-child(2)>li{
+        margin-left: 100px; 
+    }
+</style>
+</head>
+<body>
+<ul class="ulcss" id="ulcss">
+    <li>menu1
+        <ol class="olcss" id="olcss0">
+            <li link="http://mail.naver.com">smenu1</li>
+            <li link="http://mail.daum.net">smenu2</li>
+            <li link="http://gmail.com">smenu3</li>
+        </ol>
+    </li>
+    <li>menu2
+        <ol class="olcss" id="olcss1">
+            <li link="http://m.naver.com">smenu1</li>
+            <li link="http://m.nate.com">smenu2</li>
+            <li link="http://m.daum.net">smenu3</li>
+        </ol>
+    </li>
+    <li>menu3
+        <!--
+        <ol class="olcss" id="olcss1">
+            <li link="http://m.naver.com">smenu1</li>
+            <li link="http://m.nate.com">smenu2</li>
+            <li link="http://m.daum.net">smenu3</li>
+        </ol>
+        -->
+    </li>
+    <li>menu4</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?php
+    include "admin_session.php";
+    include "p_view.php";
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑몰 관리자 페이지</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/loadsh.js"></script>
+    <script src="../js/_baseOrderBy.js"></script>
+    <script src="../js/isArray.js"></script>
+    <script src="../js/orderby.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/admin.css?v=<?php echo $date?>">
+    <script>
+        let arr = <?php echo $prints ?>;
+        console.log(arr);
+    </script>
+</head>
+<body>
+<main>
+    <header class="maintop"><?php include "admin_top.html"?></header>
+    <section class="mainsub"><?php include "p_modify.html"?></section>
+    <footer class="mainfoot"><?php include "admin_foot.html"?><footer>
+</main>
+</body>
+</html>

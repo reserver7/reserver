@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 7일차 디스크 + 시간 (함수를 사용)</title>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $timer;
+            var $no=0;  //노드 최초값(임시변수)
+
+            $("#ulcss>li").click(function(){    //해당 디스크 클릭시
+               var $ea = $("#ulcss>li").length;
+               var $node = $(this).index();
+               var $f;
+               for($f=0;$f<$ea;$f++){
+                 $("#ulcss>li").css("background-color","skyblue");
+               }
+               $("#ulcss>li").eq($node).css("background-color","black");
+               clearInterval($timer);   //시간 정지
+               $no = $node; //사용자가 클릭한 값을 임시변수에 적용함
+            });
+            //해당 디스크에 마우스 포인터가 아웃되었을 때 bbb함수를 호출
+            $("#ulcss>li").mouseleave(function(){ 
+                $.fn.bbb();
+            });
+            
+            $.fn.bbb = function(){  //5초마다 이동
+                $timer = setInterval(function(){
+                    var $ea = $("#ulcss>li").length;
+                    var $f=0;
+                    while($f<$ea){
+                        $("#ulcss>li").eq($f).css("background-color","skyblue");
+                        $f++;
+                    }
+                
+                    if($no < 3){
+                        $no = $no + 1;
+                    }
+                    else{
+                        $no = 0;
+                    }
+                $("#ulcss>li").eq($no).css("background-color","black");
+            },5000);
+
+            }
+            $.fn.bbb(); //웹페이지 접속시 bbb함수를 바로 실행하기 위해
+        });
+    </script>
+    <style>
+        :root { 
+        --margin:0; --padding:0;
+        --list:none;
+        }
+        body { margin:var(--margin); padding:var(--padding);}
+        .ulcss { list-style: var(--list); 
+        margin:var(--margin); padding:var(--padding); 
+        height:50px;
+        }
+        .ulcss > li { width:50px; height:50px; border-radius: 25px;
+        background-color: skyblue; display: inline-block;
+        color: white; text-align: center;
+        line-height: 50px; cursor: pointer;
+        }
+        .ulcss > li:nth-child(1) { background-color: black;}
+    </style>
+</head>
+<body>
+<ul class="ulcss" id="ulcss">
+    <li>0</li>    
+    <li>1</li>    
+    <li>2</li>    
+    <li>3</li>    
+</ul>
+</body>
+</html>

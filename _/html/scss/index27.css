@@ -1,0 +1,195 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap");
+/*font-family: 'Noto Sans KR', sans-serif;(100,300,400,500)*/
+body, * {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.box {
+  width: 300px;
+  height: auto;
+  border: 1px solid black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (100px)[4];
+      grid-template-rows: repeat(4, 100px);
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: "h1 h1" "h2 ." "h2 h3" "h4 h5";
+}
+
+.box > label {
+  display: block;
+}
+
+.label1 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: h1;
+  background-color: skyblue;
+}
+
+.label2 {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: h2;
+  background-color: yellow;
+}
+
+.label3 {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: h3;
+  background-color: green;
+}
+
+.label4 {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  grid-area: h4;
+  background-color: black;
+}
+
+.label5 {
+  -ms-grid-row: 4;
+  -ms-grid-column: 2;
+  grid-area: h5;
+  background-color: purple;
+}
+
+/* 응용문제1 */
+.box2 {
+  width: 300px;
+  height: auto;
+  border: 1px solid black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (100px)[3];
+      grid-template-rows: repeat(3, 100px);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: "l1 l2 l2"
+ "l3 l3 l3"
+ "s1 s2 s3";
+}
+
+.box2 > label, .box2 span {
+  display: block;
+}
+
+.box2 > label:nth-of-type(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: l1;
+  background-color: skyblue;
+}
+
+.box2 > label:nth-of-type(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-area: l2;
+  background-color: yellow;
+}
+
+.box2 > label:nth-of-type(3) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: l3;
+  background-color: green;
+}
+
+.box2 > span:nth-of-type(1) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: s1;
+  background-color: red;
+}
+
+.box2 > span:nth-of-type(2) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: s2;
+  background-color: darkblue;
+}
+
+.box2 > span:nth-of-type(3) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
+  grid-area: s3;
+  background-color: black;
+}
+
+.product {
+  width: 1000px;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid black;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (150px)[2];
+      grid-template-rows: repeat(2, 150px);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: "n1 n2 n3"
+ "n4 n5 .";
+  padding-top: 20px;
+  padding-left: 25px;
+}
+
+.product > label {
+  width: 300px;
+  height: 120px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.product > label:nth-of-type(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: n1;
+  background-color: pink;
+}
+
+.product > label:nth-of-type(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: n2;
+  background-color: yellow;
+}
+
+.product > label:nth-of-type(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: n3;
+  background-color: green;
+}
+
+.product > label:nth-of-type(4) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: n4;
+  background-color: purple;
+}
+
+.product > label:nth-of-type(5) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: n5;
+  background-color: orange;
+}
+/*# sourceMappingURL=index27.css.map */

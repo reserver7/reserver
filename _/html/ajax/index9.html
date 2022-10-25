@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (1일차) - Javascript(array + node)</title>
+<script>
+    var array = [
+        ["hong","홍길동"],
+        ["lee","이순신"],
+        ["kims","김유신"],
+        ["yiking","유리왕"],
+        ["yiks","유관순"]
+    ];
+
+</script>
+<style>
+    body { margin: 0; padding: 0; }
+    .lists {width: 400px; height: 30px; background-color: grey;}
+    .lists > label{ 
+        display: inline-block; width: 190px; height: 30px; text-align: center; line-height: 30px;
+    }
+    .lists > label:nth-child(1){ border-right: 1px solid gray;}
+    .lists2 {width: 400px; height: 30px; background-color: gainsboro;}
+    .lists2 > label{ 
+        display: inline-block; width: 190px; height: 30px; text-align: center; line-height: 30px;
+    }
+    .lists2 > label:nth-child(odd){ border-right: 1px solid gray;}
+</style>
+</head>
+<body>
+<div class="lists">
+    <label>아이디</label><label>고객명</label>
+</div>
+<div class="lists2" id="members">
+    
+</div>
+</body>
+<script>
+    var html,html2;
+    var label1,label2;
+    /*
+    array.forEach(function(a,b,c){
+        //console.log(a[1]);
+        html = document.createElement("label");
+        label1 = document.createTextNode(a[0]);
+        html.append(label1);
+        html2 = document.createElement("label");
+        label2 = document.createTextNode(a[1]);
+        html2.append(label2);
+        document.getElementById("members").append(html,html2);
+    });
+    */
+    var f;
+    for(f in array){
+        //console.log(array[f][1]);
+        html = document.createElement("label");
+        label1 = array[f][0];
+        html.append(label1);
+        html2 = document.createElement("label");
+        label2 = array[f][1];
+        html2.append(label2);
+        document.getElementById("members").append(html,html2);
+    }
+</script>
+</html>
+<!--
+    DOM (innerHTML, innerText)
+
+    NODE (append로 마지막에 출력)
+-->

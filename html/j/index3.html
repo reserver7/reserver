@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제3</title>
+    <style>
+        .product_ad { width:240px; height:143px;
+        border:1px solid #ccc;
+        }
+    </style>
+</head>
+<!--
+문제3. img 디렉토리에 shoshul1.png ~ shoshul4.png 까지 이미지가 있습니다.
+새로고침시 해당 이미지가 랜덤하게 출력 되도록 하십시오.
+해당 div에 출력하면 됩니다.
+-->
+<body>
+    <div class="product_ad" id="product_id">
+        <!--랜덤으로 출력될 광고 미니 배너 부분-->
+    </div>
+</body>
+<script>
+    var a= document.getElementById("product_id");
+    
+    var num=Math.floor(Math.random()*4)+1;
+    var img="shoshul"+num+".png";
+    console.log(num);
+
+    a.style.backgroundImage = "url('./img/"+img+"')";
+
+</script>
+</html>

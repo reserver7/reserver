@@ -1,0 +1,38 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>MINIMAL</title>
+	<link rel="stylesheet" href="./css/font.css?v=5">
+    <script src="./js/jquery1.12.js"></script>
+    <script src="./js/jquery.mobile-1.4.5.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/index.js?v=<?php echo $date?>"></script>
+</head>
+<style>
+	* { font-family: 'Noto Sans KR', sans-serif; }
+	body { margin:0; padding:0; }
+	.ui-loader { display:none; }
+	.main { width:360px; clear:both; margin:0 auto; position: relative; overflow:hidden; }
+</style>
+
+<body ng-app="a_napp">
+	<div class="main">
+		<?php include "header_menu.html" ?>
+		<?php include "header_cibi.html" ?>
+		<?php include "pop_menu.html" ?>
+		<?php include "pop_member.html" ?>
+        <?php include "pop_nonmember.html" ?>
+		<?php include "content_mainbanner.html" ?>
+		<?php include "content_bargain.html" ?>
+		<?php include "content_weekly.html" ?>
+		<?php include "content_new.html" ?> 
+		<?php include "content_side.html" ?>
+		<?php include "footer_bottom.html" ?>
+	</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue6일차 - 가격 변동 부분</title>
+<script src="./vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+<!-- lodash는 Javascript 및 Vue를 좀 더 편하게 활용할 수 있는 보조 엔진 임 -->
+</head>
+<body>
+<section id="box">
+    <button v-on:click="resetbtn">오름차순 정렬</button>
+    <button v-on:click="resetbtn2">내림차순 정렬</button>
+    <ul>
+        <li v-for="numbers in resetck" v-if="reset && nlist==1">{{numbers}}</li>
+        <li v-for="numbers in list" v-if="nlist==2">{{numbers}}</li>
+    </ul>
+</section>
+</body>
+<script>
+    var arr = [2,1,5,4,3];
+    var a = new Vue({
+        el:"#box",
+        data:{
+            reset:true,
+            list:arr,
+            order:"",
+            nlist:1
+        },
+        methods:{
+            resetbtn:function(){ 
+                this.reset = !this.reset;
+                this.nlist = 2;
+                this.order = "desc";
+                this.list = _.orderBy(this.list,[],this.order);
+                //orderBy 해당 키를 기점으로 재정렬 할때 사용하는 명령어
+                //desc: 내림차순, asc: 오름차순
+            },
+            resetbtn2:function(){
+                this.order = "asc";
+                this.list = _.orderBy(this.list,[],this.order);
+            }
+        },
+        computed:{
+            resetck:function(){
+                this.order = "asc";
+                return _.orderBy(this.list,[],this.order);
+            }
+        }
+    });
+</script>
+</html>

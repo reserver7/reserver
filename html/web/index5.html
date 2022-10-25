@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(가상로그인)</title>
+<script>
+    function aaa(){
+        var a = document.getElementById("aid").value;
+        var b = document.getElementById("bpass").value;
+        var c = f.c.checked;    //true, false 검사
+        
+        if(a==""){
+            alert("아이디를 입력하세요!");
+            return false;
+        }
+        else if(b==""){
+            alert("패스워드를 입력하세요!");
+            return false;
+        }
+        else if(c==false){  //true, false는 ""를 사용하지 않음
+            alert("보안접속 체스 하셔야만 로그인 됩니다.");
+            return false;
+        }
+        else{
+            alert("정상적인 로그인 입니다.");
+            document.getElementById("sub").method="POST";
+            f.action="http://naver.com";
+            f.submit();
+        }
+    }
+
+</script>
+</head>
+<body>
+<form name="f" id="sub" onsubmit="return aaa();">
+<input type="text" id="aid">
+<input type="password" id="bpass">
+<input type="submit" value="로그인" title="로그인"><br>
+<input type="checkbox" name="c" id="cbox"><label for="cbox">보안접속</label>
+</form>
+</body>
+</html>

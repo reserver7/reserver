@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 21일차 rotate (CSS(시간) + Jquery(변형)2)</title>
+<!-- Jquery/m/index30.html ( 모바일용 ) -->
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $px;
+        $("#btn").click(function(){
+            $px = 0;
+            $("#box").rotate($px);
+        });
+
+        $("#btn2").click(function(){
+            $px = 50;
+            $("#box2").rotate($px);
+        });
+        /* 모양변화 rotate 함수는 한개 Jquery filter */
+        $.fn.rotate = function($px){    
+            $(this).css({
+                "border-radius":$px+"px"
+            });
+            return $(this);
+            //해당 함수는 기본으로 무조건 $(this)를 사용하게 됨
+        };
+        /* 회전 */
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box { 
+        margin: 0 auto; margin-top: 100px; width: 100px; height: 100px; background-color: black; 
+        border-radius: 50px; transition: 5s;
+    }
+    .box2 { 
+        width: 100px; height: 100px; background-color: red; transition: 5s;
+    }
+</style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<input type="button" value="START" id="btn">
+<br><br><br>
+<div class="box2" id="box2"></div>
+<input type="button" value="START" id="btn2">
+</body>
+</html>

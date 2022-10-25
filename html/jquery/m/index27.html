@@ -1,0 +1,88 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 18일차 - swipe (모바일 전용)</title>
+<script src="./jquery1.12.js"></script><!-- 1.4~2.1 버젼에서만 모바일엔진을 사용할 수 있음-->
+<script src="./jquery-ui.js?"></script>
+<script src="./jquery.mobile-1.4.5.js"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        var $window = $(window).width();
+        var $ea = $("#span>label").length;
+        var $plus = 420 - $(window).width();
+        //자신의 휴대폰 사이즈와 max-length 사이즈를 빼면 차이가 생깁니다
+        //만약 이미지가 있으면 이 부분은 필요가 없음
+
+        var $width = ($window * $ea) + 420; 
+        $("#span").css("width",$width+"px");
+        var $s;
+        //오른쪽에서 왼쪽으로 스왑할 때
+        $("#span").swipeleft(function(){
+            //위치 파악
+            var $offset = $(this).offset().left; //수평 위치를 파악함
+            
+            if($offset==0){
+                $s = -($window + $plus); //실제 화면 사이즈 + 차이가 생긴 값
+            }
+            else{
+                $s = $offset - 420;
+                if($s<=-2100){ 
+                    //마지막 배너 일 경우 다시 원래사항으로 위치를 left:0 으로 적용
+                    $s=0;
+                }
+            }
+            console.log($s);
+            
+            $(this).animate({
+                "left":$s+"px"
+            },800);
+        });
+
+        //왼쪽에서 오른쪽으로 스왑할 때
+        $("#span").swiperight(function(){
+            var $offset = $(this).offset().left; //수평 위치를 파악함
+            $s = $offset + 420;
+            if($s==420){
+                $s=0;
+            }
+            $(this).animate({
+                "left":$s+"px"
+            },800);
+            console.log($s);
+        });
+    });
+</script>
+<style>
+    body{ width: 100%; max-width: 420px; margin: 0; padding: 0; }
+    .sectioncss{ height: 300px; }
+    .box{ width: 100%; height: 300px; position: relative; overflow: hidden; }
+    .span > label{display: block; width: 100%; max-width: 420px; height: 300px; float: left;}
+    .span > label:nth-child(1){ background-color: blue; }
+    .span > label:nth-child(2){ background-color: red; }
+    .span > label:nth-child(3){ background-color: green; }
+    .span > label:nth-child(4){ background-color: black; }
+    .span > label:nth-child(5){ background-color: gray; }
+    .span{ height: 300px; display: block; box-sizing: border-box; position: absolute; }
+</style>
+</head>
+<body>
+<section class="sectioncss">
+    <div class="box">
+        <span class="span" id="span">
+            <label></label>
+            <label></label>
+            <label></label>
+            <label></label>
+            <label></label>
+        </span>
+    </div>
+</section>
+</body>
+</html>

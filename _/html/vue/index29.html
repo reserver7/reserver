@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue7일차 - VueRouter(네스티드 라우터) - 하위 메뉴 및 페이지가 별도로 존재</title>
+<script src="./vue.js"></script>
+<script src="./vue-router.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+</head>
+<body>
+<section id="box">
+    <router-link to="/product">카테고리</router-link>
+    <router-view></router-view>
+</section>
+</body>
+<script>
+    var main = { template: `<div>상품카테고리
+        <router-link to="/product1">- 가전제품</router-link>
+        <router-link to="/product2">- 건강식품</router-link>
+        <router-view></router-view>
+        </div>` };  //하위 카테고리 추가 및 링크 to를 적용 할 수 있음
+    var subpage1 = { template: "<span>가전제품 상품출력</span>"}; //하위페이지가 출력 되는 부분
+    var subpage2 = { template: "<span>건강식품 상품출력</span>"}; //하위페이지2가 출력 되는 부분
+    var pages = [
+        {
+            path: "/product",
+            component: main,
+            children:[  //하위 페이지를 분류할 때 사용함
+                {
+                    path: "/product1",
+                    component: subpage1
+                },
+                {
+                    path: "/product2",
+                    component: subpage2
+                }
+            ]
+        }
+    ];
+    var r = new VueRouter({
+        routes : pages
+    });
+    var vue = new Vue({
+        el:"#box",
+        router:r
+    });
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue 2일차 - 핸들링+조건문</title>
+<script src="vue.js"></script>
+</head>
+<body>
+<section id="vue">
+    <input type="text" v-model="text1">
+    <input type="button" v-model="btn" v-on:click="abc(a.text1)">
+</section>
+<section id="box">
+    <input type="checkbox" name="ck" id="ck" v-model="Y">동의함
+    <input type="button" v-model="btn" v-on:click="bbb();">
+</section>
+<section id="box2">
+    <input type="button" v-model="btn" v-on:click="ccc();">
+    <span v-if="datamsg">{{msg}}</span> <!-- v-if:기본 문법 : true,false -->
+</section>
+</body>
+<script>
+    //핸들링 함수에 값을 전달하는 형태 Vue를 전부 포함한 변수값과 v-model에 사용된 이름을
+    //같이 이용하면 사용자가 입력한 값을 함수명에 태워서 전송 가능함
+    let a = new Vue({
+        el:"#vue",
+        data:{
+            text1:null,
+            btn:"전송"
+        },
+        methods:{
+            abc:function(aaa){
+                //alert(aaa);
+                location.href="./index5.html?aaa="+aaa;
+            }
+        }
+    });
+    
+    let b = new Vue({
+        el:"#box",
+        data:{
+            Y:"",
+            btn:"확인"
+        },
+        methods:{
+            bbb:function(){
+                if(this.Y==""){
+                    alert("동의하셔야 진행 됩니다.");
+                }
+                else{
+                    this.Y = "Y";
+                    alert(this.Y);
+                }
+            }
+        }
+    });
+
+    let c = new Vue({
+        el:"#box2",
+        data:{
+            btn:"확인2",
+            msg:"중복된 아이디 입니다.",
+            datamsg:false   //기본값은 v-if false로 사용함(안보여짐)
+        },
+        methods:{
+            ccc:function(){
+                //this.datamsg = true;
+                if(this.datamsg==false){
+                    this.datamsg = true;    //v-if값이 true로 변경됨(보여짐)
+                }
+                else{
+                    this.datamsg = false;
+                }
+            }
+        }
+    });
+</script>
+</html>

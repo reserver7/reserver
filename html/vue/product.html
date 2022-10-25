@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue6일차 - 쇼핑몰 상품리스트 출력</title>
+<script src="./vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+</head>
+<style>
+    body{ margin: 0; padding: 0;}
+    *{box-sizing: border-box;}
+    span,label{display: block;}
+    section{height: auto;}
+    .outline{
+        width: 1000px; height: auto; margin: 0 auto;
+    }
+    .menu{width: 100%; height: 50px; display: flex; align-items: center; }
+    .menu_ul{list-style: none; margin: 0; padding: 0; }
+    .menu_ul > li{
+        width: 100px; height: 40px; line-height: 40px; text-align: center; float: left; position: relative; cursor: pointer;
+        font-size: 13px;
+    }
+    .menu_ul > li:hover{ color: blue; }
+    .menu_ul > li::after{content: "|"; position: absolute; left: 95px;}
+    .menu_ul > li:last-child::after{ content: ""; }
+    .view {width: 100%; height: auto; }
+    .view_list{ 
+        width: 100%; height: 180px; padding: 10px; border-bottom: 1px solid #ccc;
+        display: flex; flex-direction: row; justify-content: space-between; align-items: center;
+    }
+    .view_list>label:first-child{width: 150px; height: 130px;}
+    .view_list>label>img{ width: 100%; height: 130px; object-fit: cover;}
+    .view>.view_list>label:nth-of-type(2){width: 700px; height: 100px; display: flex; flex-direction: column; justify-content: space-between;}
+    .view_list>label:nth-of-type(2)>span{width: 100%; height: 30px; font-weight: bolder; font-size: 15px; color: #333; line-height: 30px;}
+    .view_list>label:nth-of-type(2)>span:nth-of-type(1){ display: flex; flex-direction: row; align-items: center;}
+    .view_list>label:nth-of-type(2)>span:nth-of-type(1)>label:nth-of-type(1){
+        width: 25px; height: 25px; background-color: #444; color: white; text-align: center; line-height: 25px;
+    }
+    .view_list>label:nth-of-type(2)>span:nth-of-type(1)>label:nth-of-type(2){
+        width: 500px; height:30px; line-height: 30px; margin-left: 10px; 
+    }
+    .view_list>label:nth-of-type(2)>span:nth-of-type(2){font-size: 13px; font-weight: normal; height: 30px;}
+    .view_list>label:nth-of-type(2)>span:nth-of-type(3)>label{ height: 30px; float: left; line-height: 30px;}
+    .view_list>label:nth-of-type(2)>span:nth-of-type(3)>.price{ color: red; margin-right: 10px;}
+    .view>.view_list>label:nth-of-type(3){width: 100px; height: 100px; font-size: 13px; display: flex; align-items: flex-end; justify-content: center;}
+</style>
+<body>
+    <section id="product">
+        <div v-bind:class="outline">
+        <span v-bind:class="menu">
+        <ul v-bind:class="menu_ul">
+            <li @click="bestbtn">인기상품순</li>
+            <li @click="lowbtn">낮은가격순</li>
+            <li @click="highbtn">높은가격순</li>
+            <li @click="dcbtn">최대할인순</li>
+        </ul>
+        </span>
+        <div v-bind:class="view" v-for="list,index in ck">
+            <div v-bind:class="view_list">
+            <label><smile v-bind:title="list.product" v-bind:src="list.img"></label>
+            <label>
+                <span>
+                    <label>{{index+1}}</label>
+                    <label>{{list.product}}</label>
+                </span>
+                <span>{{list.content}}</span>
+                <span>
+                    <label v-bind:class="price" v-if="msg && num==1">{{list.discount}}{{d_msg}}</label>
+                    <label v-bind:class="price" v-if="msg && num==2">{{list.discount}}</label>
+                    <label>{{list.price.toLocaleString()}}{{p_msg}}</label>
+                </span>
+            </label>
+            <label>추천수 : {{list.vote.toLocaleString()}}건</label>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+<script>
+    const array=[
+    {seq:0,img:"./image/product0.jpg",product:"샤오미 미지아 LCD 드로잉패드 13.5형", content:"친환경 전자 노트! 샤오미 드로잉패드",discount:"33%", price:17480, vote:1621},
+    {seq:1,img:"./image/product1.jpg",product:"예다움 모던엔틱 교자상 (120x80cm)", content:"다가오는 명절! 교자상 준비부터",discount:"40%", price:56890, vote:2007},
+    {seq:2,img:"./image/product2.jpg",product:"소프시스 전신거울 사이드 행거", content:"작은방 인테리어 팁! 행거+전신거울",discount:"", price:29810, vote:21},
+    {seq:3,img:"./image/product3.jpg",product:"네이쳐리빙 외풍차단 고급형 틈막이 창문형 1m", content:"창문으로 바람이 솔솔? 틈막이로 바람 차단!",discount:"31%", price:2040, vote:317},
+    {seq:4,img:"./image/product4.jpg",product:"한국인삼공사 정관장 활기력 20ml 16병", content:"부모님 활력 보충선물 정관장 활기력 16병",discount:"22%", price:24400, vote:3236},
+    {seq:5,img:"./image/product5.jpg",product:"다온 미디엄 반신욕기 Jm-15", content:"명절선물 이건 어때? 다온 가정용 사우나",discount:"26%", price:648400, vote:917}
+    ];
+
+    Vue.component("smile",{
+        template:"<img>"
+    });
+
+    let a = new Vue({
+        el:"#product",
+        data:{
+            p_list:array,
+            outline:"outline",
+            menu:"menu",
+            menu_ul:"menu_ul",
+            view:"view",
+            view_list:"view_list",
+            price:"price",
+            d_msg:"할인",
+            p_msg:"원",
+            msg:true,
+            num:1
+        },
+        methods:{
+            bestbtn:function(){
+                this.order_by("desc","vote");
+            },
+            lowbtn:function(){
+                this.order_by("asc","price");
+            },
+            highbtn:function(){
+                this.order_by("desc","price");
+            },
+            dcbtn:function(){
+                this.order_by("desc","discount");
+            },
+            order_by:function(number,name){
+                this.p_list = _.orderBy(this.p_list,[name],number);
+            }
+        },
+        computed:{
+            ck:function(){
+                if(this.mag!=true){
+                    this.num=2;
+                    return this.p_list;
+                }
+                else{
+                    this.num=1;
+                    return this.p_list;
+                }
+            }
+        }
+    });
+</script>
+</html>
+<!--
+    1. methods 1~2개로 함수를 줄일 수 있습니까?
+    2. html 태그에 title 넣을 수 있습니까?
+    3. 호이스팅 위주로 코드를 작성 하지 않으셨나요?
+-->

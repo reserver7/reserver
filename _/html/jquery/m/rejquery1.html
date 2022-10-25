@@ -1,0 +1,191 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>Jquery 13일차 (상품출력 부분) - 복습</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css?v=2">
+<script>
+    $(document).ready(function(){
+        $("#ulcss>li").eq(0).css("display","block");
+        $("#ulcss>li").eq(1).css("display","none");
+        $("#ulcss>li").eq(2).css("display","none");
+        var $eq = 0;
+        $("#leftbtn").click(function(){
+            $("#ulcss>li").eq($eq).fadeOut(800);
+            $eq = $eq - 1;
+            if($eq==-1){
+                $eq = 2;
+            }  
+            $("#ulcss>li").eq($eq).fadeIn(800);
+        });
+
+        $("#rightbtn").click(function(){
+            $("#ulcss>li").eq($eq).fadeOut(800);
+            $eq = $eq + 1;
+            if($eq==3){
+                $eq = 0;
+            }
+            $("#ulcss>li").eq($eq).fadeIn(800);
+            /*
+            노드 갯수 체크
+            
+            상품 움직임 > 맨 앞에 있는 노드 복사 (clone) > 
+            맨 앞에 노드 삭제 (remove) >
+            그룹을 관리하는 엄마태그(원래 자리로 이동) > 
+            맨 뒤에 복사한 노드 추가 (append)
+            */
+            /*
+            $("#product").animate({
+                "margin-left":"-410px"
+            },800,function(){
+                $cp = $("#product>ul>li").eq(0).clone();
+                $("#product>ul>li").eq(0).remove();
+                $("#product").css("margin-left","0px");
+                $("#product>ul").append($cp);
+            });    
+            */
+        });
+    });
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap');
+    body{ margin: 0; padding: 0; }
+    label,span { display: block; }
+    .headercss{ height: 60px; background-color: rgb(69, 167, 248); position: relative;}
+    .topdiv{ 
+        width: 40px; height: 40px; position: absolute; 
+        right: 8px; top: 10px; color: white; text-align: center; line-height: 40px;
+    }
+    .topdiv >img{ height: 40px; line-height: 40px;}
+    .sectioncss{ height: auto; }
+    .product{
+        width: 100%; max-width: 400px; height: auto; margin: 0 auto;
+    }
+    .ulcss{
+        width: 100%; max-width: 400px; height: 520px; list-style: none;
+        margin: 0; padding: 0;
+    }
+    .ulcss>li{
+        width: 100%; max-width: 400px; height: 520px; border: 2px solid #ccc; box-sizing: border-box;
+        position: absolute;
+    }
+    .labelcss{
+        width: 100%; max-width: 400px; height: auto;
+    }
+    .labelcss > img { width: 100%; border-bottom: 2px solid #ccc; box-sizing: border-box; }
+    .labelcss2{
+        width: 100%; max-width: 400px; height: 240px;
+    }
+    .labelcss2 > span{
+        width: 100%; display: flex; flex-wrap: wrap; align-items: center; height: 60px;
+        align-content: center; justify-content: center; font-weight: bold;
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+    .labelcss2 > span:nth-child(1){
+        font-size: 20px; background-color: #ccc; margin-top: -5px;
+    }
+    .labelcss2 > span:nth-child(2){
+        font-size: 18px; color: blue;
+    }
+    .labelcss2 > span:nth-child(3){
+        font-size: 15px; color: gray;
+    }
+    .labelcss2 > span:nth-child(4){
+        font-size: 18px; color: red;
+    }
+
+    /* 상품 롤링 형태 CSS 부분 */
+    .product_view{
+        width: 95%; height: auto; border: 1px solid red; box-sizing: border-box;
+        margin: 0 auto; position: relative;
+        overflow: hidden;
+    }
+    .spanbtn{
+        position: absolute; width: 50px; height: 50px; background-color: rgba(0,0,0,0.5);
+        z-index: 10; top: 50%; margin-top: -25px;
+    }
+    .spanbtn:nth-child(2){ right: 0; }
+    .spanbtn >img { width: 100%; }
+</style>
+</head>
+<body>
+<header class="headercss">
+    <div class="topdiv"><img src="../image/buger.svg"></div>
+</header>
+<section class="sectioncss">
+    <!-- 상품 롤링 형태 view -->
+    <div class="product_view">
+        <span id="leftbtn" class="spanbtn"><img src="./product/leftbtn.svg"></span>
+        <span id="rightbtn" class="spanbtn"><img src="./product/rightbtn.svg"></span>
+        <div class="product" id="product">
+            <ul class="ulcss" id="ulcss">
+                <li>
+                    <label class="labelcss">
+                        <img src="./product/product_1.png">
+                    </label>
+                    <label class="labelcss2">
+                        <span>페브리즈 섬유탈취제(라벤더향)</span>
+                        <span>360ml, 3개 (1BOX)</span>
+                        <span><s>19,300원</s></span>
+                        <span>17,370원</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="labelcss">
+                        <img src="./product/product_2.png">
+                    </label>
+                    <label class="labelcss2">
+                        <span>미로 초음파 가습기</span>
+                        <span>MIRO-NR08G (간편세척)</span>
+                        <span><s>199,000원</s></span>
+                        <span>144,000원</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="labelcss">
+                        <img src="./product/product_3.png">
+                    </label>
+                    <label class="labelcss2">
+                        <span>복음자리 딸기잼 860g</span>
+                        <span>천연유기동 원료를 사용 (국산 백설탕)</span>
+                        <span><s>6,750원</s></span>
+                        <span>4,990원</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+<!--
+    [ position: absolute ] 사용시 주의 사항
+    - position: relative (사용 후 적용)
+    - margin 0 auto (x)
+    - vertical-align: middle (x)
+    - display:flex (x)
+
+    [ display:flex ] 사용시 주의 사항
+    - 모바일 전용
+    - IE.11에서 flex가 정상 작동 되지 않음
+
+    모바일 전용 웹 사이트
+
+    부모 노드
+    display:flex;
+    justify-content: center  (수평으로 가운데 좌,우)
+    flex-wrap:wrap
+    align-content: center (수직 가운데 그러나 아이폰 X)
+    align-items: center (아이폰 O)
+
+    모바일 가로 길이 사용시 주의사항
+    width(%), max-width(px) : 함께 사용할 수 있음
+    min-width : 본인 혼자 사용하는 속성 값
+-->

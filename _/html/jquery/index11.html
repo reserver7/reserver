@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 3일차(드롭메뉴 만들기))</title>
+<script src="./jquery.js"></script><!--Jquery엔진 탑재-->
+<script>
+    $(document).ready(function(){
+        //mouseover + mouseout
+        //mouseenter + mouseleave
+        //mouse ~ 범위가 중요함 
+        //mouseover : 마우스 포인터가 해당 오브젝트에 있을 때 (이미지)
+        //mouseenter : 마우스 포인터가 해당 오브젝트에 있을 때 (텍스트)
+        //mouseout : 마우스 포인터가 해당 오브젝트를 떠날 때 (이미지)
+        //mouseleave : 마우스 포인터가 해당 오브젝트를 떠날 때 (텍스트)
+
+        $("#dmenu > li").mouseenter(function(){
+            var $node = $(this).index(); //큰 메뉴 노드값
+            var $node_nm = "#smenu" + $node; //id값에 노드를 합친 형태
+            $($node_nm).slideDown();   //해당 id 오브젝트를 드롭형태로 나타남
+        });
+
+        $("#smenu0 >li").click(function(){
+            var $snode = $(this).index(); //작은 메뉴 노드값
+            switch($snode){ //소메뉴 0번째꺼를 선택시
+                case 0:
+                location.href="http://www.naver.com";
+                break;
+            }
+        });
+
+        $("#smenu1 >li").click(function(){
+            var $snode = $(this).index(); //작은 메뉴 노드값
+            switch($snode){ //소메뉴 0번째꺼를 선택시
+                case 0:
+                location.href="http://www.naver.com";
+                break;
+            }
+        });
+
+        $("#smenu2 >li").click(function(){
+            var $snode = $(this).index(); //작은 메뉴 노드값
+            switch($snode){ //소메뉴 0번째꺼를 선택시
+                case 0:
+                location.href="http://www.naver.com";
+                break;
+            }
+        });
+
+        $("#dmenu > li").mouseleave(function(){
+            var $node = $(this).index(); //큰 메뉴 노드값
+            var $node_nm = "#smenu" + $node; //id값에 노드를 합친 형태
+            $($node_nm).slideUp(); //해당 id 오브젝트를 드롭형태로 사라지게 함
+        });
+
+        //마우스 이벤트 핸들링 차이점
+        $("#box1").mouseover(function(){
+            $(this).css("background-color","blue");
+        });
+
+        $("#box1").mouseout(function(){
+            $("#box1 > p").css("border","1px solid red");
+        });
+
+        $("#box2").mouseenter(function(){
+            $(this).css("background-color","blue");
+        });
+
+        $("#box2").mouseleave(function(){
+            $("#box2 > p").css("border","1px solid red");
+        });
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0; }
+    .divmenu { 
+        width:310px; height:40px; margin:0 auto;
+    }
+    .menucss1 { 
+        width: 310px; list-style: none; margin: 0 auto; padding: 0; 
+        box-sizing: border-box;
+    }
+    .menucss1 > li { 
+        float: left; width:100px; height:40px; text-align: center; 
+        line-height: 40px; border: 1px solid black; box-sizing: 
+        border-box; background-color: blue;
+    }
+    .menucss2 { 
+        width: 110px; list-style: none; margin: 0 auto; margin-left: -1px;
+        padding: 0; box-sizing: border-box; display: none;
+    }
+    .menucss2>li { 
+        width:100px; height:40px;
+        text-align: center; line-height: 40px; border: 1px solid black; 
+        box-sizing: border-box; background-color: orange;
+    }
+    .box{
+        width: 300px; height: 300px; font-size: 30px; text-align: center;
+        background-color: pink;
+    }
+</style>
+</head>
+<body>
+    <div class="divmenu">
+        <ul id="dmenu" class="menucss1">
+            <li>menu1
+                <ol id="smenu0" class="menucss2">
+                    <li>smenu1</li>
+                    <li>smenu2</li>
+                    <li>smenu3</li>
+                </ol>
+            </li>
+            <li>menu2
+                <ol id="smenu1" class="menucss2">
+                    <li>smenu1</li>
+                    <li>smenu2</li>
+                    <li>smenu3</li>
+                </ol>
+            </li>
+            <li>menu3
+                <ol id="smenu2" class="menucss2">
+                    <li>smenu1</li>
+                    <li>smenu2</li>
+                    <li>smenu3</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+
+<br><br>
+<div id="box1" class="box">
+    <p>박스 입니다.</p>
+</div>
+<div id="box2" class="box">
+    <p>박스 입니다.</p>
+</div>
+</body>
+</html>

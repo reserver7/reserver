@@ -1,0 +1,47 @@
+<?php
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCSS 7일차 - Jquery + transform</title>
+<link rel="stylesheet" type="text/css" href="./index25.css?v=<?php echo $date?>">
+<script src="../jquery/jquery.js"></script>
+<script>
+    $(function(){
+        $("#agree_label").click(function(){
+            var $ck = $("#agree").is(":checked");
+            if($ck==false){
+                $(this).addClass("checks"); //addClass는 해당 오브젝트에 클래스를 추가할 때 사용
+            }
+            else{
+                $(this).removeClass("checks"); //removeClass는 해당 오브젝트에 클래스를 삭제할 때
+            }
+            //$(this).toggleClass("checks"); 
+            //before,after를 사용할 때 많이 사용하며, 
+            //별도의 클래스명을 해당 오브젝트에 적용하게 됨
+            //단, css에 해당 클래스 또는 아이디가 적용 되어 있어야 함
+        });
+        $("#btn").click(function(){
+            var $ck = $("#agree").is(":checked");
+            if($ck==false){
+                alert("로그인 상태 유지를 체크 하셔야 합니다.");
+            }  
+        });
+    });
+</script>
+</head>
+<body>
+<div class="testdiv">
+    <input type="checkbox" id="agree" value="off" style="visibility: hidden;">
+        <label for="agree" id="agree_label" class="labelcss">로그인 상태 유지</label>
+    <input type="button" value="확인" id="btn">
+</div>
+</body>
+</html>
+<!--
+    visibility: hidden : 자기 사이즈를 가지고 안보이게 함
+    display:none : 자기 사이즈를 없애고 안보이게 함
+-->

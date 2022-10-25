@@ -1,0 +1,17 @@
+var webpage = '\
+<div>\
+    <input type="text" name="mname" id="mname" value="" placeholder="성함을 입력하세요!">\
+    <input type="button" onclick="aaa()" value="이벤트 참여">\
+</div>';
+
+function aaa(){
+    var mname = document.getElementById("mname").value;
+    if(mname==""){
+        alert("성함을 입력해야만 이벤트에 참여 됩니다.");
+        document.getElementById("mname").focus();
+        return false;
+    }
+    else{
+
+    }
+}

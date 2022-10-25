@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (2일차) - 배열통신(JSON-응용파트)</title>
+<style>
+    body{margin: 0; padding: 0;}
+    label,span { display: block; }
+    .todays{
+        width: 800px; height: 130px; border: 1px solid #ccc; 
+        box-sizing: border-box; padding: 3px; 
+    }
+    .news1 { 
+        width: 200px; height: 120px; background-color: darkblue; font-size: 13px;
+        font-weight: bold; color: white; text-align: center; line-height: 120px;
+        display: inline-block; vertical-align: top;
+    }
+    .news2 {width: 580px; height: 120px; display: inline-block;}
+    .news_list{
+        width: 100%; height: auto; 
+        list-style: none; margin: 0; padding: 0; 
+    }
+    .news_list > li { width: 100%; height: 30px; text-indent: 5px; line-height: 30px; font-size: 14px;}
+    .news_list > li::before{
+        content: "※";
+        margin-right: 3px;
+    }
+    .sp { display: block; float: right; color: blue; }
+</style>
+</head>
+<body>
+<label class="todays">
+    <span class="news1">TODAY NEWS</span>
+    <span class="news2">
+        <ul class="news_list" id="news_list">
+
+        </ul>
+    </span>
+</label>
+</body>
+<script>
+    let cm;
+    function ajax(){
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function fileopen(){
+            if(cm.readyState==XMLHttpRequest.DONE && cm.status==200){
+                jsonfile(this);
+            }
+        }
+        cm = windowck();
+        cm.onreadystatechange = fileopen;
+        cm.open("GET","./news.json?v=2",true);
+        cm.send();
+    }
+    ajax();
+
+    function jsonfile(data){
+        const newsdata = JSON.parse(data.response);
+        var f;
+        var html;
+        var li,li2;
+        for(f in newsdata){
+            //console.log(newsdata[f]);
+            html = document.createElement("li");
+            //li = document.createTextNode(newsdata[f][0]);
+            //li2 = document.createTextNode(" ["+newsdata[f][1]+"]");
+            html.innerHTML = newsdata[f][0] + "<span class='sp'>[" + newsdata[f][1] + "]</span>";
+            document.getElementById("news_list").append(html);
+        }
+        /*
+        newsdata.forEach(function(a,b,c){
+            html = document.createElement("li");
+            html.append(a[0]);
+            html.innerHTML += " ["+a[1]+"]";
+            document.getElementById("news_list").append(html);
+            console.log(a[1]);
+        });
+        */
+    }
+</script>
+</html>

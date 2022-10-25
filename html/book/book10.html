@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + css 3-13</title>
+<style>
+    dl{
+        width: 100%; height: auto; margin: 0; padding: 0;
+    }
+    dl > dd{ 
+        width: 200px; height: 250px; margin: 0; padding: 0;
+        display: inline-block; background-repeat: no-repeat; background-size: cover;
+    }
+    dl > dd:nth-child(1){
+        background-image: url("http://reduck.dothome.co.kr/image/img1.png");
+        border: 3px solid red; 
+    }
+    dl > dd:nth-child(2){
+        background-image: url("http://reduck.dothome.co.kr/image/img2.jpg");
+        border: 3px solid green;
+    }
+    dl > dd:nth-child(3){
+        background-image: url("http://reduck.dothome.co.kr/image/img3.gif");
+        border: 3px solid blue;
+    }
+</style>
+</head>
+<body>
+<!--
+    응용문제10
+    해당 상품 이미지를 다음과 같이 리스틀 출력하시오
+    단, 외각선 두께는 3px
+    그 외에 각 이미지 크기는 200 * 250 이며, red, green, blue
+    색상을 가지고 있습니다.
+    각 상품별로 여백 공간이 필요합니다.
+
+    http://reduck.dothome.co.kr/image/img1.png
+    http://reduck.dothome.co.kr/image/img2.jpg
+    http://reduck.dothome.co.kr/image/img3.gif
+-->
+<dl>
+    <dd></dd>
+    <dd></dd>
+    <dd></dd>
+</dl>
+</body>
+</html>

@@ -1,0 +1,210 @@
+@charset "UTF-8";
+/* 서브페이지 기본 셋팅 부분 */
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+.section_subpage {
+  height: auto;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #333333;
+}
+
+.sub_div {
+  width: 1100px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: 1px solid black;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 80px 700px;
+      grid-template-rows: 80px 700px;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+}
+
+.sub_div > div:nth-of-type(1) {
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+.sub_div > div:nth-of-type(2) {
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
+.event_div1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event_div2 {
+  background-image: url("../event/event_img.jpg");
+  background-position: center 10%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: relative;
+  top: -10px;
+}
+
+.number_css {
+  position: absolute;
+  left: 50%;
+  margin-left: -20px;
+  top: 2%;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.number_css > img {
+  width: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.game_info {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.game_info > ul {
+  width: 400;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: grey;
+}
+
+.game_info > ul > li {
+  height: 20px;
+  line-height: 20px;
+  text-align: right;
+}
+
+.game_check {
+  position: relative;
+  cursor: pointer;
+  width: 550px;
+  /* 
+    calc (전체사이즈(px,%,vh) 사칙연산기호 숫자) 
+    calc (전체사이즈(px,%,vh) 사칙연산기호 숫자 사칙연산기호(px,%,vh))
+    예) calc((10% * 4) - 40px / 2);
+    예) calc(80%-100px);
+    */
+  height: 549px;
+  top: 15px;
+  left: 50%;
+}
+
+.okbtn:nth-of-type(1) {
+  position: absolute;
+  /* 틀린그림 정답 좌표 부분 */
+  right: 70px;
+  top: 80px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.okbtn:nth-of-type(2) {
+  position: absolute;
+  /* 틀린그림 정답 좌표 부분 */
+  right: 15px;
+  top: 210px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.okbtn:nth-of-type(3) {
+  position: absolute;
+  /* 틀린그림 정답 좌표 부분 */
+  right: 200px;
+  top: 155px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.okbtn:nth-of-type(4) {
+  position: absolute;
+  /* 틀린그림 정답 좌표 부분 */
+  right: 190px;
+  top: 445px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.okbtn:nth-of-type(5) {
+  position: absolute;
+  /* 틀린그림 정답 좌표 부분 */
+  right: 495px;
+  top: 350px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.okbtn:nth-of-type(6) {
+  position: absolute;
+  /* 틀린그림 정답 좌표 부분 */
+  right: 450px;
+  top: 100px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.okbtn:nth-of-type(7) {
+  position: absolute;
+  /* 틀린그림 정답 좌표 부분 */
+  right: 260px;
+  top: 480px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.okbtn > img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: -25px;
+  left: -25px;
+}
+/*# sourceMappingURL=event.css.map */

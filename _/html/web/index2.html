@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(function에 값 집어넣기)</title>
+<script>
+    function abc(){
+        var a = document.getElementById("aid").value;
+        var b = document.getElementById("bpass").value;
+
+        if(a==""){
+            alert("아이디를 입력해 주세요!");
+            return false;
+        }
+        else if(b==""){
+            alert("패스워드를 입력해 주세요!");
+            return false;
+        }
+        else{
+            //document.getElementById("fa").method="POST"; (form id 사용시)
+            //form (name 사용시)
+            f.method="POST";    
+            f.action="http://www.naver.com";
+            //HTML form에 method, action을 사용하지 않습니다.
+            f.submit(); //엔터 효과와 같이 해당 action url로 이동시킴
+        }
+    }
+</script>
+</head>
+<body>
+    <form name="f" id="fa" onsubmit="return abc();">
+    <input type="text" id="aid">
+    <input type="password" id="bpass">
+    <input type="submit" value="로그인">
+    </form>
+</body>
+</html>

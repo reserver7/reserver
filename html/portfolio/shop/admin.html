@@ -1,0 +1,31 @@
+<?php
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 페이지</title>
+<script src="../js/vue.js"></script>
+<script src="../js/loadsh.js"></script>
+<script src="../js/_baseOrderBy.js"></script>
+<script src="../js/isArray.js"></script>
+<script src="../js/orderby.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/admin.css?v=<?php echo $date?>">
+<script src="../js/admin.js?v=<?php echo $date?>"></script>
+</head>
+<body onload="page_load();">
+<form name="admin_form" id="admin_form" v-on:submit="admin_ck()" onsubmit="return false" enctype="application/x-www-form-urlencoded">
+<main id="admin_page">
+    <div :class="manager">
+        <ipf :admin_input="list" v-for="list in admin_label"></ipf>
+        <ipfs :class="label_css"></ipfs>
+    </div>
+</main>
+</form>
+</body>
+</html>
+<!--
+    http://mekeyace.dothome.co.kr/hack/js.php
+-->

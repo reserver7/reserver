@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript + css (응용문제)</title>
+<script>
+    function popup(){
+        window.open("./popup3.html","","width=600, height=500");
+    }
+</script>
+<style>
+    .btn{
+        background-color: black; color: white;
+        cursor: pointer; border: 0; width:80px; height:30px;
+    }
+</style>
+</head>
+<body>
+<input type="text" id="text" readonly placeholder="회사 카테고리 선택">
+<input type="button" class="btn" value="카테고리" onclick="popup();">
+</body>
+</html>
+<!--
+    self-점검
+    - 조건문(a,b에 대한 값을 비교) if, else if, else
+    - 반복문(for, while, do~while) 1~10까지 합산 결과 정답:55
+    - 선택문(switch ~ case)
+
+    - 조건문 + 반복문 
+    (a가 b보다 클 경우, a~b까지 출력 반복적으로)
+    - 반복문 + 반복문 (for+for x) - (for+while o)
+    (구구단)
+    - html + 조건문 (함수필수)
+    - html + 조건문 + 함수에 값 함께 이용
+    - html + 반복문 (checkbox, radio)
+    - html + CSS + Javascript (핸들링) - 객체 컨트롤
+    - 더블 function, return
+    - 절삭, 반올림, 단어 필터(Match), 단어 자르기(substr)
+-->

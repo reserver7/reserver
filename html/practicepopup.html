@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equi="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>팝업창 데이터 전달(page2)</title>
+</head>
+<script>
+var addr=[
+    ["03116","서울특별시 종로구 난계로29가길 24 (숭인동, 종로 동광모닝스카이)"],
+    ["03132","서울특별시 종로구 삼일대로30길 9 (낙원동)"],
+    ["07375","서울특별시 영등포구 도신로15길 5 (도림동)"],
+    ["07246","서울특별시 영등포구 국회대로50길 20 (영등포동7가, 포레나 영등포)"],
+    ["03187","서울특별시 종로구 종로 6 (서린동)"],
+    ["01697","서울특별시 노원구 상계로18길 48 (상계동, 상계 예인빌라1차)"],
+    ["04534","서울특별시 중구 을지로 50 (을지로2가)"],
+    ["01703","서울특별시 노원구 노원로 428 (상계동, 상계2차중앙하이츠아파트)"],
+    ["04542","서울특별시 중구 을지로 103-1 (을지로2가)"],
+    ["04613","서울특별시 중구 다산로29길 58 (신당동)"],
+    ["02745","서울특별시 성북구 장위로24길 5-12 (장위동, 상계하이츠빌라)"],
+    ["01789","서울특별시 노원구 공릉로 392 (중계동)"],
+    ["04547","서울특별시 중구 동호로 359 (을지로5가)"]
+    ];
+
+    function search(){
+        var s_txt = s.s_txt.value;
+        var addv = document.getElementById("addr_div");
+        addv.style.display="block";
+        if(s_txt==""){
+            alert("주소를 입력해주세요.");
+        }
+        else{
+            var array = addr.length;
+            var h;
+            for(h=0;h<array;h++){
+                var aa = addr[h][1];
+                var bb = aa.indexOf(s_txt);
+                if(bb>-1){
+                    addv.innerHTML += "<a href='javascript:post("+h+");'>(" + addr[h][0] + ") " + addr[h][1] + "</a><br>";
+                }
+            }
+        }
+    }
+
+    function post(h){
+        var datas = addr[h][0];
+        var datas2 = addr[h][1];
+        window.opener.f.addr_num.value = datas;
+        window.opener.f.addr1.value = datas2;
+        self.close();
+    }
+
+    function win(w){
+        if(w==1){
+            self.close();
+        }
+        else{
+            location.reload();
+        }
+    }
+
+</script>
+<style>
+*{ box-sizing: border-box;}
+section{ width: 500px; height: 550px; border: 1px solid black; margin: 0 auto; padding-top: 10px;}
+.div1{ width: 500px; height: 30px;padding-left: 50px;}
+.t{ display: block; width:100px; height:30px; margin: 0 auto; font-weight: bold; font-size: 20px; margin-bottom: 10px;}
+.txt{ width: 300px; height: 29px; border-color: black; text-align: center;}
+.btn{ width: 100px; height: 30px; border: 0; border-radius: 5px; cursor: pointer; background-color: black; color: white;}
+.rebtn{ width: 100px; height: 30px; border: 0; border-radius: 5px; cursor: pointer; background-color: black; color: white;}
+.addr_div{ width: 400px; height: 400px;  margin: 0 auto; 
+border: 1px solid black;  margin-top: 10px; font-size: 12px;
+cursor: pointer; display: none;}
+.div2{ width: 500px; height: 30px; text-align: center; margin-top: 10px;}
+</style>
+
+<body>
+<section>
+<label class="t">[주소검색]</label>
+<form name="s" id="s">
+<div class="div1">
+ <input type="text" name="s_txt" class="txt"> <input type="button" value="주소검색" name="s_btn" class="btn" onclick="search();">   
+</div>
+<div class="addr_div" id="addr_div">
+
+</div>
+<div class="div2">
+<input type="button" value="창닫기" class="btn" onclick="win(1);">
+<input type="button" value="재검색" class="rebtn" onclick="win(2);">    
+</div>
+</form>    
+</section>
+
+
+</body>
+<script>
+    s.s_txt.focus();
+</script>
+</html>
+<!-- 
+page1. 
+주소찾기 페이지 제작
+입력사항:
+우편번호, 도로명, 상세주소로 나누어지며, 해당 데이터는 최종적으로 backend에게 전달이 됩니다.
+전달방식은 post 전달 url:http://reduck.dothome.co.kr/book/addrok.php
+name값은 도로우편번호: addr_num
+도로명 주소:addr1
+상세주소:addr2
+보안코드:addr_modify value="user_addr"
+
+
+주소찾기 버튼 클릭시 검색 팝업창이 열려야 합니다.
+우편번호 , 도로명은 readonly 입니다.
+상세주소는 사용자가 직접 입력
+
+<script>
+parent.location.href="     ?abc=+text;"
+var v=location seaech;
+var c=v[1].substr(0,5);
+</script>
+
+
+page2.
+팝업창엥서 시작을 하게 됩니다.
+주소입력 부분이 있어야 하며, 주소 검색시 배열로 되어 있는 데이터 값을 출력하시면 됩니다.
+우편번호, 도로명 주소를 부모창에 전달 되도록 합니다.
+배열 값은 Backend에서 직접 데이터를 가공해서 줍니다.
+입력값 name은 자유입니다.
+창닫기 버튼 클릭시 팝업창이 닫혀져야 하며 주소 재검색이 가능해야합니다.
+
+var text=document.getelementbyid("addr").value;
+-->

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript - 131p~157p 함수</title>
+<script>
+/*
+    문제5
+    개인보호정책, 이메일 수신정책 기본 동의안함에
+    체크가 되어 있어야하며, 전송 버튼 클릭시
+    모두 동의함에 체크가 되어 있어야만 다음 url로 이동 되도록 함
+    url : http://nate.com
+*/
+    function aaa(){
+        var a = f.a[0].checked;
+        var b = f.b[0].checked;
+        if(a==false || b==false){
+            alert("둘다 동의함에 체크해야 합니다.");
+        }
+        else{
+            location.href="http://nate.com";
+        }
+    }
+</script>
+</head>
+<body>
+<form name="f">
+<p>개인보호정책</p>
+<input type="radio" name="a">동의함 <input type="radio" name="a" checked>동의안함
+<br>
+<p>이메일 수신정책</p>
+<input type="radio" name="b">동의함 <input type="radio" name="b" checked>동의안함
+<br>
+<input type="button" value="전송" onclick="aaa();">
+</form>
+</body>
+</html>

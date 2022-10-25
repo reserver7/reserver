@@ -1,0 +1,136 @@
+<?php
+    $r = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>프론트엔드 중간평가</title>
+<script src="../jquery/m/jquery1.12.js"></script>
+<script src="../jquery/m/jquery.mobile-1.4.5.js"></script>
+<script src="./index.js?v=<?php echo $r?>"></script>
+<link type="text/css" rel="stylesheet" href="./index.css?v=<?php echo $r?>">
+</head>
+<body>
+<nav class="navcss">
+<header class="headercss" id="headercss">
+    <div class="header_pop">
+        <ul>
+            <li>NVIDIA에서 GTX2080Ti를 40% 저렴하게 구매하도록</li>
+            <li>권고 하고 있습니다. 금액 규정에 대한 정보를 꼭 확인하세요.</li>
+        </ul>
+        <span class="pop_btn" id="pop_btn"><img src="./img/closeico.png"></span>
+    </div>   
+</header>
+<div class="menudiv" id="menudiv">
+    <span class="menuclose" id="menuclose">
+      <img src="./img/closeico2.png">
+    </span>
+    <ul class="menuul">
+        <li><img src="./img/menutitleico.png">제품</li>
+        <ol class="somenuol">
+            <li>게이밍<img src="./img/rightico.png"></li>
+            <li>소비자<img src="./img/rightico.png"></li>
+            <li>기업<img src="./img/rightico.png"></li>
+            <li>솔루션<img src="./img/rightico.png"></li>
+        </ol>
+        <li><img src="./img/menutitleico.png">지원</li>
+        <li><img src="./img/menutitleico.png">Insight</li>
+        <li><img src="./img/menutitleico.png">Events/News</li>
+        <li style="padding-left: 33px;">Events</li>
+        <li style="padding-left: 33px;">뉴스룸</li>
+    </ul>
+</div>
+<section class="s_css1">
+<div class="section_outline">
+    <div class="menu">
+        <span id="view_menu"><img src="./img/menuico.png"></span>
+        <span><img src="./img/logo.png"></span>
+        <span id="search_btn"><img src="./img/searchico.png"></span>
+    </div>
+    <div class="search_box" id="search_box">
+        <input type="text" id="search_txt" placeholder="상품명을 입력해 주시길 바랍니다.">
+        <button type="button" id="txt_btn">검색</button>
+    </div>
+    <div class="banner">
+        <ul class="banner_list" id="banner_list">
+            <li><img src="./img/mainbanner.png"></li>
+            <li><img src="./img/mainbanner2.png"></li>
+        </ul>
+    </div>
+</div>
+</section>
+<section class="s_css2">
+    <div class="product_box">
+        <ul>
+            <li><img src="./img/product1.png" title="개인용 PC"></li>
+            <li><img src="./img/product2.png" title="게임용 144Hz 모니터"></li>
+            <li><img src="./img/product3.png" title="게임용 키보드,마우스"></li>
+        </ul>
+    </div>
+</section>
+<section class="s_css3">
+    <div class="shoshul_box" id="shoshul_box">
+
+    </div>
+</section>
+<main class="maincss">
+    <div class="mainoutline">
+        <div class="mainbox_top">
+            <span class="main_title">메인보드 유통사 검색</span>
+            <div>
+                 <span>
+                        아래의 "메인보드 유통사 검색"<br>
+                        기능을 통하여 구매하신기가바이트 제품이 어느<br>
+                        유통사에서 판매되었는지확인하실 수 있습니다.
+                </span>
+                <span>
+                        ※ 해당 서비스는 "메인보드" 제품에 한하여 검색이 가능합니다. 
+                </span>
+            </div>
+        </div>
+        <div class="mainbox_bottom">
+                <span>
+                    메인보드 유통사 검색<br>
+                    구매하신 제품의 시리얼넘버를 입력하세요
+                </span>         
+                <span> 
+                    <label>제품 시리얼넘버</label><input type="text" name="number_no" id="number_no" maxlength="10">
+                </span>
+                <span>
+                    <button type="button" id="search_btn" onclick="btn();">유통사 검색</button>
+                </span>
+        </div>
+        <span>
+            저작권 및 상표권의 지적재산권 및 양도권은 GIGA-BYTE TECHNOLOGY CO.LTD에 있으며,<br>
+             허가를 받지 않은 모든 저작원 침해 행위는 엄격히 금지됩니다.
+        </span>
+    </div>
+</main>
+<footer class="footercss">
+    <div class="copy_box">
+        <div class="c_top">
+            <ul>
+                <li>메인보드 유통사 검색</li>
+                <li>GIGABYTE 소개</li>
+                <li>뉴스</li>
+                <li>지원</li>
+                <li>문의하기</li>
+            </ul>
+            <span class="language">KOREA(한국어)</span>
+        </div>
+        <div class="c_bottom">
+            <ul>
+                <li>Ⓒ 2019 GIGA-BYTE TECHNOLOGY CO. LTD는 본 저작권을 보유<br>
+                    하고 있습니다.</li>
+                <li><a href="https://profile.gigabyte.com/TermsOfUse.aspx?l=ko-KR">이용약관</a>,
+                    <a href="https://profile.gigabyte.com/PrivacyPolicy.aspx?l=ko-KR">개인정보보호</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</nav>
+</body>
+</html>

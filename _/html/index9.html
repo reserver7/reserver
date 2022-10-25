@@ -1,0 +1,30 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML 4일차 4.0 - 3</title>
+<script>
+    function aaa(){
+        f.etc.readOnly=false;
+    }
+</script>
+</head>
+<body>
+<!-- form 에는 name, id를 사용하게 됩니다 (backend 관계없음)
+name : Javascript를 사용하기 위함
+id : Jquery를 사용하기 위함
+-->
+<form name="f" id="f" method="POST" action="">
+<p>[설문조사 - 현재 사용하고 있는 통신사는?]</p>
+<ol>
+    <li><input type="radio" name="telc">SKT</li>
+    <li><input type="radio" name="telc">KT</li>
+    <li><input type="radio" name="telc">LGT</li>
+    <li><input type="radio" name="telc">알뜰폰</li>
+    <li><input type="radio" name="telc" onclick="aaa();">기타 : 
+    <input type="text" name="etc" readonly>
+    </li>
+</ol>
+</form>
+</body>
+</html>

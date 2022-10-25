@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue5일차 - Vue로 각파트별 생성 방법</title>
+<script src="./vue.js"></script>
+<style>
+    .inputs { width: 150px; height: 30px; border: 1px solid black; border-radius: 5px; }
+    .btns{ width: 80px; height: 30px; border: 0; background-color: #333; color: #fff;}
+</style>
+</head>
+<body>
+<section id="box">
+    <form v-bind:id="f" v-bind:name="f" method="POST" action="http://www.naver.com">
+    <input type="text" v-bind:id="bid" v-bind:name="bname" v-bind:class="bclass" v-model="bmodel">
+    <input type="button" v-model="btn" v-bind:class="button" v-on:click="test(bmodel)">
+    </form>
+</section>
+</body>
+<script>
+    let a = new Vue({
+        el:"#box",
+        data:{
+            bid:"mid",
+            bname:"mname",
+            bclass:"inputs",
+            btn:"완료",
+            button:"btns",
+            f:"f",
+            bmodel:""
+        },
+        methods:{
+            test:function(m){
+                if(m==""){
+                    alert("입력해주세요.");
+                    f.mname.focus();
+                    return false;
+                }
+                else{
+                    f.action="http://nate.com"; //form 특성상 this라는 부분을 사용하지 않음
+                    f.method="POST";
+                    f.submit(m); //기존에 Javascript 또는 Jquery에 사용한 형태의 submit을 사용하면 됨
+                }
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+body { margin:0; padding:0;}
+span,label { display: block;}
+.clear { clear: both;}
+
+.ulcss { 
+    width:295px; height:auto;
+    list-style: none; margin:0 auto; padding:0; 
+    padding-left: 5px; box-sizing: border-box;
+    padding-right: 5px;
+}
+.ulcss>li {
+    width:40px; height:40px; border: 1px solid black;
+    border-radius: 20px; display: inline-block; 
+    background-image: url("./ico/shopico.png"); 
+    background-repeat: no-repeat; cursor: pointer;
+    overflow: hidden;
+    background-size:205px;
+    background-position-y:2px;
+}
+.ulcss>li:hover { background-color:#cccccc; }
+.ulcss>li:nth-child(1) { background-position-x:3px; }
+.ulcss>li:nth-child(2) { background-position-x:-31px; }
+.ulcss>li:nth-child(3) { background-position-x:-66px; }
+.ulcss>li:nth-child(4) { background-position-x:-100px; }
+.ulcss>li:nth-child(5) { background-position-x:-133px; }
+.ulcss>li:nth-child(6) { background-position-x:-168px; }
+
+/* 
+퀵메뉴 만드는 순서
+- 디자인 아이콘 분리 또는 병합을 해서 png 파일 저장
+- 분리 아이콘 (노드에 백그라운드 이미지 파일 별도로 불러오게 함), 
+(이미지 크기가 달라도됨)
+- 병합 아이콘 (노드에 background-position-x을 이용해서 하나의 이미지 파일을
+가지고 표현하게 됨), (분리 아이콘보다 로드 속도가 빠름)
+- 클릭시 링크 경로로 URL을 걸어줍니다. 단, a태그 사용시 유의 하시길 바람
+*/

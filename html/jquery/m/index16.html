@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 14일차 - setInterval(배너)</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        //$(window).width() : 접속한 디바이스의 가로 길이를 측정
+        var $window = $(window).width() + "px";
+        var $ea = $(".imgs").length;
+        $(window).resize(function(){  //화면 사이즈 체크
+            //디바이스 접속시 하나의 배너 이미지 크기를 확인하여
+            //높이값을 구한 후 해당 오브젝트에 높이를 재 설정함
+            var $height = $("#banner0").height() + "px";
+            $(".imgs").height($height);
+
+            //배너 갯수만큼 width 부분을 조정함
+            
+            var $wd = ($(window).width() * $ea) + "px";
+            //접속 디바이스 가로 길이 * 배너 갯수 + "px"를 사용
+
+            $(".banners").height($height);
+            $(".banner_view").width($wd);
+            $(".banner_view").height($height);
+            $(".imgs").width($window);
+        }).resize();    //resize()함수를 자동으로 실행 시킴
+
+        //자동배너 이동
+        var $timer;
+        $timer = setInterval(function(){
+            $("#banner_view").animate({
+                "left":"-"+$window  // - 할때 "" 써야함
+            },800,function(){
+                var $cp = $("#banner_view>div").eq(0).clone();
+                $("#banner_view>div").eq(0).remove();
+                $("#banner_view").append($cp);
+                $("#banner_view").css("left","0px");
+            });
+            var $f;
+            var $click;
+            for($f=0;$f<$ea;$f++){
+                $click = "#banner"+$f;
+                $($click).click(function(){
+                    var $link = $(this).attr("data");
+                    location.href=$link;
+                });
+                /*
+                $("#banner_view>div").eq($f).click(function(){
+                    var $attr = $("#banner_view>div").attr("data");
+                    location.href=$attr;
+                }); 
+                */
+            } 
+        },5000);
+           
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .banners{ width: 100%; max-width: 420px; height: auto; overflow: hidden;
+        position: relative;
+    }
+    .banner_view{
+        display: block; position: absolute;
+    }
+    .imgs{ 
+        width: 100%; max-width: 420px; height: auto; float: left;
+    }
+    .imgs > img { width: 100%; }
+</style>
+</head>
+<body>
+<section class="banners">
+<label class="banner_view" id="banner_view">
+    <div class="imgs" id="banner0" data="http://naver.com">
+        <img src="../banner/banner0.png">
+    </div>
+    <div class="imgs" id="banner1" data="http://nate.com">
+        <img src="../banner/banner1.png">
+    </div>
+    <div class="imgs" id="banner2" data="http://google.com">
+        <img src="../banner/banner2.png">
+    </div>
+</label>
+</section>
+</body>
+</html>
+<!--
+    [PC배너 & Mobile배너 차이]
+    PC
+    1. 이미지 갯수 먼저 파악
+    2. float: left or inline-block등 다양하게 배너를 수평정렬
+    3. 부모 오브제그를 이미지 갯수만큼 늘려줌
+    4. 타이머 가동
+    5. 클릭이벤트
+
+    Mobile
+    1. 디바이스 가로 길이
+    2. 이미지 가로 길이를 디바이스 가로 길이 만큼 재조정
+    3. 이미지 한 개의 높이를 overflow : hidden을 한 부모 오브젝트에 적용
+    4. float: left위주로 사용함 inline-block으로 조정하기 힘듬
+    5. 이미지 갯수 파악
+    6. 디바이스 가로길이 * 이미지 갯수 만큼을 부모 오브젝트에 적용
+    7. 타이머 가동
+    8. 클릭이벤트
+-->

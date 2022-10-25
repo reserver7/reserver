@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (1일차) - Javascript(node)</title>
+<style>
+    body{ margin: 0; padding: 0; }
+</style>
+<script>
+    function nodes2(){
+        document.getElementById("olcss").children.item(0).remove();//노드 삭제
+        //$("#olcss>li").eq(0).remove();
+        //item (Javascript) = eq (Jquery)
+    }
+</script>
+</head>
+<body id="body">
+    <input type="button" value="노드삭제" onclick="nodes2();">
+</body>
+<script>
+    /*
+    var n = document.createElement("ol");
+    n.id = "olcss";
+    document.getElementById("body").append(n);
+    var array = ["공지사항1","공지사항2","공지사항3"];
+    var ea = array.length;
+    var li;
+    var b;
+    var f;
+    for(f=0;f<ea;f++){
+        li = document.createElement("li");
+        b = document.createTextNode(array[f]);
+        li.append(b);
+        document.getElementById("olcss").append(li);
+    }
+    */
+
+    var n = document.createElement("ol");
+    n.id = "olcss";
+    document.getElementById("body").append(n);    
+    var f;
+    var li;
+    for(f=1;f<4;f++){   //for,while,do~while ( ajax(x) )
+        li = document.createElement("li");
+        li.innerText = "공지사항" + f;
+        document.getElementById("olcss").append(li);
+    }
+    var nodes = document.getElementById("olcss").children.length;
+    //alert(nodes);
+</script>
+</html>

@@ -1,0 +1,49 @@
+<?php
+$s_date = $_GET['s_date'];
+if(!$s_date){
+    include "qalist.php";
+}
+else{
+    include "qalist2.php";
+}
+?>
+<meta charset="UTF-8">
+<div class="qa_box">
+    <div class="qa_top">
+        <label class="qa_title">상품문의</label>
+        <label class="qa_btn" onclick="qa();">1:1 문의하기</label>
+    </div>
+    <div class="qa_middle">
+    <ul class="qa_search" id="searchday">
+        <li>조회기간</li>
+        <li class="lion">오늘</li>
+        <li>7일</li>
+        <li>15일</li>
+        <li>1개월</li>
+        <li>3개월</li>
+        <li>1년</li>
+        <li>
+            <input type="text" id="datepicker1" readonly>
+        </li>
+        <li>~</li>
+        <li>
+            <input type="text" id="datepicker2" readonly>
+        </li>
+        <li>
+            <button type="button" class="qa_contact" id="qa_contact">조회</button>
+        </li>
+    </ul>
+    </div>
+    <div class="qa_bottom" id="qa_bottom">
+        <ol class="qa_board">
+            <li>문의날짜</li>
+            <li>카테고리</li>
+            <li>제목</li>
+            <li>작성자</li>
+            <li>문의상태</li>
+        </ol>  
+    </div>
+    <ol class="pagenum" id="board_page">  
+        
+    </ol>
+</div>

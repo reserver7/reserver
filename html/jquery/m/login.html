@@ -1,0 +1,47 @@
+<?php
+    include "mcheck.php";
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compaible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>모바일 전용-로그인</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<script src="./join.js?v=<?php echo $date?>"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="./join.css?v=<?php echo $date?>">
+</head>
+<body>
+
+    <!-- 상단 -->
+<header class="hcss">
+    <div class="login_info" id="login_info">
+        로그인
+    </div>
+</header>
+<!-- 광고 -->
+<nav class="ncss">
+    <img src="./images/membership_title.png" class="imgs">
+</nav>
+<!-- 로그인 -->
+<section class="scss"> 
+    <form name="login_f" id="login_f">
+    <div class="login_pg">
+        <ul class="login_ul">
+            <li><p>MEMBER LOGIN</p></li>
+            <li><input type="text" name="mid" id="login_id" class="inputs_2" placeholder="사용할 아이디 입력"></li>
+            <li><input type="password" name="mpass" id="login_pw" class="inputs_2" placeholder="패스워드 입력" autocomplete="off"></li>
+            <li><span id="loginbtn">로그인</span></li>
+        </ul>
+    </div>  
+    </form>
+</section>
+<!-- 카피라이터 -->
+<footer class="fcss">
+
+</body>
+</html>

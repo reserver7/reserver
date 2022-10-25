@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript(innerText,innerHTML)</title>
+<!--
+    응용문제1.
+    입력 부분에 도메인 명을 입력하게 됩니다.
+    그리고 나서 이동이라는 버튼을 클릭시 해당 사이트로 이동되는
+    innerHTML 형식으로 body 안에 작성 되도록 합니다.
+-->
+<script>
+    /*
+    function aaa(){
+        location.href='http://google.com';
+    }
+    */
+
+    function abc(){
+        var b = document.getElementById("urls").value;
+        if(b==""){
+            alert("이동할 url 주소를 입력하세요.");
+        }
+        else{
+            location.href = b;
+        }
+    }
+</script>
+<style>
+
+</style>
+</head>
+<body id="a">
+<!--    
+<a href="http://www.naver.com">innerText 사용합니다.</a>
+-->
+</body>
+<script>
+    //function 이 없는 형태일 경우 body 아래에 script를 만들어야 함
+    //var a = document.getElementById("test").value;
+    //alert(a);
+
+    //var aa = document.getElementById("a").innerText; //문자만 가져옴
+    //var aa = document.getElementById("a").innerHTML; //HTML&문자 모두 가져옴(주석도 가져옴)
+    //alert(aa);
+
+    //document.getElementById("a").innerText = "innerText 연습입니다.";
+    //var b = document.getElementById("a")
+    //b.innerHTML = '<input type="button" value="이동" onclick="aaa();">';
+    //b.innerHTML += '<br><input type="text">';
+    //b.innerHTML = b.innerHTML+ '<br><input type="text">'; 위에 형태랑 같은 뜻
+
+    var c = document.getElementById("a");
+    c.innerHTML = '<input type="text" id="urls">';
+    c.innerHTML += '<input type="button" value="확인" onclick="abc();">';
+</script>
+</html>

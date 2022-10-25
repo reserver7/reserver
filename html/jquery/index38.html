@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 21일차 rotate (CSS(시간) + Jquery(변형))</title>
+<!-- Jquery/m/index30.html ( 모바일용 ) -->
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $r = 0; //초기 각도값
+
+        $("#box").click(function(){
+            $r += 2900;    //회전각도 (1바퀴 = 360)
+            $(this).rotate($r); 
+            /* rotate 라는 함수로 자신의 이름과 값을 함께 던짐
+            클릭할 때 마다 호출을 한다는 뜻, 바로 넘길 때는 ($.fn.rotate)
+            */
+        });
+        $.fn.rotate = function($angle){
+            /*  따로 따로 쓰는 형태
+            $(this).css("transform","rotate("+ $angle +"deg)");
+            $(this).css("background-color","blue");
+            $(this).css("border-radius","50px");
+            */
+            $(this).css({
+                "transform":"rotate("+ $angle +"deg)",
+                "background-color":"blue",
+                "border-radius":"50px"
+            });
+            return $(this); //click 이라는 함수로 다시 return 함
+        };
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box { 
+        width: 100px; height: 100px; background-color: brown; margin: 0 auto; margin-top: 5%; 
+        transition: 3s; /* HTML 실행시 작동 안함 */
+    }
+</style> 
+</head>
+<body>
+<div class="box" id="box">
+
+</div>
+</body>
+</html>
+<!-- 뒷 배경, 판, 버튼, 겹쳐지는 곳을 따로 따로 이미지를 받아야 함 -->

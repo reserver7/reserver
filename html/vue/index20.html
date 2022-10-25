@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue5일차 - Vue 전역 components 및 지역 components</title>
+<script src="./vue.js"></script>
+<style>
+    .box { width: 100px; height: 100px; border: 1px solid black; }
+    .box2 { width: 100px; height: 100px; border: 1px solid red; display: block; }
+</style>
+</head>
+<body>
+<section id="box">
+    <beer></beer>
+</section>
+<section id="box2">
+    <beer2 v-bind:bbb="fornt" v-for="fornt in arrs"></beer2>
+</section>
+<!--응용파트-->
+<section id="box3">
+    <ul>
+        <choco v-bind:val="list" v-for="list,index in arrs"></choco>
+    </ul>
+</section>
+</body>
+<script>
+    //배열은 무조건 Vue보다 먼저 호출이 되어야만 함 즉, 제일 위로 코드를 올려야 함
+    var arr = [
+        ["엄요셉","A형"],
+        ["정우석","B형"],
+        ["천은송","O형"],
+        ["박승희","O형"],
+        ["김중현","AB형"]
+    ];
+    //전역 컴포넌트 : methods 사용해서 별도의 함수를 호출 할 수 있음
+    Vue.component("beer",{
+        template:"<div class='box'>전역 컴포넌트</div>"
+    });
+    Vue.component("choco",{
+        props:["val"],   //attr, attribute = props
+        template:"<li>{{ val[0] }} 님의 혈액형은 {{ val[1] }} 입니다.</li>"
+    });
+    //지역 컴포넌트
+    var cpt = {
+        props:["bbb"],
+        template:"<label class='box2'>{{ bbb[0] }}</label>"
+    }
+
+    var a = new Vue({   //전역 컴포넌트를 로드
+        el:"#box"
+    });
+
+    var b = new Vue({   //지역 컴포넌트를 로드
+        el:"#box2",
+        data:{
+            arrs:arr
+        },
+        components:{    //components는 지역 컴포넌트에 대한 호출을 받는 속성 값임
+            "beer2":cpt
+        }
+    });
+
+    var c = new Vue({
+        el:"#box3",
+        data:{
+            arrs:arr
+        }
+    });
+</script>
+</html>

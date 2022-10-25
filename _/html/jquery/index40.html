@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 21일차 rotate (CSS(시간) + Jquery(변형)3)</title>
+<!-- Jquery/m/index30.html ( 모바일용 ) -->
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $r = 0;
+        $("#btn").click(function(){
+            var $rs = $("#box").css("transform");
+            //matrix:기울기 (왼쪽위 모서리,오른쪽위 모서리,오른쪽아래 모서리,왼쪽아래 모서리,X축,Y축)
+            var $m = $rs.split(",");
+            var $ro = Math.floor(Math.abs($m[1] * -100));
+            //1800 = 1바퀴가 360 (기본으로 5바퀴)
+            //Math.abs = 음수를 무조건 양수로 변환
+
+            if(isNaN($ro)==true){   //최초값은 NaN출력이 됨
+                var $random = Math.round(Math.random()*8+1);
+                $r += (28000 / $random) * 0.1 + 1800;
+            }
+            else{
+                $r += (28000 / $ro) * 0.1 + 1800;
+            }
+
+            console.log($ro);
+            $("#box").aaa($r);
+        });
+
+        $.fn.aaa = function($r){
+            $(this).css({
+                "transform":"rotate("+$r+"deg)"
+            });
+            return $(this);
+        };
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box { 
+        width: 100px; height: 100px; margin: 0 auto; margin-top: 10%; background-color: brown; 
+        transition: 3s;
+    }
+</style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<input type="button" value="START" id="btn">
+</body>
+</html>

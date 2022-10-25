@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript + css (응용문제)</title>
+<style>
+
+</style>
+</head>
+<body>
+
+</body>
+<script>
+    var a = [
+        ["간이 과세자","(개인)"],
+        ["일반 과세자","(개인)"],
+        ["법인 과세자","(과세)"],
+        ["법인 과세자","(비과세)"],
+        ["면세 사업자","(개인)"],
+        ["면세 법인사업자","(법인)"]
+    ]
+    var b = a.length;
+    var c;
+    alert(k);
+    for(c=0;c<b;c++){
+        aaa(c);
+    }
+    function aaa(k){
+        var j = document.querySelectorAll(".text");
+        j[k].onclick = function(){
+        var h = j[k].innerText;
+        }
+    }
+</script>
+</html>

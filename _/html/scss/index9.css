@@ -1,0 +1,36 @@
+*, body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.box {
+  position: relative;
+  color: white;
+  width: 600px;
+  height: 100px;
+  background-color: black;
+  top: 0px;
+  left: 0%;
+  letter-spacing: 0px;
+  padding-left: 0px;
+  -webkit-transition-duration: 2s;
+          transition-duration: 2s;
+  -webkit-transition-property: padding-left;
+  transition-property: padding-left;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+}
+
+.box:target {
+  width: 600px;
+  height: 100px;
+  background-color: black;
+  top: 0px;
+  left: 0%;
+  letter-spacing: 0px;
+  padding-left: 250px;
+}
+/*# sourceMappingURL=index9.css.map */

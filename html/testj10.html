@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 복습(10),(Javascript + HTML)</title>
+<script>
+function bbb(){
+    var a = Number(document.getElementById("aa").value);
+    var b = a % 2;
+    if(b==0){
+        document.write("짝수");
+    }
+    else if(b!=0){
+        document.write("홀수");
+    }
+}
+
+</script>
+</head>
+<body>
+<input type="text" id="aa" maxlength="1">
+<input type="button" value="결과확인" onclick="bbb();">
+
+</body>
+</html>

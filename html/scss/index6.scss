@@ -1,0 +1,28 @@
+@charset "UTF-8";
+body{ margin: 0; padding: 0; line-height: 1;}
+$c1: red,blue,green,orange; //배열변수
+.ulbox{ width: 400px; height: 30px; list-style: none; margin: 0; padding: 0; }
+.ulbox > li { float: left; width: 100px; height: 30px; }
+//through : 해당 숫자만큼 반복
+//to : 해당 숫자보다 -1 만큼만 반복함
+@for $a from 1 to 5 {   //변수 $a에 1~4까지 반복하는 형태의 문법
+    .ulbox > li:nth-of-type(#{$a}){  
+        //#{변수명} 사용해야만 해당 반목문에 숫자가 적용되어짐 css 노드 적용
+        text-align: center; line-height: 30px;
+        border: 1px solid red; box-sizing: border-box;
+        color:nth($c1,$a); //nth:css전용 배열 문구 이며, 예시는 nth(배열변수,배열값)
+    }
+}
+
+$color:skyblue,orange,green,purple,pink;
+.divcss{
+    width: 150px; height: 25px; display: flex; flex-direction: row;
+    justify-content: space-between;
+    @for $num from 1 to 6{
+        &> label:nth-of-type(#{$num}){
+            width: 25px; height: 25px; 
+            background-color:nth($color,$num); text-align: center;
+            line-height: 25px; color: white;
+        }
+    }
+}

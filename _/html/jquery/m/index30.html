@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 21일차 룰렛</title>
+    <!-- Jquery/index41.html(PC용)-->
+    <script src="../jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            var $check; //당첨번호
+            var $coin = 0;  //룰렛횟수 초기값이 0 오르차순으로 증가하도록 함
+            var $pc;    //랜덤함수 값을 가져옴 (0~360)
+            var $node;  //노드값 if범위안에 들어온 값을 가져와서 배열로 비교함
+            var $array = [
+                "할인쿠폰 30%",
+                "적립금 500p",
+                "할인쿠폰 10%",
+                "적립금 500p",
+                "할인쿠폰 20%",
+                "적립금 1000p",
+                "할인쿠폰 10%",
+                "적립금 500p"
+            ];
+            var $r = 0; //오브젝트 처음 위치값 (transform rotate값)
+            $("#spanbtn").click(function abc(){ //click핸들링에도 function명을 사용할 수 있음
+                
+                $(this).unbind("click");    //해당 이벤트 핸들링을 반복하지 못하게 막음
+                $coin = $coin+1;    //회수값 증가 +1씩 증가 "돌리세요" 클릭시
+                $pc = Math.floor(Math.random()*360);    //랜덤값 0~360
+                //console.log($pc);
+                $r += 1800;   //기본적으로 룰렛이 돌아가는 횟수 = 5바퀴 (360*5)
+                console.log($coin);
+                if($coin>3){    //횟수가 3회 이상 되면 더 이상 참여하지 못함
+                    $(".blackbox").fadeIn();
+                    alert("오늘 기회는 모두 끝났습니다.");
+                }
+                else{   //rotate 함수의 기본 횟수값을 던짐
+                    var $number = $("#gamerull").rotate($r);
+                    setTimeout(function(){  //setTimeout는 clearTimeout를 만들지 않아도 멈춤
+                        //alert($array[$number[2]]);  //결과 출력
+                        //해당 핸들링을 다시 재활설화 시켜줌
+                        //단, 해당 문구는 unbind를 사용하고 나서 진행해야 함
+                        //이런 형태가 많이 쓰임 잘 알아야 함!!!!!!!!!
+                        $("#alert").fadeIn().animate({  //디자인 alert 메세지 출력
+                            "top":"320px"
+                        },800);
+                        $("#msgtext").append($array[$number[2]]);
+                        $(this).click(function(){
+                            //메세지 서서히 사라짐 , append 결과값 초기화
+                            $("#alert").fadeOut().animate({  //디자인 alert 메세지 출력
+                                "top":"300px"
+                            },800);
+                            $("#msgtext").text("");
+                            abc();
+                        });
+                    },5000);
+                }
+            });
+
+            $.fn.rotate = function($r){
+                if($pc >= 10 && $pc <= 40){
+                    $node = 0;
+                }
+                else if($pc >= 50 && $pc <= 85){
+                    $node = 1;
+                }
+                else if($pc >= 95 && $pc <= 130){
+                    $node = 2;
+                }
+                else if($pc >= 145 && $pc <= 170){
+                    $node = 3;
+                }
+                else if($pc >= 190 && $pc <= 220){
+                    $node = 4;
+                }
+                else if($pc >= 240 && $pc <= 270){
+                    $node = 5;
+                }
+                else if($pc >= 280 && $pc <= 300){
+                    $node = 6;
+                }
+                else if($pc >= 330 && $pc <= 355){
+                    $node = 7;
+                }
+                else {  
+                    $pc = 345;
+                    //범위외에 숫자가 나올경우 반 강제로 해당 수치를 재 입력되게 합니다.
+                    $node = 7;
+                }
+
+                var $sc = $r + $pc;
+                //예시 첫번째 회전 $sc(1855) = $r(1800) + $pc(55)
+                //두번쨰 회전 $sc(3802) = $r(3600) + $pc(202)
+                //세번쨰 회전 $sc(5496) = $r(5400) + $pc(96)
+                //1855 만큼 회전
+                $(this).css("transform","rotate("+ $sc +"deg)");
+                //console.log($pc);
+                return [$(this),$pc,$node]; //$pc를 return시킴
+                //두개 이상을 전달 할 때는 []를 넣어줘야 함
+                //[]면 무조건 배열형태 []이 없으면 제일 마지막 값만 전달
+            };
+
+            $("#okbtn").click(function(){
+                $("#alert").fadeOut().animate({  //디자인 alert 메세지 출력
+                    "top":"300px"
+                },800);
+            });
+        });
+    </script>
+    <style>
+        body { margin: 0; padding: 0;}
+        img { width: 100%; } /* 모바일시 해당 부분은 필수 */
+        .sectioncss { height: 100vh; position: relative; }
+        .gamebk { 
+            width: 100%; max-width: 420px; height: 100vh;
+            background-image: url("../image/game_bk.png");
+            background-repeat: no-repeat;
+            background-size: contain; position: relative; 
+            display: flex; flex-wrap: wrap; align-items: flex-start; align-content: flex-start;
+        }
+        .coincss { width: 80px; 
+            display: block; position:absolute; left: 40px; bottom: 0px; z-index: 5;
+        }
+        .gamerull { 
+            display: block; position: relative; width: 100%; max-width: 320px;
+            margin: 0 auto; transition: 5s; margin-top: 65%;
+        }
+        .spanbtn{ 
+            display: block; position: absolute; width: 70px;
+            z-index: 10; cursor: pointer; left: 50%; margin-left: -35px; bottom: 125px;
+        }
+        .gamebar{
+            display: block; position: absolute; width: 25px; height: 25px;
+            z-index: 10; left: 50%; margin-left: -12.5px; margin-top: 68%;
+        }
+        .alert{ 
+            width: 300px; height: 100px; display: block; border: 2px dashed white;
+            background-color: rgba(207,157,49,0.8);
+            position: absolute; left: 50%; margin-left: -150px;
+            top: 300px; z-index: 15; border-radius: 10px;  display: none;
+            box-shadow: 3px 3px 3px 3px #000;
+        }
+        .okbtn{ 
+            width: 80px; height: 30px; display: block; border-radius: 10px;
+            background-color: deepskyblue; text-align: center; line-height: 30px;
+            font-weight: bold; color: white; cursor: pointer; position: relative;
+            margin: 0 auto; margin-top: 50%; font-size: 13px; 
+        }
+        .msgtext{
+            width: 100%; height: 40px; display: block; text-align: center;
+            position: absolute; font-weight: bold; color: white; font-size: 17px;
+            font-family: "돋움"; 
+            line-height: 40px;
+        }
+        .blackbox { 
+            position: absolute; z-index: 100;
+            box-shadow: 0 0 0 9999px rgba(0,0,0,0.5); 
+            width: 100%; height: 100vh; margin-top: -900px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="blackbox"></div>
+<header style="height: 50px;"></header>
+<section class="sectioncss" id="sectioncss">
+    <aside class="gamebk">
+        <!-- alert 메세지 출력 -->
+        <label class="alert" id="alert">
+            <span class="msgtext" id="msgtext"></span>
+            <span class="okbtn" id="okbtn">확 인</span>
+        </label>
+        <label class="gamebar">
+            <img src="../image/game_bar.png">
+        </label>
+
+        <div class="box" style="width: 100%; position: relative;">
+            <span class="spanbtn" id="spanbtn">
+                <img src="../image/game_btn.png">
+            </span>
+            <label class="gamerull" id="gamerull">
+                <img src="../image/game_pan.png">
+            </label>
+            <span class="coincss">
+                <img src="../image/game_coin.png">
+            </span>
+        </div>
+    </aside>
+</section>
+</body>
+</html>
+<!-- 모바일 퍼블리싱은 자신의 핸드폰만 확인 하면 안됨 -->

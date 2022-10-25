@@ -1,0 +1,166 @@
+<style>
+	.pop_menu_bg_outline { width:360px; background-color:rgba(0,0,0,0.6); 
+    position:absolute; z-index:99;
+    display: none;
+     }
+	.pop_menu_outline { width:340px; position:absolute; 
+    background-color:white; z-index:100; display: block; }
+	.pop_menu_out { width:340px; }
+	
+	.c_contents {width:100%; height:80px; background-color:white; position:relative; margin:15px 0px;}
+	.c_contents>ul {width:100%; height:80px; list-style:none; margin:0; padding:0;}
+	.c_contents>ul>li {float:left; width:85px; height:80px; border-right:1px solid #ccc; box-sizing:border-box; text-align:center;}
+	.c_contents>ul>li:last-child {border:0;}
+	.c_contents>ul>li >span {display:inline-block;}
+	.c_icoli1 {width:35px; height:35px; margin-top:10px;}
+	.c_icoli2 {width:85px; height:35px; font-size:13px;}
+	
+	.c_menudiv {width:320px; height:auto; margin:0 auto;}
+	.c_menuul {width:100%; height:auto; list-style:none; margin:0; padding:0;}
+	
+	.c_menuul>li {width:320px; margin-bottom:1px; text-indent:10px; font-size:13px; background-color:#ce9e83;
+		 line-height:30px; color:white; font-weight:bold;}
+		 
+	.c_arimg { 
+        width:18px; height:30px; object-fit: cover;
+        position:relative; float:right; margin-right:10px;
+        } 
+	
+	.c_submenus {clear:both; position:relative; width:320px; height: auto; background-color:white; display:none; z-index:2500;}
+	.c_subol {width:220px; padding:0px; height:auto; box-sizing:border-box; list-style:none; margin:0;
+		color:black;}
+	.c_subli2 {width:100%; height:30px; line-height:30px; font-size:12px; text-indent:10px; margin:0 auto;}
+	.c_submenus>img {right:10px; position:absolute; top:5px;}
+</style>
+
+<div class="pop_menu_bg_outline" id="pop_menu_bg_outline">
+	<div class="pop_menu_outline" id="pop_menu_outline">
+		<div class="pop_menu_out">
+			
+<div class="c_contents">
+<ul id="s_ico">
+    <!--아이콘 출력 예시-->
+
+</ul>			
+</div>
+
+<div class="c_menudiv">
+<ul class="c_menuul" id="c_menuul">
+			<li>NEW7%</li>
+			<li>HOT100</li>
+			<li class="c_d">#힐링특가 <img src="img/arr1.png" class="c_arimg">
+				<div class="c_submenus" id="c_submenus0">
+				  <ol class="c_subol">
+					   <li class="c_subli2">-1+1</li>
+					   <li class="c_subli2">-특가</li>
+					   <li class="c_subli2">-1만원대 상품들</li>
+				   </ol>
+				 	<img src="img/menu1.png">
+				</div>
+            </li>
+			<li class="c_d">#취향저격PICK<img src="img/arr1.png" class="c_arimg">
+			<div class="c_submenus" id="c_submenus1">
+				  <ol class="c_subol">
+					   <li class="c_subli2">-이지룩</li>
+					   <li class="c_subli2">-빛나는 바캉스</li>
+					   <li class="c_subli2">-오피스룩</li>
+					   <li class="c_subli2">-키작녀도 안성맞춤</li>
+					   <li class="c_subli2">-썸머가디건</li>
+					   <li class="c_subli2">-특별한날 입는 원피스</li>
+					   <li class="c_subli2">-빅사이즈 (77,88)</li>
+					   <li class="c_subli2">-지금 바로 '쿨'</li>
+					   <li class="c_subli2">-네이쳐한 멋린넨</li>
+				   </ol>
+				 	<img src="img/menu2.png">
+				 </div>
+            </li>
+			<li class="c_d">MADE<img src="img/arr1.png" class="c_arimg">
+			<div class="c_submenus" id="c_submenus2">
+				  <ol class="c_subol">
+					   <li class="c_subli2">-감동 슬랙스</li>
+					   <li class="c_subli2">-습관 데님</li>
+					   <li class="c_subli2">-더 바른</li>
+					   <li class="c_subli2">-더 숨</li>
+					   <li class="c_subli2">-사이다</li>
+					   <li class="c_subli2">-원디건</li>
+					   <li class="c_subli2">-RIA</li>
+					   <li class="c_subli2">-REN</li>
+					   <li class="c_subli2">-RIA_홀가던트</li>
+				   </ol>
+				 	<img src="img/menu3.png">
+				 </div>
+            </li>
+			<li class="c_d">TOP<img src="img/arr1.png" class="c_arimg">
+			<div class="c_submenus" id="c_submenus3">
+				  <ol class="c_subol">
+					   <li class="c_subli2">-라운드넥</li>
+					   <li class="c_subli2">-브이넥</li>
+					   <li class="c_subli2">-폴라티</li>
+					   <li class="c_subli2">-후드/세트</li>
+					   <li class="c_subli2">-긴팔티</li>
+					   <li class="c_subli2">-나시티</li>
+				   </ol>
+				 	<img src="img/menu4.png">
+				 </div>
+            </li>
+			<li class="c_d">PANTS<img src="img/arr1.png" class="c_arimg">
+			<div class="c_submenus" id="c_submenus4">
+				  <ol class="c_subol">
+					   <li class="c_subli2">-#MADE</li>
+					   <li class="c_subli2">-스키니</li>
+					   <li class="c_subli2">-일자바지</li>
+					   <li class="c_subli2">-부츠컷</li>
+					   <li class="c_subli2">-와이드팬츠</li>
+					   <li class="c_subli2">-레깅스</li>
+					   <li class="c_subli2">-점프수트</li>
+					   <li class="c_subli2">-세트</li>
+				   </ol>
+				 	<img src="img/menu5.png">
+				 </div>
+            </li>
+			<li>OUTER</li>
+			<li>BLOUSE</li>
+		</ul>
+</div>
+
+		</div>
+	</div>
+</div>
+<script>
+    $(function(){
+        $.ajax({
+            url:"ico.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.s_ico($result);
+            },
+            error:function(){
+                console.log("데이터 오류");
+            }
+        });
+
+        $.fn.s_ico = function($result){
+            var $ico_html;
+            $($result.c_ico).each(function($node,$key){
+                $ico_html = "<li>\
+                <span class='c_icoli1'>\
+                <img src="+$key.img+"></span>\
+                <span class='c_icoli2'>"+$key.name+"</span></li>"
+                $("#s_ico").append($ico_html);
+            });
+        }
+
+        $("#c_menuul>li").click(function(){
+            var $li=$(this).index();
+            var $div=$("#c_menuul>li:eq("+$li+")>div").is(":visible");
+            if($div==true){
+                $("#c_menuul>li:eq("+$li+")>div").slideUp(500);
+            }
+            else{
+                $("#c_menuul>li:eq("+$li+")>div").slideDown(500);
+            }
+        });
+    });
+</script>

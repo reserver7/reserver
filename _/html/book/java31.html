@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript - 131p~157p 함수</title>
+<script>
+/*
+    문제6
+    이메일 회신 정보를 입력하게 됩니다.
+    단, 사용자가 직접 입력할 수는 없습니다.
+    해당 메일회사를 선택하고, 선택된 값이
+    input에 적용되도록 출력
+*/  
+    function aaa(hh){
+        var a = document.getElementById("a").value=hh; 
+    }
+</script>
+</head>
+<body>
+<input type="text" id="a" readonly>
+<select onchange="aaa(this.value);">
+    <option value="">[이메일 주소]</option>
+    <option value="nate.com">nate.com</option>
+    <option value="naver.com">naver.com</option>
+    <option value="gmail.com">gmail.com</option>
+    <option value="hotmail.com">hotmail.com</option>
+</select>
+</body>
+</html>

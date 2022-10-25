@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 2일차(오브젝트+애니메이션)</title>
+<script src="./jquery.js"></script> <!--Jquery 엔진 탑재-->
+<script>
+    $(document).ready(function(){
+        $("#box").animate({"width":"1000px"},1000); //css속성 : 범위 , 시간(1000=1초)  
+        //animate : 애니메이션 전체 컨트롤 할 수 있는 부분
+        //시간측정 : 1000 = 1초,  500 = 0.5초
+        //object.css(,) 기호 형태 구분 잘 해야함
+        //object.animate({:}) 기호 형태 구분 잘 해야함
+        $("#box2").animate({"width":"0px"},5000);
+        $("#box3").animate({    
+            //한가지 이상 효과를 사용시 "," 콤마를 이용하여
+            //CSS의 속성명을 입력하면 됨
+            "width":"0px",
+            "height":"0px"
+        },5000);
+
+        $("#box4").animate({    //왼쪽에서 오른쪽으로 움직이는 애니메이션
+            "left":"1000px"
+        },2000);
+        
+        $("#box5").animate({    //오른쪽에서 왼쪽으로 움직이는 애니메이션
+            "left":"0px"
+        },2000);
+
+        $("#box6").animate({    //위에서 아래로 움직이는 애니메이션
+            "top":"1000px"
+        },2000);
+
+        $("#box7").animate({    //투명도를 이용하는 애니메이션
+            "opacity":"0"   //opacity : 사라지게 하는 속성
+        },5000);
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0;}
+    .box{ /* 시작값은 0으로 시작 역순 일 수도 있음*/
+        width: 0px; height: 60px; background-color: blue;
+    }
+    .box2{
+        width: 1000px; height: 60px; background-color: red;
+    }
+    .box3{
+        width: 500px; height: 500px; background-color: green;
+    }
+    .box4{
+        width: 100px; height: 100px; background-color: purple;
+        position: absolute;
+    }
+    .box5{
+        width: 100px; height: 100px; background-color: black;
+        position: relative; left: 1000px;
+    }
+    .box6{
+        width: 100px; height: 100px; background-color: greenyellow;
+        position: absolute; top: 0px;
+    }
+    .box7{
+        width: 500px; height: 500px; background-color: aqua;
+    }
+</style>
+</head>
+<body>
+<div class="box5" id="box5"></div>
+<div class="box4" id="box4"></div>
+<div class="box" id="box"></div>
+<div class="box2" id="box2"></div>
+<div class="box3" id="box3"></div>
+<div class="box6" id="box6"></div>
+<div class="box7" id="box7"></div>
+</body>
+</html>

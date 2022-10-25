@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+<title>HTML5 테스트</title>
+<style>
+    .line { width: 400px; height:200px; border:1px solid black;
+    padding:30px;}
+    .div1 { width:100%; height:50px; line-height: 50px;
+    text-align: center; font-size:17px; 
+    font-family: "돋움체"; font-weight: bolder;}
+    .div2 { width:100%; height:30px; margin-top:30px; margin-bottom:30px; }
+    .ulcss { width:340px; height:30px; list-style: none;
+    margin:0 auto; padding:0;}
+    .ulcss li { float: left; height:30px; line-height:30px; text-align: center; }
+    .in1 { width:80px; height:30px; text-align: center; }
+    .in2 { width:50px; height:30px; text-align: center; }
+    .in3 { width:150px; height:30px; text-align: center; }
+    .nbsp1 { width:18px;}
+    .div3 { width:100%; height:30px; text-align: center;}
+    .btn { width:100px; height:30px; background-color:blue; color:white;
+    font-size:15px; border:0;}
+</style>
+</head>
+<body>
+<section class="line">
+<div class="div1">[개인/법인 사업자 로그인]</div>
+<div class="div2">
+<ul class="ulcss">
+    <li><input type="number" min="0" max="999" maxlength="3" class="in1"></li>
+    <li class="nbsp1">-</li>
+    <li><input type="number" min="0" max="99" maxlength="2" class="in2"></li>
+    <li class="nbsp1">-</li>
+    <li><input type="number" min="0" max="99999" maxlength="5" class="in3"></li>
+</ul>
+</div>
+<div class="div3">
+    <button type="button" class="btn">인증</button>
+</div>
+
+</section>
+</body>
+</html>

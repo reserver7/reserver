@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 3일차(슬라이드 배너 만들기1)</title>
+<script src="./jquery.js"></script><!--Jquery엔진 탑재-->
+<script>
+    $(document).ready(function(){
+        var $cp="";  //차후 : 디스크와 연계 + copy노드에도 사용
+        var $b=0;   //디스크 초기 노드값
+        var $img = $("#mainbanner > li").length; //배너의 이미지 갯수(디스크 갯수)
+        var $disc = 0;  //배너 숫자만큼 디스크를 작성위한 시작값(노드)
+        do{
+            $("#bannerdisc").append("<li></li>");
+            $disc++;
+        }while($disc<$img);
+
+        $("#leftbtn").click(function(){ //left버튼을 클릭
+            $("#mainbanner").animate({  //ul:left:0px -> -1000px (2초 동안)
+                "left":"-1000px"
+            },2000,function(){  //2초 후에 그 다음 행동을 말함
+                //$("#mainbanner > li").eq(0).remove(); //첫번쨰 li 노드를 삭제함
+                //$("#mainbanner > li").eq(0).css("display","none");
+                //$("#mainbanner").css("left","0px");   //ul:left:-1000 -> 0px (초기화)
+
+                $cp = $("#mainbanner > li").eq(0).clone(); //복사
+                $("#mainbanner > li").eq(0).remove(); //삭제
+                $("#mainbanner").css("left","0px"); //left 초기화
+                $("#mainbanner").append($cp); //카피
+                
+                //디스크 부분
+                $w = 0;
+                while($w<$img){
+                    $("#bannerdisc > li").eq($w).css("background-color","black");
+                    $w++;
+                }
+                //해당 디스크 색상변경
+                var $img_node = $img -1; //노드의 갯수 -1 (갯수는 3 노드는 2 그래서 -1 )
+                if($b<$img_node){
+                    $b++;
+                }
+                else{
+                    $b = 0;
+                }
+                $("#bannerdisc > li").eq($b).css("background-color","yellow");
+            });
+        }); 
+
+        $("#rightbtn").click(function(){
+            $cp = $("#mainbanner>li").eq(2).clone(); //맨마지막 노드 복사
+            $("#mainbanner>li").eq(2).remove(); //맨마지막 노드 삭제
+            $("#mainbanner").css("left","-1000px"); //부모 오브젝트를 왼쪽으로 -1000만큼 잡아당기기
+            $("#mainbanner").prepend($cp); //맨 앞에 생성
+            $("#mainbanner").animate({ //부모 오브젝트를 왼쪽으로 잡아당긴거 초기화
+                "left":"0px"
+            },2000);
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .bannercss{
+        width: 1000px; height: 490px; border:1px solid black;
+        box-sizing: border-box; margin: 0 auto; overflow: hidden;
+        position: relative;
+    }
+    .bannerul{
+        list-style: none; margin: 0; padding: 0; 
+        height: 490px; width: calc(1000*3px); /* calc() : 계산 수식구 (한개당 크기 * 갯수) */
+        position: absolute;
+        
+    }
+    .bannerul > li{
+        width: 1000px; height: 490px; float: left;
+    }
+    .bannerdisc{
+        width: calc(30*3); height: 30px; list-style: none;
+        margin: 0; padding: 0; position: absolute;
+        left: 450px; bottom: 10px;
+    }
+    .bannerdisc > li{
+        width: 30px; height: 30px; background-color: black;
+        border-radius: 30px; display: inline-block; margin-left: 15px;
+    }
+    .bannerdisc > li:nth-child(1){
+        background-color: yellow;
+    }
+</style>
+</head>
+<body>
+<div class="bannercss">
+    <ul class="bannerul" id="mainbanner">
+        <li><img src="./banner/banner0.png"></li>
+        <li><img src="./banner/banner1.png"></li>
+        <li><img src="./banner/banner2.png"></li>
+    </ul>
+    <ol class="bannerdisc" id="bannerdisc">
+       
+    </ol>
+</div>
+<br><br>
+<input type="button" value="<" id="leftbtn">
+<input type="button" value=">" id="rightbtn">
+</body>
+</html>

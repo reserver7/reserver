@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>CSS3 FLEX 중,상급</title>
+<style>
+    body {margin:0; padding:0;}
+    /* flex : block기본 골격 구조 + inline + float */
+    /* flex 사용시 자식 오브젝트에는 절대 display:block를 사용하지 못함 
+    단, 노드형태로 별도로는 사용할 수 있음, 기본 골격구조는 display:none가
+    있는 상황에서 사용함
+    */
+    /*
+    flex-direction : row(가로), column(세로) display: flex를 쓰면 필수로 써줘야 좋음
+    */
+    /* 
+    flex-wrap: wrap(자식이 부모사이즈에 맞춰서 밑으로 내려가는 현상)
+    flex-wrap: nowrap(자식이 부모사이즈에 맞춰서 줄어드는 현상)
+    단, width가 100% 또는 길이가 정해 지지 않을 경우만 사용하게 됨
+
+    justify-content : 수평에만 사용 (가로)
+    (flex-end:오른쪽) (space-around:양쪽 여백) (space-between:양쪽 여백 없음)
+
+    align-items(각각오브젝트), align-content(한줄형태) : 수직에만 사용 (세로)
+    row: 가로형태로 상단, 중단, 하단으로 오브젝트를 조정할 수 있음
+    column: 세로형태로 왼쪽, 가운데, 오른쪽으로 오브젝트를 조정할 수 있음
+    중요)align-content 사용시 flex-wrap:wrap를 무조건 사용해야 함
+    */
+    ul {
+        list-style: none; margin:0; padding:0;
+        border: 1px solid red; display: flex;
+        flex-direction: row; flex-wrap: wrap;
+        align-content: center;
+        height: 100px;
+    }
+    ul>li {
+        width:100px; height:30px; background-color: cadetblue;
+    }
+    .box { 
+        height: 100px; border: 1px solid black;
+        display: flex; flex-direction: row; align-items: baseline;
+    }
+    /* 
+        baseline을 사용하기 위해서 폰트사이즈, line-height도 사용해야만 
+        속성을 사용할 수 있음
+    */
+    .box > span {
+        width: 100px; height: 30px; background-color: orange;
+        text-align: center;
+    }
+    .box >span:nth-child(1){ height: 50px; line-height: 50px;}
+    .box >span:nth-child(4){ height: 10px; line-height: 10px;}
+    .box >span:nth-child(5){ height: 70px; line-height: 70px;}
+</style>
+</head>
+<body>
+    <!--
+     <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+    -->
+    <div class="box">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+</body>
+</html>

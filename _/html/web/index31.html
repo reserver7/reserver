@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+팝업창+파라미터(popup2.html)</title>
+<script>
+    function aaa(ids){
+        if(ids==""){
+            alert("아이디를 입력하세요!");
+            f.mid.focus();  //해당 id,name에 커서가 바로 가도록 하는 부분
+        }
+        else{
+            window.open("./popup2.html?memberids="+ids,"","width=400,height=600");
+        }
+    }
+</script>
+</head>
+<!--
+응용문제3. aaa()함수를 이용하여
+팝업창 popup2.html 호출 크기는 400*600 팝업창으로 오픈
+-->
+<body>
+<form name="f" id="f">
+<input type="text" name="mid" id="mid">
+<input type="button" value="중복확인" onclick="aaa(f.mid.value);">
+</form>
+</body>
+</html>

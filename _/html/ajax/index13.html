@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (2일차) - 배열통신(XML)</title>
+<!-- Parsing = 백엔더가 데이터를 만들어 준 거
+     Parser  = Parsing 된 걸 풀어서 사용 함
+-->
+<script>
+    let cm;
+    function ajax(){
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function fileopen(){
+            if(cm.readyState==XMLHttpRequest.DONE && cm.status==200){
+                xmlfile(this);  //xmlfile함수로 넘겨서 배열로 처리함
+            }
+        }
+        cm = windowck();
+        cm.onreadystatechange = fileopen;
+        cm.open("GET","./data.xml?v=1",true);
+        cm.send();
+    }
+
+    function xmlfile(a){    //해당 파일을 가져와서 HTML에 출력하는 함수
+        let x = a.responseXML; //response : json,xml용으로 사용
+        //responseText : txt, doc, xls일 경우만 사용함
+        var xmls = x.getElementsByTagName("ship");
+        var ea = xmls.length;
+        var f;
+        var mname,mid,mtel;
+        var html1,html2;
+        /*
+        for(f=0;f<ea;f++){
+            mname = xmls[f].getElementsByTagName("mname")[0].childNodes[0].nodeValue;
+            mid = xmls[f].getElementsByTagName("mid")[0].childNodes[0].nodeValue;
+            mtel = xmls[f].getElementsByTagName("mtel")[0].childNodes[0].nodeValue;
+            html1 = document.createElement("label");
+            html1.append(mname);
+            html2 = document.createElement("label");
+            html2.append(mid);
+            document.getElementById("members2").append(html1,html2);
+        }
+        */
+        /* appendChild(DOM) = append(NODE) 같은 내용임
+            prependChild(x) = prepend(NODE) 
+            단, IE에서는 append를 인식하지 못하는 사항이 있음
+            appendChild만 인식하게 됨
+        */
+       for(f in xmls){  //for in
+            if(isNaN(f)==false){
+            //length,namedItem,item (DOM객체에 사용되는 배열 부분)
+            //xmls for in으로 반복하게 되면, xml태그 자체를 DOM형태로 인식
+            //하게 되며, xml에서 갯수 형태는 item으로 카운터를 이용하여 사용하게 됨
+            //단, namedItem,item = index 와 함께 사용됨
+                mname = xmls[f].getElementsByTagName("mname")[0].childNodes[0].nodeValue;
+                mid = xmls[f].getElementsByTagName("mid")[0].childNodes[0].nodeValue;
+                mtel = xmls[f].getElementsByTagName("mtel")[0].childNodes[0].nodeValue;
+                html1 = document.createElement("label");
+                html1.setAttribute("title",mtel);
+                html1.append(mname);
+                html2 = document.createElement("label");
+                html2.append(mid);
+                document.getElementById("members2").append(html1,html2);
+            }
+       }
+    }
+</script>
+<style>
+    body{ margin: 0; padding: 0;}
+    .members { width: 300px; height: 30px; line-height: 30px; background-color: beige; font-size: 12px;}
+    .members > label { display:inline-block;}
+    .members > label:nth-child(odd){ 
+        width: 140px; height: 30px; text-align: center; line-height: 30px; 
+        border-right: 1px solid #ccc;
+    }
+    .members > label:nth-child(even){ 
+        width: 140px; height: 30px; text-align: center; line-height: 30px; 
+    }
+    .members2 { width: 300px; height: auto; background-color: gray; font-size: 12px;}
+    .members2 > label { display:inline-block;}
+    .members2 > label:nth-child(odd){ 
+        width: 140px; height: 30px; text-align: center; line-height: 30px; 
+        border-right: 1px solid #ccc;
+    }
+    .members2 > label:nth-child(even){ 
+        width: 140px; height: 30px; text-align: center; line-height: 30px; 
+    }
+</style>
+</head>
+<body>
+<div class="members">
+    <label>고객명</label><label>아이디</label>
+</div>
+<div class="members2" id="members2">
+
+</div>
+<br><br>
+<input type="button" value="회원정보 출력" onclick="ajax();">
+</body>
+</html>

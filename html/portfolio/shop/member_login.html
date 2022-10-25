@@ -1,0 +1,130 @@
+<meta charset="UTF-8">
+<script>
+    function login_btn(){
+        var m_id = document.getElementById("mid");
+        var m_pass = document.getElementById("mpass");
+        if(m_id.value==""){
+            alert("아이디를 입력해 주세요."); 
+            m_id.focus(); 
+        }
+        else if(m_pass.value==""){
+            alert("패스워드를 입력해 주세요.");
+            m_pass.focus();
+        }
+        else{
+            const m_id_value = "mid=" + m_id.value;
+            const m_pass_value = "&mpass=" + m_pass.value;
+            const login_infos = m_id_value + m_pass_value;
+            mamber_ajax(login_infos);
+        }
+    }
+
+    let members;
+    function mamber_ajax(login_infos){
+        function memberck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function loginpost(){
+            if(members.readyState==XMLHttpRequest.DONE && members.status==200){
+                //data_error : 아이디,패스워드 전송이 안될 경우
+                //id_error : 아이디 값이 없을 경우(미회원 가입자)
+                //pass_error : 패스워드가 틀릴 경우
+                //db_error : 데이터베이스가 문제가 생길 경우
+                //ok : 정상적인 로그인
+                var recall = this.response;
+                if(recall=="id_error"){
+                    alert("해당 아이디는 가입회원이 아닙니다.");
+                    return false;
+                }
+                else if(recall=="pass_error"){
+                    alert("패스워드가 틀립니다.");
+                    return false;
+                }
+                else if(recall=="ok"){
+                    alert("환영합니다. 고객님 접속 하셨습니다.");
+                    location.href = "./index.html";
+                }
+                else{
+                    console.log(recall);
+                    return false;
+                }
+            }
+        }
+        members = memberck();
+        members.onreadystatechange = loginpost;
+        members.open("POST","./login_check.php",true);
+        members.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        members.send(login_infos);
+    }
+
+    function ok_btn(){
+        var non_name = document.getElementById("non_name");
+        var non_number = document.getElementById("non_number");
+        if(non_name.value==""){
+            alert("주문자명를 입력해 주세요.");
+            non_name.focus();
+        }
+        else if(non_number.value==""){
+            alert("주문번호를 입력해 주세요.");
+            non_number.focus();
+        }
+        else{
+
+        }
+    }
+
+    function page_m(no){
+        var url_go;
+        switch (no){
+            case 1:
+            url_go = "./agree.html";
+            break;
+
+            case 2:
+            url_go = "./id_search.html";
+            break;
+
+            case 3:
+            url_go = "./pass_search.html";
+            break;
+        }
+        location.href = url_go;
+    }
+</script>
+<div class="member_view">
+    <p>MEMBER LOGIN</p>
+    <form name="member_login" id="member_login">
+    <div class="login_view">
+        <label class="input_view">
+            <input class="inputs" type="text" placeholder="ID" id="mid">
+            <input class="inputs" type="password" placeholder="PASSWORD" id="mpass">
+            <label><input type="checkbox" id="login_ck">아이디 저장</label>
+        </label>
+        <label class="login_btn" >
+            <span onclick="login_btn();">LOGIN</span>
+        </label>
+    </div>
+    </form>
+    <div class="member_btn">
+        <input type="button" value="회원가입" class="join" onclick="page_m(1);">
+        <input type="button" value="아이디 찾기" class="find_id" onclick="page_m(2);">
+        <input type="button" value="비밀번호 찾기" class="find_pw" onclick="page_m(3);">
+    </div>
+    <form name="nonmember" id="nonmember" enctype="application/x-www-form-urlencoded">
+    <div class="order_view">
+        <label class="order_title">비회원 주문조회</label>
+        <label class="order_input">
+            <span>
+                <input class="inputs2" type="text" name="non_name" id="non_name" placeholder="주문자명">
+                <input class="inputs2" type="text" name="non_number" id="non_number" placeholder="주문번호">
+            </span>
+            <span>
+                <label class="order_btn" onclick="ok_btn();">주문조회</label>
+            </span>
+        </label>
+        <label><span>주문번호와 비밀번호를 잊으신 경우, 고객센터로 문의하여 주시기 바랍니다.</span></label>
+    </div>
+    </form>
+</div>

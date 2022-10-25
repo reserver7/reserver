@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>Jquery-Ajax (2일차)-아이디 중복체크(POST)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $("#btn").click(function(){
+            if($("#make_id").val()==""){
+                alert("생성할 아이디를 입력해 주세요.");
+            }
+            else{   //Ajax POST 파트
+                var $ids = $("#make_id").val();
+                $.ajax({
+                    url:"./jndex4ok.php",
+                    cache:false,
+                    type:"POST",
+                    contentType:"application/x-www-form-urlencoded", //post할 때 암호화
+                    dataType:"json",    //Back-end (json(php,jsp,java),xml(asp),html(aspx,c#,java),script(python))
+                    data:"make_id="+$ids,   //data : POST,GET (Back-end가 원하는 형태로 보내야함),javascript는 post만
+                    success:function(result){
+                        var $rs = result;
+                        if($rs=="no"){
+                            alert("해당 아이디는 이미 사용중 입니다.");
+                            $("#make_id").val("");
+                            $("#make_id").focus();
+                        }
+                        else if($rs=="ok"){
+                            alert("해당 아이디는 사용 가능합니다.");
+                            $("#make_id").attr("readonly",true);
+                            $("#btn").unbind("click");
+                        }
+                        else if($rs=="cancel"){
+                            alert("아이디는 최소 5글자 이상이여야 합니다.");
+                            $("#make_id").focus();
+                        }
+                        //console.log(result);
+                        //no:아이디 중복, ok:아이디 사용가능, cancel:최소 5글자 이상
+                    },
+                    error:function(){
+                        console.log("전송이 잘못 되었습니다.");
+                    }
+                });//jquery ajax보다 자바스크립트로 날리는것이 보안에 더 좋음
+            }
+        });
+    })
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    *{ box-sizing: border-box; }
+    #make_id { width: 250px; height: 30px; text-align: center; line-height: 30px;}
+    #btn{ 
+        width: 80px; height: 30px; text-align: center; line-height: 30px;
+        background-color: cornflowerblue; color: white; border: 0; cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<input type="text" id="make_id" placeholder="생성할 아이디를 입력해 주세요.">
+<input type="button" value="중복체크" id="btn">
+</body>
+</html>

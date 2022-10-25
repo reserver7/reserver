@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ES6 특강3</title>
+</head>
+    <script type="module">
+        import {aaa,bbb,zzz} from "./index3.js";
+        var b = new aaa("홍길동");  
+        //class 호출시 new 라는것을 셋팅 한 후 해당 class명을 가져오도록 함
+        console.log(b.mname);
+
+        var c = new bbb(5,8);
+        if(c.aw==false){
+            alert("올바른 값이 아닙니다.");
+        }
+
+        /* class에 함수 이용방법 */
+        var z = new zzz("이순신");  //zzz라는 class를 호출함
+        console.log(z.logout()); //zzz라는 class안에 logout()이라는 함수를 가져옴
+    </script>
+<body>
+
+</body>
+</html>

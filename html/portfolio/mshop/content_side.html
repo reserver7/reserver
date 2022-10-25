@@ -1,0 +1,138 @@
+<style>
+	.content_side_outline { width:360px; height:408px; margin:24px auto 24px auto; }
+	
+	.sidebanner_b { width:360px; height:50px; }
+	.sidebanner_b:first-child { margin-bottom:24px; }
+	
+	.tab_b { width:320px; height:260px; margin:0 auto; margin-bottom:24px; border:1px solid #dbb098; border-top:0; }
+    .tab_title_b { width:320px; height:40px; clear:both; 
+        border-bottom:1px solid #dbb098; 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+	.tab_title_b>span { 
+    width:100px; height:40px; text-align:center; 
+    line-height:40px; color:#fff; 
+    display: block; cursor: pointer;
+    }
+	.tab_normal_b { background-color:#dbb098; }
+	.tab_active_b { background-color:#d77772; }
+	
+	.tab_list_b { width:320px; height:160px; }
+	.tab_list_b ul { width:320px; height:160px; margin:0; padding:0; padding-left:45px; }
+	.tab_list_b li { width:275px; height:40px; line-height:40px; }
+	
+	.tab_button { width:320px; height:60px; text-align:right; padding:15px 15px 0 0; box-sizing:border-box; }
+	.tab_button button { cursor: pointer; padding: 0; width:70px; height:30px; font-size:13px; color:#fff; background-color:#d6746f; border:0; line-height:15px; border-radius:5px; }
+</style>
+
+<div class="content_side_outline">
+	<div class="sidebanner_b">
+    <img id="sidebanner1">
+    </div>
+	
+	<div class="tab_b">
+		<div class="tab_title_b">
+        <span class="tab_normal_b" id="tab_normal_b">이벤트</span>
+        <span class="tab_active_b" id="tab_active_b">공지사항</span>
+        </div>
+		<div class="tab_list_b">
+			<ul id="tab_list_b"></ul>
+		</div>
+		<div class="tab_button">
+			<button id="tab_button">전체보기</button>
+		</div>
+	</div>
+	
+	<div class="sidebanner_b">
+    <img id="sidebanner2">
+    </div>
+</div>
+<script>
+    let sidebanner1 = Math.floor(Math.random()*6)+1;
+    let sidebanner2 = Math.floor(Math.random()*6)+1;
+    console.log(sidebanner1); console.log(sidebanner2);
+    if(sidebanner1!=sidebanner2){
+        document.getElementById("sidebanner1").setAttribute("src","./img/sidebanner"+sidebanner1+".png");
+        document.getElementById("sidebanner2").setAttribute("src","./img/sidebanner"+sidebanner2+".png");
+    }
+    else{
+        document.getElementById("sidebanner1").setAttribute("src","./img/sidebanner1.png");
+        document.getElementById("sidebanner2").setAttribute("src","./img/sidebanner2.png");
+    }
+
+    $(function(){
+            $.ajax({
+            url:"./src/event.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.event($result);
+            },
+            error:function(){
+                console.log("데이터 오류");
+            }
+            });
+
+            $.fn.event = function($result){
+            $($result).each(function($no,$key){
+                //console.log($key.title);
+                $("#tab_list_b").append("<li>"+$key.title+"</li>");
+            });
+            }
+
+        $("#tab_active_b").click(function(){
+            $("#tab_list_b>li").remove();
+            $.getJSON({
+            url:"./src/notice.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.notice($result);
+            },
+            error:function(){
+                console.log("데이터 오류");
+            }
+            })
+
+            $.fn.notice = function($result){
+            $($result).each(function($no,$key){
+                //console.log($key.title);
+                //var $co = $("#tab_list_b").clone("<li>"+$key.title+"</li>");
+                $("#tab_list_b").append("");
+                $("#tab_list_b").append("<li>"+$key.title+"</li>");
+            });
+            }
+        });
+
+        $("#tab_normal_b").click(function(){
+            $("#tab_list_b>li").remove();
+            $.ajax({
+            url:"./src/event.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.event($result);
+            },
+            error:function(){
+                console.log("데이터 오류");
+            }
+            });
+
+            $.fn.event = function($result){
+            $($result).each(function($no,$key){
+                //console.log($key.title);
+                $("#tab_list_b").append("<li>"+$key.title+"</li>");
+            });
+            }        
+        });
+
+        $("#tab_button").click(function(){
+            location.href = "https://m.sonyunara.com/board/list.php?boardid=csnotice";
+        })
+    });
+</script>

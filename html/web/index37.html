@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript + css(이벤트 선언 핸들링)</title>
+<style>
+    li{
+        width:100px; height:30px; background-color: blue; color: white;
+        float: left; list-style: none; margin:0; padding:0; text-align: center;
+        line-height:30px; cursor: pointer;
+    }
+</style>
+<script>
+    function aaa(cc){
+        a[cc].onclick = function(){ //이벤트 선언 핸들링
+            /*
+            switch(cc){
+                case 0:
+                location.href="http://www.naver.com";
+                break;
+
+                case 1:
+                location.href="http://www.google.com";
+                break;
+
+                default:
+                alert("현재 서비스 준비중 입니다.");
+                break;
+            }
+            */
+           var ds = a[cc].getAttribute("data"); 
+           //HTML 해당 태그에 data이름을 가진 속성 값을 가져옴
+        }
+    }
+</script>
+</head>
+<body>
+    <ul id="abc">
+        <li class="licss" data="http://www.naver.com">메뉴1</li>
+        <li class="licss" data="네이트">메뉴2</li>
+        <li class="licss" data="구글">메뉴3</li>
+        <li class="licss" data="닷컴">메뉴4</li>
+        <li class="licss" data="마이홈">메뉴5</li>
+    </ul>
+</body>
+<script>
+    /*
+    var a = document.getElementById("abc");
+    a.onclick = function(){
+        alert("test");
+    }
+    */
+    var a = document.querySelectorAll(".licss");
+    var b = a.length;
+    var c;
+    for(c=0;c<b;c++){   //nth-child(1) > [0]
+        aaa(c); //aaa이벤트 핸들링 출력
+    }
+</script>
+</html>

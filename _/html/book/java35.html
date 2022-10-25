@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>step page 제작(1)</title>
+</head>
+<script>
+    function abc(){
+        var s1= f.snumber1.value;//사업자앞자리
+        var s2= f.snumber2.value;//뒷자리
+        var nam= f.sname.value;//대표자명
+        var agree= f.agree.checked;
+
+        if(s1=="" || s2==""){
+            alert("사업자번호를 모두 입력해주세요");
+        }
+        else if(nam==""){
+         alert("대표자명을 입력해주세요"); 
+        }
+        else if(s1.length<6 || s2.length<7){
+            alert("사업자번호는 앞자리 6자리 뒷자리 7자리 입니다.");
+        }
+        else if(agree==false){
+            alert("정보보안 체크는 필수사항 입니다..");
+        }
+        else{
+            f.method="GET";
+            f.action="http://reserver1.dothome.co.kr/book/java36.html";
+            f.submit();
+        }
+    }
+</script>
+<body>
+<form name="f" id="f">
+<input type="checkbox" name="agree" id="agree"><label for="agree">정보보안 암호화</label>
+<br>
+<input type="text" name="snumber1" maxlength="6" placeholder="사업자번호 앞자리">
+-
+<input type="text" name="snumber2" maxlength="7" placeholder="사업자번호 뒷자리">
+
+<input type="text" name="sname" placeholder="대표자명">
+<input type="button" value="패스워드 찾기" onclick="abc();">
+</form>
+</body>
+
+</html>
+
+<!-- 
+page1.
+1. 패스워드를 재입력하는 페이지 입니다. 패스워드 재입력시 기본정보를 확인하게 됩니다.
+   정보보안 체크는 필수사항이며 , 미체크시 get 해당 url 보낼 수 없습니다.
+2. snumber1-2 6자리, 7자리 모두 입력이 되어야 합니다.
+3. 대표자 이름이 모두 입력되어야 합니다.
+**필수데이터: 134327-3400678  대표자명: hong
+
+ -->
+
+<!--
+page2.
+ 파라미터 값으로 넘어온 값을 이용하여 사업자 번호를 확인하게 됩니다.
+ 총 사업자 번호 13자리를 모두 확인하며 사업자번호 13자리가 안될경우
+ 이전 페이지로 이동합니다.
+ 경고메세지"올바른 값이 아닙니다."로 출력
+ 대표자명또한 확인이 되지 않을 경우 동일한 메세지 출력
+ 패스워드 입력시 동일한 패스워드여야하며 , 동일한 패스워드 입력시 경고메세지로"동일한 패스워드를 입력하세요"라고 출력"
+
+ **파라미터 값을 가져와야합니다.
+ ?snumber1=134327&snumber2=3400678&sname=hong
+
+location.href;
+substr(,);
+
+  -->

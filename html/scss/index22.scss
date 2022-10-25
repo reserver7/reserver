@@ -1,0 +1,60 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+/*
+@mixin boxs {
+    .box2{
+        @content;   //include에서 boxs를 호출하고, @content가 발동이 되면서 include에 있는
+        //모든 오브젝트 속성을 그대로 가져오는 형태 임
+    }
+}
+@include boxs{
+    width: 100px; height: 100px; border: 1px solid black;
+}
+*/
+$desktop-width:1100px;
+$tablet-width:1024px;
+$tablet-width2:768px;
+$mobile-width:640px;
+$mobile-width2:425px;
+$mobile-width3:360px;
+@mixin pc {
+    @media screen and (min-width:$desktop-width) {
+        background-color: black;
+    }
+}
+@mixin tablet {
+    @media screen and (max-width:$tablet-width) {
+        background-color: blue;
+    }
+}
+@mixin tablet2 {
+    @media screen and (max-width:$tablet-width2) {
+        background-color: green;
+    }
+}
+@mixin mobile {
+    @media screen and (max-width:$mobile-width) {
+        background-color: yellowgreen;
+    }
+}
+@mixin mobile2 {
+    @media screen and (max-width:$mobile-width2) {
+        background-color: purple;
+    }
+}
+@mixin mobile3 {
+    @media screen and (max-width:$mobile-width3) {
+        background-color: pink;
+    }
+}
+body{
+    @include base; 
+    @include pc;
+    @include tablet;
+    @include tablet2;
+    @include mobile;
+    @include mobile2;
+    @include mobile3;
+}

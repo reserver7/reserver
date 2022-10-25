@@ -1,0 +1,43 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 9일차 메뉴 셀렉트 (JqueryUI전용)</title>
+<script src="../jquery.js"></script>
+<!-- 
+    jquery ui는 반드시 jquery엔진 다음에 위치 하도록 합니다!!!!!!!!!!!
+    jquery ui 엔진 이며, css ui도 함께 사용해야만 정상적으로 ui가 반영되어 짐 -->
+<script src="./jquery-ui.js?v=1"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        $("#menu").sortable();  //해당 오브젝트를 원하는 위치에 변경 할 수 있는 함수
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .menu {
+        width: calc(150px); height: auto;
+        list-style: none; margin: 0; padding: 0;
+    }
+    .menu > li {
+        width: 150px; height: 30px; border: 1px solid black;
+        box-sizing: border-box; cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<ul class="menu" id="menu">
+    <li>자동차</li>
+    <li>휴대폰</li>
+    <li>조립PC</li>
+    <li>의류</li>
+    <li>가전제품</li>
+</ul>
+</body>
+</html>

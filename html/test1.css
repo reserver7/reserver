@@ -1,0 +1,35 @@
+body { margin:0; padding:0;}
+
+.main { height:600px; }
+.divmain { 
+    width:1000px; height:auto; margin:0 auto; position: relative;
+}
+.logo { 
+    width:350px; height:auto; position: absolute;
+    display: block; left:50%; margin-left:-175px; top:80px; z-index:1;
+} /* left,right 등을 2번 사용하지 않음 
+position: absolute 를 쓸경우 z-index 를 써야함 */
+.img { width:100%;}
+.cp { 
+    width:100%; height:60px; position: absolute; z-index:2; top:320px;
+}
+.olcss{ position: relative;
+    list-style: none; width:655px; height:50px; color: white; margin:0; padding:0;
+    margin:0 auto; margin-top:3px;
+}
+.olcss>li{
+    height:50px; text-align: center; float: left; line-height:50px; 
+}
+.olcss>li>input{
+    width:150px; height:50px; text-align: center; 
+    color: blue; font-size: 15px; border:1px solid black;
+}
+.spancss { width:100%; height:50px; position: absolute;
+    display:block; text-align: center; bottom:50px; z-index: 10;
+}
+.spancss>button { width:150px; height:50px; border:1px solid white; border-radius:25px;
+    background-color:black; color:white; font-size:15px; font-weight:bold;
+    cursor: pointer; font-family: "돋움체"; box-shadow:0 5px 5px cornflowerblue;
+}
+.spancss>button:hover { background-color:white; color:black; }
+.v { height:auto; margin:0; padding:0;}

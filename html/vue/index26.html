@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue6일차 - 가격 변동 부분2</title>
+<script src="./vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+<style>
+    .ulcss{ width: auto; height: 30px; list-style: none; margin: 0; padding: 0;}
+    .ulcss > li{ width: calc(400px/4); height: 30px; display: inline-block; border: 1px solid #ccc; 
+    box-sizing: border-box; text-align: center; line-height: 30px; cursor: pointer; font-size: 13px;}
+    .ulcss > li:hover{ color: red; font-size: 15px;}
+</style>
+</head>
+<body>
+<section id="box">
+    <ul class="ulcss">
+        <li v-on:click="btn_lo">낮은가격순</li>
+        <li v-on:click="btn_hi">높은가격순</li>
+        <li v-on:click="btn_new">신상품순</li>
+        <li v-on:click="btn_vote">인기상품순</li>
+    </ul>
+    <ul>
+        <li v-for="list in allproduct" v-if="all && part==1">{{ list.product }} : {{ list.price.toLocaleString() }}원 ☆추천수 {{ list.vote }}</li>
+        <li v-for="list in pro_arr" v-if="part==2">{{ list.product }} : {{ list.price.toLocaleString() }}원 ☆추천수 {{ list.vote }}</li>
+    </ul>
+</section>
+</body>
+<script>
+    //FHD, QHD, UHD, 4K, 8K, 144Hz, 60Hz, 165Hz
+    //VGA, DVI, HDMI, DP
+    var arr = [
+        { seq:0, product:"삼성 모니터 27인치", price:195000, vote:119 },
+        { seq:1, product:"LG 모니터 144Hz 25인치", price:270000, vote:360 },
+        { seq:2, product:"esys 모니터 평면 27인치", price:150000, vote:87 },
+        { seq:3, product:"Raean 모니터 30인치", price:228000, vote:99 },
+        { seq:4, product:"한성 모니터 32인치 4K", price:328000, vote:221 }
+    ];
+    var a = new Vue({
+        el:"#box",
+        data:{
+            pro_arr:arr,
+            order:"",
+            all:true,
+            part:1
+        },
+        methods:{
+            btn_lo:function(){  //낮은가격
+                //this.order = "asc";
+                this.part = 2;
+                a.order_by("asc","price");
+                //this.pro_arr = _.orderBy(this.pro_arr,['price'],this.order);
+            },
+            btn_hi:function(){  //높은가격
+                //this.order = "desc";
+                this.part = 2;
+                this.order_by("desc","price");
+                //this.pro_arr = _.orderBy(this.pro_arr,['price'],this.order);
+            },
+            btn_new:function(){ //신상품 (이름순으로 배치 A 제일 먼저 출력 ~ 한글 ㄱ~ 출력이 됨)
+                this.order = "asc";
+                this.part = 2;
+                this.pro_arr = _.orderBy(this.pro_arr,['product'],this.order);
+            },
+            btn_vote:function(){ //인기순으로 배치
+                this.order = "desc";
+                this.part = 2;
+                this.pro_arr = _.orderBy(this.pro_arr,["vote"],this.order);
+            },
+            order_by:function(o,na){
+                this.pro_arr = _.orderBy(this.pro_arr,[na],o);
+                //orderBy 사용시 숫자와 문자를 함께 사용하지 못함
+            }
+        },
+        computed:{
+            allproduct:function(){
+                return this.pro_arr;
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,308 @@
+body{margin:0; padding:0;}
+.all {width:480px; height:100%; margin:0 auto; font-family:"돋움";}
+ul{list-style:none; margin:0; padding:0;}
+ol{list-style:none; margin:0; padding:0;}
+.popup{
+	position:relative;
+	width:480px;
+	height:50px;
+	background-color:#484848;
+}
+.popup>ul{width:480px; height:50px;}
+.popup>ul>li{float:left;}
+.pop1{
+	width:444px;
+	height:50px;
+	font-size:12px;
+	font-weight:bold;
+	color:white;
+	display:table;
+}
+.pop1>div{
+	display:table-cell;
+	vertical-align:middle;
+	padding-left:13px;
+	box-sizing:border-box;
+}
+.pop2{
+	width:36px;
+}
+.closeico{margin:12px 12px 0 0; cursor:pointer;}
+
+/*검색창*/
+.searchdiv{
+	width:480px;
+	height:60px;
+	background-color:#484848;
+	position:absolute;
+	top:50px;
+	display:none;
+}
+.searchtext{
+	width:350px;
+	height:40px;
+	border-radius:5px;
+	font-family:"돋움";
+	font-size:12px;
+	font-weight:bold;
+	color:#ccc;
+	box-sizing:border-box;
+	margin:10px 0 0 22px;
+	text-indent:5px;
+	line-height:20px;
+}
+.searchbtn{
+	width:60px;
+	height:40px;
+	border-radius:5px;
+	border:0;
+	font-family:"돋움";
+	font-size:12px;
+	font-weight:bold;
+	background-color:white;
+	margin:10px 0 0 20px;
+	line-height:20px;
+	cursor:pointer;
+}
+
+
+
+/*마우스 사진*/
+.maindiv1{
+	position:relative;
+	width:480px;
+	height:480px;
+}
+.fogul{
+	position:absolute;
+	width:480px;
+	height:50px;
+	z-index:1;
+}
+.fogul>li{float:left;}
+
+
+
+/*상품*/
+.productdiv{
+	position:relative;
+	width:480px;
+	height:150px;
+}
+.productdiv>ul{
+	width:100%;
+	height:150px;
+}
+.productdiv>ul>li{
+	float:left;
+	width:160px;
+	text-align:center;
+}
+
+
+
+/*4개 사진 인ㅇ스타*/
+.shoshuldiv{
+	position:relative;
+	width:480px;
+	height:324px;
+}
+.shoshuldiv>ul{
+	position:absolute;
+	width:480px;
+	height:322px;
+	border-top:1px solid #ccc; border-bottom:1px solid #ccc;
+}
+.shoshuldiv>ul>li{
+	float:left;	
+}
+.sholi1{
+	height:143px;
+	border-bottom:1px solid #ccc;
+}
+.sholi2{
+	height:178px;
+}
+
+
+/*메인보드 유통사검색*/
+.boarddiv{
+	position:relative;
+	width:480px;
+	height:440px;
+	border-bottom:2px solid #ccc;
+}
+.boarddiv>ul{
+	width:400px;
+	height:360px;
+	margin:0 auto;
+	margin-top:25px;
+	border:1px solid #ccc;
+}
+.boarddiv>ul>li{
+	border-bottom:1px solid #ccc;
+	box-sizing:border-box;
+}
+.boarddiv>ul>li:last-child{
+	border-bottom:0;
+}
+.boardli1{
+	height:40px;
+	line-height:40px;
+	font-family:"돋움";
+	font-size:15px;
+	font-weight:bold;
+	background-color:#000000;
+	color:white;
+	text-align:center;
+}
+.boardli2{
+	width:400px;
+	height:150px;
+	line-height:20px;
+	font-family:"돋움";
+	font-size:12px;
+	font-weight:bold;
+	background-color:#f7f7f8;
+	display:table;
+}
+.boardli2>div{
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+}
+.boardli3{
+	width:400px;
+	height:170px;
+	line-height:20px;
+	font-family:"돋움";
+	font-size:12px;
+	font-weight:bold;
+	background-color:#f7f7f8;
+	display:table;
+}
+.boardli3>div{
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+}
+.numbertext{
+	width:150px;
+	height:20px;
+	margin-left:5px;
+}
+.numberbtn{
+	font-family:"돋움";
+	font-size:12px;
+	font-weight:bold;
+	width:110px;
+	height:35px;
+	line-height:17.5px;
+	background-color:#000000;
+	border-radius:5px;
+	color:white;
+	border:0;
+	cursor:pointer;
+}
+.boardspan{
+	display:inline-block;
+	width:480px;
+	height:30px;
+	line-height:15px;
+	text-align:center;
+	font-family:"돋움";
+	font-size:10px;
+	margin-top:15px;
+}
+
+
+
+/*bottom*/
+.bottomdiv{
+	position:relative;
+	width:480px;
+	height:300px;
+}
+.bottomdiv>ul{
+	width:480px;
+	height:280x;
+	margin-top:50px;
+}
+.bottomdiv>ul>li{
+	text-align:center;
+	height:40px;
+	line-height:40px;
+	font-size:15px; color:#66666;
+}
+
+.footerdiv{
+	position:relative;
+	width:480px;
+	height:65px;
+	line-height:20px;
+	text-align:center;
+	font-size:10px; color:#66666;
+}
+a{color:#66666; text-decoration:1px solid #666666;}
+a:link{color:#66666;}
+a:active{color:#66666;}
+a:hover{color:#66666;}
+a:visited{color:#66666;}
+
+
+
+/*메뉴 나오기*/
+.menudiv{
+	width:0px;
+	height:100%;
+	position:absolute;
+	z-index:3;
+	background-color:#ffffff;
+	display:none;
+}
+.menuclose{
+	display:inline-block;
+	width:16.8px;
+	height:16.8px;
+	margin:10px 0 0 10px;
+	cursor:pointer;
+}
+.menudiv>ul{
+	position:absolute;
+	width:460px;
+	margin-left:10px;
+	height:auto;
+	margin-top:10px;
+}
+.menudiv>ul>li{
+	height:24px;
+	line-height:24px;
+	font-family:"돋움";
+	font-size:12px;
+	font-weight:bold;
+}
+.menudiv>ul>li>img{
+	width:4%;
+	position:relative;
+	top:3px;
+	margin-right:5px;
+}
+.somenuol{
+	width:436px;
+	height:auto;
+	margin-left:24px;
+}
+.somenuol>li{
+	height:24px;
+	line-height:24px;
+	font-family:"돋움";
+	font-size:14px;
+	color:#666666;
+	font-weight:bold;
+}
+.somenuol>li>img{
+	float:right;
+	width:3%;
+	top:5.5px;
+	position:relative;
+}

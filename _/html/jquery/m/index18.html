@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 14일차 - random을 이용한 난수값 적용하기</title>
+<script src="../jquery.js?v=17"></script>
+<script src="./jquery-ui.js?v=3"></script>
+<script>
+    $(document).ready(function(){
+        /* 반복문 사용 X */
+        var $no0 = Math.ceil(Math.random()*10+-1);
+        var $no1 = Math.floor(Math.random()*10+0);
+        var $no2 = Math.floor(Math.random()*10+0);
+        var $no3 = Math.floor(Math.random()*10+0);
+        
+        /*
+        var $li1 = "./images/no" + $no1 + ".png";
+        var $li2 = "./images/no" + $no2 + ".png";
+        var $li3 = "./images/no" + $no3 + ".png";
+        var $li4 = "./images/no" + $no4 + ".png";
+
+        $(".ulcss>li:eq(0)>img").attr("src",$li1);
+        $(".ulcss>li:eq(1)>img").attr("src",$li2);
+        $(".ulcss>li:eq(2)>img").attr("src",$li3);
+        $(".ulcss>li:eq(3)>img").attr("src",$li4);
+        */
+
+        //반복문 사용 O        
+        var $len = $(".ulcss>li").length;
+        var $random;    //랜덤숫자 변수
+        var $img;   //이미지 변수
+        var $f; //반복문 변수
+        var $ids;   //변수명을 받는 부분
+        for($f=0;$f<$len;$f++){
+            $random = Math.floor(Math.random()*10);   //랜덤숫자
+            $img = "./images/no" + $random + ".png";    //랜덤숫자 + 이미지
+            
+            $ids = eval("$no" + $f); //eval() : 글자를 변수로 만드는 속성
+            //$img = "./images/no" + $ids + ".png";
+            $(".ulcss>li:eq("+$f+")>img").attr("src",$img); //li노드 + 랜덤 숫자 + 이미지
+        }
+        var $total = $no0 +""+ $no1 + "" + $no2 + "" + $no3;
+    
+        
+        
+        $("#btn").click(function(){
+            var $scnum = $("#scnum").val();
+            if($scnum==$total){
+                location.href="http://www.naver.com";
+            }
+            else{
+                alert("정확히 입력해 주세요");
+            }
+        });
+        $("#rebtn").click(function(){
+            location.reload();
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .security{ width: 200px; height: 80px; background-image: url("./images/security_back.png");}
+    .ulcss{ width: 100%; height: 80px; list-style: none; margin: 0; padding: 0; }
+    .ulcss > li{ width: 50px; height: 80px; float: left; }
+</style>
+</head>
+<body>
+<div class="security">
+    <ul class="ulcss">
+        <li><img src=""></li>
+        <li><img src=""></li>
+        <li><img src=""></li>
+        <li><img src=""></li>
+    </ul>
+</div>
+<input type="number" name="scnum" id="scnum" maxlength="4">
+<input type="button" value="확인" id="btn">
+<input type="button" value="새로고침" id="rebtn">
+</body>
+</html>

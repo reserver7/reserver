@@ -1,0 +1,96 @@
+<meta charset="utf-8">
+<script>
+    $(document).ready(function(){
+        $("#ulcss>li").click(function(){
+            var $node = $(this).index();    //li의 노드번호
+            //$(".olcss").eq($node).slideDown();
+            //해당 소메뉴를 보여지도록 사용은 할 수 있으나 소메뉴 링크값을
+            //가지고 이동하는 페이지는 구성하기 힘듬
+
+            //※ 단, id를 이용할 경우는 click이벤트 핸들링을 한개의 코드로
+            //작성할 수 있음
+            var $nodeid = "#olcss" + $node;
+            $($nodeid).slideDown();
+        });
+        /*샘플 부분 ( 1개의 click 핸들링에 id값 넣기 )
+        //click 핸들링도 function에 값을 태워서 여러개의 클릭 핸들링이 아닌
+        //한개의 click 핸들링으로도 여러 효과를 낼 수 있는 사항을 만들수 있음
+
+        $(".olcss").click(function(){
+            var $id = $(this).attr("id");
+            $.fn.bbb($id);
+        });
+        $.fn.bbb = function($id){
+            $id = "#" + $id;
+            $($id).click(function(){
+                alert("test");
+            });
+        };
+        */
+        var $f; //반복문 변수
+        var $nodeids;   //노드에 대한 아이디값을 받는 변수
+        var $gopage;    //li의 페이지 속성값을 가져와서 받는 변수
+        var $num = $(".olcss").length;  //olcss 클래스 갯수
+        for($f=0;$f<$num;$f++){
+            $nodeids = "#olcss" + $f + ">li";
+            //#olcss0>li
+            $($nodeids).click(function(){   
+                //반복문으로 click 핸들링을 생성하는 부분
+                $gopage = $(this).attr("page"); 
+                //page라는 속성값에 값을 가져옴
+                location.href = $gopage;
+                //페이지 이동
+            });
+        }
+    });
+</script>
+<style>
+    .ulcss{
+        list-style: none; margin:0; padding:0;
+        width:240px; height:auto; 
+        margin-top: 10px; margin-left: 10px;
+    }
+    .ulcss>li {
+        width:240px; height:auto; background-color: green;
+        border-bottom: 1px solid black;
+        line-height: 40px; text-indent: 5px; font-size: 14px;
+        color: white;
+    }
+    .olcss{
+        list-style: none; margin:0; padding:0;
+        width:240px; height:auto; display: none;
+    } 
+    .olcss>li {
+        width:240px; height:40px; background-color: purple;
+        line-height: 40px; text-indent: 5px; font-size: 14px;
+        color: white;
+    }
+</style>
+<!--대메뉴, 소메뉴 부분-->
+<ul class="ulcss" id="ulcss">
+    <li>첫번째
+        <ol class="olcss" id="olcss0">
+            <li page="http://www.naver.com">소메뉴1</li>
+            <li>소메뉴2</li>
+            <li>소메뉴3</li>
+            <li>소메뉴4</li>
+        </ol>
+    </li>
+    <li>두번째
+        <ol class="olcss" id="olcss1">
+            <li page="http://www.nate.com">소메뉴5</li>
+            <li>소메뉴6</li>
+            <li>소메뉴7</li>
+            <li>소메뉴8</li>
+        </ol>
+    </li>
+    <li>세번째
+        <ol class="olcss" id="olcss2">
+            <li page="http://www.google.com">소메뉴9</li>
+            <li>소메뉴10</li>
+            <li>소메뉴11</li>
+            <li>소메뉴12</li>
+        </ol>
+    </li>
+    <li>네번째</li>
+</ul>

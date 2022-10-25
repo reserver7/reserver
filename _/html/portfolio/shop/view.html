@@ -1,0 +1,125 @@
+<meta charset="UTF-8">
+<div class="write_outline">
+    <label>상품문의</label>
+    <ul class="write_content" id="write_content">
+        <li>
+            <span>제목</span>
+            <label id="qa1"></label>
+        </li>
+        <li>
+            <span>상품 선택</span>
+            <label id="qa2"></label>
+        </li>
+        <li>
+            <span>질문 카테고리</span>
+            <label id="qa3"></label>
+        </li>
+        <li>
+            <span>작성자</span>
+            <label id="qa4"></label>
+        </li>
+        <li id="add_app">
+            <span>첨부파일(이미지)</span>
+            <label  id="qa5"></label>
+        </li>
+        <li>
+            <span style="height: 350px;">문의사항</span>
+            <div class="qa_text">
+                <span >
+                    <div id="qa6" name="qatext"></div>
+                </span>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="write_btn">
+    <span>
+        <input type="button" value="목록" onclick="javascript:void history.go(-1);">        
+        <input type="button" value="수정" onclick="write_btn();">
+    </span>
+</div>
+<script>
+    $(function(){
+        $("#p_close").click(function(){
+            location.href = "./qa.html";
+        });
+        $("#pass_btn").click(function(){
+            if($("#qpass").val()==""){
+                alert("게시물 작성시 입력한 패스워드를 입력하세요");
+            }
+            else{
+                var $par = window.location.search;
+                var $urls = $par.split("?idx=");
+                var $idx = $urls[1];
+                var $userpass = $("#qpass").val();
+                const $qpass_ck ="qpass="+$userpass+"&idx="+$idx;
+                qa_passck($qpass_ck); //javascript 함수전송
+            }
+        });
+    });
+
+    function qa_passck(qpass_ck){
+        let qdata;
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function qpost(){
+            if(qdata.readyState==XMLHttpRequest.DONE && qdata.status==200){
+                /* 응답현황
+                    data_error : idx 값이 없어서 오류가 남
+                    password_error : 패스워드 미입력
+                    page_error : 해당 페이지 넘버 번호가 없음
+                    password_discord: 패스워드가 일치 하지 않음
+                    배열로 출력 부분 : 정상적인 데이터를 가져옴
+                */
+                var result = JSON.parse(this.response);
+                console.log(result);
+                if(result=="password_discord"){
+                    alert("패스워드가 일치하지 않습니다");
+                }
+                else{
+                    security_qa(result); //javascript 함수전송
+                }
+            }
+        }
+        qdata = windowck();
+        qdata.onreadystatechange = qpost;
+        qdata.open("POST","./qaview_pass.php",true);
+        qdata.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        qdata.send(qpass_ck);
+    }
+
+    function security_qa(qa_array){
+        let file1="",file2="";
+        if(qa_array.qa_file1!=""){
+            file1 = "<a href=javascript:fimg('"+qa_array.qa_file1+"'); style='display:flex; flex-direction:row;'><img src='./images/icon-clip.png'>&nbsp;<label><u>첨부파일</u></label></a>&nbsp;&nbsp;";
+        }
+        if(qa_array.qa_file2!=""){
+            file2 = "<a href=javascript:fimg('"+qa_array.qa_file2+"'); style='display:flex; flex-direction:row;'><img src='./images/icon-clip.png'>&nbsp;<label><u>첨부파일</u></label></a>&nbsp;";
+        }
+        const img_file = file1 + file2;
+        document.getElementById("qa1").innerText = qa_array["qa_subject"];
+        document.getElementById("qa2").innerText = qa_array["qa_product"];
+        document.getElementById("qa3").innerText = qa_array["qa_part"];
+        document.getElementById("qa4").innerText = qa_array["qa_writer"];
+        document.getElementById("qa5").innerHTML = img_file;
+        document.getElementById("qa6").innerHTML = qa_array["qa_text"];
+        $("#shadow").fadeOut(300);
+        $("#p_list").fadeOut(300);
+    }
+
+    var qa_array = <?php echo $json?>;
+    if(qa_array==""){   //비밀글
+        $("#shadow").fadeIn(300);
+        $("#p_list").fadeIn(300);
+    }
+    else{   //공개글
+        security_qa(qa_array);
+    }
+    function fimg(imgsrc){
+        var urls = "http://reserver1.dothome.co.kr/portfolio/shop/";
+        window.open(urls+imgsrc);
+    }
+</script>

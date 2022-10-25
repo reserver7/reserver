@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제4)</title>
+<script>
+/*
+    var a = 10;
+    var b = Math.floor(Math.random()*10+1); //0 포함하지 않고 하는 형태
+        document.write(b);
+*/
+/*
+    function aaa(){
+        var a;
+        var c=""; //당첨번호를 가지는 변수(7개)
+        for(a=1;a<=7;a++){
+            var d = Math.floor(Math.random()*45+1);
+            var c = c + "," + d;
+        }
+        document.write(c);
+    }
+*/
+    function bbb(){
+        var a=1;
+        var b="";
+        var d=0;
+        while(a<=10){
+            var c = Math.floor(Math.random()*100+1);
+            b = c % 2;
+            if(b==0){
+                document.write(c+"<br>");
+                d = d + 1;
+            }
+            a++;
+        }
+        var msg = "짝수는 총" + d + "번 나왔습니다.";
+        alert(msg);
+    }
+
+</script>
+</head>
+<body>
+<!--
+<input type="button" value="추첨번호 실행" onclick="aaa();">
+-->
+<!-- 
+    응용문제4. 램덤함수를 이용하여
+    1~100 까지의 숫자 중 10번을 무작위로 숫자를 검토
+    그 중에서 짝수가 몇번 나오는지 확인하는 웹 페이지를 제작
+    힌트 : 짝수 카운팅하는 변수를 따로 지정해야 함
+-->
+<input type="button" value="짝수확률" onclick="bbb();">
+</body>
+</html>

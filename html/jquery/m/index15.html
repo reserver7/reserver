@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 11일차 (응용문제-갤러리 보드 PC)</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css?v=2">
+<script>
+    $(document).ready(function(){
+        var $product = ["./product/g1.jpg","./product/g2.jpg","./product/g3.jpg","./product/g4.jpg"];
+        var $array = $product.length;
+        var $f;
+        var $html;
+        for($f=0;$f<$array;$f++){
+            $html = '<li class="li" link="'+$product[$f]+'"><img src="'+$product[$f]+'"></li> ';
+            $("#ulcss").append($html);
+        }
+        $(".li").click(function(){
+            var $link = $(this).attr("link");
+            $("#blackbox").css("display","block");
+            $("#backimg").css({
+                "display":"block",
+                "background-image":"url("+$link+")"
+            });
+        })
+        $(".closebox").click(function(){
+            $("#blackbox").css("display","none");
+            $("#backimg").css("display","none");
+        });
+
+        $("#box").click(function(){
+
+        $(this).css({
+            "width":"200px",
+            "background-color":"red",
+            "margin-left":"150px"
+        });
+
+});
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; position: relative;}
+    .ulcss{
+        width: 100%; height: auto; list-style: none; margin: 0; padding: 0;
+    }    
+    .ulcss > li{
+        width: 340px; height: auto; display: inline-block;
+    }
+    .ulcss > li > img{
+        width: 340px; height: 255px;
+    }
+    .blackbox{
+        width: 100%; box-shadow: 0 0 0 9000px rgba(0,0,0,0.7);
+        position: absolute; z-index: 10; display: none;
+    }
+    .backimg{
+        width: 340px; height: 255px; border: 1px solid red; 
+        top: 50%; left: 50%; margin-left: -170px; margin-top: -130px; 
+        position: fixed; z-index: 20; display: none;
+        background-repeat: no-repeat; background-size: cover;
+    }
+    .closebox{
+        width: 30px; height: 30px; text-align: center; background-color: black;
+        border-radius: 15px; line-height: 30px; color: white;
+        position: absolute; z-index: 30; right: 0;
+    }
+    .box { width: 100px; height: 100px; background-color: yellow;}
+</style>
+</head>
+<body>
+<!-- 종료 -->
+<div class="backimg" id="backimg">
+    <label class="closebox">X</label>
+</div>
+<!-- 블랙스크린 -->
+<div class="blackbox" id="blackbox"></div>
+<ul class="ulcss" id="ulcss">
+    
+</ul>
+<br>
+<div id="box" class="box"></div>
+</body>
+</html>

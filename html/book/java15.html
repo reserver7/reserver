@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>Javascript - 84p(부가사항11)</title>
+<script>
+/*
+    응용문제13
+    변수값 a에 22라는 숫자를 입력합니다.
+    단, 22라는 숫자가 문자인지 숫자인지 확인 후
+    22~1까지 내림차순으로 출력을 하시고 문자일 경우
+    "해당 값은 문자값 입니다." 라고 경고메세지를 띄우시오
+
+    힌트 typeof
+*/
+    var a = 22;
+    var b = typeof(a);
+    /*
+    if(b=="string"){
+        alert("해당 값은 문자값 입니다.");
+    }
+    else{
+        while(a>=1){
+            document.write(a+"<br>");
+            a--;
+        }
+    }
+*/
+    if(isNaN(a)==true){ //isNaN을 써서 하는 경우는 typeof()로 확인이 필요없음
+        alert("해당 값은 문자값 입니다.");
+    }
+    else{
+        while(a>=1){
+            document.write(a+"<br>");
+            a--;
+        }
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>

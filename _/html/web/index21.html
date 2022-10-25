@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>HTML+Javascript+css(각종 명령어-onkeydown)</title>
+<script>
+    //좌우에 대한 px값을 증가,감소 c,d
+    var c = 0;
+    var d = 10;
+    //상하에 대한 px값을 증가,감소 t,h
+    var t = 0;
+    var h = 10;
+    function abc(){
+        var a = event.keyCode;
+        var b = document.getElementById("box");
+        // 좌:37 상:38 우:39 아래:40
+        switch(a){
+            case 37:
+            c -= d;     //c = c - d
+            b.style.left = c+"px";
+            break;
+
+            case 38:
+            t -= h;     //t = t - h
+            b.style.top = t+"px";
+            break;
+
+            case 39:
+            c += d;     //c = c + d
+            b.style.left = c+"px";
+            break;
+
+            case 40:
+            t += h;     //t = t + h
+            b.style.top = t+"px";
+            break;
+
+            case 32:
+            b.style.backgroundColor = "blue";
+            break;
+        }
+    }
+</script>
+<style>
+body{ margin: 0; padding: 0;}
+.div1{ 
+    width: 50px; height:50px; background-color: red; border-radius: 25px;
+    position: absolute;
+}
+</style>
+</head>
+<body onkeydown="abc();">
+<div class="div1" id="box"></div>
+</body>
+</html>

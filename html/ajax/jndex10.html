@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery-Ajax(4일차) + 게시판 만들기</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            url:"./notice.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.dataview($result);
+            },
+            error:function(){
+                console.log("데이터 접근이 잘못되었습니다.");
+            }
+        });
+
+        $.fn.dataview = function($result){
+            var $urls = location.search;
+            var $bidx = $urls.split("?bidx=");
+            //console.log($bidx[1]);
+            if($bidx==""){
+                alert("해당 게시물에 접근이 잘못 되었습니다.");
+                history.go(-1);
+            }
+            else{
+                $($result.notice[0]).each(function($node,$name){
+                    if($bidx[1]==$name["bidx"]){
+                        $("#bidx").val($name["bidx"]);
+                        $("#bsubject").append($name["bsubject"]);  
+                        $("#bname").append($name["bname"]); 
+                        $("#btext").append($name["btext"]);  
+                    }
+                });
+            }
+        }
+
+        $("#delete_btn").click(function(){
+            $("#blackscreen").stop().fadeIn();
+            $("#pop").stop().fadeIn();
+        });
+
+        $("#close").click(function(){
+            $("#blackscreen").stop().fadeOut();
+            $("#pop").stop().fadeOut();
+        });
+
+        $("#confirm").click(function(){
+            var $pw_val = $("#board_pass").val();
+            if($pw_val==""){
+                alert("삭제시 패스워드를 입력해 주세요.");
+            }
+            else{
+                if(confirm("해당 게시물 삭제시 더 이상 복구는 되지 않습니다. 삭제 하시겠습니까?")){
+                    f.method = "POST";
+                    f.action = "./delete.php";
+                    f.submit();
+                }
+                else{
+                    location.reload();
+                }
+            }
+        });
+
+        $("#list_btn").click(function(){
+            location.href = "./jndex8.html";
+        });
+    });
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500&display=swap');
+    body{ margin:0; padding:0;}
+    *{box-sizing: border-box;}
+    span{display: block;}   
+    .scss{ height:auto; }
+    .divcss{ 
+        width: 1000px; height: 500px;  margin:0 auto; font-family: 'Noto Sans KR', sans-serif;
+    }
+    .ulcss{ 
+        list-style: none; margin: 0; padding: 0; width: 990px; height: auto; margin: 0 auto;
+    }
+    .ulcss>li{ 
+        width:100%; height: 50px; font-size: 15px;
+    }
+    .ulcss>li:nth-child(1){ 
+        text-align: center; font-weight: bold; font-size: 25px;
+    }
+    .ulcss>li>span{height: 40px; float: left;}
+    .ulcss>li>span:nth-child(1){ border-radius: 5px;
+        width: 150px; background-color:cornflowerblue; text-align: center; font-weight: bold;  line-height: 40px;
+    }
+    .ulcss>li>span:nth-child(2){
+        width: 830px; margin-left: 10px; line-height: 35px;
+    }
+
+    .ulcss>li:nth-child(4){
+        height: 220px; 
+    }
+    .ulcss>li:nth-child(4)>span:nth-child(1){
+        height: 220px; line-height: 220px;
+    }
+    .ulcss>li:nth-child(4)>span:nth-child(2){height: 220px;}
+
+    .ulcss>li:nth-child(5){text-align: right; line-height: 70px;}
+    .btn{ 
+        width: 100px; height: 40px; border: 0; background-color:cornflowerblue; 
+        font-weight: bold; font-size: 15px; cursor: pointer; color: white;
+        border-radius: 5px;
+    }
+    .btn:nth-of-type(2),.btn:nth-of-type(3) { background-color: rgb(109, 106, 106);}
+    .view1 { text-indent: 5px;
+        width: 830px; height: 38px; border: 1px solid #aaa; border-radius: 5px;
+    }
+    .view2 { text-indent: 5px;
+        width: 230px; height: 38px; border: 1px solid #aaa; border-radius: 5px;
+    }
+    .view3 { padding-left: 5px;
+        width: 830px; height: 220px; border: 1px solid #aaa; border-radius: 5px;
+    }
+    .blackscreen { 
+        width: 100%; box-shadow: 0 0 0 9000px rgba(0,0,0,0.5); 
+        position: absolute; z-index: 10; display: none;
+    }
+    .pop { 
+        width: 340px; height: 120px; 
+        border: 1px solid black; position: fixed;
+        background-color: white; z-index: 20; left: 50%; margin-left: -170px;
+        top: 50%; margin-top: -100px; display: none;
+    }
+    .pw { width: 340px; height: 120px; margin: 0; padding: 0;}
+    .pw >dt { text-align: center; font-weight: bold; font-size: 17px; line-height: 50px;}
+    .pw >dd { margin: 0; padding: 0; display: inline-block; text-align: center; margin-left: 4px;}
+    .pw >dd:nth-of-type(1) { width: 220px; height: 40px; vertical-align: 10px;}
+    .pw >dd:nth-of-type(1)>input { width: 100%; height: 40px; border-radius: 5px; }
+    .pw >dd:nth-of-type(2) { 
+        width: 100px; height: 40px; line-height: 40px; vertical-align: 8px;
+        background-color: cornflowerblue; color: white; cursor: pointer; border-radius: 5px;
+    }
+    .close {  
+        position: absolute; width: 40px; height: 40px;
+        background-color: black; color: white; text-align: center;
+        line-height: 40px; right: -40px; cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <section class="scss">
+        <!-- 블랙스크린 -->
+        <label class="blackscreen" id="blackscreen"></label>
+        <!-- 팝업-->
+        <form name="f" id="f">
+        <input type="hidden" id="bidx" name="bidx" value="">
+        <label class="pop" id="pop">
+            <dl class="pw">
+                <span class="close" id="close">X</span>
+                <dt>패스워드 입력</dt>
+                <dd><input type="password" name="board_pass" id="board_pass"></dd>
+                <dd id="confirm">확인</dd>
+            </dl>
+        </label>
+        </form>
+
+        <div class="divcss">
+        <ul class="ulcss">
+            <li>[공지사항 게시판]</li>
+            <li>
+                <span>제목</span>
+                <span><div name="bsubject" id="bsubject" class="view1"></div></span>
+            </li>
+            <li>
+                <span>글쓴이</span>
+                <span><div name="bname" id="bname" class="view2"></div></span>
+            </li>
+            <li>
+                <span>내용</span>
+                <span><div name="btext" id="btext" class="view3"></div></span>
+            </li>
+            <li>
+                <input type="button" value="수정" class="btn" id="submit_btn">
+                <input type="button" value="삭제" class="btn" id="delete_btn">
+                <input type="button" value="목록" class="btn" id="list_btn">
+            </li>
+        </ul>
+        </div>
+    </section>
+</body>
+</html>

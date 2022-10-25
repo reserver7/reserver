@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 7일차 데이터 입력&출력</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $array = [
+            ["홍길동","hong","Y"],
+            ["이순신","leess","Y"],
+            ["유관순","youks","N"],
+            ["강감찬","kks","Y"],
+            ["순종","sjong","N"],
+            ["고종","kjong","Y"]
+        ];
+
+        $("#divcss > div").click(function(){
+            var $ea = $(this).index();
+            var $node1 = $array[$ea][0];
+            var $node2 = $array[$ea][1];
+            var $node3 = $array[$ea][2];
+            if($node3=="N"){
+                alert("해당 고객은 탈퇴 회원 입니다.");
+            }
+            else{
+                location.href="http://dmsthd56.dothome.co.kr/jquery/index36.html?pnm=" + $node1 + "&?pid=" + $node2;
+            }
+            
+        });
+    });
+</script>
+<style>
+    span{
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="divcss" id="divcss">
+    <div>
+    <span id="pnm">고객명 : 홍길동</span>
+    <span id="pid">아이디 : hong<br></span>
+    </div>
+    <div>
+    <span id="pnm">고객명 : 이순신</span> 
+    <span id="pid">아이디 : leess<br></span>
+    </div>
+    <div>
+    <span id="pnm">고객명 : 유관순</span> 
+    <span id="pid">아이디 : youks<br></span>
+    </div>
+    <div>
+    <span id="pnm">고객명 : 강감찬</span>
+    <span id="pid">아이디 : kks<br></span>
+    </div>
+    <div>
+    <span id="pnm">고객명 : 순종</span>
+    <span id="pid">아이디 : sjong<br></span>
+    </div>
+    <div>
+    <span id="pnm">고객명 : 고종</span>    
+    <span id="pid">아이디 : kjong<br></span>
+    </div>
+</div>
+</body>
+</html>
+<!--
+    [Page1] 
+    사용자 데이터 리스트가 있습니다.
+    해당 리스트의 값을 클릭하면 Page2으로 전송이 됩니다.
+    ./index.html?mid=hong
+    "./index.html?mid=" + a;
+    사용자 데이터 배열
+    "홍길동","hong","Y",
+    "이순신","leess","Y",
+    "유관순","youks","N",
+    "강감찬","kks","Y",
+    "순종","sjong","N",
+    "고종","kjong","Y"
+
+    해당 사용자 클릭시 N 데이터 일 경우
+    해당 "고객은 탈퇴 회원입니다." 경고 메세지 출력
+    그 외에 Y 데이터는 Page2로 넘깁니다.
+
+    예시화면)
+    고객명 : 홍길동, 아이디 : hong
+
+    [Page2]
+    Page1으로 넘어온 데이터 값을 상세 리스트에서 검색하여 세부정보가 출력 되도록 합니다.
+
+    사용자 데이터 배열
+    "홍길동","hong@naver.com","010-1234-5678",
+    "이순신","leess@nate.com","010-2222-0404",
+    "유관순","youks@gmail.com","010-0301-0301",
+    "강감찬","kks@nate.com","010-1184-3342",
+    "순종","sjong@naver.com","010-3333-5555",
+    "고종","kjong@yahoo.com","010-0815-0815"
+
+    Page1에서 넘어온 데이터중 같은 이름을 배열 검색합니다
+    해당 데이터와 동일한 이름이 있을 경우
+
+    예시출력)
+    이름 : 홍길동
+    아이디 : hong
+    이메일 : hong@naver.com
+    연락처 : 010-1234-5678
+-->

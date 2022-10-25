@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 3일차(해당 노드 확인)</title>
+<script src="./jquery.js"></script><!--Jquery 엔진 탑재-->
+<script>
+    $(document).ready(function(){
+        //node형태로 메뉴를 링크 거는 형태
+        $("#menu > li").click(function(){
+            var $a = $(this).index();
+            //index() = indexOf(Javascript) : 해당 노드의 숫자를 표현
+            //this = 1. 오브젝트가 한개가 있을때 해당 오브젝트 값을 표현
+            //       2. 여러개의 오브젝트 중 어떤것을 선택할 때도 사용
+            switch($a){
+                case 0:
+                location.href="http://www.naver.com";
+                break;
+
+                case 1:
+                location.href="http://www.nate.com";
+                break;
+            }
+        }); 
+            //해당 오브젝트가 한개 이상이면 무조건 this를 써야함 !!
+        $(".in").click(function(){
+            var $aaa = $(this).val();
+            alert($aaa);
+        });   
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0;}
+    ul{
+        list-style: none; margin: 0; padding: 0;  
+    }
+    ul > li {
+        width: 100px; height: 30px; float: left; text-align: center;
+        line-height: 30px; border: 1px solid black; box-sizing: border-box;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<ul id="menu">
+    <li>메뉴1</li>
+    <li>메뉴2</li>
+    <li>메뉴3</li>
+    <li>메뉴4</li>
+</ul>
+<br><br>
+<input type="text" id="a1" class="in">
+<input type="text" id="a2" class="in">
+</body>
+</html>

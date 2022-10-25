@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(function 및 지역,전역변수 응용2)</title>
+<script>
+    var check = "no";
+    var checkid = "abcde";
+    function abc(){
+        var id = document.getElementById("mid").value;
+        if(id==checkid){
+            alert("해당 아이디는 이미 사용중입니다.");
+        }
+        else if(id==""){
+            alert("아이디를 입력해주세요");
+        }
+        else{   //최종적으로 승인된 경우
+            alert("해당 아이디는 사용가능 합니다");
+            check="ok"; //전역변수 "no" 값을 "ok"로 변경함
+        }
+    }
+    function bbb(){
+        if(check=="no"){
+            alert("아이디 중복체크를 해주세요!");
+        }
+        else{
+            alert("정상적으로 회원가입 되었습니다.");
+        }
+    }
+</script>
+</head>
+<!--
+    응용문제1. 다음과 같이 아이디 중복체크 하는 웹 페이지를 작성
+    단, 회원가입 버튼을 그냥 클릭시 중복체크 버튼을 확인 하지 않으면
+    "아이디 중복체크를 해주세요!" 라는 메세지 출력
+    중복체크 버튼 완료시 "정상적으로 회원가입 되었습니다." 라는 메세지 출력
+    또한 해당 아이디를 입력 후 중복체크 버튼을 클릭하면,
+    abcde라는 아이디를 사용자가 입력시 "해당 아이디는 이미 사용중입니다."
+    라고 메세지 출력, abcde외에 다른 단어를 입력시 "사용가능 합니다" 
+    라고 출력 그 외에 "사용가능 합니다"라는 메세지와 함께
+    전역변수 ok 라는 값을 넣어서 확인이 되면 "정상적으로 회원가입 되었습니다."
+    문구와 함께 종료 하면 됨
+-->
+<body>
+<input type="text" id="mid" placeholder="아이디를 입력하세요">
+<input type="button" value="중복체크" onclick="abc();">
+<br>
+<input type="button" value="회원가입" onclick="bbb();">
+</body>
+</html>

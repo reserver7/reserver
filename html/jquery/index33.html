@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+<!--
+    viewport : 여러가지 디바이스에 맞춰서 자동 조절되도록 하는 기능
+    width=device-width : body의 가로길이가 접속기기에 맞춰서 늘어나도록 함
+    initial-scale : zoom기능을 1:1로 맞추는 기능
+    user-scalable : 저시력 또는 시각장애를 가진 사용자에게 접근성 권한을 주는것
+    minimum-scale : 줌 아웃을 말함
+    maximum-scale : 줌 인을 말함
+-->
+<title>Jquery - 6일차 모바일 전용 viewport 및 jquery 테스트</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            alert("test");
+        });
+    });
+</script>
+<style>
+    .box{ width: 100px; height: 100px; background-color: teal;}
+    .btn{ width: 100px; height: 40px; border: 0; background-color: black;
+    color: white; display: block; text-align: center; line-height: 40px; }
+</style>
+</head>
+<body>
+<div class="box"></div>
+<label class="btn" id="btn">로그인</label>
+</body>
+<style

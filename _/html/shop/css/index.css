@@ -1,0 +1,130 @@
+@charset "utf-8";
+@import url("./font.css");
+
+body { margin:0; padding:0; }
+span,label { display: block;}
+aside, header, main, footer, nav, section {
+    margin:0; padding:0; display: block;
+}
+/* article은 section이랑 함께 사용하기 때문에 별도로
+display, margin, padding 을 사용하지 않아도 됨 */
+button { cursor: pointer; }
+* { box-sizing: border-box; }
+ol, ul, dl { list-style: none; margin:0; padding:0; }
+img { width:100%; }
+a:link, a:visited, a:hover, a:focus, a:active {
+    color:black; text-decoration: none;
+}
+.clear { clear: both;}
+
+/* 탑 배너 */
+.topbanner {
+    width:1200px; height:70px; margin:0 auto;
+}
+.banner1 {
+    width:490px; height:70px; float: left; cursor: pointer;
+    background-image: url("../image/topbanner1.jpg");
+}
+.banner2 {
+    width:490px; height:70px; float: left; cursor: pointer;
+    background-image: url("../image/topbanner2.jpg");
+}
+.banner_x {
+    width:50px; height:70px; float: right; font-size:35px;
+    line-height:70px; cursor: pointer; text-align: center;
+}
+.banner_x:hover {
+    background-color:black; color:white;
+}
+
+/* 메인 페이지 */
+.top {
+    height:30px; background-color: #cccccc;
+}
+.topdiv {
+    width:1200px; height:30px; margin:0 auto;
+    font-size:12px; font-family: 'Noto Sans KR', sans-serif;
+    position: relative;
+}
+.ldiv {
+    width:170px; height:30px; cursor: pointer; position: absolute;
+}
+.ldiv > span {
+    width:80px; height:30px; display: inline-block; line-height:30px;
+}
+.ldiv>span:after {
+    position: relative; left:10px;
+}
+.ldiv>span:nth-child(1):after {
+    content: "|"; margin-left:6px;
+}
+.ldiv>span:nth-child(2):after {
+    content: "▼";
+}
+.dlcss {
+    width:210px; height:30px; line-height:30px;
+    position: absolute; right:0; display: inline-block;
+    cursor: pointer; z-index:1;
+}
+.dlcss>dd {
+    width:70px; height:30px; float: left;
+    margin:0; padding:0; text-align: right;
+}
+
+/* 로고, 검색 */
+.nav {
+    height:150px; font-family: 'Noto Sans KR', sans-serif;
+}
+.menudiv {
+    width:1200px; height:120px; margin:0 auto; margin-top:15px;
+}
+.menudiv_logo {
+    width:150px; height:30px; background-image: url("../image/logo.png");
+    background-repeat: no-repeat; background-size: contain;
+    margin:0 auto; cursor: pointer;
+}
+.menudiv_search {
+    width:600px; height:30px; margin:0 auto; padding-top: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.menudiv_search>span:nth-child(1) {
+    width:500px;height:30px; border:2px solid rgb(19, 138, 235);
+    float: left; overflow: hidden;
+}
+.menudiv_search>span>input { 
+    width:500px; height:30px; border:0; text-indent:10px;
+}
+.menudiv_search>span>button { 
+    width:100px; height:30px; background-color:rgb(19, 138, 235);
+    color:white; border:0;
+}
+.menudiv_bar { position: relative; top:10px;
+    width:1200px; height:40px; font-size:15px;
+    background-color: rgb(19, 138, 235); color: white;
+    font-family: 'Noto Sans KR', sans-serif; 
+}
+.menudiv_bar>dl {
+    width:1200px; height:40px; line-height:40px;
+}
+.menudiv_bar>dl>dd {
+    float: left; width:120px; height:40px;
+    text-align: center; margin:0; padding:0; cursor: pointer;
+}
+.menudiv_bar>dl>dd:hover {
+    color:black;
+}
+
+
+
+
+
+/* 입력 CSS + 이미지 결합*/
+/*
+.testinput {
+    width:200px; height:40px; border-radius: 5px;
+    background-image: url("../image/checkico.png");
+    background-repeat: no-repeat;
+    background-position:5px 8px;
+    text-indent: 25px; 
+}
+*/

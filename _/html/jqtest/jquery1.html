@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 문제1</title>
+    <script src="../jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $("#box").animate({
+                    "width":"495px"
+                },1000);
+            });
+        });
+    </script>
+    <style>
+        body { margin: 0; padding: 0;}
+        .box { 
+            width: 0px; height: 50px;
+            background-color: black;
+        }
+    </style>
+</head>
+<!--
+    문제1.
+    해당 box 부분이 데이터에 맞춰서 가로px로 늘어나야 합니다.
+    가로 px로 늘어나야 하는 길이값은 495px 입니다.
+    start를 눌렀을때 늘어나야함
+-->
+<body>
+<div class="box" id="box">
+</div>
+<input type="button" value="start" id="btn">
+</body>
+</html>

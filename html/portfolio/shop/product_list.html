@@ -1,0 +1,110 @@
+<div id="subpage" :class="s1">
+    <!-- 상품관리 리스트 부분 -->
+    <aside :class="s2">
+        <label :class="s3">{{ part_1 }}</label>
+        <div :class="s4">
+            <chart-view></chart-view>
+            <chart-view_on v-if="product_data && pview==1"
+            v-bind:index="array_ea-index"
+            v-bind:pidx="newproduct.pidx"
+            :goodsno="newproduct.goodsno"
+            :product_nm="newproduct.product_nm"
+            :product_money="newproduct.product_money"
+            :product_sales="newproduct.product_sales"
+            :product_img="newproduct.product_img"
+            :product_use="newproduct.product_use"
+            v-for="newproduct,index in plist" v-model="array_ea"
+            >
+            </chart-view_on>
+            <chart-view_off v-if="pview==2"></chart-view_off>
+        </div>
+        <div class="div_btn">
+            <button @click="indata_btn" v-text="btn_text" class="btncss1"></button>
+        </div>
+    </aside>
+</div>
+<script>
+    let aj;
+    let product_ajax;
+    let product_list;
+    function ajaxck(){
+        if(window.XMLHttpRequest){
+            return new XMLHttpRequest();
+        }
+    }
+    function p_list(){
+        if(aj.readyState==XMLHttpRequest.DONE && aj.status==200){
+            loads(JSON.parse(this.response));
+        }
+    }
+    aj = ajaxck();
+    aj.onreadystatechange = p_list;
+    aj.open("GET","./product/product.json",true);
+    aj.send();
+
+    function loads(adatas){
+    var array_ea = adatas.length;
+    let ajax_product;
+    product_list = adatas;  //ajax 배열값이 넘어옴
+    if(array_ea==0){
+        ajax_product = 2;
+    }
+    else{
+        ajax_product = 1;
+    }
+    
+    
+    let chart1 = { template:'<ol class="chart_ol3">\
+        <li>NO</li><li>상품코드</li><li>상품명</li>\
+        <li>상품가격</li><li>할인가격</li>\
+        <li>대표이미지</li><li>출력 유/무</li></ol>'};
+    let chart2_off = { template:'\
+    <ol class="chart_ol3">\
+    <li class="nofile">등록된 상품이 없습니다.</li>\
+    </ol>\
+    '};
+
+    Vue.component("chart-view_on",{template:'\
+        <ol class="chart_ol3 chart_data">\
+            <li>{{index}}</li><li @click="goods_view(pidx,goodsno);" style="cursor:pointer;">{{goodsno}}</li><li>{{product_nm}}</li>\
+            <li>{{Number(product_money).toLocaleString()}}원</li><li>{{Number(product_sales).toLocaleString()}}원</li>\
+            <li v-on:click="image_view(product_img);" style="cursor:pointer;"><img class="product_img" v-bind:src=product_img></li>\
+            <li>{{product_use}}</li>\
+        </ol>'
+        , props:["index","pidx","goodsno","product_nm","product_money","product_sales","product_img","product_use"],
+        methods:{
+            image_view:function(product_img){
+                window.open(product_img,"_new");
+            },
+            goods_view:function(pidx,goodsno){
+                location.href='product_modify.html?pidx='+pidx+'&goodsno='+goodsno
+            }
+        }
+    });
+
+    let p = new Vue({
+        el:"#subpage",
+        data:{
+            part_1 : "상품관리 리스트",
+            s1:"subview",
+            s2:"aside_css",
+            s3:"part_css",
+            s4:"chart_css",
+            product_data:true,
+            pview:ajax_product,
+            plist:product_list,
+            btn_text:"상품등록",
+            array_ea:array_ea //배열갯수를 model로 전송
+        },
+        components:{
+            "chart-view":chart1,
+            "chart-view_off":chart2_off
+        },
+        methods:{
+            indata_btn:function(){
+                location.href="product_insert.html";
+            }
+        }
+    });
+}
+</script>

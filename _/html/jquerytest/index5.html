@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>문제5</title>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/jquery-ui.js"></script>
+    <link type="text/css" rel="stylesheet" href="./js/jquery-ui.css">
+    <script>
+        $(document).ready(function(){
+            $("#date1").datepicker();
+            $("#date2").datepicker();
+
+            $(".search_btns").click(function(){
+                var $a= $("#date1").val();
+                var $b= $("#date2").val();
+                if($a==""|| $b==""){
+                    alert("날짜를 입력해주세요");
+                }
+                else{
+                    if($a>=$b){
+                        alert("날짜를 재확인 하세요.");
+                    }
+
+                }
+            });
+        });
+    </script>
+    <style>
+        
+        body { margin: 0; padding: 0;}
+        .search_div { width:450px; height:100px; border:1px solid #ccc;
+        border-radius: 5px; margin: 0 auto; text-align: center;
+        margin-top: 50px;
+        }
+        p { width:100%; text-align: center; }
+        .inputs { width:130px; height:30px; border:1px solid #ccc;
+        border-radius: 5px; text-indent: 5px;
+        }
+        .search_btns { width:100px; height:35px; border:0;
+        background-color: cornflowerblue; color:darkblue;
+        font-size:14px;  border-radius: 5px; font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="search_div">
+<p>결제내역 조회하기</p>
+<input type="text" name="sdate" id="date1" class="inputs" readonly> - 
+<input type="text" name="edate" id="date2" class="inputs" readonly>
+<input type="button" value="검색" class="search_btns">
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제1</title>
+    <style>
+        body { margin: 0; padding: 0;}
+        footer { height:200px; background-color: #333;}
+        .foot { width:1000px; height:200px;
+        margin: 0 auto;
+        position: relative; color: white;
+        }
+        .company { width: 200px; height:30px; text-indent: 5px; }
+        .ulcss { list-style: none; margin: 0; padding: 0;
+            position: absolute; height:30px; right: 0;
+            top: 30px;
+        }
+        .ulcss > li { display: inline-block;}
+    </style>
+    <script>
+
+        function abc(hh){
+            location.href=hh;
+        }
+
+
+
+    </script>
+</head>
+<!--
+    문제1. 계열사를 선택하면 해당 사이트로 이동 되도록 자바스크립트를
+    완성하시오.
+    네이버 : http://www.naver.com
+    네이트 : http://www.nate.com
+    구글 : http://www.google.com
+    다음 : http://www.daum.net
+-->
+<body>
+<footer>
+<div class="foot">
+    <ul class="ulcss">
+    <li>계열사 : </li>
+    <li>
+    <select class="company" id="company" onchange="abc(this.value)">
+    <option value="">사이트 이동</option>
+    <option value="http://www.naver.com">네이버</option>
+    <option value="http://www.nate.com">네이트</option>
+    <option value="http://www.google.com">구글</option>
+    <option value="http://www.daum.net">다음</option>
+    </select>
+    </li>
+    </ul>
+</div>
+</footer>
+</body>
+</html>

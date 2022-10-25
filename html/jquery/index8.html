@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 2일차(오브젝트 연습2)</title>
+<script src="./jquery.js"></script> <!--Jquery 엔진 탑재-->
+<script>
+    $(document).ready(function(){
+        //전역변수 (총 게시물 갯수)
+        $a = 3;
+        $aa = 1;    //게시물 카운팅 수 (반복문 변수랑 비슷한 개념)
+        $("#btn").click(function(){ //게시물 삭제 파트
+            if($aa>$a){
+                alert("더 이상 삭제할 게시물이 없습니다.");
+            }
+            else{
+                var $b = "#table" + $aa;
+                //$($b).css("display","none");
+                //$($b).fadeOut();
+                $($b).slideUp();
+                //$($b).css("visibility","hidden");
+                ++$aa;  
+            }
+        });  
+
+        $("#btn2").click(function(){    //게시물 복원 파트
+            //table일 경우 display에 tr로 조정할 경우
+            //html 태그 생성 table에서 tr로 인식하는 문제가 있음
+            //tr이 생성 후 td가 생성 되어야 하는데, tr로 생성하기 전에
+            //td가 생성이 먼저 이루어지는 형태라서 해당 코드는 맞으나, 버그 임
+            if($aa<=1){
+                alert("더 이상 복원할 게시물이 없습니다.");
+            }
+            else{
+                --$aa;
+                var $b = "#table" + $aa;
+                //$($b).css("display","block");
+                //$($b).fadeIn();
+                $($b).slideDown();
+                //$($b).css("visibility","visible");
+            }
+        });  
+    });
+</script>
+<!-- css 속성 :
+    display(block) = fadeaIn != visibility(visible):다시 나타나도록 하는 부분
+    display(none) = fadeOut != visibility(hidden):보이지 않도록 하는것은 같으나, 자신의 구역을 남기는 형태
+-->
+<style>
+    #table{
+        text-align: center; width: 700px; height: 100px;
+    }
+    input{
+        width: 100px; height: 30px; text-align: center; line-height: 30px;
+        cursor: pointer; box-sizing: border-box; background-color: skyblue;
+        color: white;
+    }
+</style>
+</head>
+<body>
+<table border="1" csllpadding="0" cellspacing="0" id="table">
+    <tr>
+        <td>번호</td>
+        <td>제목</td>
+        <td>글쓴이</td>
+        <td>추천수</td>
+    </tr>
+    <tr id="table3">
+        <td>1</td>
+        <td>공지사항</td>
+        <td>관리자A</td>
+        <td>20</td>
+    </tr>
+    <tr id="table2">
+        <td>2</td>
+        <td>시스템점검</td>
+        <td>운영자</td>
+        <td>30</td>
+    </tr>
+    <tr id="table1">   
+        <td>3</td>
+        <td>결제시스템</td>
+        <td>관리자A</td>
+        <td>40</td>
+    </tr>
+</table>
+<br>
+<input type="button" value="게시물 삭제" id="btn">
+<input type="button" value="게시물 복원" id="btn2">
+</body>
+</html>

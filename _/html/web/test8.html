@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제6)</title>
+<script>
+    function aaa(jj){
+        var aa = f.a.value; //여기에 Number을 걸 경우 match가 검사를 못함
+        var bb = f.b.value;
+        var acheck = aa.match(/[a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g);  //입력값 제한 부분
+        var bcheck = bb.match(/[a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣]/g);
+        if(acheck==null && bcheck==null){
+            bbb(aa,bb,jj);  //bbb 함수로 값을 넘김
+                                            //위에 Number를 못쓰니까 function으로 넘길때 사용가능
+                                            //단, eval이 생기면서 Number을 안써도 숫자화 할 수 있음
+        }
+        else{
+            alert("숫자만 입력하셔야 합니다.");
+        }
+    }
+    function bbb(x,y,z){    //bbb 함수가 사칙연산을 처리하게 됨
+        //eval은 문자 또는 사칙연산 기호문자를 실제 사칙연산 기호 또는 변수
+        //형태로 속성 자체를 변경가능 하도록 하는 함수명령어 입니다.
+        //문자숫자를 숫자화 하는 기능도 포함 (Number을 안써도 된다는 뜻)
+        var t = eval(x+z+y);
+        alert(t);
+        /*
+        var aaa = "hello";
+        var p = eval("aaa");
+        alert(p);
+        */
+        /*
+        switch(z){
+            case "+":
+            t = x + y;
+            break;
+
+            case "-":
+            t = x - y;
+            break;
+
+            case "*":
+            t = x * y;
+            break;
+
+            case "/":
+            t = x / y;
+            break;
+        }
+        document.write(z);
+        */
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<input type="text" name="a" id="a">
+<input type="text" name="b" id="b">
+<input type="button" value="+" onclick="aaa(this.value);"> <!--this.value, '+', 1 모두 맞는말-->
+<input type="button" value="-" onclick="aaa(this.value);">
+<input type="button" value="*" onclick="aaa(this.value);">
+<input type="button" value="/" onclick="aaa(this.value);">
+</form>
+</body>
+</html>

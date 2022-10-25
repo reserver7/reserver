@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(function)</title>
+<script>
+    var b;  //전역변수
+
+    function abc(){ //ex) 아이디 중복찾기
+        var a =1;   //지역변수
+        b=1;
+        alert(b);
+    }
+
+    function bbb(){ //ex) 회원가입 완료
+        var a =2;   //지역변수
+        alert(b);
+    }
+/*  function 에서 function으로 값을 전달 또는 호출하여 사용하는 형태 */
+    function ccc(){
+        var a="회원가입 되었습니다.";
+        ddd(a);   //함수 이동 처리방식 (더블펑션)
+    }
+
+    function ddd(k){
+        fff(k);
+    }
+
+    function fff(j){
+        alert(j);
+    }
+
+</script>
+</head>
+<body>
+<input type="button" value="abc버튼" onclick="abc();">
+<input type="button" value="bbb버튼" onclick="bbb();">
+<input type="button" value="ccc버튼" onclick="ccc();">
+</body>
+</html>

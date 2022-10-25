@@ -1,0 +1,64 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML 4일차 4.0 - style속성</title>
+</head>
+<body>
+<!-- style : HTML별도 속성 값이며, 기본단위는 px (pixel)
+style을 사용하는이유는 :
+input에 대한 태그는 style외에는 모양 변경이 불가능함
+
+style 속성형태
+- width : 가로길이
+- height : 세로길이
+- font-size : 글자크기
+- color : 글자색상
+- border : 두께, 선종류(solid: 외줄, dotted: 점선, dashed: 절취선
+double: 두줄(두께 3px 이상), none (외각선을 사용하지 않음), 색상
+- border-left, border-right, border-top, border-bottom
+ : 각 상하좌우 별로 별도로 선 두께, 색상을 변경 가능합니다.
+-->
+<input type="checkbox" style="width:30px;height:30px;">
+<br>
+<input type="password" style="width:150px;height:30px;"><br>
+<textarea style="width:400px; height:60px;"></textarea>
+<br>
+<input type="text" style="width:300px; height:50;font-size:30px;
+color:red; border: 1px solid red;">
+<br>
+d.jpg 이미지를 로드 합니다. 이미지의 크기(200*200)를 조정합니다 style로 조정
+외각선을 사용하되, 두께는 2px 색상은 blue로 합니다.
+<br>
+<img src="./d.jpg" title="딸기" alt="d.jpg" style="width:200px; height:200; border:2px solid blue">
+<!-- alt : 제작자가 해당 이미지를 가져올때 파일명이 올바른지 확인하기 위함
+파일 유/무
+-->
+<br><br>
+<div style="width:200px; height:200px; border:1px solid red;">
+
+</div>
+<br><br>
+<input type="text" style="width:300; height:40; border: none;
+border-top:1px solid greenyellow; border-left:1px solid greenyellow;
+border-bottom:1px dotted green; border-right:1px dotted green;">
+<br><br>
+<select style="width:150px; height:30px; border:none;
+border-bottom:1px solid gray;">
+    <option>outlook.kr</option>
+    <option>outlook.comr</option>
+    <option>hotmail.com</option>
+</select>
+<br><br>
+<select style="width:150px; height:30; border:none;
+border-bottom:1px solid gray;">
+    <option>+82</option>
+    <option>+81</option>
+    <option>+80</option>
+</select>&nbsp;&nbsp;
+<input type="text" placeholder="전화번호" style="width:300px; border:none;
+border-bottom:1px solid gray;">
+<br><br>
+
+</body>
+</html>

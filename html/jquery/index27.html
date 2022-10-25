@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 6일차 - (시간타이머3)-응용문제</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){ 
+        var $timer;
+        var $number = 10;
+        $timer = setInterval(function(){
+            $("#box").text($number);
+            $number = $number - 1;
+            if($number<0){
+                alert("시간이 초과하였습니다.");
+                clearInterval($timer);
+                $("#scnum").css("display","none");
+            }
+        },1000);
+
+        $("#btn").click(function(){
+            var $text = $("#scnum").val();
+            if($text==""){
+                alert("인증번호를 입력해주세요!");
+            }
+            else{
+                location.href="http://naver.com";
+            }
+        }); 
+
+        $("#btn2").click(function(){
+            location.reload();
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box{
+        width: 150px; height: 30px; border: 1px solid black;
+    }
+    .scnum{
+        display: block;
+    }
+</style>
+</head>
+<body>
+<div id="box" class="box"></div>
+<input type="text" id="scnum" class="scnum">
+<input type="button" value="인증하기" id="btn">
+<input type="button" value="재인증하기" id="btn2">
+</body>
+</html>

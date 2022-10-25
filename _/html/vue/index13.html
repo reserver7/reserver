@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue3일차 - return</title>
+<script src="vue.js"></script>
+</head>
+<body>
+<section id="box">
+    <input type="text" id="mname" name="mname" v-model="mname" ref="mname"><br>
+    <input type="button" v-model="btn" @click="aaa(mname);">
+    <!-- 
+        v-on == @ 기호로 대체함
+    -->
+</section>
+</body>
+<script>
+    let a = new Vue({
+        el:"#box",
+        data:{
+            mname:null,
+            btn:"중복체크"
+        },
+        methods:{
+            aaa:function(m){
+                if(m==null || m==""){
+                    alert("중복체크 사항을 입력해 주세요.");
+                    this.$refs.mname.focus();
+                }
+                else{
+                    //this.bbb(m);    //bbb함수로 전달함 단,this를 붙여야함 
+                    //그냥 bbb()할 경우 자바스크립트 함수를 찾게 됨
+                    var f = this.bbb(m);    
+                    //bbb함수로 전달과 동시에 return받을 변수로 선언
+                    alert(f);
+                    //return 받은 값을 출력함
+                }
+            },
+            bbb:function(a_data){
+                //alert(a_data);  //aaa함수에서 call을 받음
+                var recall = "";
+                if(a_data=="hong"){
+                    recall="중복된 아이디 입니다.";
+                }
+                else{
+                    recall="사용할 수 있는 아이디 입니다.";
+                }
+                return recall;  //해당 함수로 다시 값을 던져 줌
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>array 배열7</title>
+<script>
+    var array = [
+        ["HOME","홈"],
+        ["LOGIN","로그인"],
+        ["MEMBERSHIP","회원가입"],
+        ["CUSTOMER","고객센터"],
+        ["EVENT","이벤트"]
+    ];
+</script>
+<style>
+    body { margin: 0; padding: 0; }
+    .menus {
+        height: 40px;
+        text-align: center; /* 가운데에 오는법 width값을 없애고 text-align: center */
+    }
+    .divmenu{
+        width: 100px; height: 40px; line-height: 40px; font-size: 12px;
+        text-align: center; border: 1px solid red; box-sizing: border-box;
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+<div class="menus" id="menus"></div>
+</body>
+<script>
+    var lang = 0;   //언어를 컨트롤 하는 변수를 생성 후 0,1로 컨트롤
+    var f = array.length;
+    var a;
+    var html = "";
+    for(a=0;a<f;a++){   //반복문 안에는 변수를 웬만하면 만들지 않는게 좋음
+        html += "<div class='divmenu'>"+ array[a][lang] + "</div>";
+    }
+    document.getElementById("menus").innerHTML = html;
+</script>
+</html>
+<!--
+    script 가 위에 있는지 아래에 있는지 구분을 잘 해야함
+-->

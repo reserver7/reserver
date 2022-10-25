@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 6일차 - (시간타이머2)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $time;  //반복함수를 전역변수로 사용하기 위함
+
+        $("#start").click(function(){   //start 버튼 클릭
+            $time = setInterval(function(){ 
+                //클릭 후 시간타이머가 작동(반복함수)
+                console.log("test");
+            },1000);    //1초마다
+        });
+
+        $("#stop").click(function(){
+            clearInterval($time);   //반복함수를 정지시키는 함수($time:전역변수)
+        });   
+
+        $("#restart").click(function(){
+            //현재로는 해당 $time함수를 재컨트롤 하기 힘듬
+        });   
+    });
+</script>
+</head>
+<body>
+<input type="button" value="시작" id="start">
+<input type="button" value="중지" id="stop">
+<input type="button" value="재시작" id="restart">
+</body>
+</html>

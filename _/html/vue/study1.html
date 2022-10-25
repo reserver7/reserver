@@ -1,0 +1,54 @@
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study 1</title>
+<script src="./vue.js"></script>
+</head>
+<style>
+    #box{ height: auto; }
+    .divcss{ 
+        width: 200px; height: 150px; border: 1px solid #ccc;
+        margin: 0 auto; text-align: center; box-sizing: border-box; padding: 5px;
+    }
+    .spancss{
+        width: 100px; height: 100px; display: block; margin: 0 auto;
+        border: 1px solid black; box-sizing: border-box;
+    }
+    .selcss{ width: 150px; height: 30px; text-indent: 25px; margin-top: 5px;}
+</style>
+<body>
+<section id="box">
+    <div :class="divcss">
+        <span :class="spancss" :style="bg"></span>
+        <select :class="selcss" v-model="select" @change="aaa()">
+            <option v-for="c in color" :value="c">{{c}}</option>
+        </select>
+    </div>
+</section>
+</body>
+<script>
+    const array = ["선택해 주세요","red","blue","yellow","green","pink"];
+    let a = new Vue({
+        el:"#box",
+        data:{
+            divcss:"divcss",
+            spancss:"spancss",
+            selcss:"selcss",
+            select:"",
+            bg:"",
+            color:array
+        },
+        methods:{
+            aaa:function(){
+                if(this.select!="선택해 주세요"){
+                    this.bg = "background-color:"+this.select;
+                }
+                else{
+                    this.bg = "";
+                }
+            }
+        }
+    });
+</script>
+</html>

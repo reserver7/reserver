@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const array = [14,20,44,32,70,55,66,100];
+    var f;
+    var a = null;
+    for(f in array){
+        //console.log(array[f]);
+        if(array[f]>=50){
+            a += array[f];
+        }
+    }
+    //console.log(a);
+    var q = 0;
+    array.forEach(function(a1,a2,a3){
+        if(a1>=50){
+            q += a1;
+            console.log(q);
+            document.write(q+"<br>");
+        } 
+    });
+    
+    
+
+</script>
+</html>

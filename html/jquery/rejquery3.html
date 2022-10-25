@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 복습3</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#node_del2").click(function(){
+            $("#divbox > label").eq(0).remove();
+        });  
+
+        $("#node_del1").click(function(){
+           var $a= $("#divbox > label").length-1;
+            $("#divbox > label").eq($a).remove();
+        });
+
+        $("#node_add2").click(function(){   //맨앞에 추가할 경우 엄마만 불러오면 됨
+            $("#divbox").prepend('<label class="labelcss">newbox</label>');
+            //$("body").prepend("<div class='divbox'>NEW DIV</div>");
+            //$("#divbox > label:eq(1)").after('<label class="labelcss">newbox</label>');
+        });
+
+        $("node_add1").click(function(){
+            $("#divbox").append('<label class="labelcss">newbox</label>');
+        });
+
+        $("#node_all").click(function(){
+            $("#divbox").html("");  //html 코드 초기화
+        });
+
+        $("#node_copy").click(function(){
+            //var $node = $("#divbox > label").length;
+            var $input = Number($("#node_num").val())-1; //사용자가 입력한 값
+            var $cpnode = $("#divbox > label").eq($input).clone(); //사용자가 입력한 값 복사
+            $("#divbox").append($cpnode);
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .labelcss{
+        width: 100px; height: 30px; border: 1px solid black;
+        display: inline-block; box-sizing: border-box; text-align: center;
+        line-height: 30px;
+    }
+    .divbox{
+        width: 100%; height: 40px; border: 1px solid blue;
+    }
+</style>
+</head>
+<body>
+<div class="divbox" id="divbox">
+    <label class="labelcss">box1</label>
+    <label class="labelcss">box2</label>
+    <label class="labelcss">box3</label>
+    <label class="labelcss">box4</label>
+    <label class="labelcss">box5</label>
+</div>
+<input type="button" value="노드추가(맨뒤)" id="node_add1">
+<input type="button" value="노드추가(맨앞)" id="node_add2">
+<input type="button" value="노드삭제(맨뒤)" id="node_del1">
+<input type="button" value="노드삭제(맨앞)" id="node_del2">
+<input type="text" id="node_num">
+<input type="button" value="노드복사(맨뒤)" id="node_copy">
+<input type="button" value="노드전체삭제" id="node_all">
+</body>
+</html>

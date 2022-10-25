@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>index31 + 파라미터 값 적용</title>
+<style>
+    body {
+        margin:0; padding:0;
+    }
+    .text1{
+        font-size: 14px; font-weight: bold; color: blue; 
+    }
+    .btn{
+        width:80px; height:30px; font-size:14px; border:0; background-color: black;
+        color: white; cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<span id="message"></span>
+</body>
+<script>
+    //var aa = window.location.href;  //(전제 URL)해당 접속 URL값을 가져올 때 사용 (ex.통계자료에 많이 사용됨)
+    var aa = window.location.search;  //파라미터 값으로 전달된 부분만 가져옴(?뒤에 부분만)
+    //var bb = aa.substr(11,20);   //단어를 자를때 사용함 (시작값,범위)=(노드로 계산,글자수)
+    var bb = aa.split("="); 
+    //split는 해당 단어 기준으로 좌,우로 나누어지게 되며, 노드 형태로 변경
+    //되어집니다.
+    //document.write(bb[1]);     
+    if(bb[1]=="admin"){
+        alert("해당 아이디는 사용하지 못합니다.");
+    }
+    else{
+        var code =  document.getElementById("message");
+        var htmlcode;
+        htmlcode="<font class='text1'>사용가능한 아이디 입니다.</font>";
+        htmlcode+="<br><input type='button' value='확인' class='btn' onclick='aaa();'>";
+
+        code.innerHTML = htmlcode;
+        //innerHTML란? innerText의 업그레이드 부분으로 html코드까지 
+        //사용할 수 있도록 하는 스크립트 명령어 입니다.
+    function aaa(){
+        window.opener.f.mid.readOnly=true;
+        self.close();
+    }
+    }
+</script>
+</html>

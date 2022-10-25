@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제2</title>
+</head>
+<link rel="stylesheet" href="index2.css?v=3">
+</head>
+<!--
+문제2. 돋보기 아이콘을 클릭시 상품명을 입력해 주는 검색 부분이 나와야 합니다.
+돋보기를 다시 클릭시 상품명 검색하는 부분은 보이지 않도록 해야 합니다.
+class명은 "searchdiv" 입니다. 현재는 display:none로 해놨습니다.
+검색버튼 클릭스 상품명을 입력해야만 하도록 스크립트를 제작합니다.
+미입력시 검색버튼 클릭을 하게 되면 "상품명을 입력해 주시길 바랍니다." 라는
+경고 메세지가 출력 되도록 합니다.
+
+유통사 검색 부분입니다. 제품 시리얼넘버 번호는 숫자로만 입력 되어야 하며
+제품 시리얼넘버 번호는 무조건 10자리가 들어가야만 합니다.
+10자 이하 또는 10자리 이상을 경우
+"제품 시리얼 넘버번호가 올바르지 않습니다." 라는 경고메세지를 출력합니다.
+-->
+<body>
+<div class="all">
+  <div class="popup">
+    <ul>
+      <li class="pop1">
+        <div>
+      	NVIDIA에서 GTX2080Ti를 40% 저렴하게 구매하도록<br>
+      	권고 하고 있습니다. 금액 규정에 대한 정보를 꼭 확인하세요.
+        </div>
+      </li>
+      <li class="pop2"><img src="./img/closeico.png" class="closeico"></li>
+    </ul>
+  </div>
+  
+  <div class="menudiv">
+    <span class="menuclose">
+      <img src="./img/closeico2.png" style="width:100%;">
+    </span>
+    <ul>
+     <li><img src="./img/menutitleico.png">제품</li>
+       <ol class="somenuol">
+         <li>게이밍<img src="./img/rightico.png"></li>
+         <li>소비자<img src="./img/rightico.png"></li>
+         <li>기업<img src="./img/rightico.png"></li>
+         <li>솔루션<img src="./img/rightico.png"></li>
+       </ol>
+     <li><img src="./img/menutitleico.png">지원</li>
+     <li><img src="./img/menutitleico.png">Insight</li>
+     <li><img src="./img/menutitleico.png">Events/News</li>
+     <li style="text-indent:24px;">Events</li>
+     <li style="text-indent:24px;">뉴스룸</li>
+    </ul>
+  </div>
+  
+  <div class="maindiv1">
+    <ul class="fogul">
+      <li style="width:36px;"><img src="./img/menuico.png" class="menuico" style="margin:12px 0 0 12px; cursor:pointer;"></li>
+      <li style="width:408px; text-align:center;"><img src="./img/logo.png" style="margin-top:12px;"></li>
+      <li style="width:36px;"><img src="./img/searchico.png" class="searchico" style="margin-top:12px; cursor:pointer;" onclick="aaa();"></li>
+    </ul>
+    
+    <!-- 검색창 -->
+  <div class="searchdiv" id="searchdiv">
+    <input type="text" placeholder="상품명을 입력해 주시길 바랍니다." class="searchtext" id="s_txt">
+    <input type="button" value="검색" class="searchbtn" id="searchbtn" onclick="bbb();">
+  </div>
+    
+    <img src="./img/mainbanner.png">
+  </div>
+  
+  
+  <div class="maindiv1">
+    <img src="./img/mainbanner2.png" class="banner2" style="cursor:pointer;">
+  </div>
+  
+  
+  <div class="productdiv">
+    <ul>
+      <li><img src="./img/product1.png" title="개인용 PC" style="width:60%; position:relative; top:18px;"></li>
+      <li><img src="./img/product2.png" title="게임용 144Hz 모니터"></li>
+      <li><img src="./img/product3.png" title="게임용 키보드,마우스"></li>
+    </ul>
+  </div>
+  
+  
+  
+  <div class="shoshuldiv">  
+    <ul style="background:pink;">
+      <li class="sholi1"><img src="./img/instaico.png" style="position:absolute; margin:10px;"><img src="./img/shoshul1.png"></li>
+      <li class="sholi1"><img src="./img/facebookico.png" style="position:absolute; margin:10px;"><img src="./img/shoshul2.png"></li>
+      <li class="sholi2"><img src="./img/facebookico.png" style="position:absolute; margin:10px;"><img src="./img/shoshul3.png"></li>
+      <li class="sholi2"><img src="./img/instaico.png" style="position:absolute; margin:10px;"><img src="./img/shoshul4.png"></li>
+    </ul>
+  </div>
+  
+  
+  <div class="boarddiv">
+    <ul>
+      <li class="boardli1">메인보드 유통사 검색</li>
+      <li class="boardli2">
+        <div>
+          아래의 "메인보드 유통사 검색"<br>
+          기능을 통하여 구매하신기가바이트 제품이 어느<br>
+          유통사에서 판매되었는지확인하실 수 있습니다.<br><br>
+          ※ 해당 서비스는 "메인보드" 제품에 한하여 검색이 가능합니다.
+        </div>
+      </li>
+      <li class="boardli3">
+        <div>
+          메인보드 유통사 검색<br>구매하신 제품의 시리얼넘버를 입력하세요<br><br>
+          <font color="#ff0304">제품 시리얼넘버</font> <input type="text" class="numbertext" id="numbertext" maxlength="10"><br><br>
+          <input type="button" value="유통사 검색" class="numberbtn" onclick="ccc();">
+        </div>
+      </li>
+    </ul>
+    
+    
+      <span class="boardspan">
+        저작권 및 상표권의 지적재산권 및 양도권은 GIGA-BYTE TECHNOLOGY CO.LTD에 있으며, 허가<br>를 받지 않은 모든 저작원 침해 행위는 엄격히 금지됩니다.
+      </span>
+  </div>
+  
+  
+  <div class="bottomdiv">
+    <ul>
+      <li style="font-size:12px; color:#006ac6;">메인보드 유통사 검색</li>
+      <li style="font-weight:bold;">GIGABYTE 소개</li>
+      <li style="font-weight:bold;">뉴스</li>
+      <li style="font-weight:bold;">지원</li>
+      <li style="font-weight:bold;">문의하기</li>
+      <li>&nbsp;</li>
+      <li style="font-weight:bold;"><img src="./img/earthico.png" style="width:5%; position:relative; top:6px;">&nbsp;KOREA(한국어)</li>
+    </ul>
+  </div>
+  
+  
+  <div class="footerdiv">
+   ⓒ  2020 GIGA-BYTE TECHNOLOGY CO.LTD는 본 저작권을 보유<br>하고 있습니다.<br>
+       <a href="http://dreamuup.com/hyg/index2.html" style="color:#666666;">이용약관</a>, <a href="http://dreamuup.com/hyg/index3.html" style="color:#666666;">개인정보보호</a>
+  </div>
+  
+</div>
+
+
+</body>
+
+
+<script>
+    function aaa(){
+        var a=document.getElementById("searchdiv");
+        if(a.style.display=="none"){
+            a.style.display="block";
+        }
+        else{
+            a.style.display="none";
+        }
+    }
+    
+    function bbb(){
+        var b = document.getElementById("s_txt").value;
+        if(b==""){
+            alert("상품명을 입력해 주시길 바랍니다.");
+        }
+    }
+    
+    function ccc(){
+        var c = document.getElementById("numbertext").value;
+        var d = c.length;
+        if(isNaN(c)==true){
+            alert("숫자만 입력해 주세요.");
+        }
+        else{
+            if(d<10 || d>10){
+                alert("제품 시리얼 넘버번호가 올바르지 않습니다.");
+            }
+        }
+    }
+
+
+</script>
+
+</html>

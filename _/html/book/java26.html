@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript - 131p~157p 함수</title> 
+<!--
+    1.html + javascript : id중복, 오타
+    2. form + html + javascript
+    3. javascript 함수
+    4. 코드 작성시 위, 아래
+    5. 결과 값 출력 -innerText innerHTML
+-->
+<script>
+/*
+    문제1
+    버튼 클릭시 구구단 5단을 출력
+*/
+    function aaa(){
+        var a = 5;
+        var b;
+        var c;
+        for(b=1; b<=9; b++){
+            c = a * b;
+            document.write(a+"*"+b+"="+c+"<br>");
+        }
+    }
+</script>
+</head>
+<body>
+<input type="button" value="5단" onclick="aaa();">
+</body>
+</html>

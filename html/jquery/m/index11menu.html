@@ -1,0 +1,169 @@
+
+<meta charset="utf-8">
+<script>
+    $(document).ready(function(){
+            $("#ulcss>li").click(function(){
+                /* 
+                해당 대메뉴 클릭시 소메뉴를 미리 반복문으로 모두
+                slideUp 사용하여 초기화 시킵니다.
+                */
+                var $ea = $("#ulcss>li").length;
+                var $f;
+                var $nodeid;
+                for($f=0;$f<$ea;$f++){
+                    $nodeid = "#olcss" + $f;
+                    $($nodeid).slideUp();
+                }
+                /* 
+                초기화된 메뉴 중 사용자가 선택한 메뉴만 slideDown
+                이용하여 출력하게 됩니다.
+                 */
+
+                var $node = $(this).index();
+                var $node_nm = "#olcss" + $node;            
+                //$($node_nm).slideToggle();
+           /* 
+           slideToggle() : slideDown, slideUp 두가지를 한번에 사용을 함
+           */
+                var $s = $($node_nm).is(":visible");
+    //visible : 해당 오브젝트가 보이는 상태 또는 보이지 않는 상태 유/무 확인
+                if($s==false){
+                    $($node_nm).slideDown();
+                }
+                else{
+                    $($node_nm).slideUp();
+                }
+                
+            });
+
+            $("#olcss0>li").click(function(){
+                var $node = $(this).index();
+                var $url;
+                //0:네이버, 1:다나와, 2:네이트, 3:구글
+                switch($node){
+                    case 0:
+                    $url = "http://naver.com";
+                    break;
+
+                    case 1:
+                    $url = "http://danawa.com";
+                    break;
+
+                    case 2:
+                    $url = "http://nate.com";
+                    break;
+
+                    case 3:
+                    $url = "http://google.com";
+                    break;
+                }
+                location.href=$url;
+            });
+
+            $("#olcss1>li").click(function(){
+                var $node = $(this).index();
+                var $url;
+                //0:삼성, 1:LG, 2:HP, 3:Dell
+                switch($node){
+                    case 0:
+                    $url = "http://www.samsung.com";
+                    break;
+
+                    case 1:
+                    $url = "http://www.lg.co.kr";
+                    break;
+
+                    case 2:
+                    $url = "http://www8.hp.com";
+                    break;
+
+                    case 3:
+                    $url = "https://www.dell.com/ko-kr?c=kr&l=ko&s=,gen&~ck=cr&redirect=1";
+                    break;
+                }
+                location.href=$url;
+            });
+
+    });
+</script>
+<style>
+    .ulcss { width: 300px; height: auto;
+    list-style: none; margin: 0; padding: 0;
+    margin-top: 10px; margin-left: 10px;
+    display: none;
+    }
+    .ulcss > li { width: 300px; height:auto; 
+    background-color: yellow;
+    line-height: 40px; text-indent: 5px; font-size: 14px;
+    border-bottom: 1px solid darkorange; position: relative;
+    }
+    /* 아이콘 적용 */
+    .ulcss > li:nth-child(1)::before{
+        content: url('./images/img0.svg');
+    }
+    .ulcss > li:nth-child(2)::before{
+        content: url('./images/img1.svg');
+    }
+    .ulcss > li:nth-child(3)::before{
+        content: url('./images/img2.svg');
+    }
+    .ulcss > li:nth-child(4)::before{
+        content: url('./images/img3.svg');
+    }
+    .ulcss > li:nth-child(5)::before{
+        content: url('./images/img4.svg');
+    }
+    
+
+    .olcss { width:200px; height:auto; list-style: none;
+    margin: 0; padding: 0; display: none;
+    }
+    .olcss > li { width: 200px; height: 40px;
+    background-color: orange;
+    line-height: 40px; text-indent: 5px; font-size: 14px;
+    border-bottom: 1px solid black;
+    }
+</style>
+<ul class="ulcss" id="ulcss">
+    <li>가전 | TV
+        <ol class="olcss" id="olcss0">
+            <li>TV</li>
+            <li>홈시어터</li>
+            <li>프로젝트</li>
+            <li>셋톱박스</li>
+        </ol>        
+    </li>
+    <li>컴퓨터 | 노트북 | 조립PC
+        <ol class="olcss" id="olcss1">
+            <li>삼성</li>
+            <li>LG</li>
+            <li>HP</li>
+            <li>Dell</li>
+        </ol>         
+    </li>
+    <li>아웃도어 | 스프츠
+        <ol class="olcss" id="olcss2">
+            <li>캠핑</li>
+            <li>낚시</li>
+            <li>등산</li>
+            <li>수영</li>
+        </ol>
+    </li>
+    <li>자동차 | 용품
+        <ol class="olcss" id="olcss3">
+            <li>타이어/휠/배터리</li>
+            <li>오일/필터</li>
+            <li>세차/와이퍼</li>
+            <li>매트/시트</li>
+            <li>전동드릴</li>
+        </ol>
+    </li>
+    <li>식품 | 유아 | 완구
+        <ol class="olcss" id="olcss4">
+            <li>건강식품</li>
+            <li>라면/면류/통조리</li>
+            <li>커피/차</li>
+            <li>생수/음료/두유</li>
+        </ol>
+    </li>
+</ul>

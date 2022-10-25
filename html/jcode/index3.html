@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제3</title>
+    <style>
+        body { margin: 0; padding: 0;}
+        .member_div { width: 250px; height: 150px; border:1px solid #ccc; border-radius: 5px;
+        text-align: center;  margin: 0 auto; margin-top: 25px;
+        }
+        p { font-size: 14px; font-weight: bold;}
+        .selcss { width:200px; height:30px; border:1px solid #ccc; 
+        font-size: 12px; text-indent: 5px;
+        }
+        .member_btn { border: 0; width: 100px; height: 30px; border-radius: 5px;
+            background-color: darkblue; color: white; font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<!-- 
+    문제3. 
+    select안에 그룹이 나오도록 합니다.
+    해당 그룹이 나오도록 합니다.
+    숫자 1~5까지는 option에 대한 value 값 입니다.
+
+    일반회원,1
+    사업자회원(개인),2
+    사업자회원(법인),3
+    자선단체회원,4
+    자회사직원,5
+-->
+<body>
+<div class="member_div">
+<p>회원그룹 선정 부분</p>
+<select class="selcss" id="selcss">
+</select>
+<label><input type="button" value="회원그룹설정" class="member_btn"></label>
+</div>
+</body>
+<script>
+    var array = [
+        ["일반회원","1"],
+        ["사업자회원(개인)","2"],
+        ["사업자회원(법인)","3"],
+        ["자선단체회원","4"],
+        ["자회사직원","5"],
+    ];
+    var a = array.length;
+    var f;
+    var b = document.getElementById("selcss");
+    for(f=0;f<a;f++){
+        b.innerHTML += "<option value='"+array[f][1]+"'>"+array[f][0]+"</option>";
+    }
+</script>
+</html>

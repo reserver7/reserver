@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제5</title>
+</head>
+<!--
+문제5. 상품코드 검색시 해당 코드번호에 맞는 부분을 출력하며, 
+해당 코드가 없을 경우
+"해당 상품은 검색 되지 않습니다."라는 경고메세지가 출력 되면 됩니다.
+
+
+상품배열코드
+
+닥터 루테인,1512956073
+리버존포르테정,1504157692
+아동용 분말 가루 유산균,1530206444
+여성용 캡슐 유산균,1529946810
+인사메디,1529338981
+크롬-씨,1519017136
+
+상품배열 코드를 이용하여 상품명, 상품코드를 출력하시면 됩니다.
+해당 페이지 실행시 상품리스트가 먼저 출력되어야 하며, 상품코드를 
+입력하고 검색시 해당 상품리스트만 나와야 합니다.
+-->
+<script>
+    function abc(){
+        var a = Number(ftarget.sch_word.value);
+        if(a=="" || a==0){
+            alert("상품코드를 입력해 주세요");
+            return false;
+        }
+        else{
+            if(isNaN(a)==true){//true:숫자외에 영문,한글이 입력되었을 경우
+                alert("상품코드는 숫자만 입력하세요");
+                return false;
+            }
+            else{
+                var b = ftarget.sch_word.value;
+                if(b.length < 10){
+                    alert("상품코드는 10자리를 입력하셔야 합니다.");
+                    return false;
+                }
+                else{
+                    ftarget.action="./index5.html";
+                    ftarget.submit();
+                }
+            }
+        }
+    }
+</script>
+<style>
+    body {
+        margin: 0; padding: 0;
+    }
+    .new_win { width:400px; height:600px; border:1px solid #ccc;
+    margin: 0 auto;
+    }
+    h1 { text-align: center; }
+    .local_desc01 { width: 100%; text-align: center;}
+    #scp_list_find {
+        width: 100%; height: 30px;
+        text-align: center; line-height: 30px;
+        font-size: 12px;
+        }
+    #sch_word { width: 200px; height:25px; }
+    .btn_frmline { width: 80px; height: 30px; border: 0;
+    background-color: teal; color: white;
+    vertical-align: -1.5px;
+    }
+    .tbl_head01 { width:380px; height:400px;
+    border: 1px solid #777; margin: 0 auto;
+    margin-top: 20px;
+    }
+    .tbl_head01 > p { text-align: center; font-size: 13px;
+    font-weight: bold;
+    }
+    .product_list { 
+        width:100%;
+        list-style: none; margin: 0; padding: 0;
+        height: auto; font-size: 12px;
+    }
+    .product_list > li { float: left; text-align: center; height: 30px; line-height: 30px; 
+    box-sizing: border-box;
+    }
+    .li1 { width: 150px; background-color:cadetblue; border-right: 1px solid #ccc;}
+    .li2 { width: 150px; background-color: cadetblue; border-right: 1px solid #ccc;}
+    .li3 { width: 80px; background-color: cadetblue;}
+    .lidt1 { width: 150px; background-color: cornsilk; border-right: 1px solid #fff; }
+    .lidt2 { width: 150px; background-color: cornsilk; border-right: 1px solid #fff; }
+    .lidt3 { width: 80px; background-color: cornsilk; }
+</style>
+<body>
+    <div id="sch_target_frm" class="new_win scp_new_win">
+        <h1>쿠폰 적용 상품선택</h1>
+    
+        <div class="local_desc01 local_desc">
+            <p>
+                쿠폰을 적용할 상품을 선택하세요.<br>
+                상품이 많을 경우에는 검색 기능을 이용하세요.
+            </p>
+        </div>
+    
+        <form name="ftarget" id="ftarget" method="get">
+        <input type="hidden" name="sch_target" value="0">
+    
+        <div id="scp_list_find">
+            <label for="sch_word">상품코드</label>
+            <input type="text" name="sch_word" id="sch_word" value="" class="frm_input required" size="10" placeholder="상품코드 10자리 숫자" maxlength="10">
+            <input type="button" value="검색" class="btn_frmline" onclick="abc();">
+        </div>
+    
+        <div class="tbl_head01 tbl_wrap">
+        <p>상품 리스트</p>
+        <ol class="product_list" id="product">
+            <!--
+                예시형태 출력
+            <li class="lidt1">리버존포르테정</li>
+            <li class="lidt2">1504157692</li>
+            <li class="lidt3">선택</li>
+            -->
+        </ol>
+        </div>
+        </form>
+    </div>
+    
+</body>
+<script>
+    /* 검색이랑 배열이랑 검토를 해야하는 사항일 경우
+    검색파트 부분이 제일 상단, 그리고 배열이 나와야 함 반대일 경우 검토 불가
+    */
+    /* 상품검색 후 해당 코드 입력사항에 출력시킴 */
+    var code = location.search; 
+    var codeck = code.split("sch_word=");
+    var codenum = codeck[1];
+    //undefined : 변수값이 아예 없다는 형태 (자료형이 정해져 있지 않음)
+    //alert(codenum);
+    
+    var p = [
+    ["닥터 루테인",1512956073],
+    ["리버존포르테정",1504157692],
+    ["아동용 분말 가루 유산균",1530206444],
+    ["여성용 캡슐 유산균",1529946810],
+    ["인사메디",1529338981],
+    ["크롬-씨",1519017136]
+    ];
+    var num = p.length;
+    var h1 = '<li class="li1">상품명</li>\
+              <li class="li2">상품코드</li>\
+              <li class="li3">선택</li>';
+    var f;
+    var ss = "no";  //임시변수 (상품코드 검색 유/무)
+    for(f=0;f<num;f++){
+        //codenum==undefined; (""없이 써야함 ) 
+        if(codenum==undefined){ //검색하기 전 전체 상품 리스트 출력
+            h1 += '<li class="lidt1">'+ p[f][0] +'</li>\
+            <li class="lidt2">'+ p[f][1] +'</li>\
+            <li class="lidt3">선택</li>';
+            ss = "yes";
+        }
+        else if(codenum==p[f][1]){  //상품코드와 검색코드가 같을 경우
+            h1 += '<li class="lidt1">'+ p[f][0] +'</li>\
+            <li class="lidt2">'+ p[f][1] +'</li>\
+            <li class="lidt3">선택</li>';
+            ss = "yes";
+        }
+    }
+    if(ss=="no"){
+        alert("해당 상품코드를 찾을 수 없습니다.");
+    }
+    document.getElementById("product").innerHTML = h1;
+
+</script>
+</html>

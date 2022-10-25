@@ -1,0 +1,354 @@
+@charset "UTF-8";
+/* 서브페이지 기본 셋팅 부분 */
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+@mixin font($family,$fweight,$fsize,$fcolor) {
+    //(font-weight 100,300,400,500,700,900)
+    $fontfamily:"";
+    @if($family=="noto"){
+        $fontfamily: 'Noto Sans KR', sans-serif;
+    }
+    @else if($family=="pen"){
+        $fontfamily: 'Nanum Pen Script', cursive;
+    }
+    @else if($family=="big"){
+        $fontfamily: 'Big Shoulders Stencil Display', cursive;
+    }
+    @else if($family=="gothic"){
+        $fontfamily: 'Nanum Gothic', sans-serif;
+    }
+    @else if($family=="open"){
+        $fontfamily: 'Open Sans', sans-serif;
+    }
+    font-family: $fontfamily; 
+    font-weight: $fweight;
+    font-size: $fsize+px; 
+    color: $fcolor;
+}
+@mixin subpage {
+    height: auto;
+    @include font("noto",400,14,rgb(51,51,51));
+}
+@mixin flex($flexpart,$just,$direct,$items,$wrap,$content) {
+    display: flex; 
+    justify-content: $just;
+    flex-direction: $direct;
+    align-items: $items;
+    @if($flexpart==1){
+        flex-wrap: $wrap;
+        align-content: $content;
+    }
+}
+@mixin sizes($div_width,$div_height,$div_margin,$div_padding,$div_border) {
+    width: $div_width; height: $div_height;
+    @if($div_margin=="auto"){
+        margin: 0 auto;
+    }
+    @else{
+        margin: $div_margin;
+    }
+    padding: $div_padding; border: $div_border;
+}
+@mixin position($ps) {
+    @if($ps=="ab"){
+        position: absolute;
+    }
+    @else if($ps=="re"){
+        position: relative;
+    }
+    @else if($ps=="fi"){
+        position: fixed;
+    }
+}
+@mixin bg($ap,$bgcolor,$bgurl) {
+    @if($ap==0){
+        background-color: rgba($bgcolor);
+    }
+    @else if($ap==1){
+        background-color: $bgcolor;
+    }
+    @else if($ap==2){
+        background-image: url($bgurl);
+        background-repeat: no-repeat;
+    }
+}
+body,*{ margin: 0; padding: 0; box-sizing: border-box; }
+html,body,div,span,label,section,aside,footer,header,nav,video,table,tr,td,th{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font:inherit;
+}
+section,aside,footer,header,nav,main,span,label{
+    display: block;
+}
+ul,ol,dd { list-style: none; margin: 0; padding: 0;}
+.navcss{
+    height: auto; width: 480px;
+}
+.headercss{
+    height: auto; 
+}
+.s_css1{
+    height: auto; 
+}
+.s_css2{
+    height: auto;   
+}
+.s_css3{
+    height: auto;
+}
+.maincss{
+    height: auto; 
+}
+.footercss{
+    height: auto;  
+}
+.header_pop{
+    @include sizes(480px,60px,0,10px,"");
+    @include bg(1,#484848,"");
+    @include flex(0,space-between,row,center,"","");
+    &>ul{
+        @include sizes(100%,auto,auto,0,"");
+        &>li{
+            color: #fff; font-family: "돋움체"; font-size: 12px; font-weight: bold;
+        }
+    }
+    &>span{
+        @include sizes(24px,24px,0,0,"");
+        @include flex(0,flex-end,row,center,"","");
+        &>img{ width: 100%; object-fit: cover;}
+    }
+}
+
+.menudiv{
+    @include sizes(480px,480px,0,0,""); 
+    @include bg(1,#fff,"");
+    @include position("ab"); z-index: 5; padding-top: 10px;
+    left: -480px;
+    &>.menuclose{
+        @include sizes(24px,24px,0,0,""); padding-left: 10px;
+        &>img{ width: 100%; object-fit: cover; }
+    }
+}
+.menuul{
+    @include sizes(480px,auto,0,0,""); margin-top: 20px;
+    &>li{
+        @include sizes(100%,24px,0,0,"");
+        @include font("noto",400,14,"");
+        padding-left: 10px; line-height: 24px;
+    }
+}
+.somenuol{
+    @include sizes(480px,auto,0,0,"");
+    &>li{
+        @include sizes(100%,24px,0,0,"");
+        @include font("noto",300,16,"");
+        @include position("re");
+        padding-left: 34px; line-height: 24px;
+        &>img{
+            @include position("ab");
+            right: 10px; width: 15px; object-fit: cover;
+        }
+    }
+}
+
+.section_outline{
+    @include sizes(480px,auto,0,0,0);
+    @include position("re");
+}
+.menu{
+    @include sizes(100%,60px,0,0,0);
+    @include position("ab");
+    @include flex(0,space-between,row,center,"","");
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.search_box{
+    @include position("ab");
+    top: 60px;
+    z-index: 3; 
+    @include sizes(100%,60px,0,0,0);
+    @include bg(1,#484848,"");
+    @include flex(0,space-around,row,center,"","");
+    display: none;
+    &>div>input{
+        @include sizes(350px,40px,0,0,"");
+        border-radius: 5px;
+        text-indent: 10px;
+    }
+    &>button{
+        @include sizes(60px,40px,0,0,0);
+        font-size: 12px; font-weight: bold; font-family: "돋움체";
+        border-radius: 5px;
+    }
+}
+.banner{
+    @include sizes(480px,480px,0,0,"");
+    overflow: hidden;
+    &>.banner_list{
+        @include sizes(480px*2,480px,0,0,"");
+        &>li{
+            float: left;
+        }
+    }
+}
+
+.product_box{
+    @include sizes(480px,150px,0,0,0);
+    &>ul{
+        @include sizes(100%,150px,0,0,0); 
+        @include flex(0,center,row,center,"","");
+        &>li{
+            @include sizes(480px/3,150px,0,0,0); 
+            @include flex(0,center,row,center,"","");
+            &>img{
+                width: 70%; object-fit: cover;
+            }
+        }
+    }
+}
+
+.shoshul_box{
+    @include sizes(480px,350px,0,0,0);
+    &>ol{
+        @include sizes(100%,auto,0,0,0);
+        &>li{
+            @include sizes(480px/2,auto,0,0,0); 
+            @include position("re");
+            float: left;
+            &>img{
+                width: 100%; object-fit: cover;
+            }
+        }
+        &>li:nth-child(even)::before{
+            content: "";
+            @include position("ab");
+            @include sizes(25px,25px,0,0,0); 
+            @include bg(2,"","./img/facebookico.png");
+            display: inline-block; left: 10px; top: 10px;
+        }
+        &>li:nth-child(odd)::before{
+            content: "";
+            @include position("ab");
+            @include sizes(25px,25px,0,0,0); 
+            @include bg(2,"","./img/instaico.png");
+            display: inline-block; left: 10px; top: 10px;
+        }
+    }
+}
+
+/* 메인보드 */
+.maincss{
+    @include sizes(400px,auto,auto,0,"");
+}
+.mainoutline{
+    @include sizes(100%,360px,auto,0,"");
+    &>span{
+        @include sizes(100%,30px,0,0,0);
+        font-size: 10px; font-family: "돋움체";
+        text-align: center;
+        line-height: 15px;
+        margin-top: 10px;
+    }
+}
+.mainbox_top{
+    @include sizes(400px,auto,0,0,"");
+    &>.main_title{
+        @include sizes(100%,40px,auto,0,"");
+        @include bg(1,#000,"");
+        @include font("noto",500,18,#fff); 
+        text-align: center; line-height: 40px;
+    }
+    &>div{
+        @include sizes(100%,150px,auto,0,1px solid #ddd);
+        @include bg(1,#f7f7f8,""); 
+        @include font("noto",400,15,""); text-align: center;
+        padding-top: 20px;
+        &>span{
+            @include sizes(100%,150px/2,auto,0,"");
+        }
+    }
+}
+.mainbox_bottom{
+    @include sizes(400px,170px,0,0,1px solid #ddd);
+    @include bg(1,#f7f7f8,"");
+    @include font("noto",400,15,""); text-align: center;
+    @include flex(0,space-around,column,center,"","");
+    border-top: 0;
+    &>span{
+        width: 100%;
+        @include flex(0,center,row,center,"",""); 
+        text-align: center;
+    }
+    &>span:nth-of-type(2){
+        &>label{
+            @include font("noto",400,15,#ff0304);
+            margin-right: 5px;
+            @include flex(0,center,row,center,"",""); 
+        }
+       &>div>input{
+           @include sizes(150px,25px,0,0,1px solid #333);
+           @include font("noto",400,20,black);
+        }  
+    }
+    &>span:nth-of-type(3)>button{
+        @include sizes(110px,35px,0,0,"");
+        border-radius: 5px;
+        @include bg(1,black,"");
+        @include font("noto",400,15,white);
+    }
+}
+
+/* 카피라이터*/
+a:link,a:visited,a:hover,a:active{color: #666; }
+.copy_box{
+    @include sizes(480px,auto,0,0,""); margin-top: 100px; border-top: 1px solid #aaa;
+}
+.c_top{
+    @include sizes(100%,auto,auto,0,""); margin-top: 30px;
+    &>ul{
+        @include sizes(100%,auto,0,0,"");
+        &>li{
+            @include font("noto",400,17,#666); 
+            @include sizes(100%,30px,0,0,""); text-align: center; line-height: 30px;
+        }
+        &>li:nth-of-type(1){
+            @include font("noto",100,13,#006ac6);
+        }
+        &>li:nth-of-type(5){
+            @include font("noto",400,15,#666);
+        }
+    }
+    &>.language{
+        @include sizes(100%,40px,0,0,""); text-align: center;
+        @include font("noto",400,15,#666); margin-top: 13px;
+    }
+    &>.language::before{
+        content: "";
+        @include bg(2,"","./img/earthico.png");
+        @include sizes(24px,24px,0,0,"");
+        background-size: 24px; display: inline-block;
+        vertical-align: -6px; padding-right: 3px;
+    }
+}
+.c_bottom{
+    @include sizes(100%,auto,0,0,"");
+    &>ul{
+        @include sizes(100%,auto,0,0,"");
+        &>li{
+            @include font("noto","",12,#666);
+            @include sizes(100%,30px,0,0,"");
+            @include flex(0,center,row,center,"",""); 
+            text-align: center; line-height: 30px;
+        }
+        &>li{
+            height: 40px;
+        }
+    }
+}

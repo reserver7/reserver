@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + css 3-26</title>
+<style>
+    dl{
+        width: 100%; height: auto; text-align: center; margin: 0; padding: 0;
+    }
+    dl > dd{
+        width: 100px; height: 30px; float: left; margin: 0; padding: 0;
+    }
+    dl > dd:nth-child(1){
+        background-color: gray; border-radius: 10px 0 0 10px;
+    }
+    dl > dd:nth-child(2n+2){
+        background-color: green;
+    }
+    dl > dd:nth-child(3n+3){
+        background-color: red;
+    }
+    dl > dd:nth-child(5n+5){
+        background-color: blue;
+    }
+    dl > dd:nth-child(10){
+        border-radius: 0 10px 10px 0;
+    }
+    
+</style>
+</head>
+<body>
+<!--
+    응용문제12 html + css
+    다음 html 메뉴를 제작하게 됩니다. 메뉴는 총 10개 이며,
+    각 메뉴별로 색상이 적용됩니다.
+    menu1, menu10은 모서리 10px
+    각 색상에 맞춰서 출력
+    menu1 : gray
+    menu2, menu4, menu8 : green 
+    menu3, menu6, menu9 : red
+    menu5, menu10 : blue  
+-->
+<dl>
+    <dd>menu1</dd>
+    <dd>menu2</dd>
+    <dd>menu3</dd>
+    <dd>menu4</dd>
+    <dd>menu5</dd>
+    <dd>menu6</dd>
+    <dd>menu7</dd>
+    <dd>menu8</dd>
+    <dd>menu9</dd>
+    <dd>menu10</dd>
+</dl>
+</body>
+</html>

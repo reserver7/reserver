@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>최종복습 (부모창 > 자식창)</title>
+<script>
+    function bbb(){
+        var data = document.getElementById("product").innerText; //글자만 가져옴
+        window.opener.f.a.value = data; //부모창에 값을 보냄
+      
+        var data2 = document.getElementById("money").innerText;
+        window.opener.f.b.value = data2;
+        self.close();   //창을 종료
+    }
+</script>
+</head>
+<body>
+<div id="product" onclick="bbb();">LG 냉장고 2020년도 신규제품!!</div>
+<div id="money" onclick="bbb();">225,000원</div>
+</body>
+</html>

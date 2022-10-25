@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>Javascript - 84p(부가사항20)</title>
+<!-- Math.random & switch -->
+<script>
+/* 
+    응용문제23
+    1 ~ 10 까지 숫자 중 무작위 숫자 한개를 선택합니다.
+    그 중에서 
+    1 : 할인쿠폰 10% 할인
+    2 : 할인쿠폰 20% 할인
+    3 : 택배비 무료
+    4 : 1+1상품 입니다.
+    5 : 할인쿠폰 50% 할인
+    나머지 숫자는 "다음 기회에" 라고 경고메세지 출력
+*/
+    var a = Number(Math.floor(Math.random()*10+1));
+    console.log(a);
+    switch(a){
+        case 1:
+        alert("할인쿠폰 10% 할인");
+        break;
+
+        case 2:
+        alert("할인쿠폰 20% 할인");
+        break;
+
+        case 3:
+        alert("택배비 무료");
+        break;
+
+        case 4:
+        alert("1+1상품 입니다.");
+        break;
+
+        case 5:
+        alert("할인쿠폰 50% 할인");
+        break;
+
+        default :
+        alert("다음 기회에");
+        break;
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>

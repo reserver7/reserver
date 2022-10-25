@@ -1,0 +1,323 @@
+<div id="subpage" :class="s1">
+    <!-- 상품등록 부분 -->
+    <form name="pd" id="pd" method="POST" action="p_updateok.php" enctype="multipart/form-data">
+    <aside :class="s2">
+        <label :class="s3">{{ part_1 }}</label>
+        <div :class="s4">
+            <ul :class="s5">
+                <li>
+                    <ol :class="s6">
+                        <li>상품코드</li>
+                        <li><input type="text" name="goodsno" id="goodsno" class="input_read" readonly></li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>상품명 *</li>
+                        <li><input type="text" name="product_nm" id="product_nm" class="input_read2" maxlength="150"> ※ 상품명은 150자까지 등록이 가능합니다.</li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>간편설명 *</li>
+                        <li><input type="text" name="product_nmdtc" id="product_nmdtc" class="input_read5" maxlength="200"> ※ 최대 200자 이내</li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>소비자 가격 *</li>
+                        <li><input type="text" name="product_money" id="product_money" class="input_read" maxlength="8" value="0" style="text-align: right;"> 원</li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>상품 할인 유/무</li>
+                        <li>
+                            <label for="product_dc" class="product_dc"><input type="radio" name="product_dc" id="product_dc" value="Y" onclick="dc_ckeck(1);">적용</label>
+                            <label for="product_dc2" class="product_dc"><input type="radio" name="product_dc" id="product_dc2" value="N" onclick="dc_ckeck(2);">미적용</label>
+                        </li>
+                    </ol>
+                </li>
+                <li id="dc" style="display: none;">
+                    <ol :class="s6">
+                        <li>상품 할인율 *</li>
+                        <li>
+                            <label for="product_dcpart" class="product_dc"><input type="radio" name="product_dcpart" id="product_dcpart" value="P"> %단위</label>
+                            <label for="product_dcpart2" class="product_dc"><input type="radio" name="product_dcpart" id="product_dcpart2" value="M"> 원단위</label>
+                            <label class="product_dc" style="margin-left: 10px;"><input type="text" name="product_dcnum" id="product_dcnum" onkeyup="dc_num();" class="input_read tright"> 할인율</label>
+                            <label class="product_dc" style="margin-left: 10px;">| 할인 최종금액 : <input type="text" name="product_sales" id="product_sales" class="input_read tright" readonly> 원</label>
+                            <!-- 
+                                %단위로 입력시
+                                할인 최종금액 = 소비자 가격 * %단위 입력된 내용이 계산되어 할인 최종금액에 자동으로 입력되어야함
+                                원단위 입력시
+                                할인 최종금액 = 소비자 가격 - 원단위 입력된 내용이 계산되어 할인 최종금액에 적용됨
+                            -->
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>상품 제한수량 *</li>
+                        <li><input type="text" name="product_ea" id="product_ea" class="input_read" value="0" maxlength="5"> ※ 수량 최대 입력값은 99999개 입니다.</li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>상품 대표이미지 *</li>
+                        <li><a href="" id="main_img" style="text-decoration: underline; color: red;" target="_new">[기존 이미지]</a> <input type="file" name="product_img" id="product_img"> ※ JPG,BMP,PNG,JPEG,GIF 2MB 이하만 업로드 가능합니다. (500 * 500)</li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>상품 옵션명</li>
+                        <li>
+                            <label class="product_dc">옵션명1 : <input type="text" name="product_option1" id="product_option1" class="input_read" value=""></label>
+                            <label class="product_dc">옵션명2 : <input type="text" name="product_option2" id="product_option2" class="input_read" value=""></label>
+                            <label class="product_dc">옵션명3 : <input type="text" name="product_option3" id="product_option3" class="input_read" value=""></label> ※ 미 입력시 옵션은 출력되지 않습니다.
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>상품 URL</li>
+                        <li><input type="text" name="product_url" id="product_url" class="input_read3" value=""> ※ 소셜에 공유하고 싶을 경우 URL을 입력해 주시면 됩니다.</li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>상품 추가 이미지</li>
+                        <li>
+                            <label class="product_dc" id="dcimg">
+                                <a href="" style="text-decoration: underline; color: red;" id="sub_img1" target="_new">[추가 이미지1]</a>상품 추가이미지1 : <input type="file" name="product_img1" id="product_img1"> ※ 사이즈 500*500 JPG,BMP,PNG,GIF 파일만 사용 가능합니다.<br>
+                                &nbsp;<a href="" style="text-decoration: underline; color: red;" id="sub_img2" target="_new">[추가 이미지2]</a>상품 추가이미지2 : <input type="file" name="product_img2" id="product_img2"> ※ 사이즈 500*500 JPG,BMP,PNG,GIF 파일만 사용 가능합니다.<br>
+                                &nbsp;<a href="" style="text-decoration: underline; color: red;" id="sub_img3" target="_new">[추가 이미지3]</a>상품 추가이미지3 : <input type="file" name="product_img3" id="product_img3"> ※ 사이즈 500*500 JPG,BMP,PNG,GIF 파일만 사용 가능합니다.
+                            </label>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <ol :class="s6">
+                        <li>상품 상세설명 *</li>
+                        <li>
+                            <textarea name="product_contents1" id="product_contents1"></textarea>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+        <div :class="s7">
+            <input type="button" value="수정완료" onclick="product_insertck(1)" :class="s8">
+            <input type="button" value="상품리스트" onclick="product_insertck(2)" :class="s9">
+            <input type="button" value="상품삭제" onclick="product_insertck(3)" :class="s10">
+        </div>
+    </aside>
+</form>
+</div>
+<script>
+    var lo = location.search;
+    var lo_pidx = lo.split("?");
+    console.log(lo_pidx[1]);
+    function product_insertck(pt){
+        if(pt==1){
+            var re_msg = insertck();
+            if(re_msg[2]=="no"){
+                alert(re_msg[0]);
+                re_msg[1].focus();
+            }
+            else{
+                insert_confirm()
+            }
+        }
+        else if(pt==2){
+            location.href = "./product_info.html";
+        }
+        else if(pt==3){
+            if(confirm("정말 삭제 하시겠습니까?")){
+                location.href = './product_del.html?' + lo_pidx[1];
+            }
+        }
+    }
+
+    function insertck(){
+        var p_msg = "";
+        var p_focus = "";
+        var p_ok = "yes";
+        let editor = CKEDITOR.instances['product_contents1'];
+        if(pd.product_nm.value==""){
+            p_msg = "상품명을 입력해 주세요.";
+            p_focus = pd.product_nm;
+            p_ok = "no";
+        }
+        else if(pd.product_nmdtc.value==""){
+            p_msg = "간편설명을 입력해 주세요.";
+            p_focus = pd.product_nmdtc;
+            p_ok = "no";
+        }
+        else if(pd.product_money.value=="0" || pd.product_money.value==""){
+            p_msg = "소비자가격을 입력해 주세요.";
+            p_focus = pd.product_money;
+            p_ok = "no";
+        }
+        else if(document.getElementById("product_dc").checked==true && pd.product_dcnum.value==""){
+            p_msg = "상품할인 적용시 할인율은 필수값 입니다.";
+            p_focus = pd.product_dcnum;
+            p_ok = "no";
+        }
+        else if(pd.product_ea.value=="0" || pd.product_ea.value==""){
+            p_msg = "상품 수량을 입력해 주세요.";
+            p_focus = pd.product_ea; 
+            p_ok = "no";
+        }
+        else if(editor.getData()==""){
+            p_msg = "상품 상세 설명을 입력해 주세요.";
+            p_focus = editor;
+            p_ok = "no";
+        }
+        return [p_msg,p_focus,p_ok];
+    }
+
+    function dc_ckeck(dc_number){
+        if(dc_number==1){
+            document.getElementById("dc").style.display = "block";
+            pd.product_sales.value = pd.product_money.value;
+        }
+        else{
+            document.getElementById("dc").style.display = "none";
+            pd.product_dcnum.value = 0;
+            pd.product_sales.value = 0;
+        }
+    }
+
+    function dc_num(){
+        var money = Number(pd.product_money.value);
+        var dcnum = Number(pd.product_dcnum.value);
+        pd.product_sales.value = money;
+        if(document.getElementById("product_dcpart").checked==true){ //% 할인
+            pd.product_sales.value = Math.floor(money - (money * (dcnum / 100)));
+        }
+        else{ //원단위 할인
+            pd.product_sales.value = Math.floor(money - dcnum);
+        }
+    }
+
+    function insert_confirm(){
+        console.log(pd.product_money.value);
+        if(pd.product_nm.value.length>150){
+            alert("상품명은 150자까지 등록이 가능합니다.");
+            pd.product_nm.focus();
+            return false;
+        }
+        else if(pd.product_nmdtc.value.length>200){
+            alert("간편설명은 200자까지 등록이 가능합니다.");
+            pd.product_nmdtc.focus();
+            return false;
+        }
+        else if(isNaN(pd.product_money.value)==true){
+            alert("소비자 가격은 숫자만 입력 가능합니다.");
+            pd.product_money.value = "";
+            pd.product_money.focus();
+            return false;
+        }
+        else if(isNaN(pd.product_ea.value)==true){
+            alert("상품수량은 숫자만 입력 가능합니다.");
+            pd.product_ea.value = "";
+            pd.product_ea.focus();
+            return false;
+        }
+        else if(pd.product_sales.value<0){
+            alert("할인율을 다시 확인해 주세요.");
+            pd.product_sales.focus();
+            return false;
+        }
+        else{
+            pd.submit();
+        }
+    }
+
+    let p_in = new Vue({
+        el:"#subpage",
+        data:{
+            part_1 : "상품등록",
+            s1:"subview",
+            s2:"aside_css",
+            s3:"part_css",
+            s4:"chart_css",
+            s5:"ul_insert",
+            s6:"ol_insert",
+            s7:"div_btn",
+            s8:"btncss1",
+            s9:"btncss2",
+            s10:"btncss3"
+        }
+    });
+
+    /* 배열 출력 파트 */
+    var ff;
+    var fre, are, ii;
+    arr.forEach(function(p_key,p_node,p_name){
+        pd.goodsno.value = p_key.goodsno;
+        pd.product_nm.value = p_key.product_nm;
+        pd.product_nmdtc.value = p_key.product_nmdtc;
+        pd.product_money.value = p_key.product_money;
+        if(p_key.product_dc=="Y"){
+            pd.product_dc[0].checked = true;
+            document.getElementById("dc").style.display = "block";
+        }
+        else{
+            pd.product_dc[1].checked = true;
+        }
+        if(p_key.product_dcpart=="P"){
+            pd.product_dcpart[0].checked = true;
+        }
+        else{
+            pd.product_dcpart[1].checked = true;
+        }
+        pd.product_dcnum.value = p_key.product_dcnum;
+        pd.product_sales.value = p_key.product_sales;
+        pd.product_ea.value = p_key.product_ea;
+        document.getElementById("main_img").setAttribute("href",p_key.product_img);
+        pd.product_option1.value = p_key.product_option1;
+        pd.product_option2.value = p_key.product_option2;
+        pd.product_option3.value = p_key.product_option3;
+        pd.product_url.value = p_key.product_url;
+        pd.product_contents1.value = p_key.product_contents1;
+
+        for(ff=1;ff<=3;ff++){
+            are = eval("p_key.product_simg"+ff);
+            ii = document.getElementById("sub_img"+ff);
+            if(are==""){
+                document.getElementById("dcimg").removeChild(ii);
+            }
+            else{
+                ii.setAttribute("href",are);
+            }
+        }
+        /*
+        if(p_key.product_simg1==""){
+        var sm1 = document.getElementById("sub_img1");
+        document.getElementById("dcimg").removeChild(sm1);
+    }
+    else{
+        document.getElementById("sub_img1").setAttribute("href",p_key.product_simg1);
+    }
+    if(p_key.product_simg2==""){
+        var sm2 = document.getElementById("sub_img2");
+        document.getElementById("dcimg").removeChild(sm2);
+    }
+    else{
+        document.getElementById("sub_img2").setAttribute("href",p_key.product_simg2);
+    }
+    if(p_key.product_simg3==""){
+        var sm3 = document.getElementById("sub_img3");
+        document.getElementById("dcimg").removeChild(sm3);
+    }
+    else{
+        document.getElementById("sub_img3").setAttribute("href",p_key.product_simg3);
+    }
+    */
+    });
+</script>
+<script src="./ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace("product_contents1",{width:840,height:200});
+</script>

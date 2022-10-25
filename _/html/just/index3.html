@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compitible" content="IE=Edge, chrome=1">
+<title>Javascript & Jquery 특강</title>
+<script src="../jquery/jquery.js"></script>
+<script>
+    $(function(){
+        var $array = [100,200,300];
+        $("#btn").click(function(){
+            var $ea = $array.length;
+            var $w = 0;
+            var $ani;
+            while($w<$ea){
+                $ani = ".box"+$w;
+                $($ani).stop().delay($array[$w]).animate({
+                    "width" : $array[$w] + "px"
+                },$array[$w]);
+                $w++;
+            }
+        }); 
+    });
+</script>
+<style>
+    span { display: block; height: 50px; }
+    .box0 { width: 0; background-color: blue;}
+    .box1 { width: 0; background-color: red;}
+    .box2 { width: 0; background-color: green;}
+</style>
+</head>
+<body>
+    <span class="box0"></span>
+    <span class="box1"></span>
+    <span class="box2"></span>
+    <button type="button" id="btn">작동</button>
+</body>
+</html>

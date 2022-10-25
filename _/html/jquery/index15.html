@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 4일차 - (노드 삭제 및 추가(제일 상단) + 노드복제)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+
+        $("#node_add").click(function(){
+            $("#node").prepend("<span>New</span>")
+        });
+
+        $("#node_del").click(function(){
+            $("#node > span").eq(0).remove(); 
+        });
+
+        $("#node_copy").click(function(){
+            var $a = $("#node > span").eq(0).clone();
+            //$("#node").prepend($a); //제일 위에 생성
+            $("#node").append($a);  //제일 아래에 생성
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .labelcss{
+        width: 200px; height: auto; display: block;
+
+    }
+    .labelcss > span{
+        width: 200px; height: 20px; display: block;
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+<label id="node" class="labelcss">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+</label>
+<br>
+<input type="button" value="노드생성" id="node_add">
+<input type="button" value="노드삭제" id="node_del">
+<input type="button" value="노드복사" id="node_copy">
+</body>
+</html>

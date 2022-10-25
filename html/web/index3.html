@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(function에 값 집어넣기2)</title>
+<script>
+    /*
+    function abc(yy){   //function에 html에서 호출과 동시에 값이 넘어옴
+        var a = 1;
+        var b = a + yy; //html에서 넘어온 값을 yy로 받아서 처리함
+        alert(b);
+    }
+    */
+    function abcd(aa,bb){
+        var h = aa+bb;
+        alert(h);
+    }
+    //function : 호출을 하여 결과를 처리할 수도 있고, 호출과 동시에 값을
+    //           전달하여 결과를 처리할 수도 있음
+
+    function ccc(){ //confirm : 확인,취소 선택 메세지
+        if(confirm("입력 해제 하시겠습니까?")){ //확인
+        document.getElementById("mm").readOnly = false; //false거짓, true진실
+        //readOnly(읽기전용 O가 대문자여야 함)
+        }
+        else{   //취소
+            location.href="http://naver.com";
+        }
+    }
+    //응용문제
+    //버튼 클릭시 숫자 3개를 function으로 넘김
+    //숫자는 25,19,31
+    //function에서 숫자를 계산하여 결과값을 출력
+    //25*19+31 수식구
+    function zz(z1,z2,z3){  //html 에서 값을 불러옴
+        var x = z1 * z2 +z3;    //수식구
+        alert(x);   //결과값
+    }
+</Script>
+</head>
+<body>
+<!-- abc(1) : 숫자로 넘기는 형태, abc('홍길동') : 문자로 넘기는 형태 -->
+<!--
+<input type="button" value="값던지기" onclick="abc('이순신');">
+-->
+<input type="button" value="값던지기" onclick="abcd(5,10);">
+<br>
+<input type="text" value="" id="mm" readonly onclick="ccc();">
+<br>
+<input type="button" value="결과" onclick="zz(25,19,31);">
+</body>
+</html>

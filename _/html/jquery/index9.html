@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 3일차(오브젝트에 값을 전달,가져오기)</title>
+<script src="./jquery.js"></script><!--Jquery 엔진 탑재-->
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            //$("#box").text("박스 오브젝트");
+            $("#box").html("<div class='sbox'></div>");
+        //Jquery:text = Javascript:innerText (문자를 추가, 가져오기)
+        //Jqurry:html = Javascript:innerHTML (html 태그 및 문자 추가, 가져오기)
+        });
+
+        $("#btn2").click(function(){
+            //var $aa = $("#box2").text(); //해당 id 기준으로 마크업 사이에 있는 텍스트만 가져옴
+            //괄호에 값이 없으면 값을 가져오라는 뜻
+            var $aa = $("#box2").html(); 
+            //해당 id 기준으로 마크업(< > </>) 사이에 있는 html태그, 텍스트 모두 가져옴
+            alert($aa);
+        });
+
+        $("#btn3").click(function(){
+            //var $bb = $("#menu").html();
+            //alert($bb);
+            var $cc = $("#menu > li").length;   //해당 id 안에 오브젝트 갯수를 확인
+            $("#menu > li:eq(1)").css("color","red"); 
+            //위에 코드는 강제로 입력한 값을 사용할 때 (반복문을 쓸 수 없음)
+            // :eq()란 노드 형태의 값을 가져오는 사항, 노드는 0부터 시작
+            var $node = 3;
+            $("#menu > li").eq($node).css("color","blue");
+            //위에 코드 형태는 노드 부분에 변수를 입력하여 css효과를 적용
+
+            //응용문제.
+            //메뉴3번에 있는 텍스트를 "menu3" 으로 변경 하시오
+            var $abc = 2;
+            $("#menu > li").eq($abc).text("menu3");
+        });
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0; }
+    .box {
+        width: 100px; height: 100px; background-color: green;    
+    }
+    .sbox{
+        width: 30px; height: 30px; background-color: yellow;
+    }
+</style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<input type="button" value="출력" id="btn">
+<br><br>
+<div class="box2" id="box2"><b>오브젝트</b></div>
+<input type="button" value="가져오기" id="btn2">
+<br><br>
+<ul id="menu">
+    <li>메뉴1</li>
+    <li>메뉴2</li>
+    <li>메뉴3</li>
+    <li>메뉴4</li>
+</ul>
+<input type="button" value="메류리스트" id="btn3">
+</body>
+</html>

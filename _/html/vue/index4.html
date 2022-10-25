@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue 2일차 - 사용자 입력값 핸들링</title>
+<script src="vue.js"></script>
+</head>
+<body>
+<div id="textbox">
+    <input type="text" v-model="text1">
+    <input type="text" v-model="text2">
+    <button type="button" v-on:click="btn">{{ok}}</button><br><br>
+    <span style="display: block; width: 150px; height: 25px; border: 1px solid black;">{{msg}}</span>
+</div>
+</body>
+<script>
+    let a = new Vue({
+        el:"#textbox",
+        data:{
+            ok:"계산",
+            text1: null, //값을 가져올 때는 "" & null을 써야 함
+            text2: null,
+            msg: "두 숫자의 합은?   "
+        },
+        methods:{
+            btn:function(){
+                if(this.text1==null || this.text2==null){
+                    alert("숫자를 입력해 주세요.");
+                }
+                else{
+                    this.msg += Number(this.text1) + Number(this.text2);
+                }
+            }
+        }
+    });
+</script>
+</html>

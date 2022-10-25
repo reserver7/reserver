@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue4일차 - Vue component</title>
+<script src="./vue.js"></script>
+<style>
+    .boxs{ width: 100px; height: 100px; border: 1px solid black; 
+    text-align: center; line-height: 100px;
+    }
+</style>
+</head>
+<body>
+<section id="box">
+    <snow v-text="text1"></snow>
+    <chicken></chicken>
+    <snack v-text="btn" v-if="view"></snack>
+</section>
+</body>
+<script>
+    const inputs = "<input type='text' name='mid' id='mid'>";
+    let a = new Vue({
+        el:"#box",
+        data:{
+            text1:"연습입니다.",
+            btn:"검색",
+            view:true
+        },
+        components:{    
+            //Vue에서 사용하는 형태를 HTML태그로 변경해서 사용할 수 있음
+            "snow": { template:"<div class='boxs'></div>" },
+            "chicken":{ template:inputs },
+            "snack":{ template:"<button onclick='tests();'></button>" }
+            //components를 사용시 Vue 속성값은 사용하지 못함 (v-if, v-for, v-model 등등)
+        },
+        methods:{
+            //components로 만들어진 이벤트 속성은 핸들링 할 수 없음
+            tests:function(){
+                alert("test");
+            }
+        }
+    });
+    function tests(){
+        alert("연습");
+    }
+</script>
+</html>

@@ -1,0 +1,49 @@
+<meta charset="UTF-8">
+<script>
+    $(function(){
+        $.get({
+            url:"./product/acc_pd.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($acc_rs){
+                $.fn.accitem_view($acc_rs)
+            },
+            error:function(){
+                console.log("데이터 오류");
+            }
+        });
+
+        var $acc_html;
+        $.fn.accitem_view = function($acc_rs){
+            $($acc_rs["acc_product"]).each(function($node,$name){
+                $acc_html = '<li acc_url="product_view.html?goodsno=11272373">\
+                    <span title="'+$name["product_nm"]+'" class="blackscreen">\
+                    <label>'+$name["product_nm"]+'</label>\
+                    </span>\
+                    <span><img src="'+$name["product_img"]+'"></span></li>';
+                $("#accitem").append($acc_html);
+            });
+
+            $("#accitem>li").bind({
+                "click":function(){
+                    location.href = $(this).attr("acc_url");
+                },
+                "mouseenter":function(){
+                    var $acc_node = $(this).index();
+                    $(".blackscreen").eq($acc_node).stop().fadeIn().css("display","flex");
+                },
+                "mouseleave":function(){
+                    var $acc_node = $(this).index();
+                    $(".blackscreen").eq($acc_node).stop().fadeOut();
+                }
+            });
+        }
+    });
+</script>
+<div class="acc_css">
+    <span class="acctitle"><img src="./product/acc_title.jpg"></span>
+    <ul class="accitem" id="accitem">
+
+    </ul>
+</div>

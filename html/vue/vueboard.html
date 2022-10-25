@@ -1,0 +1,41 @@
+var board = '\
+<div style="width: 500px; height: 400px; border: 1px solid red;">\
+    <span id="totalmember"></span>\
+    <ul id="memberlist">\
+    </ul>\
+</div>'; 
+
+let adata;
+function wk(){
+    if(window.XMLHttpRequest){
+        return new XMLHttpRequest();
+    }
+}
+function dataget(){
+    if(adata.readyState==XMLHttpRequest.DONE && adata.status==200){
+        ajaxtest(this);
+    }
+}
+adata = wk();
+adata.onreadystatechange = dataget;
+adata.open("GET","./vue.json",true);
+adata.send();
+
+function ajaxtest(jdata){
+    const db = JSON.parse(jdata.response);
+    let totals = db.length
+    document.getElementById("totalmember").innerText = "총 참여 인원은 "+ totals +" 명 입니다.";
+    var html = "";
+    var f;
+    db.forEach(function(a1,a2,a3){
+        html += "<li>"+a1+"</li>";
+        document.getElementById("memberlist").innerHTML = html;
+        console.log(a3);
+    });
+    
+    for(f in db){
+        html += "<li>"+db[f]+"</li>";
+        document.getElementById("memberlist").innerHTML = html;
+        console.log(db[f]);
+    }
+}

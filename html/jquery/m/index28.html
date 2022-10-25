@@ -1,0 +1,34 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 20일차 - load (TXT,HTML)</title>
+<script src="./jquery1.12.js"></script><!-- 1.4~2.1 버젼에서만 모바일엔진을 사용할 수 있음-->
+<script src="./jquery-ui.js?"></script>
+<script src="./jquery.mobile-1.4.5.js"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        $("#page").load("index27.html");
+        //load는 TXT도 작동이 되고 html도 사용가능
+        //단, TXT 사용시 주의 사항
+        //인코딩 파일은 한글 ANSI 영어는 UTF-8로 저장해야 함
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .page { width: 100%; height: auto;}
+</style>
+</head>
+<body>
+<div class="page" id="page">
+
+</div>
+</body>
+</html>
+<!-- 암호화 코드 사이트 http://mekeyace.dothome.co.kr/hack/js.php -->

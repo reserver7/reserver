@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 2일차(반복문-for&if)</title>
+<script>
+var a;
+var b=10;
+var c;
+
+//var abc=8%2;  // %기호 : 몫을 계산하는 기호 (0:몫값이 없음, 1:몫값이 있음)
+//document.write(abc);
+for(a=0;a<b;a++){
+    c = a%2;
+    if(c==0 && a!=0){
+    //document.write(a+"<br>");
+    }
+}
+
+//응용문제 5,4,3,2,1,
+var aa;
+var bb=5;
+var cc;
+for(aa=bb;aa>0;aa--){ //응용문제 : 마지막 숫자뒤에 ,를 제거 if문으로
+    if(aa==1){
+    //document.write(aa);
+    }
+    else{
+       //document.write(aa+",");
+    }
+    /*  
+    if(a>1){
+    document.write(aa+",");
+    }
+    else{
+        document.write(aa);
+    }
+    */
+}
+
+
+//응용문제 구구단 7단 7*1=7 ~ 7*9
+var hh;
+var kk=9;
+var ff=7;
+var yy;
+for(hh=1;hh<=kk;hh++){
+    yy = ff * hh;
+    if(yy>40){  //응용문제 40이상을 값만 출력
+    document.write(ff+"*"+hh+"="+yy+"<br>");
+    }
+}
+
+/*
+for(처음초기값, 범위값, 증가또는감소)
+*/
+</script>
+</head>
+<body>
+
+</body>
+</html>

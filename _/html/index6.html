@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML 2일차 3.0-2</title>
+</head>
+<body>
+<!-- input 태그 사용시 form이라는 태그와 함께 사용 합니다.
+form : 데이터를 전송할때 사용하는 태그
+input (name) : 사용자가 입력한 값을 가상 이름으로
+변경하여 전송할때 사용하게 됩니다.
+reset : 사용자가 입력한 값을 초기화 할때 사용합니다.
+submit : 사용자가 입력을 완료된 사항을
+action url로 보내게 됩니다.
+method : GET = url 파라미터 값으로 보낼때
+POST = 가상메모리에 저장 시킨 후 값을 전송하게 됩니다.-->
+<form method="POST" action="index6.html">
+<input type="text" name="ids"><br>
+<input type="password" name="pws"><br>
+<input type="radio" name="a">동의함
+<input type="radio" name="a">동의안함
+<!-- radio는 유일하게 name값을 동일하게 해야함-->
+<br>
+<input type="checkbox" name="b">보안접속
+<input type="checkbox" name="c">자동로그인
+<input type="submit" value="전송">
+<input type="reset" value="초기화">
+</form>
+</body>
+</html>

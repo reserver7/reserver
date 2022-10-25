@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript - 131p~157p 함수</title> 
+<script>
+/*
+    문제2
+    버튼 클릭시 사용자가 입력한 숫자 또는 문자를 확인 하여
+    숫자로 확인 된 것 중 해당 값에 대한 구구단을 출력하시오
+    힌트 Number(); isNaN
+*/
+    function aaa(){
+        var a = Number(document.getElementById("a").value);
+        var b;
+        var c;
+        if(isNaN(a)==true){
+            alert("숫자를 입력 해야 합니다.");
+        }
+        else{
+            for(b=1; b<=9; b++){
+                c = a * b;
+                document.write(a+"*"+b+"="+c+"<br>");
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<input type="text" id="a">
+<input type="button" value="확인" onclick="aaa();">
+</body>
+</html>

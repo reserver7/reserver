@@ -1,0 +1,12 @@
+{
+    "members": [
+        {
+                "id": "ravi",
+                "name": "박예준",
+                "email": "ravi@gmail.com",
+                "area" : "서울",
+                "phone": "010-3234-1212"
+                
+        }
+    ]
+}

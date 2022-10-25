@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 2일차(오브젝트 연습1)</title>
+<script src="./jquery.js"></script> <!--Jquery 엔진 탑재-->
+<script>
+    $(document).ready(function(){
+        $("#close").click(function(){
+            //fadeOut, fadeIn, animate(opacity:0, opacity:0) 투명도 조절
+
+            //$("#popup").fadeOut();  //부모창을 없애면 안에 모두 없어짐
+            /*
+            $("#popup").animate({
+                "opacity":"0"
+            },1000);
+            */
+            $("#popup").css("display","none");  
+            //display직접 컨트롤 하느것은 css 함수명령어 외에는 절대 없음
+            //display는 유일하게 cs에서만 작동 가능함
+        });  
+
+        var $a = 1; //전역변수
+
+        $("#labelbtn").click(function(){
+            if($a>5){   
+                alert("더 이상 삭제할 오브젝트가 없습니다.");
+            }
+            else{
+                var $b = $a;
+                var $ids = "#label"+$b; //label이라는 id + 숫자
+                $($ids).fadeOut();  //해당 label+숫자 id를 찾아 사라지게 함
+                ++$a;   // 삭제하고 나서 +1 증가
+            }
+        });
+
+        $("#labelbtn2").click(function(){
+            if($a<=1){
+                alert("더 이상 생성할 오브젝트가 없습니다.");
+            }
+            else{
+                --$a;   
+                // -1 감수 후에 해당 label+숫자 id가 적용하여 다시 생성 함
+                var $b = $a;
+                var $ids = "#label"+$b;
+                $($ids).fadeIn();
+            }
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .popup{
+        width: 500px; height: 500px; background-color: blue;
+        position: relative;
+    }
+    .btn{
+        width: 100px; height: 30px; line-height: 30px; text-align: center;
+        display: block; background-color: yellow; position: absolute;
+        right: 20px; bottom: 20px; cursor: pointer;
+    }
+    .labelcss{
+        width: 100px; height: 40px; background-color: red; display: block;
+    }
+    .labelcss:nth-child(2){
+        background-color: blue;
+    }
+    .labelcss:nth-child(3){
+        background-color: greenyellow;
+    }
+    .labelcss:nth-child(4){
+        background-color: yellow;
+    }
+    .labelcss:nth-child(5){
+        background-color: tomato;
+    }
+</style>
+</head>
+<body>
+    <!--
+<div class="popup" id="popup">
+    <span class="btn" id="close">창닫기</span>
+</div>
+<br><br>
+-->
+<label class="labelcss" id="label1"></label>
+<label class="labelcss" id="label2"></label>
+<label class="labelcss" id="label3"></label>
+<label class="labelcss" id="label4"></label>
+<label class="labelcss" id="label5"></label>
+<br><br>
+<button type="button" id="labelbtn">삭제</button>
+<button type="button" id="labelbtn2">복원</button>
+</body>
+</html>

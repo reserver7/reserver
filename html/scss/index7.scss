@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+@mixin base {
+    margin:0;
+    padding:0;
+    line-height:1; //폰트 사이즈에 맞춰서 자동으로 줄 높이를 조정해준다.
+    list-style:none;
+}
+
+@mixin font-face($fontnum){
+    @if($fontnum==1){
+        font-family:Arial, Helvetica, sans-serif;
+    }
+    @else if($fontnum==2){
+        font-family:'Times New Roman', Times, serif;
+    }
+}
+
+body {
+    @include base;
+    @include font-face(1);
+}
+.olcss {
+    @include font-face(1);
+    @include base;
+    width:100px; height:auto;
+    &>li{
+        width:100%;
+        height:30px;
+        line-height:30px;
+        text-align:center;
+    }
+}
+
+$colors:rgb(20, 147, 221),rgb(255,30,44),rgb(100,200,50),rgb(205,180,80);
+
+$i:1; // :는 = 이라는 뜻과 같음 while문 초기값
+@while ($i<=4){
+    .li#{$i} {color:nth($colors,$i);}
+    $i:$i+1; 
+    //++,--는 scss에는 없음. 변수:변수+1형태로 +1씩 증가는 문구로 사용해야 함
+}
+
+.divbox{
+    width: 240px; height: 240px; border: 1px solid black;
+}
+
+/* 이미지 반복문 사용 */
+$imgs : "product1.gif","product2.gif","product3.gif","product4.gif";
+$w:1;
+@while ($w<=4) {
+    .g#{$w}{
+        background-image: url("./images/"+nth($imgs,$w)); 
+        //이미지+배열과 결합하여 배경에 이미지로 적용함
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    $w:$w+1;
+}

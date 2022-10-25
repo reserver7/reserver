@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>문제3</title>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".top-menu > ul > li").mouseenter(function(){
+                var $a = $(this).index();
+                $(".smenu").eq($a).slideDown();
+            })
+            $(".top-menu > ul > li").mouseleave(function(){
+                var $a = $(this).index();
+                $(".smenu").eq($a).slideUp();
+            })
+        });
+    </script>
+    <!--
+        문제3 
+        메뉴에 마우스 오버시 드롭메뉴 형태로 나오도록 합니다.
+    -->
+    <style>
+        body, ul, li {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+
+a {
+    color:inherit;
+    text-decoration:inherit;
+}
+
+.top-menu ul ul {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+}
+
+.top-menu > ul > li {
+    float:left;
+}
+
+
+.top-menu {
+    text-align:center;
+}
+
+.top-menu > ul {
+    display:inline-block;
+    padding:0 10px;
+    border-radius:10px;
+}
+
+.top-menu li > a {
+    display:block;
+    padding:10px;
+}
+
+.top-menu li:hover > a {
+    background-color:black;
+    color:white;
+}
+
+.top-menu li {
+    position:relative;
+}
+
+.top-menu ul {
+    background-color:#dfdfdf;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <nav class="top-menu">
+        <ul>
+            <li>
+                <a href="#">메뉴아이템1</a>
+                <ul class="smenu">
+                    <li><a href="#">메뉴아이템1</a></li>
+                    <li><a href="#">메뉴아이템2</a></li>
+                    <li><a href="#">메뉴아이템3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">메뉴아이템2</a>
+                <ul class="smenu">
+                    <li><a href="#">메뉴아이템1</a></li>
+                    <li><a href="#">메뉴아이템2</a></li>
+                    <li><a href="#">메뉴아이템4</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">메뉴아이템3</a>
+                <ul class="smenu">
+                    <li><a href="#">메뉴아이템1</a></li>
+                    <li><a href="#">메뉴아이템2</a></li>
+                    <li><a href="#">메뉴아이템3</a></li>
+                    <li><a href="#">메뉴아이템4</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">메뉴아이템4</a>
+                <ul class="smenu">
+                    <li><a href="#">메뉴아이템1</a></li>
+                    <li><a href="#">메뉴아이템2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>

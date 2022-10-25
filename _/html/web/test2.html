@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제2)</title>
+<script>
+/*
+    function aaa(){
+        var a = f.test.length;
+        var b;
+        var c = "no";
+        for(b=0;b<a;b++){
+            if(f.test[b].checked==true){
+                c = "yes";
+                var d = f.test[b].value;
+            }
+        }
+        if(c=="no"){
+            alert("해당 문항에 정답을 골라 주세요!");
+        }
+        else{
+            if(d=="3"){
+                alert("정답입니다.");
+            }
+            else{
+                alert("오답입니다.");
+            }
+        }
+    }
+*/  //li name에 []이 없을경우 사용가능,onclick에 사용자 입력값을 태워서 사용
+    function aaa(a){    
+        if(a==""){
+            alert("해당 문항에 정답을 골라 주세요!");
+        }
+        else{
+            if(a=="3"){
+                alert("정답입니다.");
+            }
+            else{
+                alert("오답입니다.");
+            }
+        }   
+    }
+</script>
+</head>
+<!--
+    응용문제2. E-러닝 온라인 테스트 시험 페이지를 제작해야 합니다.
+    다음 형태로 문항이 나오고 "확인" 버튼 클릭시 객관신 중 하나를 선택하여
+    정답 또는 오답을 확인하는 페이지를 제작합니다.
+    정답 : 3번
+    4가지 문항에서 무조건 한가지를 선택해야 하며 선택하지 않을 경우
+    "해당 문항에 정답을 골라 주세요!" 라는 메세지를 출력
+    3번 외에 선택시 "오답 입니다." 라고 출력
+    3번을 선택시 "정답 입니다." 라고 출력
+    모든 메세지는 alert로 출력
+-->
+<body>
+<p>다음 설명에 대한 부분 중 틀린 것을 고르시오.</p>
+<br>
+[설명] Javascript중 인라인 모델 형태가 아닌 것은?
+<form name="f" id="f">
+<ol>
+    <li><input type="radio" name="test" value="1" class="licss" id="a0"><label for="a0">이벤트 핸들링</label></li>
+    <li><input type="radio" name="test" value="2" class="licss" id="a1"><label for="a1">이벤트 버블링</label></li>
+    <li><input type="radio" name="test" value="3" class="licss" id="a2"><label for="a2">이벤트 커플링</label></li>
+    <li><input type="radio" name="test" value="4" class="licss" id="a3"><label for="a3">이벤트 캡쳐링</label></li>
+</ol>
+<br>     <!--li name에 []이 없을 경우 사용, 사용자 입력값을 태운후 사용-->
+<input type="button" value="확인" onclick="aaa(f.test.value);">
+</form>
+</body>
+</html>

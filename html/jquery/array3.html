@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 배열 총복습 (2차원)</title>
+<script src="./jquery.js"></script>
+<script>
+        $(function(){
+            //배열종류 : [["",""],["",""],["",""]] = 2차원 (출력 또는 검색)
+            var $array = [ 
+            ["hong","kim"],
+            ["홍길동","김구"],
+            ["test@tset.com","kim@gmail.com"],
+            ["010-1234-5678","010-1234-9999"],
+            ["서울시 종로구 3가","서울시 을지로 3가"]
+            ];
+            var $html;
+            var $ea = $array[0].length;
+            console.log($array[1][0]);
+            var $f;
+            var $id;
+            for($f=0;$f<$ea;$f++){
+                $id = "m"+$f;
+                $html = '<ul class="topclass2">\
+                    <li><input type="checkbox" id="'+$id+'"></li>\
+                    <li>'+ ($f+1) +'</li>\
+                    <li>'+ $array[0][$f]+'</li>\
+                    <li>'+ $array[1][$f]+'</li>\
+                    <li>'+ $array[2][$f]+'</li>\
+                    <li>'+ $array[3][$f]+'</li>\
+                    <li>'+ $array[4][$f]+'</li>\
+                    </ul>';
+                $("#data").append($html);
+            }
+            $("#all").click(function(){
+                var $use = $(this).is(":checked"); //체크여부 확인
+                var $on_off;
+                if($use==false){
+                    $on_off = false;
+                }
+                else{
+                    $on_off = true;
+                }
+                var $w = 0;
+                var $num = $(".topclass2").length;
+                var $check_id;
+                while($w<$num){
+                    $check_id = "#m"+$w; 
+                    $($check_id).attr("checked",$on_off);
+                    $w++;
+                }
+            });
+
+            /*
+            $html = '<ul class="topclass2">\
+                    <li><input type="checkbox"></li>\
+                    <li>1</li>\
+                    <li>$array[0][$f]</li>\
+                    <li>$array[1][$f]</li>\
+                    <li>$array[2][$f]</li>\
+                    <li>$array[3][$f]</li>\
+                    <li>$array[4][$f]</li>\
+                    </ul>';
+            $("#data").append($html);
+            */
+        });
+</script>
+<style>
+    body { margin: 0; padding: 0; }
+    .topclass { width: 100%; height:30px; line-height: 30px;
+    list-style: none; margin: 0; padding: 0;
+    background-color: cornflowerblue;
+    }
+    .topclass > li { display: inline-block; text-align: center;
+    font-size: 12px; height: 30px; line-height: 30px;
+    }
+    .topclass > li:nth-child(1) { width: 10px;}
+    .topclass > li:nth-child(2) { width: 50px;}
+    .topclass > li:nth-child(3) { width: 100px;}
+    .topclass > li:nth-child(4) { width: 100px;}
+    .topclass > li:nth-child(5) { width: 200px;}
+    .topclass > li:nth-child(6) { width: 200px;}
+    .topclass > li:nth-child(7) { width: 350px;}
+
+    .topclass2 { width: 100%; height:30px; line-height: 30px;
+    list-style: none; margin: 0; padding: 0;
+    background-color: floralwhite; clear: both;
+    }
+    .topclass2 > li { display: inline-block; text-align: center;
+    font-size: 12px; height: 30px; line-height: 30px;
+    }
+    .topclass2 > li:nth-child(1) { width: 10px;}
+    .topclass2 > li:nth-child(2) { width: 50px;}
+    .topclass2 > li:nth-child(3) { width: 100px;}
+    .topclass2 > li:nth-child(4) { width: 100px;}
+    .topclass2 > li:nth-child(5) { width: 200px;}
+    .topclass2 > li:nth-child(6) { width: 200px;}
+    .topclass2 > li:nth-child(7) { width: 350px;}
+</style>
+</head>
+<body>
+<p>MEMBER-SHIP INFO</p>
+<ul class="topclass">
+    <li><input type="checkbox" id="all"></li>
+    <li>번호</li>
+    <li>아이디</li>
+    <li>고객명</li>
+    <li>이메일</li>
+    <li>전화번호</li>
+    <li>주소</li>
+</ul>
+<span id="data">
+
+
+</span>
+</body>
+</html>

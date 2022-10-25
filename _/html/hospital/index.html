@@ -1,0 +1,59 @@
+<?php
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge, Chrome=1">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="./index.css?v=<?php echo $date?>" type="text/css">
+<title>Hospital</title>
+</head>
+<body>
+    <div class="ly_blackBox">
+        <div>로딩중...</div>
+    </div>
+
+    <div class="ly_container">
+        <div class="ly_flex">
+            <div class="ly_hearder">병원찾기</div>
+            <div class="ly_body">
+                <div class="ly_bodyLeft">
+                    <div class="ly_bodtLeft_top">
+                        <div id="map" class="map"></div>
+                    </div>
+                    <div class="ly_bodtLeft_bottom" id="js_hospitalBox">
+                    </div>
+                </div>
+                <div class="ly_bodyRight" id="js_DBList">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+</body>
+
+<script type="module">
+    var firebaseConfig = {
+        apiKey: "AIzaSyBjWSdET3rWwOEYhGCxDqxI-uLT1lA7-9s",
+        authDomain: "hospital-86296.firebaseapp.com",
+        databaseURL: "https://hospital-86296-default-rtdb.firebaseio.com",
+        projectId: "hospital-86296",
+        storageBucket: "hospital-86296.appspot.com/info",
+        messagingSenderId: "887038601676",
+        appId: "1:887038601676:web:7a58b5bdf90b584aba1569",
+        measurementId: "G-TH85NHBN1B"
+    };
+</script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84cb7bef77b8adf44754064e25af4d2f"></script>
+<script src="./index.js?v=<?php echo $date?>"></script>
+</html>

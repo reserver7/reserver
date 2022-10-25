@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue3일차 - 다중 체크 박스 & 라디오 사용</title>
+<script src="vue.js"></script>
+</head>
+<body>
+<section id="box"> <!-- 같은 행목에 여러개를 사용시 v-model은 같아야 함 -->
+    <input type="checkbox" id="a1" value="HTML5" v-model="check">
+    <label for="a1">HTML</label>
+    <input type="checkbox" id="a2" value="Javascript(ES5)" v-model="check">
+    <label for="a2">Javascript</label>
+    <input type="checkbox" id="a3" value="Jquery(v3.X)" v-model="check">
+    <label for="a3">Jquery</label>
+    <br><br>
+    <em style="font-style: normal;">{{ check }}</em>
+</section>
+<section id="box2">
+    <input type="radio" name="agree" id="agree1" value="Y" v-model="agrees">동의함
+    <input type="radio" name="agree" id="agree2" value="N" v-model="agrees">동의안함
+    <span>{{agrees}}</span>
+</section>
+<section id="box3">
+    <button v-on:click="numbers++">+</button>
+    <button v-on:click="numbers--">-</button>
+    <span>{{ numbers }}</span>
+</section>
+</body>
+<script>
+    let a = new Vue({
+        el:"#box",
+        data:{
+            check:[]    //배열 형태로 구성하여 사용자가 체그한 항목 모두를 사용하게 됨
+        },
+        methods:{
+        }
+    });
+
+    let b = new Vue({
+        el:"#box2",
+        data:{
+            agrees:"N"
+        }
+    });
+
+    let c = new Vue({
+        el:"#box3",
+        data:{
+            numbers:0
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue6일차 - select로 해당 배열 항목을 가져오기</title>
+<script src="./vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+</head>
+<body>
+<section id="box">
+    <select v-model="search">
+        <option value="">전체보기</option>
+        <option value="엄소영">엄소영</option>
+        <option value="김지나">김지나</option>
+        <option value="김지수">김지수</option>
+    </select>
+    <ul>
+        <li v-for="texts in _.orderBy(real,'upvotes','desc')">{{ texts.subject }} : {{ texts.write }} ({{ texts.upvotes }})</li>
+    </ul>
+</section>
+</body>
+<script>
+    var board = [
+        { subject:"안녕하세요!",write:"엄소영",upvotes:33 },
+        { subject:"반가워요~~",write:"김지나",upvotes:8 },
+        { subject:"welcome to Vue!!",write:"김지수",upvotes:17 },
+        { subject:"컴퓨터가 상태가 안좋아요!!",write:"엄소영",upvotes:74 }
+    ];
+    var a = new Vue({
+        el:"#box",
+        data:{
+            memo:board,
+            search:"" // 가상변수
+        },
+        computed:{ // 처음에 다 안뿌려지고 부르는것만 출력 되도록 computed는 무조건 리턴
+            real:function(){
+                let part = this.search; //select에서 적용되는 값을 part 변수로 값을 넘김
+                if(part==""){
+                    return this.memo;
+                }
+                else{
+                    return this.memo.filter(function(aa){ 
+                        //memo라는 모든 배열값을 aa라는 함수값으로 순차적으로 적용시키는 부분
+                        return aa.write == part; //해당 값이 같을 경우 v-for 부분으로 리턴
+                    });
+                } 
+                //return this.memo;
+            }
+        }
+    });
+</script>
+</html>

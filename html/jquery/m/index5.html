@@ -1,0 +1,74 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 8일차 모바일 웹</title>
+<script src="../jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        /*
+        핸드폰 사이즈 확인 방법 jquery & javascript로만 확인 가능
+        var $myphone = $("body").width();
+        alert($myphone);
+        */
+    });
+</script>
+<style>
+    @media screen and (min-width:320px) and (max-width:750px){
+        body{ margin: 0; padding: 0; }
+        .login{ width: 100%; height: 100vh; }
+        /* 모바일 폰트 최소사이즈 : 14px = 10.5pt
+                                  15px = 11pt
+                                  16px = 11.5pt
+                                  17px = 12pt
+        */
+        p{
+            width: 100px; height: 40px; text-align: center;
+            font-size: 10.5pt; margin: 0 auto; line-height: 40px;
+        }
+        .loginform{
+            /* 
+            width : 무조건 %로 조절 합니다. 같은 px시 인식이 불가능함
+            min-width : 최소너비 (반응형 웹에 사용) width랑 무조건 같이 사용
+            max-width : 최대너비 (반응형 웹에 사용) width랑 무조건 같이 사용
+            
+            max-width 사용시 width:90%를 사용하게 되면
+            width:90%는 현재 디바이스 body 가로 기준으로 90% 사이즈만
+            나오게 됨
+            단, max-width:600px 일 경우 800사이즈 모니터로 볼 경우
+            해당 오브젝트 크기는 600px 이상이 출력이 되지 않음
+            */
+            width: 90%; /* width는 무조건 % */
+            max-width: 650px; /* max-width는 px */
+            height: 300px; 
+            border: 1px solid #ccc;
+            margin: 0 auto;
+        }
+        .input{
+            border: 1px solid black; 
+            border-radius: 10px;
+            height: 30px;
+            width: 90%;
+            max-width: 300px;
+        }
+    }
+</style>
+</head>
+<body>
+    <form name="f" id="f">
+    <div class="login">
+        <div class="loginform">
+        <p>회원 로그인</p>
+        <input type="text" name="mid" id="mid" class="input">
+        <input type="password" name="mpass" id="mpass" class="input">
+        <label class="btn" id="btn">로그인</label>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

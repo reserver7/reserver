@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 4일차 - (슬라이드 메뉴)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#menu >li").mouseenter(function(){
+            var $node = $(this).index();
+            //eq가 밖에 있는 경우는 eq뒤에 자식이 없을 때 사용
+            //eq가 안에 있는 경우는 eq뒤에 자식이 있을 때 사용
+            var $snode = "#smenu" + $node;
+            //$($snode).css("display","block"); //(ani : 없을경우)
+            $($snode).fadeIn(); //(ani : 있을경우)
+            //소메뉴에 각각의 id값이 node순서대로 있을 경우
+
+            //$("#menu > li:eq("+$node+")>ol").css("display","block"); 
+            //id를 안썼을 경우 (만약 소메뉴가 추가될 경우 id값을 계속 써야하기 때문에 편해짐) 
+        });
+        
+        $("#menu > li").mouseleave(function(){
+            var $node = $(this).index();
+            var $snode = "#smenu" + $node;
+            $($snode).fadeOut(); //(ani : 있을경우)
+            //$($snode).css("display","none"); //(ani : 없을경우)
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .divcss{
+        width: 100%; height: auto; /* 메뉴만들때 가로 세로 크기는 100% auto */
+    }
+    .ulcss{
+        width: 150px; height: auto;
+        margin: 0; padding: 0; list-style: none; text-align: center; 
+    }
+    .ulcss > li{
+        width: 150px; height: 40px; line-height: 40px; background-color: skyblue;
+        border: 1px solid #ccc; box-sizing: border-box; position: relative;
+        cursor: pointer;
+    }   /* 포지션이 다를 경우 float: left는 실행이 되지 않음 */
+    .olcss{
+        width: calc(100*3px); height: 40px; list-style: none;
+        margin: 0; padding: 0; position: absolute; box-sizing: border-box;
+        display: inline-block; display: none; left:150px; 
+        top: -1px; 
+        /* absolute & display 2개 사용시 top px를 잡아 주어야 함 안잡으면 밑으로 쳐짐 */
+        /* 옆으로 나오는 메뉴일 경우는 가로 크기 calc 로!! */
+        /* display : inline-block 일때는 display none 를 쓸수 있음 */
+    }
+    .olcss > li{
+        float: left; width:100px; height:40px; border: 1px solid #ccc; 
+        text-align: center; line-height: 40px; box-sizing: border-box;
+        background-color: orange; cursor: pointer; 
+    }
+</style>
+</head>
+<body>
+<div class="divcss">
+    <ul class="ulcss" id="menu">
+        <li id="menu0">Menu1
+            <ol class="olcss" id="smenu0">
+                <li>Smenu1</li>
+                <li>Smenu2</li>
+                <li>Smenu3</li>
+            </ol>
+        </li>
+        <li id="menu1">Menu2
+            <ol class="olcss" id="smenu1">
+                <li>Smenu1</li>
+                <li>Smenu2</li>
+                <li>Smenu3</li>
+            </ol>
+        </li>
+        <li id="menu2">Menu3
+            <ol class="olcss" id="smenu2">
+                <li>Smenu1</li>
+                <li>Smenu2</li>
+                <li>Smenu3</li>
+            </ol>
+        </li>
+        <li id="menu3">Menu4
+            <ol class="olcss" id="smenu3">
+                <li>Smenu1</li>
+                <li>Smenu2</li>
+                <li>Smenu3</li>
+            </ol>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 17일차 - Full banner</title>
+    <script src="../jquery.js"></script>
+    <script src="./jquery-ui.js"></script>
+    <link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+    <script>
+        $(document).ready(function(){
+            var $bno = Number($("#page").attr("data"));
+            //왼쪽 버튼 클릭시
+            $("#leftbtn").click(function(){
+                var $node = "#banner" + $bno;   //첫번째 배너 부분을 점점사라지게 함
+                $($node).fadeOut();
+                if($bno==0){
+                    $bno = 3;
+                }
+                else {
+                    $bno = $bno - 1;
+                }
+                var $node2 = "#banner" + $bno;
+                $($node2).fadeIn(); //다음 배너 부분을 점점나타나게 함
+
+                $("#page").attr("data",$bno);
+            });
+            
+            //오른쪽 버튼 클릭시
+            $("#rightbtn").click(function(){
+                var $node = "#banner" + $bno;   //첫번째 배너 부분을 점점사라지게 함
+                $($node).fadeOut();
+                if($bno<3){
+                    $bno = $bno + 1;
+                }
+                else if($bno==3){
+                    $bno = 0;
+                }
+                var $node2 = "#banner" + $bno;
+                $($node2).fadeIn(); //다음 배너 부분을 점점나타나게 함
+
+                $("#page").attr("data",$bno);
+            });
+
+            /* 배너 페이지 이동 */
+            $("#btns").click(function(){
+                var $page = $("#page").attr("data");
+                var $gopage;
+                switch($page){
+                    case "0":
+                    $gopage = "http://www.kbs.co.kr";
+                    break;
+
+                    case "1":
+                    $gopage = "http://imbc.com";
+                    break;
+
+                    case "2":
+                    $gopage = "http://sbs.co.kr";
+                    break;
+
+                    case "3":
+                    $gopage = "http://tvn.tving.com";
+                    break;
+                }
+                location.href=$gopage;
+            });
+
+        });
+    </script>
+    <style>
+        body { margin: 0; padding: 0;}
+        .headercss { height: 100px; background-color: black;}
+        .box { width: 1200px; height: 100px; border:1px solid red;
+        margin: 0 auto;
+        }
+        .navcss { height:465px; position: relative; 
+        background-color:purple;}
+        /* 1920 (일반 PC 풀화면=FHD) - 2560 (4K) */
+        .banner { max-width:2560px; height:465px; border:1px solid blue;
+        margin: 0 auto; overflow: hidden; position: relative;
+        }
+        .banner > label { display: block; width: 100%; height: 465px; position: absolute; }
+        #banner0 { 
+            background-image: url("./images/banner0.jpg");
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: cover;
+        }
+        #banner1 { 
+            background-image: url("./images/banner1.jpg");
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: cover;
+            display: none;
+        }
+        #banner2 { 
+            background-image: url("./images/banner2.jpg");
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: cover;
+            display: none;
+        }
+        #banner3 { 
+            background-image: url("./images/banner3.jpg");
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: cover;
+            display: none;
+        }
+        /* 좌우버튼 */
+    .btns { 
+        width: 1000px; height: 465px;  
+        position: absolute; left: 50%; margin-left: -500px; z-index: 12; 
+    }
+    span{
+    display: block; width: 60px; height: 60px;
+    position: absolute;
+    background-color: rgb(0, 0, 0 , 0.7); border-radius: 30px;
+    cursor: pointer; 
+    }
+    span>img{width: 100%;}
+    .rightbtn{ top: 50%; right: 10%; margin-top:-30px; z-index: 10;}
+    .leftbtn{ top: 50%; left: 10%; margin-top:-30px; z-index: 10;}
+    </style>
+</head>
+<body>
+<header class="headercss">
+<div class="box"></div>
+</header>
+<!--full banner 파트 -->
+<input type="hidden" data="0" id="page">
+<nav class="navcss">
+    <div class="banner">
+        <span class="leftbtn" id="leftbtn"><img src="./product/leftbtn.svg"></span>
+        <span class="rightbtn" id="rightbtn"><img src="./product/rightbtn.svg"></span>
+        <div class="btns" id="btns"></div>  
+        <label id="banner0"></label>
+        <label id="banner1"></label>
+        <label id="banner2"></label>
+        <label id="banner3"></label>
+    </div>
+</nav>
+</body>
+</html>
+<!--
+    [기획자]
+    1. 기획
+
+    메인 배너를 어떻게 할지? 선택 :
+    1. 슬라이드 배너
+        1200 * 500
+        slide, fadeIn, fadeOut 모두 가능
+    2. Full 배너   가로 : 2560px 가운데 1200px 사이에 이미지가 오게 해야함
+        fadeIn fadeOut 밖에 사용 하지 못함!!!!!
+        모바일 반응형에서 적용이 안됨
+        1200 * 500 (최소 사이즈)
+        1920 * 500 (일반 PC - FHD)
+        2560 * 500 (4K) - 기본 베이스
+
+    [디자인팀]
+    [전산팀]
+-->

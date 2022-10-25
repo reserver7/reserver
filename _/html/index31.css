@@ -1,0 +1,37 @@
+@charset "utf-8"; 
+/* 기본 언어셋을 css에도 셋팅하게 됩니다. HTML 언어셋과 동일 */
+body { margin:0; padding:0; }
+span,label {
+    display: block;
+}
+a:link, a:visited, a:hover, a:active {
+     color: black; text-decoration: none;
+}
+button {
+    cursor: pointer; 
+}
+.intext1 { width:300px; height:30px;
+}
+.intext1:read-only { background-color: #cccccc; border:1px solid red;
+    box-sizing: border-box;
+}
+.box1 { width:60px; height:100px; background-color: green; padding-left:40px;
+}
+.box2 { width:100px; height:100px; background-color: blue; padding-left:40px;
+    box-sizing: border-box;
+}
+/* box-sizing: border-box;
+padding 및 board:1px solid 사용하지만, 
+width 또는 height가 변경되는 사항을 막아줌
+*/
+.ulcss { width:300px; height:40px; list-style: none; margin:0; padding:0;
+    border:1px solid blue;
+}
+.ulcss>li { float: left; width:100px; height:40px; border:1px solid red;
+    box-sizing: border-box;
+}
+.box3 { width:100px; height:100px; background-color:greenyellow;
+padding-left:50px; box-sizing: content-box;
+}
+/* box-sizing: content-box; : widht값에 padding, border가 모두 적용되는
+사항입니다. 해당 수치만큼 width값이 변하게 됩니다. */

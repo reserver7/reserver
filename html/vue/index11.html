@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue3일차 - 반복문</title>
+<script src="vue.js"></script>
+</head>
+<body>
+<section id="box">
+    <ul>
+        <!--<li v-for="d in arr">{{d}}</li> 1차원 배열  -->
+        <!-- v-for는 해당 태그 기점으로 배열의 값만큼 반복적으로 출력하는 형태 임 -->
+        <!--<li v-for="d in arr">{{d.text2}}</li> 2차원 배열 -->
+        <li v-for="d in arr">{{ d.text[1] }}</li>
+        <!-- 2차원 key 배열 형태 -->
+    </ul>
+</section>
+<section id="box2">
+    <!--
+    <ol>
+        <li v-for="z,index in arr">{{ arr[index] }}</li> 1차원 
+        <li v-for="z,index in arr">{{ arr[index].text1 }}</li> 2차원
+    </ol>
+    -->
+    <ol v-for="z,index in arr">
+        <li v-for="zz,index in z.text"> 
+            <!-- 전체 배열에 있는 키값을 가져와서 v-for를 한번 더 반복시킴 -->
+            {{ zz }}
+        </li>
+    </ol>
+</section>
+</body>
+<script>
+    const jsons1 = ["test1","test2","test3"]; //1차 배열
+    const jsons2 = [{ "text1":"Vue 반복문 형태 테스트 중" },{ "text1":"Vue 출력 확인" }];
+    const jsons3 = [{"text":[ "Vue 반복문 형태 테스트 중","Vue 출력 확인"]}];
+
+    let a = new Vue({   //배열을 가져오는 부분
+        el:"#box",
+        data:{
+            arr : jsons3
+        }
+    });
+
+    let b = new Vue({   
+        el:"#box2",
+        data:{
+            arr : jsons3
+        }
+    });
+</script>
+</html>

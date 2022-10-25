@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue 2일차 - 이벤트 핸들링</title>
+<script src="vue.js"></script>
+</head>
+<body>
+<div id="vue">
+    <input type="button" id="btn" v-model="btn" v-on:click="onclick">
+    <!-- v-on:click : 클릭 했을 때 적용되는 이벤트임 -->
+</div>
+<br>
+<div id="vue2">
+    <input type="text" name="mpass" class="mpass" v-model="mpass" ref="mpass">
+    <button type="button" v-on:click="ok">{{btn}}</button>
+</div>
+</body>
+<script>
+    let a = new Vue({
+        el:"#vue",
+        data:{
+            btn:"클릭"
+        },
+        methods:{
+            onclick:function(){ //핸들링 함수를 사용하며, 문구를 작성하게 됨
+                //alert("test");
+                document.getElementById("btn").style.display = "none";
+            }
+        }
+    })
+    let b = new Vue({
+        el:"#vue2",
+        data:{
+            btn:"확인",
+            mpass:""
+        },
+        methods:{
+            ok:function(){
+                //console.log(this.mpass);
+                if(this.mpass==""){ 
+                    //this는 vue 그룹을 지칭하며, 그룹안에 v-model명을 입력하면 값을 가져 올 수 있음
+                    alert("패스워드를 입력하세요.");
+                    //this.$refs.mpass.focus();
+                }
+                else if(confirm("입력한 패스워드가 맞습니까?")){
+                    location.reload();
+                }
+                /*
+                if(document.getElementById("mpass").value==""){
+                    alert("패스워드를 입력하세요.");
+                }
+                */
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (1일차) - Javascript(array + for in)</title>
+<style>
+    body{ margin: 0; padding: 0; }
+</style>
+<!--
+    for in : key 이름이 무조건 존재 (여러개의 이름이 존재)
+-->
+<script>
+    var array = {
+        "number1":"5",
+        "number2":"10",
+        "number3":"15",
+        "number4":"20",
+        "number5":"25"
+    }
+    var f;
+    for(f in array){
+        //f : key이름이 출력됨
+        //array : 배열형태가 출력됨
+        //array[f] : key에 맞춰서 데이터가 출력됨
+        console.log(array[f]);
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>

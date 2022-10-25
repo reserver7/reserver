@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제5)</title>
+<script>
+/*
+    //전역변수
+    var a =1000;
+    var c;
+
+    function aaa(){
+        var b = Number(document.getElementById("a").value);
+        c = a * b;  //전역변수 * 지역변수
+        document.write(c);
+    }
+*/
+
+/* up & down 게임코드 */
+    var pc = Math.floor(Math.random()*10+1);    //전역변수
+    
+    function bbb(){
+        var ch = Number(f.ch.value);    //기회 횟수 부분
+        var my = Number(f.num.value);   //사용자 입력 값
+        if(ch==0){  //기회가 0 일 경우
+            alert("게임이 끝났습니다.");
+        }
+        else{   //기회가 0 이상일 경우
+            if(my==""){
+                alert("숫자를 입력해 주세요!");
+            }
+            else{
+                //비교부분 (전역, 지역변수로)
+                if(pc<my){
+                    f.hint.value = "DOWN";
+                    ch = ch - 1;
+                    f.ch.value = ch;
+                }
+                else if(pc>my){
+                    f.hint.value = "UP";
+                    ch = ch - 1;
+                    f.ch.value = ch;
+                }
+                else{
+                    f.hint.value = "정답 입니다.";
+                }
+            }
+        }
+    }
+
+</script>
+</head>
+<body>
+<!--
+<input type="text" id="a">
+<input type="button" value="계산" onclick="aaa();">
+-->
+<form name="f" id="f">
+<p>1~10까지의 숫자중 정답은?</p>
+<!-- up & down 게임-->
+맞출 숫자는? <input type="text" name="num" id="num" maxlength="2">
+<br>
+<input type="button" value="확인" onclick="bbb();">
+<br>
+<input type="text" name="hint" placeholder="힌트 제공 및 정답출력" readonly>
+기회 : <input type="text" name="ch" value="3" readonly>
+</form>
+</body>
+</html>

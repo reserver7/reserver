@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 6일차 - (시간타이머4)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $a = $(".box").length;
+        var $b;
+        var $width; //그래프 데이터 입력변수
+        var $delay; //그래프를 시간차를 이용하여  delay에 적용할 변수
+        for($b=0;$b<$a;$b++){   //setInterval은 절대 반복문 안에 사용 불가
+            switch($b){
+                case 0:
+                    $width = "200px"
+                    $delay = 0;
+                break;
+
+                case 1:
+                    $width = "600px"
+                    //$delay = 1000;
+                    $delay = 1000 * $b;
+                break;
+
+                case 2:
+                    $width = "150px"
+                    //$delay = 2000;
+                    $delay = 1000 * $b;
+                break;
+
+                case 3:
+                    $width = "400px"
+                    //$delay = 3000;
+                    $delay = 1000 * $b;
+                break;
+            }
+            $(".box").eq($b).delay($delay).animate({
+                "width":$width
+            },1000);
+            
+        }
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box{
+        width: 0px; height: 25px; 
+    }
+    .box:nth-child(1){
+        background-color: lightsalmon;
+    }
+    .box:nth-child(2){
+        background-color: lightskyblue;
+    }
+    .box:nth-child(3){
+        background-color: lightgray;
+    }
+    .box:nth-child(4){
+        background-color: lightslategrey;
+    }
+</style>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 7일차 디스크 + 시간 (함수 미사용)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#ulcss>li").click(function(){
+            //사용자가 직접 디스크를 클릭할 경우
+            var $node = $(this).index();    //노드를 불러옴
+            var $ea = $("#ulcss > li").length; //li의 갯수를 불러옴
+            var $f; //반복문 변수
+            for($f=0;$f<$ea;$f++){
+                $("#ulcss > li").css("background-color","skyblue"); 
+                //li를 클릭 할 경우 전부 skyblue
+            }
+               $("#ulcss > li").eq($node).css("background-color","black");
+               clearInterval($timer);
+               //li의 노드를 클릭 할 경우 해당 노드 black
+            });
+
+            //5초에 한번씩 이동하는 디스크
+            var $timer;
+            var $no = 0;    //노드 최소값 (임시변수)
+            $timer = setInterval(function(){
+                var $ea = $("#ulcss > li").length;
+                var $f = 0;
+                while($f<$ea){
+                    $("#ulcss > li").eq($f).css("background-color","skyblue");
+                    $f++;
+                }
+                if($no<$ea-1){
+                    $no = $no + 1;
+                }
+                else{
+                    $no = 0;
+                }
+                $("#ulcss > li").eq($no).css("background-color","black");
+            },5000);
+    });
+    </script>
+    <style>
+        :root { 
+        --margin:0; --padding:0;
+        --list:none;
+        }
+        body { margin:var(--margin); padding:var(--padding);}
+        .ulcss { list-style: var(--list); 
+        margin:var(--margin); padding:var(--padding); 
+        height:50px;
+        }
+        .ulcss > li { width:50px; height:50px; border-radius: 25px;
+        background-color: skyblue; display: inline-block;
+        color: white; text-align: center;
+        line-height: 50px; cursor: pointer;
+        }
+        .ulcss > li:nth-child(1) { background-color: black;}
+    </style>
+</head>
+<body>
+<ul class="ulcss" id="ulcss">
+    <li></li>    
+    <li></li>    
+    <li></li>    
+    <li></li>    
+</ul>
+</body>
+</html>

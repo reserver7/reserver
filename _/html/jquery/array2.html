@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 배열 총 복습 (1차원)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        //배열종류 : {"","",""} = 1차원 ( 출력 또는 검색(조건) )
+        var $array = {
+            "id":"hong",
+            "name":"홍길동",
+            "email":"test@test.com",
+            "tel":"010-1234-5678",
+            "addr":"서울시 종로구 3가"
+        };
+        //console.log($array);
+        var $ea = Object.keys($array).length;
+        var $key = Object.keys($array)  //키 이름을 확인 할 수 있음
+        //{} : Object.keys() 명령어 입력 후 갯수파악
+        //단, key명이 동일한 경우는 1개로 인식하게 됨
+        //back-end = 컬럼명이라는 단어를 사용함
+        console.log($key);
+        var $f;
+        var $data;
+        for($f=0;$f<$ea;$f++){
+            $data = $key[$f];
+            $(".info:eq("+$f+")>.span2").text($array[$data]);
+            //$array[$data] 출력형태는 키 값을 기준으로 데이터를 가져옴
+        }
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .labelcss{ display: block; width: 280px; height: 30px; line-height: 30px; }
+    .labelcss>span{display: inline-block;}
+    .span1{width: 100px; height: 30px; background-color: azure; }
+    .span2{width: 140px; height: 30px; }
+</style>
+</head>
+<body>
+<p>MY INFO</p>
+<label class="labelcss info">
+    <span class="span1">아이디</span>
+    <span class="span2"></span>
+</label>
+<label class="labelcss info">
+    <span class="span1">고객명</span>
+    <span class="span2"></span>
+</label>
+<label class="labelcss">
+    <span class="span1">패스워드</span>
+    <span class="span2"><input type="text"></span>
+</label>
+<label class="labelcss info">
+    <span class="span1">이메일</span>
+    <span class="span2"></span>
+</label>
+<label class="labelcss info">
+    <span class="span1">연락처</span>
+    <span class="span2"></span>
+</label>
+<label class="labelcss info">
+    <span class="span1">주소</span>
+    <span class="span2"></span>
+</label>
+</body>
+</html>

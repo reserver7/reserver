@@ -1,0 +1,33 @@
+body { margin:0; padding:0;}
+/* 탑 메뉴 부분 */
+.top { height:30px; background-color:#cccccc;}
+.topdiv { width:1000px; height:30px; font-size:12px;
+font-family: "돋움체"; margin:0 auto; position: relative;}
+.olcss { width:300px; height:30px; list-style: none; 
+margin:0; padding:0; position: absolute; right:0;}
+.olcss li { float: left; height:30px; line-height:30px;
+width:60px; text-align: center; cursor: pointer; }
+.olcss li:hover { color:red;}
+.spancss { width:60px; height:30px; display: block; 
+line-height:30px; position: absolute; cursor: pointer; }
+/* 탑 메뉴 부분 끝 */
+
+/* 대메뉴 파트 */
+.menu { height:50px; }
+.menudiv { width:1000px; height:50px; margin:0 auto;
+font-size:15px; font-family:"돋움체"; font-weight: bold;
+border-bottom:1px solid #cccccc; }
+.labelcss { width:150px; height:50px; display: block; 
+line-height:50px;  float: left; cursor: pointer; }
+.ulcss { width:580px; height:50px; list-style: none; margin:0; padding:0;
+float: left; cursor: pointer; }
+.ulcss li { float: left; height:50px; text-align: center;
+line-height:50px; }
+.ulcss li:hover { color:blue;}
+.li1 { width:100px; }
+.li2 { width:20px; font-weight: normal; }
+/* .imgs { position: relative; top:5px; } */
+.imgs { vertical-align: middle; margin-top:-2px; }
+/* vertical-align 상(top),하(bottom),중간(middle) */
+.imge { vertical-align: middle; margin-top:-2px; }
+/* 대메뉴 파트 끝 */

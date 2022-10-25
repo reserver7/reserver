@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>일주일 총 결제금액 확인 하기</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            var $a = $("#ulcss > li >label").length; //노드 갯수
+            var $b; //반복문 변수
+            var $d = null;  //값을 넘겨받는 변수
+            for($b=1;$b<=$a;$b++){
+                var $c = $("#ulcss > li:eq("+$b+") > label").text();
+                //var $c = $("#ulcss > li > label").eq($b).text();
+                $c = $c.replace(",","");
+                $d = $d + Number($c); 
+            }
+            $("#text").text($d);
+        });
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0; font-size: 12px; }
+    .ulcss { width:500px; height:auto; list-style: none;
+    margin: 0; padding: 0;
+    }
+    .ulcss > li { width:250px; height:40px; line-height: 40px; text-align: center;
+    border:1px solid #cccccc;
+    }
+    span,label { display: block; height:40px; line-height: 40px; }
+    .ulcss > li > span { width:50px;  background-color: azure;
+    text-align: center; float: left;
+    }
+    .ulcss > li > label { 
+        width:200px; background-color:#eeeeee; 
+        float: left; color:red; font-weight: bold;
+    }
+    .total_money { 
+        width: 250px; height: 40px;
+    }
+    .total_money>span { height:40px; line-height: 40px; text-indent: 5px; 
+    float: left;
+    }
+    .total_money>span:nth-child(1) { width:100px; 
+    background-color: whitesmoke; color:red; }
+    .total_money>span:nth-child(2) {    
+        width:150px; color: red; background-color:wheat; }
+
+    .btn_div { width:250px; text-align: center;}
+    .btn { width:150px; height:40px; background-color: darkblue;
+    color: white; font-weight: bold; border:0;
+    }
+</style>
+</head>
+<body>
+<p>2020-10월 2주차 결제내역</p>
+<ul class="ulcss" id="ulcss">
+<li>요일별 결제 사항</li>   
+<li><span>일</span><label>287,000</label></li>   
+<li><span>월</span><label>330,000</label></li>   
+<li><span>화</span><label>568,000</label></li>   
+<li><span>수</span><label>490,000</label></li>   
+<li><span>목</span><label>680,000</label></li>   
+<li><span>금</span><label>223,000</label></li>   
+<li><span>토</span><label>320,000</label></li>   
+</ul>
+<label class="total_money" id="total_money">
+<span>총 결제 금액</span>
+<span id="text"></span>
+</label>
+<br>
+<div class="btn_div">
+<input type="button" value="결제금액 확인" class="btn" id="btn">
+</div>
+</body>
+</html>

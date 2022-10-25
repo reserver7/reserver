@@ -1,0 +1,105 @@
+<meta charset="utf-8">
+<script>
+    $(document).ready(function(){
+        var $product = [
+            ["./product/s1.jpg","삼성 노트북 43.2cm FHD 144Hz<br>인텔8세대 10800K","2020년도 마지막 30% 세일<br>Window10 무료설치","1,140,000원","900,000원"],
+            ["./product/s2.jpg","LG 노트북 39.6cm GTX1650<br>인텔8세대 10800K","2020년도 마지막 30% 세일<br>Window10 무료설치","1,140,000원","900,000원"],
+            ["./product/s3.jpg","HP 노트북 39.6cm<br>인텔8세대 10800K","2020년도 마지막 30% 세일<br>Window10 무료설치","1,140,000원","900,000원"],
+            ["./product/s4.jpg","Dell 노트북 35.6cm FHD 144Hz<br>인텔8세대 10800K","2020년도 마지막 30% 세일<br>Window10 무료설치","1,140,000원","900,000원"]
+        ];
+        var $array = $product.length;
+        var $html;
+        var $f;
+        for($f=0;$f<$array;$f++){
+        $html = '<li>\
+        <label class="label1" data="'+$product[$f][0]+'"><img src="'+$product[$f][0]+'"></label>\
+        <label class="label2">\
+        <span>'+$product[$f][1]+'</span>\
+        <span>'+$product[$f][2]+'</span>\
+        <span><s>'+$product[$f][3]+'</s></span>\
+        <span>'+$product[$f][4]+'</span></label></li> ';
+        $("#ulcss").append($html);
+        }
+
+        $(".label1").click(function(){
+            var $data = $(this).attr("data"); //label에 있는 data속성 값을 가져옴
+            $("#blackbox").css("display","block"); //블랙스크린 on
+            $("#imgplus").css("display","block"); // X 버튼 on
+            $("#imgplus").css("background-image","url("+$data+")");
+        });
+
+        $("#closebtn").click(function(){
+            $("#blackbox").css("display","none"); //블랙스크린 off
+            $("#imgplus").css("display","none"); // X 버튼 off
+        })
+    });
+</script>
+<style>
+    .ulcss{
+        width: 100%; max-width: 420px; list-style: none; margin: 0; padding: 5px;
+        position: relative; border: 1px solid red; box-sizing: border-box;
+    }
+    .ulcss > li { 
+        width: 49%; height: auto; border: 1px solid gray; 
+        box-sizing: border-box; margin-bottom: 10px; display: inline-block;
+    /*
+        Jquery에서 html 생성시 
+        <label></label><label></label><label></label>
+        이런식을 만들어짐 그래서 마지막에 스페이스바를 한번 눌러주면 됨
+        그래야 여백이 생김
+    */
+    }
+    .label1{
+        width: 100%; display: block;
+    }
+    .label1 > img{
+        width: 100%;
+    }
+    .label2{ box-sizing: border-box;
+        width: 100%; height: 200px; display: block; border-top: 2px dotted #333;
+    }
+    .label2 >span{
+        width: 100%; display: flex; justify-content: center;
+        flex-wrap: nowrap; align-items: center; align-content: center;
+    }
+    .label2 >span:nth-child(1){ 
+        font-size: 17px; font-weight: bold; height: 70px; text-align: center;
+    }
+    .label2 >span:nth-child(2){ 
+        font-size: 15px; color: blue; height: 60px; text-align: center;
+        text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
+    }
+    .label2 >span:nth-child(3){ 
+        font-size: 12px; color: gray; height: 20px;
+    }
+    .label2 >span:nth-child(4){ 
+        font-size: 15px; color: red; height: 50px;
+    }
+    .blackbox{ 
+        width: 100%;
+        height: 100vh; 
+        margin-top: -900px;
+        box-shadow:0 0 0 9000px rgba(0,0,0,0.7); 
+        position: absolute; z-index: 100;
+        display: none;
+    }
+    .imgplus { 
+        position: fixed; z-index: 101;
+        width: 95%; height: 300px; border: 1px solid #fff;
+        margin-top: 10%; margin-left: 2%; display: none;
+        background-repeat: no-repeat; background-size: cover;
+    }
+    .closebtn{ 
+        width: 30px; height: 30px; background-color: black; color: white;
+        border-radius: 15px; line-height: 30px; text-align: center; font-size: 25px;
+        display: block; position: absolute; right: 0;
+    }
+</style>
+<!-- 이미지 확대 -->
+<div class="imgplus" id="imgplus">
+    <span class="closebtn" id="closebtn">X</span>
+</div>
+<!-- 블랙스크린 -->
+<div class="blackbox" id="blackbox"></div>
+<ul class="ulcss" id="ulcss">
+</ul>

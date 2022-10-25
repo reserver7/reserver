@@ -1,0 +1,14 @@
+<div id="topmenu" :class="top_class">
+    <label :class="t1" v-bind:title="tmsg" @click="main_page">ADMINISTRATOR</label>
+    <label :class="t2">
+        <ul :class="t3">
+            <menus-area v-for="area,index in menu_list" v-bind:lis="area" v-bind:index="index" :class="t4"></menus-area>
+        </ul>
+    </label>
+</div>
+<div>
+    <label style="width: 100%; height: 30px; background-color: #ccc; font-size: 13px; padding-left: 10px; line-height: 30px;">
+        <?php echo $admin_name;?> 님 환영 합니다! <a href="./admin_logout.php">[로그아웃]</a>
+    </label>
+</div>
+<script src="../js/admin_top.js"></script>

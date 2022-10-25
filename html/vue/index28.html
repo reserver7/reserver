@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue6일차 - VueRouter</title>
+<script src="./vue.js"></script>
+<script src="./vue-router.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+<!--라우터는 lodash보다 위에 둬야함 && vue엔진 바로 밑에 -->
+    <!-- vue-router.js파일 만들어서 링크안에 내용 다 복붙
+    <script src="vue-router.js"></script> 장착하기 
+    또는 <script src="https://unpkg.com/vue-router@3.4.9/dist/vue-router.js"></script>
+    도메인 뒤에 #/ 가 붙으면 router를 쓰고있다는 뜻
+-->
+</head>
+<!-- 
+    vue-router : 페이지를 이동하지 않고, 컴포넌트를 이용하여 페이지가 
+    이동 된것 처럼 보여주는 기능 임
+    페이지 숫자를 줄여주는 기능도 있으며, 
+    페이지 로딩시 지연에 따라 순차적으로 보여주게 됨
+-->
+<body>
+<section id="box">
+    <router-link to="/membership">{{ page }}</router-link><!-- to = href URL로 이동하는 형태-->
+    <router-link to="/login">{{ page2 }}</router-link>
+    <router-view></router-view>
+    <!-- 라우터 뷰 : 페이지화면 출력 파트 임 
+        (1개의 태그로 모든 것을 조절 하게 됨)-->
+</section>
+</body>
+<script>
+    //뷰라우터 사용시 주의사항은 아웃라인 태그를 만든 후 태그는 해당 아웃라인 태그 안에서
+    //퍼블리싱이 되도록 하면 됨
+    var join = { template:`
+        <div style='border: 1px solid black; width:1000px; height:300px; margin:0 auto;'>
+            <p style='color:red;'>회원약관이 보이는 곳<p>
+        </div>`};
+    var login = { template:`<div style='border: 1px solid black; width:1000px; height:300px; margin:0 auto;'>
+        <p>로그인 페이지</p>
+        <span><input type="text" name="mid" id="mid"></span>
+        </div>`
+    };
+    var viewpage = [    //컴포넌트를 배열로 분류 작업을 하는 부분
+        {path : "/membership",component : join},    //path = to와 동일하게 이름을 사용해야 함 
+        {path : "/login",component : login}
+    ];
+    var b = new VueRouter({ //VueRouter은 엔진 함수를 사용하겠다는 뜻
+        routes:viewpage //routes는 주로 배열값을 기본으로 가져오게 됨
+        //변수명을 routes를 써야 함
+    });
+
+    var a = new Vue({
+        router:b,   //VueRouter로 로드된 변수 값을 Vue read할 수 있도록 해 줌
+        data:{
+            page:"회원가입",
+            page2:"로그인"
+        }
+    }).$mount("#box");  //$mount = el속성과 같음
+</script>
+</html>

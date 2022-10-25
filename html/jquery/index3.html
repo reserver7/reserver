@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 1일차(선택문+핸들링)</title>
+<script src="./jquery.js"></script> <!-- Jquery엔진 탑재(이름에 버젼을 쓸 경우 해킹의 위험노출) -->
+<script>
+    $(document).ready(function(){
+        $("#data_ag").attr("checked",true);
+        $("#agree2").attr("checked",true);
+        $("#usetel").attr("readonly",true); //읽기전용, false : 읽기전용 해제 jq는 모두 소문자
+        //이벤트 핸들링에 포함하지 않을 경우는
+        //웹페이지가 실행되자 마자 작동되는 형태
+        //attr = attribute(속성)의 약자 getattribute와 같은 형태
+
+        $("#tels").change(function(){   //change 이벤트 핸들링
+            //change == onchange와 동일하며 jquery 이벤트 핸들링 임
+            //var $a = $("#tels").val();
+            var $a = $(this).val(); //위에 ("#tels" == this) 같은 뜻
+            $("#usetel").val($a);
+            //선택된 값을 usetel(id)값으로 이관함
+        });   
+
+        //동의함 동의안함 체크 확인
+        $("#btn").click(function(){
+            $ck = $("#agree1").is(":checked");
+            //radio, checkbox : is(":checked") true, false 여부 확인
+            if($ck==false){
+                alert("동의함에 체크 하셔야만 됩니다.");
+            }
+        });
+
+        $("#btn2").click(function(){
+            $ckbox = $("#data_ag").is(":checked");
+            if($ckbox==false){
+                alert("보안체크를 선택해야 됩니다.");
+            }
+        });
+    });
+</script>
+</head>
+<body>
+<select id="tels">
+    <option value="">통신사</option>
+    <option value="SKT">SKT</option>
+    <option value="KT">KT</option>
+    <option value="LGT">LGT</option>
+    <option value="ETC">알뜰폰</option>
+</select>
+<input type="text" name="usetel" id="usetel" class="inputcss">
+<br><br>
+<input type="radio" name="agree" id="agree1" class="agree"><label for="agree1">동의함</label>
+<input type="radio" name="agree" id="agree2" class="agree"><label for="agree2">동의안함</label>
+<input type="button" value="회원가입" id="btn">
+<br><br>
+<input type="checkbox" name="data_ag" id="data_ag" class="checkcss"><label for="data_ag">보안체크</label>
+<input type="button" value="체크확인" id="btn2">
+</body>
+</html>
+<!--
+    Javascript
+     on (작동여부)
+     get (가져오다)
+     "=" 위주로 true, false 컨트롤 가능
+     대문자, 소문자 명령어가 구분
+
+    Jquery
+     function과 함께 무조건 선언 (작동여부)
+     if, class를 사용하는데 "()" 괄호 기준으로 많이 사용
+     속성명이 주로 html, css 속성명을 이용함
+     대문자, 소문자 명령어가 구분 되지 않음
+-->

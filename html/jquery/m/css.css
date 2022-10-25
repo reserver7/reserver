@@ -1,0 +1,8 @@
+/*
+@import는 HTML link와 동일하게 해당 파일을 불러와서 작동하는 명령어
+url("상대경로 또는 절대경로")
+*/
+@import url("./main.css");
+.box{
+    width: 1200px; height: 60px; background-color: black;
+}

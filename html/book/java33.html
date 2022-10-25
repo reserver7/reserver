@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 131p~157p 함수</title>
+    <script>
+        // var a = "";
+        // var a = 0;
+        // var a = null;
+        /*
+문제9.
+전체선택 체크 시 번호1~5번까지 모두
+체크 되어야합니다. 
+전체선택 체크 아웃시 번호1~5번까지 
+모두 체크아웃 되어야 합니다.
+        */
+        function aaa(){
+            var all=document.getElementsByClassName('ck').length;
+            if(document.getElementById('allck').checked==true){
+                for(var i=0; i<all; i++){
+                    var ids="ck"+i;
+                    document.getElementById(ids).checked=true;
+                 }
+            }
+            else{
+                for(var i=0; i<all; i++){
+                    var ids="ck"+i;
+                    document.getElementById(ids).checked=false;
+                 }
+            } 
+        }
+    </script>
+</head>
+<body>
+<input type="checkbox" id="allck" onclick="aaa();">
+<label for="allck">전체선택</label>
+<input type="checkbox" id="ck0" class="ck">
+<label for="ck0">번호1</label>
+<input type="checkbox" id="ck1" class="ck">
+<label for="ck1">번호2</label>
+<input type="checkbox" id="ck2" class="ck">
+<label for="ck2">번호3</label>
+<input type="checkbox" id="ck3" class="ck">
+<label for="ck3">번호4</label>
+<input type="checkbox" id="ck4" class="ck">
+<label for="ck4">번호5</label>
+</body>
+</html>

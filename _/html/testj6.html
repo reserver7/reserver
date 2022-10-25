@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 복습(6),(반복문)</title>
+<script>
+var a=1;  //초기값
+var b=2;   //짝수 홀수 구분
+var c;    //나머지값
+var d="";   //짝수
+var f="";  //홀수
+do{
+  c = a % b;    //짝수 홀수 구분
+  if(c==0){     //나머지값
+    d = d + "," + a;    //짝수
+  }   
+  else{
+    f = f + "," + a;    //홀수
+  }
+  a++;  //증가
+}while(a<=30);  //범위
+
+document.write("1~30까지 데이터<br>");
+document.write("짝수는"+ d +"<br>");
+document.write("홀수는"+ f +"<br>");
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

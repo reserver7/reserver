@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var answer = [];
+    function aaa(max,n){
+        let f,q;
+        for(f=0;f<=max;f++){
+            q = f%n;
+            if(q!=0){
+                answer.push(f);
+            }
+        } 
+        console.log(answer);  
+    }
+    aaa(10,2);
+
+    function bbb(h,k){
+        var aa,bb;
+        var cc;
+        for(aa=h;aa<=k;aa++){
+            for(bb=1;bb<=9;bb++){
+                cc = aa * bb;
+                console.log(aa + " * " + bb + " = " + cc);
+            }
+        }
+    }
+    bbb(2,4);
+
+    var arr = [
+    {name :'홍길동',
+    job : '전사'},
+    {name : '박보검',
+    job : '배우'},
+    {name : '강호동' ,
+    job : '천하장사'}]
+
+    function findJob(ff){
+        var i;
+        for(i in arr){
+            var t = arr[i].name.match(ff);
+            if(t==ff){
+                console.log(arr[i].job);
+            }
+        }
+    }
+    findJob('강호동');
+</script>
+</html>

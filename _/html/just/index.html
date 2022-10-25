@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compitible" content="IE=Edge, chrome=1">
+<title>Javascript & Jquery 특강</title>
+<script>
+    var array = ["신상품","반짝세일","MD추천"];
+</script>
+<style>
+    body { margin: 0; padding: 0;}
+    * {margin: 0; padding: 0; }
+    .menus { width: 300px; height: 30px; list-style: none;}
+    .menus > li { float: left; width: 100px; height: 30px; text-align: center; line-height: 30px;
+    border: 1px solid #ccc; box-sizing: border-box;}
+</style>
+</head>
+<body>
+    <ul class="menus" id="menus">
+
+    </ul>
+</body>
+<script>
+    var menuea = array.length;
+    var w = 0;
+    var html = "";
+    var a;
+    while(w<menuea){
+        a = document.createElement("li");
+        a.id = "menus"+ w;
+        a.setAttribute("onclick","abc("+w+");");
+        a.append(array[w]);
+        document.getElementById("menus").append(a);
+        w++;
+    }
+    function abc(aa){
+        if(aa==0){
+            location.href="http://naver.com";
+        }
+        else if(aa==1){
+            history.go(-1);
+        }
+        else{
+            location.reload();
+        }
+    }   
+</script>
+</html>

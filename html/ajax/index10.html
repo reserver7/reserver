@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (1일차) - Javascript(array + node)</title>
+<script>
+    var array = {
+        "mid":["hong","lee","kims","yiking","yiks"],
+        "mname":["홍길동","이순신","김유신","유리왕","유관순"]
+    };
+    /*
+    var f;
+    var ea;
+    var z;
+    for(f in array){    //Object.keys를 기준으로 array갯수만큼 반복함
+        //console.log(array[f]);   
+        ea = array[f].length; //Object.keys를 기준으로 안에 데이터 갯수를 가져옴
+        for(z=0;z<ea;z++){ //데이터 갯수만큼 반복함
+            console.log(array[f][z]);
+        }
+    }
+    */
+    //응용문제 1. for in 2개 돌려서 콘솔에 데이터 출력
+    var ff;     //큰 for문에 사용되는 변수
+    var zz;     //작은 for문에 사용되는 변수 
+    for(ff in array){   //array에서 Object.keys를 기준으로 2바퀴 반복
+        for(zz in array[ff]){ 
+            //array[ff] keys 기준으로 안에 데이터 갯수만큼 반복
+            //console.log(array[ff][zz]);
+        }
+    }
+    //응용문제2. forEach를 이용해서 다음 배열을 콘솔로 찍으시오
+    Object.keys(array).forEach(function(a,b,c){
+        Object.keys(array[a]).forEach(function(aa,bb,cc){
+            console.log(array[a][aa]);
+        });
+    });
+</script>
+</head>
+<body>
+
+</body>
+<script>
+
+</script>
+</html>

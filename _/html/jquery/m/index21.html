@@ -1,0 +1,54 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 18일차 - setTimeout(클릭할 때 마다 호출)</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js?"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    //setInterval : 일정 시간마다 반복되는 실행 함수 (축적) - 실행 할 때 마다 조금씩 시간이 빨라짐
+    //clearInterval : 일정 시간마다 반복하는 것을 중단  (일시 정지)
+
+    //setTimeout : 일정 시간이 지난뒤에 한번만 실행 되는 함수
+    //clearTimeout : 일정 시간 후 한번 실행하는 것을 중지 (완전 정지)
+    //function 안에 묶여있어야 정상 작동
+    $(document).ready(function(){
+        /*
+        var $timer = setTimeout(function(){
+            alert("test");
+        },5000);
+        */
+        var $timer;
+
+        $("#start").click(function(){
+            var $left = $(".box").offset().left; //해당오브젝트의 위치 값 offset() left,top
+            $left = $left + 20; //box오브젝트의 가로 위치를 확인 한 후 +20 만큼 계속 증가
+            $.fn.times($left); //times라는 함수로 값을 태워서 보냄
+        });
+
+        $.fn.times = function($left){
+            $timer = setTimeout(function(){ //5초후에 한번만 실행 되도록 함
+                $(".box").animate({ //해당 오브젝트를 왼쪽에서 오른쪽으로 움직임
+                    "left":$left+"px"
+                },1000);
+            },5000);
+        };
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box{ width: 60px; height: 60px; background-color: red; position: absolute; }
+</style>
+</head>
+<body>
+<div class="box"></div><br><br><br>
+<input type="button" value="START" id="start">
+<input type="button" value="STOP" id="stop">
+</body>
+</html>

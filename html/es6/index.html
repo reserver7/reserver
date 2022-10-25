@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ES6 특강1</title>
+</head>
+<!--
+    ES5 : var
+    ES : ECMAScript - class, module
+    ES6 : 기본 베이스는 IE에서는 작동을 안함
+    ES6 : let, const - 필요한 함수만 로드를 해서 사용이 가능함 
+    그래서 속도가 그냥 script보다 빠름
+    script는 모든 함수를 로드함
+-->
+<script type="module"> //type="module" 을 사용해야만 ES가 작동이 됨
+    //import a from "./index.js?v=2";
+    //import는 파일에 있는 값을 가져올때 사용함
+    //from 은 가져올 파일 위치를 설정하게 됨
+
+    import {ddd} from "./index.js?v=3"; //{} export에 사용되는 함수명을 로드함
+    ddd(10,20); //export 함수를 실행하는 부분임
+</script>
+<body>
+
+</body>
+</html>

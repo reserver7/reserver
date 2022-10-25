@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery7 (배너 디스크)</title>
+<script src="../jquery/jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        //임시변수
+        var $disc = 0;
+        //노드갯수
+        var $node = $("#ulcss > li").length;
+        $("#right").click(function(){
+            //반복문으로 전체를 black
+            var $a;
+            for($a=0;$a<$node;$a++){
+                $("#ulcss > li").eq($a).css("background-color","black");
+            }
+            //임시변수 카운트 숫자 +1씩 증가
+            if($disc<$node-1){
+                $disc = $disc + 1;
+                //++$disc;
+                //$disc += 1;
+                
+            }
+            else{
+                $disc = 0;
+            }
+            $("#ulcss > li").eq($disc).css("background-color","red");
+            //해당 노드만 red로 처리
+        });
+
+        $("#left").click(function(){
+            //노드갯수
+
+            //해당 노드 0 맨 끝에 노드로 이동 if조건
+            if($disc==0){
+                $disc = $node - 1;
+                //$disc = 4;
+            }
+            else{
+                $disc = $disc - 1;
+                //--$disc;
+                //$disc -= 1;
+            }
+            //반복문 전체 black로 설정
+            var $a;
+            for($a=0;$a<$node;$a++){
+                $("#ulcss > li").eq($a).css("background-color","black");
+            }
+            //해당 노드만 red로 변경
+            $("#ulcss > li").eq($disc).css("background-color","red");
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .ulcss{
+        width: calc(40*5); height: auto; list-style: none;
+        margin: 0; padding: 0; 
+    }
+    .ulcss > li{
+        width: 40px; height: 5px; display: inline-block;
+        background-color: black; cursor: pointer;
+    }
+    .ulcss > li:nth-child(1){ background-color: red;}
+</style>
+</head>
+<body>
+<ul class="ulcss" id="ulcss">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<input type="button" value="<<" id="left">
+<input type="button" value=">>" id="right">
+</body>
+</html>

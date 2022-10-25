@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>index30 + popup(자식창)</title>
+<script>
+    function aaa(a){
+        var b =  document.getElementById("addr"+a); //주소부분
+        var bb = document.getElementById("addno"+a); //우편번호
+        var c = b.innerText;
+        var cc = bb.innerText;
+        //innerText : 태그와 태그 사이에 있는 문자를 가져올 때 사용함
+        window.opener.f.addr.value=c;
+        window.opener.f.addno.value=cc;
+
+        self.close();   //팝업창 닫을 때 사용하게 됨 (중요사항 제일 마지막에 써줘야 함)
+                        //중간에 넣을경우 데이터 전송 전에 창이 닫히는 경우가 발생 함
+    }
+</script>
+</head>
+<body>
+<!-- a href 태그 사용시 함수 호출 형태가 다름
+a href="javascript:void aaa();"
+-->
+<a href="javascript:void aaa(0);">
+<span id="addno0">01256</span>
+<label id="addr0">서울시 종로구 종로3가 국일빌딩 5F 그린아트컴퓨터학원</label>
+</a><br>
+<a href="javascript:void aaa(1);">
+<span id="addno1">23568</span>
+<label id="addr1">서울시 관악구 서울대학교 본관</label>
+</a><br>
+<a href="javascript:void aaa(2);">
+<span id="addno2">13669</span>
+<label id="addr2">서울시 강동구 천호동 현대백화점</label>
+</a>
+<br><br>
+<input type="button" value="창닫기" onclick="self.close();">
+</body>
+<!--
+    [자식창을 이용한 형태]
+    1. 부모창 > 자식창 오픈 > 자식창 검색> 부모창 오브젝트에 전달
+    팝업창 POST값 형식
+
+    2. 부모창 값을 전달 > 자식창에 값을 받음 > 자식창이 값을 처리 >
+    부모창으로 오브젝트를 전달
+    팝업창 GET값 형식 (파라미터값)
+
+    3. 부모창 > Layer팝업 > 검색 > 부모창으로 값을 전달
+    Layer팝업 GET값 형식 (파라미터값)
+-->
+</html>

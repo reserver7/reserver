@@ -1,0 +1,65 @@
+@charset "UTF-8";
+$border : 1px solid black;
+$color1 : #bbffaa;  //# (0 ~ f) 
+$color2 : #ccaa88;
+@mixin base {
+    margin: 0; padding: 0; line-height: 1;
+}
+
+@mixin objectsize($width,$height,$code) {
+    @if($code=="px"){
+        width: $width+px; height: $height+px;
+    }
+    @else if($code=="%"){
+        width: $width+%; height: $height+px;
+    }
+}
+
+@mixin ani($left,$top) {
+    left:$left+px; top: $top+px;
+}
+*,body{ @include base; }
+.divcss{
+    @include objectsize(100,200,"%");
+    border: $border; position: relative;
+} 
+.box{
+    @include objectsize(50,50,"px");
+    display: block; background-color: $color2;
+    position: absolute; left: 0px; top: 0px;
+    transition-property: all;
+    transition-duration: 5s;
+    transition-timing-function: ease;
+    //모든 속도 0~1 : 0 = 속도가 빠름 1 = 속도가 느림
+    //ease : 처음과 끝에만 속도가 줄어듬
+    //linear : 처음과 끝이 모두 같은 속도
+    //ease-in : 처음에만 속도가 느림
+    //ease-out : 끝에만 속도가 느림
+    //step-start,step-end : 처음과 끝에 움직이는 형태를 같이 맞출 때 사용
+    //steps(횟수,end) : 컷 형식으로 움직이는 형태
+    //cubic-bezier : 사용자가 직접 컨트톨 0~1숫자만 사용( 0 = 속도가 빠름 1 = 속도가 느림)
+}
+.btn{
+    @include objectsize(100,30,"px");
+    display: block; border: $border; text-align: center;
+    line-height: 30px; position: relative;
+}
+// + : 상위 오브젝트 밖에 있을 때 사용함 
+// 단, html태그가 컨트롤 할 오브젝트 보다 상위에 작성 되어야 함
+// ~ : 해당 오브젝트 밖에 있을 떄 사용함
+// 단, html태그도 컨트톨 할 오브젝트 보다 상위에 있지만 
+// 그 아래에 있는 작은 부모까지는 선언하지 않음
+.btn:hover + .divcss > #box{
+    //@include ani(100,100);
+    //transform: scale(2,0.5);
+    //transform: rotateX(360deg) rotateY(360deg);
+    //transform: translate(100px,150px);
+    transform: skew(360deg,45deg);
+
+    //transform : 2D(X축, Y축), 3D(X축, Y축, Z축)
+    //2D :
+    //scale [scale,scaleX,scaleY] - 오브젝트 크기 조절(0.5,1,2,2.5)
+    //rotate [rotate,rotateX,rotateY] - 오브젝트 회전 조절 (deg)
+    //translate [translate(X축, Y축)] - 오브젝트 대각선 움직일 때 사용 (px,%)
+    //skew [skew(X축,Y축),skewX,skewY] - 오브젝트 각도를 조절할 때 사용함 (deg)
+}

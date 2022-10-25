@@ -1,0 +1,50 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML4.0 + CSS2.0 (padding)</title>
+<style>
+    body { margin:0; padding:0; }
+    div { font-size:14px; color:white;}
+    .div1 { width:80px; height:50px; background-color:blue;
+    padding-left:20px; padding-top:50px;
+    }
+    .div2 { width:180px; height:235px; background-color:red;
+    padding-left:120px; padding-top:65px;
+    }
+    .div3 { width:150px; height:150px; background-color: green;
+    /*padding:50px; */ /* padding-left, right, top, bottom 50px */
+    padding:50px 0 0 50px;
+    /* padding:0 0 0 0; margin:0 0 0 0 (순서는 시계방향) */
+    }
+    /* 
+    padding : 안쪽 여백 부분을 사용할 때 (주의사항 width, height 조정)
+    margin : 바깥쪽 여백 (width, height 조정할 필요가 없음)
+    left, right, top, bottom 
+    */
+    .div4 { width:200px; height:50px; background-color:blue;
+    padding-top:150px;
+    }
+    .div5 { width:50px; height:50px; background-color:black;
+    margin:0 0 0 150px; text-align: center;
+    line-height: 50px; color:white; font-size: 30px;
+    cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="div1">
+박스1
+</div>
+<div class="div2">
+박스2
+</div>
+<div class="div3">
+박스3
+</div>
+<div class="div4">
+    <div class="div5">X</div>
+</div>
+
+</body>
+</html>

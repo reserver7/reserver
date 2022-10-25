@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 배열 총복습 (2차원)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        var $array = {
+            "members":[ //데이터베이스 테이블 명
+                { "id": "hong", "name":"홍길동", "email":"test@test.com", "tel":"010-1234-5678", "addr":"서울특별시 종로 3가" }
+            ]   //object.key=데이터베이스 상 column
+        };
+        var $ea = $array.members.length; //그룹명 안에 데이터 갯수를 확인함
+
+        //members그룹안에 key값이 어떤 것이 있는지 확인하게 됨
+        var $object = Object.keys($array.members[0]);
+
+        //members그룹 중에서 첫번째 데이터 중 key값 갯수를 가져오게 됨
+        var $object_ea = Object.keys($array.members[0]).length;
+
+        //출력예시
+        var $data = $object[1]; //0~4까지 members그룹안에 해당 key 노드값을 넣어줌
+        console.log($array.members[0][$data]); //최종 데이터 출력 형태
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0; }
+    .topclass { width: 100%; height:30px; line-height: 30px;
+    list-style: none; margin: 0; padding: 0;
+    background-color: cornflowerblue;
+    }
+    .topclass > li { display: inline-block; text-align: center;
+    font-size: 12px; height: 30px; line-height: 30px;
+    }
+    .topclass > li:nth-child(1) { width: 10px;}
+    .topclass > li:nth-child(2) { width: 50px;}
+    .topclass > li:nth-child(3) { width: 100px;}
+    .topclass > li:nth-child(4) { width: 100px;}
+    .topclass > li:nth-child(5) { width: 200px;}
+    .topclass > li:nth-child(6) { width: 200px;}
+    .topclass > li:nth-child(7) { width: 350px;}
+
+    .topclass2 { width: 100%; height:30px; line-height: 30px;
+    list-style: none; margin: 0; padding: 0;
+    background-color: floralwhite; clear: both;
+    }
+    .topclass2 > li { display: inline-block; text-align: center;
+    font-size: 12px; height: 30px; line-height: 30px;
+    }
+    .topclass2 > li:nth-child(1) { width: 10px;}
+    .topclass2 > li:nth-child(2) { width: 50px;}
+    .topclass2 > li:nth-child(3) { width: 100px;}
+    .topclass2 > li:nth-child(4) { width: 100px;}
+    .topclass2 > li:nth-child(5) { width: 200px;}
+    .topclass2 > li:nth-child(6) { width: 200px;}
+    .topclass2 > li:nth-child(7) { width: 350px;}
+</style>
+</head>
+<body>
+<p>MEMBER-SHIP INFO</p>
+<ul class="topclass">
+    <li><input type="checkbox" id="all"></li>
+    <li>번호</li>
+    <li>아이디</li>
+    <li>고객명</li>
+    <li>이메일</li>
+    <li>전화번호</li>
+    <li>주소</li>
+</ul>
+<span id="data">
+
+
+</span>
+</body>
+</html>

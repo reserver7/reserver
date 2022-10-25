@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>최종복습 (더블function, return)</title>
+<script>
+//(function1)값을 받아서 숫자로 변환 및 문자,숫자 검토 > 
+//(function2)숫자일 경우 짝수,홀수 검토
+
+    function aaa(){
+        var no = Number(f.a.value); //사용자가 입력한 값을 받는 변수
+        if(no==""){ //사용자가 아무것도 입력을 안 했을 경우
+            alert("숫자를 입력해주세요.");
+        }
+        else{   //사용자가 입력 했을 경우
+            if(isNaN(no)==false){   //숫자 문자 확인
+                //bbb(no);    //bbb함수로 사용자가 입력한 값을 던짐(no) 리턴을 안한 상태
+                var re = bbb(no);   
+                //리턴함수 사용시 무조건 받아오는 변수가 필요!!
+                //리턴 사용시 주의사항 : 반복문 이라도 리턴은 딱 한번만 됩니다.
+                alert(re);
+            }
+            else{   //문자로 입력 되었을 경우
+                alert("문자는 사용하지 못합니다.");
+            }
+        }
+    }
+    //짝수 홀수 검토 하는 function
+    function bbb(no){
+        var check = no % 2; //사용자가 입력한 값을 2로 나눔(나머지 값 확인)
+        var msg;
+        if(check==0){   //나머지 값이 0일 경우
+            //alert("짝수 입니다.");
+            msg = "짝수 입니다.";
+        }
+        else{   //나머지 값이 0이 아닐 경우
+            //alert("홀수 입니다.");
+            msg = "홀수 입니다.";
+        }
+        return msg;
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<input type="text" name="a" id="a"> <!--name 으로 값을 넘길경우 id가 필요없음-->
+<input type="button" value="검토1" onclick="aaa();">
+<br><br>
+<input type="text" name="b" id="b"> <!--name 으로 값을 넘길경우 id가 필요없음-->
+<input type="button" value="검토2" onclick="zzz();">
+<br><br>
+<input type="text" name="c" id="c">
+<input type="button" value="검토3" onclick="ttt(f.c.value);">
+</form>
+<script>
+    /*
+    응용문제.
+    다음 배열의 값과 사용자가 입력한 값을 곱하여 각각의 결과값을 출력하는
+    다함수를 이용하여 제작히시길 바랍니다.
+    단, 두번째 함수에 배열*사용자값 수식을 사용하시길 바랍니다.
+    사용자가 2라고 입력 했습니다.
+    2*5 = 10
+    2*10 = 20
+    2*15 = 30
+    2*20 = 40
+    */
+    var indata = [5,10,15,20];
+    function zzz(){
+        var q = Number(f.b.value);  //사용자가 입력한 값
+        var w = indata.length;  //배열 갯수
+        if(isNaN(q)==false){    //사용자가 입력한 값이 숫자인지
+            var data_re = yyy(q,w);   //숫자가 맞고 yyy라 펑션에 넘김
+            document.write(data_re);
+        }
+        else{
+            alert("숫자를 입력해주세요.");
+        } 
+    }
+    function yyy(q,w){
+        var e;  //for문 사용 변수
+        var r;  //결과 값
+        var re_v="";    //데이터 축적 변수
+        for(e=0;e<w;e++){
+            r = q * indata[e];
+            re_v += q+"*"+indata[e]+"="+r+"<br>";
+        }
+        return re_v;
+    }
+/*
+    응용문제.
+    검토3 버튼을 클릭시 다음과 같은 형태로 출력 되도록 합니다.
+    사용자가 임의 숫자를 한가지 넣습니다.
+    해당 숫자와 배열 값을 비교하여 몇번째에 해당 숫자가 자리를 잡는지
+    출력하는 return 함수를 제작하시오.
+    ex) 사용자가 임의 숫자 22를 입력하였습니다.
+    결과 메세지 출력은 "배열 기준으로 3번째 순서에 속합니다." 라고
+    출력 되어 집니다.
+    if, for, return, alert, 
+*/
+var u = [10,15,32,44,96];
+    function ttt(fc){
+        var numbers = Number(fc);
+        var r = arrays(numbers);
+        alert(r);
+    }
+    function arrays(fc){
+        //return typeof(fc);
+        var num = u.length;
+        var w = 0;
+        var rank = 1;
+        while(w<num){
+            if(fc<=u[w]){   //비교하는 문구
+                var total = "해당 숫자는" + rank + "번째에 해당 됩니다.";  //최종 결과값
+            }
+            else{
+                ++rank; //노드 숫자가 하나 더 추가 해서 던짐 
+                var total = "해당 숫자는 마지막 숫자에 해당 됩니다.";
+            }
+            w++;
+        }
+        return total;
+    }
+
+
+
+
+/*
+    function ttt(){
+        var u = [10,15,32,44,96];
+        var mm = Number(document.getElementById("c").value);
+        var qq = u.length;
+        var nn;
+        var ee="yes";
+        if(isNaN(mm)==true){
+            alert("숫자만 입력해 주세요");
+            ee="no";
+        }
+        else{
+            var okk = uuu(qwe);
+            alert(okk);
+        }
+    }
+    function uuu(){
+        if(ee=="yes"){
+            for(nn=0;nn<qq;nn++){
+                var cked = u[nn];
+                if(mm<=u[0]){
+                    alert("배열 기준으로 1번째 순서에 속합니다.");
+                    
+                }
+                else if(mm<=u[1]){
+                    alert("배열 기준으로 2번째 순서에 속합니다.");
+                    
+                }
+                else if(mm<=u[2]){
+                    alert("배열 기준으로 3번째 순서에 속합니다.");
+                    
+                }
+                else if(mm<=u[3]){
+                    alert("배열 기준으로 4번째 순서에 속합니다.");
+                    
+                }
+                else if(mm<=u[4]){
+                    alert("배열 기준으로 5번째 순서에 속합니다.");
+                    
+                }
+                else{
+                    alert("배열 기준으로 6번째 순서에 속합니다.");
+                    
+                }
+            }
+            var qwe = "";
+            return qwe;
+        }
+    }
+*/
+    
+            
+
+</script>
+</body>
+</html>

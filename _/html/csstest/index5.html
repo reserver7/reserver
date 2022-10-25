@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>css test5</title>
+<style>
+body { margin: 0; padding: 0; }
+    ul{
+        width: 1000px; height: 30px; font-size: 12px; font-weight: bold;
+        color: white; list-style: none; margin: 0; padding: 0;
+        text-align: center; line-height: 30px;
+    }
+    ul > li{
+        float: left; width: 100px; height: 30px;
+        
+    }
+    ul > li:nth-child(1){
+        background-color: blue; margin-left: 790px;
+    }
+    ul > li:nth-child(2){
+        background-color: black; margin-left: 10px;
+    }
+    table{
+        width: 1000px; height: 90px; text-align: center;
+        line-height: 30px; margin-top: 15px; font-size: 13px;
+    }
+    .tdcss{
+        background-color: yellow;
+    }
+    tr{
+        width: 200px; height: 30px;
+    }
+    td{
+        width: 200px; height: 30px;
+    }
+</style>
+</head>
+<body>
+<ul>
+    <li>게시판 생성</li>
+    <li>리스트 다운로드</li>
+</ul>
+<table border="1" cellpadding="0" cellspacing="0">
+    <tbody>
+        <tr>
+            <td style="background-color: blue; color: white;" rowspan="3">게시판 글/댓글 리스트</td>
+            <td class="tdcss">공지사항</td>
+            <td class="tdcss">자유게시판</td>
+            <td class="tdcss">자료실</td>
+            <td class="tdcss">FAQ</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>55</td>
+            <td>5</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>105</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

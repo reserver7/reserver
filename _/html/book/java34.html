@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript - 131p~157p 함수</title>
+<script>
+/*
+    문제10
+    회원가입시 약관에 대한 동의를 받는 부분입니다.
+    전체 약관 동의에 체크 시 3개의 약관 부분에 동의함으로 모두 체크되어야 하며
+    체크 해제 시 모든 약관에 동의안함으로 체크 되어야 합니다.
+    단, 처음 실행시 동의안함으로 체크되도록 합니다
+*/
+    function aaa(){
+        var a = document.getElementsByClassName("radio").length;
+        var b = document.getElementById("all").checked;
+        var c;
+        if(b==true){
+            for(c=0; c<a; c++){
+                var ids1 = "a" + c;
+                document.getElementById(ids1).checked = true;
+            }
+        }
+        else{
+            for(c=0; c<a; c++){
+                var ids2 = "b" + c;
+                document.getElementById(ids2).checked = true;
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<p>전체약관 모두 동의<input type="checkbox" id="all" onclick="aaa();"></p>
+<p>네이버 이용약관 동의</p>
+<input type="radio" name="radio1" id="a0" class="radio">동의함 <input type="radio" name="radio1" id="b0" class="radio" checked>동의안함
+
+<p>개인정보 수집 및 이용동의</p>
+<input type="radio" name="radio2" id="a1" class="radio">동의함 <input type="radio" name="radio2" id="b1" class="radio" checked>동의안함
+
+<p>위치정보 이용약관 동의</p>
+<input type="radio" name="radio3" id="a2" class="radio">동의함 <input type="radio" name="radio3" id="b2" class="radio" checked>동의안함
+</body>
+</html>

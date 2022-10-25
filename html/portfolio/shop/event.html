@@ -1,0 +1,65 @@
+<?php
+    $r = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head> 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>MINIMAL</title>
+<script src="../js/jquery.js?v=1"></script>
+<link type="text/css" rel="stylesheet" href="./css/main.css?v=1">
+<link type="text/css" rel="stylesheet" href="./css/shopmain.css?v=<?php echo $r?>">
+<link type="text/css" rel="stylesheet" href="./css/event.css?v=<?php echo $r?>">
+<script src="../js/menu.js?v=<?php echo $r?>"></script>
+<script src="../js/filter.js?v=5"></script>
+<script src="../js/search.js"></script>
+<script>
+    $(function(){
+        let $game_count = 5;
+        $("#gamebtn").click(function(){
+            --$game_count;
+            if($game_count<=0){
+                alert("기회를 모두 소진 하였습니다.");
+                $game_count = 0;
+                $(this).unbind("click");
+                $(".event_div2>.okbtn").unbind("click");
+            }
+            $("#count").attr("src","./event/number_"+$game_count+".png");
+        });
+
+        $(".event_div2>.okbtn").click(function(){
+            var $oks = $(this).index();
+            var $oksign = Number($("#oksign").val())+1;
+            var $okimg = "<img src='./event/ok.gif'>";
+            $(".event_div2>.okbtn").eq($oks).append($okimg);
+            $("#oksign").val($oksign);
+            $(this).unbind("click");
+            if($oksign==7){
+                alert("틀린그림을 모두 찾았습니다. 이벤트 자동 응모 되었습니다!!");
+                $("#gamebtn").unbind("click");
+            }
+        });
+    });
+</script>
+</head>
+<body>
+    <!-- 상단 배너 -->
+<header class="headercss">
+    <?php include "topbanner.html"; ?>
+</header>
+<!-- 쇼핑몰 메뉴 -->
+<nav class="navcss">
+    <?php include "menu.html"; ?>
+</nav>
+<!-- 숨은그림찾기 -->
+<section class="section_subpage">
+    <?php include "event_game.html"; ?>
+</section>
+<!-- 카피라이터 -->
+<footer class="footercss">
+    <?php include "footer.html"; ?>
+</footer>
+</body>
+</html>

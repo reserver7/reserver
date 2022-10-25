@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ES6 특강2</title>
+</head>
+<script type="module">
+    import {abc,bbb,ccc} from "./index2.js"; //export에 대한 함수를 가지고 있는 변수를 가져옴
+    abc("홍길동");  //해당 변수값을 호출하면서 함수에 값을 전달
+    bbb(10);
+    ccc(20);
+    /*
+        응용문제 1. 
+        ccc라는 변수값을 가진 함수에 20이라는 값을 입력합니다.
+        그 중에서 짝수만 출력 되도록 ES6으로 구성해 보시오
+    */
+
+</script>
+<script>//Typescript
+/*
+    let aaa = function(a1,a2,a3){
+        let bbb = a1+a2+a3;
+        return bbb;
+    }
+    aaa(1,2,3);
+*/
+/*
+    let aaa = (a1,a2,a3) => a1 + a2 + a3;   //=>(화살표) == return 같은뜻
+    let bbb = aaa(1,2,3);   //aaa화살표 함수를 호출과 동시에 값을 던지는 형태
+    console.log(bbb);
+*/
+</script>
+<body>
+    
+</body>
+</html>

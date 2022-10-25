@@ -1,0 +1,38 @@
+@charset "utf-8";
+.banner { height:500px; }
+
+.banner_box { position: relative;
+    width:1200px; height:500px; 
+    margin:0 auto; overflow: hidden; 
+}
+.banner_ul {
+    width:2400px; /* Jquery 또는 Javascript 이용해 자동으로 계산하여 적용함 */
+    height:500px;
+    margin:0; padding:0;
+}
+.banner_ul>li {
+    width:1200px; height:500px; float: left;
+}
+.span_btn { position: absolute; bottom:213px;
+    width:37px; height:74px; cursor: pointer;
+}
+.span_btn:nth-child(1) { 
+    left:5px;
+}
+.span_btn:nth-child(2) { 
+    right:5px;
+}
+.disc_label { position: absolute; z-index: 1;
+    width:200px; height:15px;
+    left:50%; bottom:10px;
+}
+.ol_disc { overflow: hidden;
+    width:100%; height:15px; line-height:15px;
+}
+.ol_disc>li {
+    width:15px; height:15px; display: inline-block;
+    background-color:#aaaaaa; border-radius:50%; cursor: pointer;
+}
+.ol_disc>li:nth-child(1) {
+    background-color: black;
+}

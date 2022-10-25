@@ -1,0 +1,71 @@
+<style>
+	.content_mainbanner_outline { width:360px; height:150px; background-color:#ccc; margin-top:15px; }
+	.c_mbandiv {width:360px; height:150px; position:relative; overflow:hidden;}
+	.c_mbanul {position:absolute; list-style:none; margin:0; padding:0;}
+	.c_mbanul>li {width:360px; height:150px; float:left;}
+</style>
+
+<div class="content_mainbanner_outline">
+	<div class="c_mbandiv" id="c_mbandiv">
+		<ul class="c_mbanul" id="c_mbanul">
+            <li><img src="img/mbanner1.png"></li>
+			<li><img src="img/mbanner2.png"></li>
+			<li><img src="img/mbanner3.png"></li>
+			<li><img src="img/mbanner4.png"></li>
+		</ul>
+	</div>
+</div>
+<script>
+    $(function(){
+        let $timer;
+    let $width = $("#c_mbanul>li").eq(0).width();
+    const $li_ea = $("#c_mbanul>li").length;
+    let $fullwidth = $width * $li_ea;
+    $("#c_mbanul").css("width",$fullwidth+"px");
+
+    $.fn.banner = function(){
+        $timer = setTimeout(function retimer(){
+            $("#c_mbanul").animate({
+                "left":(-$width)+"px"
+            },500,function(){
+                var $clone = $("#c_mbanul>li").eq(0).clone();
+                $("#c_mbanul>li").eq(0).remove();
+                $(this).css("left","0px");
+                $(this).append($clone);
+            });
+            clearTimeout($timer);
+            $timer = setTimeout(retimer,5000);
+        },5000);
+    }
+
+    $("#c_mbanul").bind({
+        "swipeleft":function(){
+            $(this).animate({
+                "left":(-$width)+"px"
+            },500,function(){
+                var $clone = $("#c_mbanul>li").eq(0).clone();
+                $("#c_mbanul>li").eq(0).remove();
+                $(this).css("left","0px");
+                $(this).append($clone);
+            });
+        },
+        "swiperight":function(){
+            var $clone = $("#c_mbanul>li").eq($li_ea-1).clone();
+            $("#c_mbanul>li").eq($li_ea-1).remove();
+            $(this).css("left",(-$width)+"px");
+            $(this).prepend($clone);
+            $(this).animate({
+                "left":"0px"
+            },500);
+        },
+        "mouseenter":function(){
+            clearTimeout($timer);
+        },
+        "mouseleave":function(){
+            $.fn.banner();
+        }
+    });
+
+    $.fn.banner();
+    });
+</script>

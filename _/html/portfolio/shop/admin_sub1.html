@@ -1,0 +1,181 @@
+<div id="subpage" :class="s1">
+    <!--신규회원 리스트 부분-->
+    <aside :class="s2">
+        <label :class="s3">{{ part_1 }}</label>
+        <div :class="s4">
+            <chart-view></chart-view>
+            <!--신규회원 리스트 출력-->
+            <chart-view_on v-if="member_data && mview==1"
+            v-bind:idx="members_ea-index"
+            v-bind:mname="newlist.mnm"
+            v-bind:mid="newlist.mid"
+            v-bind:memail="newlist.memail"
+            v-bind:mtel="newlist.mtel"
+            v-bind:maddr="newlist.maddr"
+            v-bind:maddr2="newlist.maddr2"
+            v-bind:maddr3="newlist.maddr3"
+            v-for="newlist,index in members">
+            </chart-view_on>
+            <!--신규회원 없을 경우 출력-->
+            <chart-view_off v-if="mview==2"></chart-view_off>
+        </div>
+    </aside>
+    <!--질문내역 리스트 부분-->
+    <aside :class="s2">
+        <label :class="s3">{{ part_2 }}</label>
+        <div :class="s4">
+            <chart-view2></chart-view2>
+            <!--질문내역 리스트 출력-->
+            <chart-view_on2 v-if="board_data && bview==1"
+            v-bind:qidx="newqa.qidx"
+            v-bind:qsubject="newqa.qa_subject"
+            v-bind:qcate="newqa.qa_part"
+            v-bind:qname="newqa.qa_writer"
+            v-bind:qfile="newqa.qa_file1"
+            v-bind:qdate="newqa.qa_indate"
+            v-for="newqa,index in qalist">
+            </chart-view_on2>
+            <!--질문내역 없을 경우 출력-->
+            <chart-view_off2 v-if="bview==2"></chart-view_off2>
+        </div>
+    </aside>
+</div>
+<script>
+    //ajax data
+    let md;
+    let members_data;
+        function members(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function m_file(){
+            if(md.readyState==XMLHttpRequest.DONE && md.status==200){
+                member_list(JSON.parse(this.response));
+            }
+        }
+        md = members();
+        md.onreadystatechange = m_file;
+        md.open("GET","members.json",true);
+        md.send();
+    
+
+    function member_list(mlist){
+        members_data = mlist;
+        members_ea = members_data.length;
+        let ajax_member;
+        console.log(members_data);
+        if(members_ea>0){
+            ajax_member = 1;
+        }
+        else{
+            ajax_member = 2;
+        }
+
+        let md2;
+        let qas_data;
+        function qa(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+
+        function q_file(){
+            if(md2.readyState==XMLHttpRequest.DONE && md2.status==200){
+                qas_data=JSON.parse(this.response);
+                //console.log(qas_data);
+                for(var ff in qas_data){
+                    console.log(qas_data[ff].qa_product);
+                }
+            }
+        }
+        md2=qa();
+        md2.onreadystatechange=q_file;
+        md2.open("GET","admin_qa.json",true);
+        md2.send();
+
+    
+    //ajax data[Q&A]
+    /*
+    let qas_data = [
+        {qidx:1,qsubject:"삼성카드 결제가 안돼요!!",qcate:"반품/결제",qname:"홍길동",qfile:"test.jpg",qdate:"2021-01-25"},
+        {qidx:2,qsubject:"해당 제품 언제 입고 되나요?",qcate:"상품",qname:"유관순",qfile:"",qdate:"2021-01-25"}
+    ]
+    */
+
+        
+    //ajax데이터 파일 중 Today 회원에 값이 없을 경우 : 2 있을 경우 : 1로 반환처리함
+    let ajax_qa = 1; 
+    //ajax데이터 파일 중 qa에 답변이 없는 글만 출력함 :1  답변을 모두 했을 경우 2로 처리함
+    let chart1 = { template: '\
+        <ol class="chart_ol">\
+            <li>NO</li>\
+            <li>고객명</li>\
+            <li>ID</li>\
+            <li>Email</li>\
+            <li>연락처</li>\
+            <li>주 소</li>\
+        </ol>'};
+    //지역 템플렛은 v-for 사용하기 힘듬 (전역 템플렛을 이용해야 함)
+    Vue.component("chart-view_on",{template:'\
+        <ol class="chart_ol chart_data">\
+            <li>{{idx}}</li>\
+            <li>{{mname}}</li>\
+            <li>{{mid}}</li>\
+            <li>{{memail}}</li>\
+            <li>{{mtel}}</li>\
+            <li class="text-left">({{maddr}}) {{maddr2}} {{maddr3}}</li>\
+        </ol>'
+        , props:["idx","mname","mid","memail","mtel","maddr","maddr2","maddr3"]
+    });
+    let chart1_no = { template:"<ol class='chart_ol'><li class='nofile'>오늘 가입자는 없습니다.</li></ol>" };
+
+    let chart2 = { template: '\
+        <ol class="chart_ol2">\
+            <li>NO</li>\
+            <li>제목</li>\
+            <li>카테고리</li>\
+            <li>작성자</li>\
+            <li>첨부파일</li>\
+            <li>등록일</li>\
+        </ol>'};
+    Vue.component("chart-view_on2",{ template: '\
+        <ol class="chart_ol2 chart_data">\
+            <li>{{qidx}}</li>\
+            <li class="text_left">{{qsubject}}</li>\
+            <li>{{qcate}}</li>\
+            <li>{{qname}}</li>\
+            <li>{{qfile}}</li>\
+            <li>{{qdate}}</li>\
+        </ol>'
+        , props:["qidx","qsubject","qcate","qname","qfile","qdate"]
+    });
+    let chart2_no = { template:"<ol class='chart_ol'><li class='nofile'>질문 내역 리스트가 없습니다.</li></ol>" };
+    
+    let subs = new Vue({
+        el:"#subpage",
+        data:{
+            s1: "subview",
+            s2: "aside_css",
+            s3: "part_css",
+            s4: "chart_css",
+            part_1: "신규회원 리스트",
+            part_2: "질문내역 리스트",
+            member_data: true,
+            board_data: true,
+            mview: ajax_member,
+            bview: ajax_qa,
+            members: members_data,
+            qalist: qas_data
+        },
+        components:{
+            "chart-view": chart1,
+            "chart-view2": chart2,
+            //"chart-view_on": chart1_data,
+            //"chart-view_on2": chart2_data,
+            "chart-view_off": chart1_no,
+            "chart-view_off2": chart2_no
+        }
+    });
+}
+</script>

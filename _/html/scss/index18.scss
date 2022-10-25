@@ -1,0 +1,38 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+body{ @include base; }
+.divbox{
+    width: 100px; height: 100px;
+    position: relative; margin: 0 auto; top: 100px;
+    transform-style: preserve-3d; 
+    //3D 입체를 사용하기 위해서는 preserve-3d 속성을 무조건 사용해야 함(부모)
+    transform: rotateX(-15deg) rotateY(30deg);
+    //rotateX : +deg(왼쪽으로 기울기), -deg(오른쪽으로 기울기)
+}
+.front{
+    width: 100px; height: 100px; background-color: yellow;
+    text-align: center; line-height: 100px;
+    transform: translate3d(0,0,50px); 
+    position: absolute;
+    //자식 오브젝트에 translate3d를 사용하여 부모기준으로 자식 오브젝트 위치를 설정할 수 있음
+}
+.divbox:hover > .top{
+    transform: rotateX(90deg) translate3d(50px,0,50px);
+}
+.top{
+    width: 100px; height: 100px; background-color:green;
+    text-align: center; line-height: 100px;
+    position: absolute;
+    transform: rotateX(90deg) translate3d(0,0,50px);
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+}
+.left{
+    width: 100px; height: 100px; background-color: blue;
+    text-align: center; line-height: 100px;
+    position: absolute;
+    transform: rotateY(-90deg) translate3d(0,0,50px);
+}

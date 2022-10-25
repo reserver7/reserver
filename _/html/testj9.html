@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 복습(9),(선택문)</title>
+<script>
+var a="*"; 	//+,-,/,* 4개중 하나를 선택하여 사용합니다.
+var b=6545;
+var c=303;
+var d=21;
+var e;
+
+switch(a){
+
+  case "+":
+  e=b+c+d;	
+  document.write("두 값의 더한 결과 값은? " + e +"입니다.");
+  break;
+  
+  case "-":
+  e=b+c-d;
+  document.write("두 값의 뺀 결과 값은? " + e +"입니다.");
+  break;
+
+  case "/":
+  e=(b+c)/d;
+  document.write("두 값의 나눈 결과 값은? " + e +"입니다.");
+  break;
+
+  case "*":
+  e=(b+c)*d;
+  document.write("두 값의 곱한 결과 값은? " + e +"입니다.");
+  break;
+
+  default:
+  document.write("사칙연산 기호가 잘못 되었습니다.");
+  break;
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

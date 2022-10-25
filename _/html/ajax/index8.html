@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (1일차) - Javascript(array + node)</title>
+<script>
+    //배열파트 (forEach, for in)
+    var array = {
+        "mid":"hong",
+        "mname":"홍길동",
+        "mage":"26",
+        "memail":"hong@gmail.com"
+    }
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    #member { width: 210px; height: auto; list-style: none; margin: 0; padding: 0; box-sizing: border-box;}
+    #member > li { float: left; border: 1px solid black; line-height: 30px; text-indent: 5px; }
+    #member > li:nth-child(odd){width: 80px; height: 30px;}
+    #member > li:nth-child(even){width: 120px; height: 30px;}
+</style>
+</head>
+<body>
+<ul id="member">
+    <li>아이디</li><li id="mid"></li>
+    <li>고객명</li><li id="mname"></li>
+    <li>나이</li><li id="mage"></li>
+    <li>이메일</li><li id="memail"></li>
+</ul>
+</body>
+<script>
+    //노드파트
+    var f;
+    for(f in array){
+        //console.log(array[f]);
+        //console.log(f);
+        //document.getElementById(f).append(array[f]);
+    }
+
+    Object.keys(array).forEach(function(a,b,c){
+        //console.log(a);
+        //console.log(b);
+        //console.log(array[a]);
+        document.getElementById(a).append(array[a]);
+    });
+    
+</script>
+</html>

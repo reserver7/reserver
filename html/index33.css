@@ -1,0 +1,50 @@
+@charset "utf-8";
+body { margin:0; padding:0;}
+.dlcss { width:300px; margin:0; padding:0;} /* list-style:none는 사용하지 않음*/
+.dlcss>dd { width:100px; height:30px; border:1px solid red;
+    margin:0; padding:0; float: left; box-sizing: border-box;
+} /* dd에 margin:0; padding:0; 적용해야만 여백 공간이 없어 집니다. */
+
+.clear { clear: both; display:block; } /* display:block;(span, label) */
+/* clear:both;를 사용하는 이유는 위에 코드에서 float:left, right, center
+할 경우 하위 코드에 그대로 적용되는 것을 막기 위해서 사용하게 됩니다.  */
+
+.ucss { list-style: none; margin:0; padding:0;}
+.ucss>li { border:1px solid red; height:30px; float: left;}
+.ucss>li:nth-child(1) { width:250px; margin-right:5px; 
+    overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ucss>li:nth-child(2) { width:100px;}
+
+/* 말줄임 사용법 : 
+text-overflow: ellipsis;   overflow: hidden;   white-space: nowrap; 
+ (... 이라는 기호표시)                            (공백처리 부분)
+ */
+.dcss { margin:0; padding:0;}
+.dcss>dd { margin:0; padding:0; border:1px solid blue; height:30px; 
+    display: inline-block; white-space: nowrap; overflow: hidden;
+} /* display: inline-block; 일때는 li, dd 모두 노드와 상관없이
+모두다 overflow:hidden; 이 적용 되어야 합니다. (가로 view 일때만)
+  */
+.dcss>dd:nth-child(2) { width:250px; 
+    text-overflow: ellipsis; 
+}
+.dcss>dd:nth-child(3) { width:100px;
+}
+.olcss { width:400px; height:auto; list-style: none; margin:0; padding:0;}
+.olcss>li { float: left; height:30px;}
+/*
+.olcss>li:nth-child(odd) { width:300px; background-color:yellow;}
+.olcss>li:nth-child(even) { width:100px; background-color:greenyellow;
+}
+*/
+/*
+.olcss>li:nth-child(1n) { width:100px; background-color: red;}
+.olcss>li:nth-child(3n-1) { width:200px; background-color: blue;}
+.olcss>li:nth-child(3n) { width:100px; background-color:yellow;}
+*/
+.olcss>li:nth-child(4n+1) { width:100px; background-color: red;}
+.olcss>li:nth-child(4n+2) { width:100px; background-color: blue;}
+.olcss>li:nth-child(4n+3) { width:100px; background-color:yellow;}
+.olcss>li:nth-child(4n+4) { width:100px; background-color:greenyellow;}

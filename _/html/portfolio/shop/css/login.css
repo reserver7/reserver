@@ -1,0 +1,161 @@
+@charset "UTF-8";
+.logincss {
+    width:500px; height:auto;
+    margin:0 auto;
+    margin-top:80px;
+}
+.member_view {
+    height:auto;
+}
+.member_view > p {
+    font-family: 'Open Sans', sans-serif; font-size:15px;
+    font-weight:bold;
+    text-align: center;
+    margin-bottom:80px;
+}
+.login_view {
+    height:auto;
+    display:flex;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-bottom:1px solid #aaa; padding-bottom: 5px;
+}
+.input_view {
+    width:350px; height:120px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+.inputs {
+    width:330px; height:40px;
+    line-height:40px; text-indent: 5px;
+    font-size:11px;font-family: 'Open Sans', sans-serif;
+}
+.input_view > label {
+    width:330px; height:30px;
+    font-family: 'Noto Sans KR', sans-serif; font-size:12px;
+    line-height:30px; 
+}
+.login_btn {
+    width:150px; height:120px;
+}
+.login_btn > span {
+    width:150px; height:85px;
+    background-color:rgb(100, 99, 99);
+    font-size:13px; font-family: 'Open Sans', sans-serif;
+    color:white; font-weight:bold;
+    text-align:center; line-height:85px;
+    cursor:pointer;
+}
+.login_btn > span:hover{
+    background-color:rgb(73, 72, 72);
+}
+.member_btn {
+    height:50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center; margin-top: 20px;
+}
+.member_btn > input {
+    font-family: 'Noto Sans KR', sans-serif; font-size:12px;
+    border:1px solid #aaa;
+    background-color:white;
+    width:150px; height:40px;
+    cursor:pointer;
+}
+.member_btn > input:first-child {
+    background-color:rgb(100, 99, 99);
+    color:white;
+}
+.member_btn > input:first-child:hover{
+    background-color:rgb(73, 72, 72);
+}
+.order_view {
+    height:auto; margin-top: 10px; padding-bottom: 100px;
+}
+.order_title {
+    height:30px;
+    font-family: 'Noto Sans KR', sans-serif; font-size:12px;
+    line-height:30px;
+}
+.order_input {
+    height:100px;
+    display:flex;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.order_input > span:first-child {
+    width:350px; height:90px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+.inputs2 {
+    width:330px; height:40px;
+    line-height:30px; text-indent: 5px;
+    font-size:11px;font-family: 'Open Sans', sans-serif;
+}
+.order_input > span:last-child {
+    width:150px; height:120px;
+}
+.order_btn {
+    width:150px; height:90px;
+    border:1px solid rgb(53, 50, 50);
+    font-size:13px; font-family: 'Open Sans', sans-serif;
+    font-weight:bold;
+    text-align:center; line-height:85px;
+    cursor:pointer;
+}
+.order_view > label:last-child {
+    display: flex; flex-direction: row; justify-content: center;
+    align-items: center; align-content: center; flex-wrap: nowrap;
+    height: 50px; 
+}
+.order_view > label:last-child>span{
+    font-family: 'Noto Sans KR', sans-serif; font-size:13px;
+}
+.order_view > label:last-child>span::before{
+    content: ""; width: 15px; height: 15px;
+    background-image: url("../images/error_outline.svg");
+    background-repeat: no-repeat;
+    background-size: 15px,15px; display: inline-block;
+    vertical-align: -3px; padding-right: 3px;
+}
+
+/* 회원가입 부분 */
+.agreecss{ height: auto; margin-top: 10px; margin-bottom: 25px;}
+.agree_view { width: 1100px; height: auto; margin: 0 auto;}
+.agree_view > p { 
+    font-family: 'Open Sans', sans-serif; font-size:15px;
+    font-weight:bold; color: rgb(100, 99, 99);
+    text-align: center;
+    margin-bottom:80px;
+}
+.agree_text { 
+    width: 100%; height: auto; font-family: 'Open Sans', sans-serif; font-size:13px;
+}
+.agree_text>li{
+    width: 100%; height: 50px; padding-left: 5px;
+    display: flex; align-items: center; margin-top: 10px;
+}
+.agree_text>li:nth-of-type(1){ border-bottom: 1px solid #aaa;}
+.agree_text>li>label { cursor: pointer;}
+.stext { color: #aaa;}
+.text_box{
+    width: 100%; height: 150px; overflow-y: auto;
+    border-top: 2px solid #aaa; border-bottom: 1px solid #aaa;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 12px;
+    padding-top: 5px; padding-left: 10px;
+}
+.agree_view >label:nth-of-type(1){
+    width: 100%; height: 50px; display: flex; cursor: pointer;
+    align-items: center; margin-top: 10px; padding-left: 5px;
+    font-family: 'Open Sans', sans-serif; font-size:13px;
+}
+.agree_view >label:nth-of-type(2){
+    width: 180px; height: 50px; background-color:rgb(100, 99, 99);
+    color: white; text-align: center; line-height: 50px;
+    margin: 0 auto; margin-top: 25px; cursor: pointer;
+    font-family:'Nanum Gothic', sans-serif; font-size:15px;
+}
+.agree_view >label:nth-of-type(2):hover{
+    background-color:rgb(73, 72, 72);
+}

@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.divbox1 {
+  width: 200px;
+  height: 200px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 900px;
+          perspective: 900px;
+  position: relative;
+  margin: 0 auto;
+  top: 100px;
+  border: 1px solid black;
+  -webkit-perspective-origin: 150% 150%;
+          perspective-origin: 150% 150%;
+}
+
+@-webkit-keyframes boxs {
+  0% {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    line-height: 100px;
+    background-color: blue;
+    -webkit-transform: translateZ(50px);
+            transform: translateZ(50px);
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    line-height: 100px;
+    background-color: blue;
+    -webkit-transform: translateZ(100px);
+            transform: translateZ(100px);
+  }
+}
+
+@keyframes boxs {
+  0% {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    line-height: 100px;
+    background-color: blue;
+    -webkit-transform: translateZ(50px);
+            transform: translateZ(50px);
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    text-align: center;
+    line-height: 100px;
+    background-color: blue;
+    -webkit-transform: translateZ(100px);
+            transform: translateZ(100px);
+  }
+}
+
+.front {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  line-height: 100px;
+  background-color: blue;
+  -webkit-transform: translateZ(50px);
+          transform: translateZ(50px);
+  opacity: 0.8;
+  -webkit-animation: boxs 2s linear infinite;
+          animation: boxs 2s linear infinite;
+}
+
+.back {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  line-height: 100px;
+  background-color: green;
+  -webkit-transform: rotateY(180deg) translateZ(50px);
+          transform: rotateY(180deg) translateZ(50px);
+}
+
+.right {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  line-height: 100px;
+  background-color: yellowgreen;
+  -webkit-transform: rotateY(90deg) translateZ(50px);
+          transform: rotateY(90deg) translateZ(50px);
+}
+
+.left {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  line-height: 100px;
+  background-color: purple;
+  -webkit-transform: rotateY(-90deg) translateZ(50px);
+          transform: rotateY(-90deg) translateZ(50px);
+}
+
+.top {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  line-height: 100px;
+  background-color: orange;
+  -webkit-transform: rotateX(90deg) translateZ(50px);
+          transform: rotateX(90deg) translateZ(50px);
+}
+
+.bottom {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  text-align: center;
+  line-height: 100px;
+  background-color: pink;
+  -webkit-transform: rotateX(-90deg) translateZ(50px);
+          transform: rotateX(-90deg) translateZ(50px);
+}
+/*# sourceMappingURL=index21.css.map */

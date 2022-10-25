@@ -1,0 +1,208 @@
+<style>
+	.content_weekly_outline { width:360px; height:438px; margin:24px auto 24px auto; clear:both; }
+	
+	.content_weekly_outline ul {list-style:none; margin:0; padding:0;}
+
+	.a_mwoutline {width:360px; height:auto; margin:0 auto;}
+	
+	/*타이틀*/
+	.a_mwtitle {width:360px; height:60px; margin-bottom:24px;}
+	.a_mwtli1 {width:360px; height:25px; font-size:16px; font-weight:bold; text-align:center; line-height:25px; }
+	.a_mwtli2 {width:360px; height:20px; font-size:14px; text-align:center; line-height:20px; }
+	
+	/*상품*/
+	.a_mwpoutline1 {width:360px; height:300px; margin-top:24px; overflow:hidden; position:relative;}
+	.a_mwpoutline2 {width:1440px; height:300px; position: absolute;}
+	.a_mwpoutline3 {width:360px; height:300px; float:left;}
+	
+	.a_mwproduct {width:165px; height:300px; margin-left:10px; float:left;}
+	.a_mwproduct > ul > li {float:left; text-align:center;}
+	.a_mwproduct > ul > li:last-child {text-align:right;}
+	.a_mwproduct1 {width:165px; height:200px; position:relative;}
+	.a_mwproduct2 {width:165px; height:50px; font-size:14px; font-weight:bold; background-color:#ebebeb;}
+	.a_mwproduct3 {width:165px; height:20px; font-size:12px; background-color:#ebebeb;}
+	.a_mwproduct4 {width:165px; height:30px; font-size:14px; font-weight:bold; color:red; background-color:#ebebeb;}
+	.a_mwproduct5 {width:155px; height:20px; position:absolute; margin-top:10px; margin-right:10px;}
+	
+	/*디스크*/
+	.a_mwdisk {width:360px; height:30px; margin-top:24px; clear:both;}
+	.a_mwdisk ul {width:190px; height:30px; margin:0 auto;}
+	.a_mwdisk li {float:left;}
+	.a_mwdli {width:15px; height:15px; margin-top:7px;}
+	.a_mwdli0 {width:15px; height:15px; background-color:#628dc8; border-radius:100%; margin-left:20px; margin-top:7px;}
+	.a_mwdli1 {width:15px; height:15px; background-color:#ff8679; border-radius:100%;  margin-top:7px; margin-left:20px;}
+</style>
+
+<div ng-controller="a_mwct" class="content_weekly_outline">
+	<!-- 아웃라인 -->
+	<div class="a_mwoutline">
+	
+	<!-- 타이틀 -->
+	<div class="a_mwtitle">
+	<ul id="a_mwtitle">
+	<li class="a_mwtli1">WEEKLY BEST 20</li>
+	<li class="a_mwtli2">한주간 가장 많이 팔린 베스트랭킹 20</li>
+	</ul>
+	</div>
+	<!-- 타이틀 -->
+	
+	<!-- 상품출력 샘플-->
+	<div class="a_mwpoutline1" id="a_mwpoutline1">
+        <div class="a_mwpoutline2" id="a_mwpoutline2">
+    
+        
+        <!-- 상품출력 샘플-->
+	    </div>
+	</div>
+
+	
+	<!-- 하단 디스크 -->
+	<div class="a_mwdisk"> 
+	<ul id="a_disc">
+	<li class="a_mwdli"><img src="./img/arrow1.png" id="leftbtn"></li>
+	<li class="a_mwdli1" style="background-color: #628dc8;"></li>
+	<li class="a_mwdli1"></li>
+	<li class="a_mwdli1"></li>
+	<li class="a_mwdli1"></li>
+	<li class="a_mwdli" style="margin-left:20px;"><img id="rightbtn" src="./img/arrow2.png"></li>
+	</ul>
+	</div>
+	<!-- 아웃라인 -->
+	</div>
+</div>
+<script>
+    $(function(){
+        let timer1,timer2;
+    $.fn.title = function(){
+        $timer1 = setInterval(function retimer1(){
+            $("#a_mwtitle").stop().fadeOut();
+            clearInterval($timer1);
+            $timer1 = setInterval(retimer1,10000);
+        },10000);
+    }
+    $.fn.title();
+
+    $.fn.title2 = function(){
+        $timer2 = setInterval(function retimer2(){
+            $("#a_mwtitle").stop().fadeIn();
+            clearInterval($timer2);
+            $timer2 = setInterval(retimer2,11000);
+        },11000);
+    }
+    $.fn.title2();
+
+    let $b_timer;
+        $.fn.b_banner = function(){
+            $b_timer = setTimeout(function b_re(){
+                $("#a_mwpoutline2").animate({
+                "left":-($best)+"px"
+                },500,function(){
+                    var $clone = $("#a_mwpoutline2>div").eq(0).clone();
+                    $("#a_mwpoutline2>div").eq(0).remove();
+                    $(this).css("left","0px");
+                    $(this).append($clone);
+                });
+                $("#a_disc>.a_mwdli1").css("background-color","#ff8679");
+                $dnode++;
+                if($dnode>=$d_ea){
+                    $dnode = 0;
+                }
+                $("#a_disc>.a_mwdli1").eq($dnode).css("background-color","#628dc8");
+                clearTimeout($b_timer);
+                $b_timer = setTimeout(b_re,10000);
+            },10000);
+        }
+    $.fn.b_banner();
+
+        let $best = $("#a_mwpoutline2>div").eq(0).width();
+        let $b_ea = $("#a_mwpoutline2>div").length;
+        let $d_ea = $("#a_disc>.a_mwdli1").length;
+        let $dnode = 0;
+        $("#rightbtn").bind({
+            "click":function(){
+                $("#a_mwpoutline2").animate({
+                "left":-($best)+"px"
+            },500,function(){
+                var $clone = $("#a_mwpoutline2>div").eq(0).clone();
+                $("#a_mwpoutline2>div").eq(0).remove();
+                $(this).css("left","0px");
+                $(this).append($clone);
+            });
+            $("#a_disc>.a_mwdli1").css("background-color","#ff8679");
+            $dnode++;
+            if($dnode>=$d_ea){
+                $dnode = 0;
+            }
+            $("#a_disc>.a_mwdli1").eq($dnode).css("background-color","#628dc8");
+            },
+            "mouseenter":function(){
+                clearTimeout($b_timer);
+            },
+            "mouseleave":function(){
+                $.fn.b_banner();
+            }
+        });
+
+        $("#leftbtn").bind({
+            "click":function(){
+                var $clone = $("#a_mwpoutline2>div").eq($b_ea-1).clone();
+                $("#a_mwpoutline2>div").eq($b_ea-1).remove();
+                $("#a_mwpoutline2").css("left",-($best)+"px");
+                $("#a_mwpoutline2").prepend($clone);
+                $("#a_mwpoutline2").animate({
+                    "left":"0px"
+                },500);
+            $("#a_disc>.a_mwdli1").css("background-color","#ff8679");
+            
+            if($dnode<=0){
+                $dnode = $d_ea-1;
+            }
+            else{
+                $dnode--;
+            }
+            console.log($dnode);
+            $("#a_disc>.a_mwdli1").eq($dnode).css("background-color","#628dc8");
+            },
+            "mouseenter":function(){
+                clearTimeout($b_timer);
+            },
+            "mouseleave":function(){
+                $.fn.b_banner();
+            }
+        });
+    });
+    
+    let cm;
+    function ajax(){
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function file(){
+            if(cm.readyState==XMLHttpRequest.DONE && cm.status==200){
+                jsonfile(JSON.parse(this.response));
+            }
+        }
+        cm = windowck();
+        cm.onreadystatechange = file;
+        cm.open("GET","./best.json",true);
+        cm.send();
+    }
+    ajax();
+
+    function jsonfile(j){
+        var f;
+        var html = "";
+        for(f in j.best_product){
+            //console.log(j.best_product[f]);
+            html += '<div class="a_mwproduct"><ul><li class="a_mwproduct1"><img src="'+j.best_product[f]["a_wkimg"]+'"></li>\
+            <li class="a_mwproduct2" >'+j.best_product[f]["a_wktitle"]+'</li>\
+            <li class="a_mwproduct3"><strike>'+j.best_product[f]["a_wkpd"]+'</strike></li>\
+            <li class="a_mwproduct4" style="width:45%;">'+j.best_product[f]["a_wkdp"]+'</li>\
+            <li class="a_mwproduct4" style="width:55%;">'+j.best_product[f]["a_wkap"]+'</li>\
+            <li class="a_mwproduct5"><img src="'+j.best_product[f]["a_wkico"]+'"></li></ul></div>';
+            document.getElementById("a_mwpoutline2").innerHTML = html;
+        }  
+    }
+</script>

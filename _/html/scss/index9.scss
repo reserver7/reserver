@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+*,body { @include base; }
+
+@mixin ani($width,$height,$color,$top,$left,$word,$margin,$padding) {
+    width: $width+px; height: $height+px; background-color: $color;
+    top: $top+px; left: $left+%; letter-spacing: $word+px;
+    padding-left: $padding+px;
+}
+.box{
+    position: relative; color: white;
+    @include ani(600,100,black,0,0,0,0,0);
+    transition-duration: 2s;    //애니메이션 시간
+    transition-property: padding-left;   //애니메이션 변화 또는 효과 (all(전체효과),width,height)
+    //width,height,top,left,right,bottom,letter-spacing,background-color,
+    //color,font-size,opacity,border,margin,vertical-align,text-align
+    //padding
+    //px단위로는 애니메이션이 적용됨 단, 색상,투명도 외에는 적용이 안되는 부분이 있음
+    transition-timing-function: ease; //(기본)
+    //transition-delay: 0.2s; //애니메이션 작동 하기 전 딜레이 시간
+}
+.box:target {   
+    //url주소에 파라미터로 #기호와 함께 아이디 값을 신호로 보내서 적용하는 형태
+    @include ani(600,100,black,0,0,0,-25,250);
+}

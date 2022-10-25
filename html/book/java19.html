@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>Javascript - 84p(부가사항15)</title>
+<script>
+/*
+    응용문제18
+    다음과 같이 이미지가 출력 되도록 합니다.
+    ★
+    2
+    ★★★
+    4
+    ★★★★★
+*/
+    var a;
+    var b;
+    for(a=1; a<=5; a++){
+        for(b=1; b<=a; b++){
+            if(a%2==1){
+                document.write("★");
+            }
+        }
+        if(a%2==0){
+                document.write(a);
+            }
+        document.write("<br>");
+    }
+</script>
+</head>
+<body>
+    
+</body>
+</html>

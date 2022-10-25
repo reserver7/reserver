@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + css 3-37</title>
+<style>
+    body{ margin: 0; padding: 0;}
+    /*
+    .ulcss{
+        width: 1000px; height: auto; list-style: none;
+        margin: 0; padding: 0; position: relative;
+    }
+    .ulcss > li{
+        width: 1000px; height: 100px;
+        background-size: cover; background-repeat: no-repeat; position: absolute;
+    }
+    .ulcss >li:nth-child(1){
+        background-image: url("http://reduck.dothome.co.kr/image/back1.png");
+    }
+    .ulcss >li:nth-child(2){
+        background-image: url("http://reduck.dothome.co.kr/image/back2.png");
+    }
+    */
+    .box{
+        width: 100%; height: 634px; 
+        background-image: url("http://reduck.dothome.co.kr/image/back2.png"),
+        url("http://reduck.dothome.co.kr/image/back1.png");
+        background-size: 100%; background-repeat: no-repeat;
+    }
+    /*
+    background-image: url() 사용시 여러번 사용가능 
+    단, 투명한거 있는 이미지가 먼저 작성 돼야함
+    */
+</style>
+</head>
+<body>
+<!--
+    응용문제13 html + css
+    두개의 이미지를 이용하여 다음과 같이 출력 되도록 합니다.
+    http://reduck.dothome.co.kr/image/back1.png
+    http://reduck.dothome.co.kr/image/back2.png
+-->
+<!--
+<ul class="ulcss">
+    <li></li>
+    <li></li>
+</ul>
+-->
+<div class="box">
+
+</div>
+</body>
+</html>

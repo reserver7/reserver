@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(선택문-switch case)</title>
+<script>
+    /* 값을 html에 안 태워서 보내는 경우
+    function abc(){
+        var a = f.ev.length;    *노드를 불러오고
+        var b;                  *반복문
+        var c="";               *사용자가 선택을 안할경우
+        for(b=0;b<a;b++){       *반복문
+            if(f.ev[b].checked==true){  *반복문 중 선택을 할경우
+                c = f.ev[b].value;      *값을 c로 보내라
+            }
+        }
+        if(c==""){              *선택을 안할 경우
+            alert("설문지 중 한가지를 선택햐 주셔야 합니다.");
+        }
+        else{                   *선택을 할 경우
+            alert(c);
+        }
+    }
+    */
+    //  값을 html에 태워서 보낼 경우
+    function abc(n){    //n의 대한 값은 f.ev.value에 대한 값을 받아 처리하는 변수명
+        if(n==""){  //사용자가 아무것도 선택하지 않을 경우
+            alert("설문지 중 한가지를 선택해 주셔야 합니다.");
+        }
+        else{   //한가지라도 선택을 하였을 경우
+            //var aa = typeof(n);   Number, String 확인 사항 꼭 해봐야함
+            //alert(aa);        넘버일 경우 case "" 사용 x 스트링일 경우 "" 사용 o
+            switch(n){
+                case "1":
+                alert("여름특집 오싹오싹 30%할인을 선택 하셨습니다.");
+                break;
+
+                case "2":
+                alert("어버이날 감사의 50%할인을 선택 하셨습니다.");
+                break;
+
+                case "3":
+                alert("사장님이 기분좋아요 40%할인을 선택 하셨습니다.");
+                break;
+
+                case "4":
+                alert("얼리버드 1+1 기획전을 선택 하셨습니다.");
+                break;
+
+                default:
+                alert("크리스마스 선물 30% 할인을 선택 하셨습니다.");
+                break;
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<p>[해당 사이트 중 가장 인상깊은 이벤트는?]</p>
+<input type="radio" value="1" name="ev" id="a0"><label for="a0">1. 여름특집 오싹오싹 30%할인</label><br>
+<input type="radio" value="2" name="ev" id="a1"><label for="a1">2. 어버이날 감사의 50%할인</label><br>
+<input type="radio" value="3" name="ev" id="a2"><label for="a2">3. 사장님이 기분좋아요 40%할인</label><br>
+<input type="radio" value="4" name="ev" id="a3"><label for="a3">4. 얼리버드 1+1 기획전</label><br>
+<input type="radio" value="5" name="ev" id="a4"><label for="a4">5. 크리스마스 선물 30% 할인</label><br>
+<input type="button" value="설문조사 참여" onclick="abc(f.ev.value);">
+<!-- 
+f.ev.value : form네임, input네임, value값을 태워서 abc 함수로 값을 전달 하는 부분 
+주의 사항은 ''를 사용하지 않음
+-->
+</form>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<style>
+	.content_new_outline { width:360px; height:438px; clear:both; }
+	.content_new_outline ul {list-style:none; margin:0; padding:0;}
+
+	.a_mnoutline {width:360px; height:auto; margin:0 auto;}
+	
+	/*타이틀*/
+	.a_mntitle {width:360px; height:60px; margin-bottom:20px;}
+	.a_mntli1 {width:360px; height:25px; font-size:16px; font-weight:bold; text-align:center; line-height:25px; }
+	.a_mntli2 {width:360px; height:20px; font-size:14px; text-align:center; line-height:20px;}
+	
+	/*상품*/
+	.a_mnpoutline1 {width:360px; height:300px; margin-top:24px; overflow:hidden; position:relative;}
+	.a_mnpoutline2 {width:1440px; height:300px; position: absolute;}
+	.a_mnpoutline3 {width:360px; height:300px; float:left;}
+	
+	.a_mnproduct {width:165px; height:300px; margin-left:10px; float:left;}
+	.a_mnproduct > ul > li {float:left; text-align:center;}
+	.a_mnproduct > ul > li:last-child {text-align:right;}
+	.a_mnproduct1 {width:165px; height:200px; position:relative;}
+	.a_mnproduct2 {width:165px; height:50px; font-size:14px; font-weight:bold; background-color:#ebebeb;}
+	.a_mnproduct3 {width:165px; height:20px; font-size:12px; background-color:#ebebeb;}
+	.a_mnproduct4 {width:165px; height:30px; font-size:14px; font-weight:bold; color:red; background-color:#ebebeb;}
+	.a_mnproduct5 {width:155px; height:20px; position:absolute; margin-top:10px; margin-right:10px;}
+	
+	/*디스크*/
+	.a_mndisk {width:360px; height:30px; margin-top:24px; clear:both;}
+	.a_mndisk ul {width:190px; height:30px; margin:0 auto;}
+	.a_mndisk li {float:left;}
+	.a_mndli {width:15px; height:15px; margin-top:7px;}
+	.a_mndli0 {width:15px; height:15px; background-color:#628dc8; border-radius:100%; margin-left:20px; margin-top:7px;}
+	.a_mndli1 {width:15px; height:15px; background-color:#ff8679; border-radius:100%;  margin-top:7px; margin-left:20px;}
+</style>
+
+<div ng-controller="a_mnct" class="content_new_outline">
+	<!-- 아웃라인 -->
+	<div class="a_mnoutline">
+	
+	<!-- 타이틀 -->
+	<div class="a_mntitle">
+	<ul id="a_mntitle">
+	<li class="a_mntli1">2 DAY NEW 7%</li>
+	<li class="a_mntli2">깐깐하게 고른 퍼플 신상</li>
+	</ul>
+	</div>
+	<!-- 타이틀 -->
+	
+	<!-- 상품출력 -->
+	<div class="a_mnpoutline1">
+        <div class="a_mnpoutline2" id="a_mnpoutline2">
+    
+        <!-- 상품출력 샘플-->
+    
+        <!-- 상품출력 샘플-->
+        </div> 
+    </div>
+	<!-- 하단 디스크 -->
+	<div class="a_mndisk"> 
+	<ul id="n_disc">
+	<li class="a_mndli"><img src="./img/arrow1.png" id="n_leftbtn"></li>
+	<li class="a_mndli1" style="background-color: #628dc8;"></li>
+	<li class="a_mndli1"></li>
+	<li class="a_mndli1"></li>
+	<li class="a_mndli1"></li>
+	<li class="a_mndli" style="margin-left:20px;"><img src="./img/arrow2.png" id="n_rightbtn"></li>
+	</ul>
+	</div>
+	<!-- 아웃라인 -->
+	</div>
+</div>
+<script>
+    $(function(){
+        let timer3,timer4;
+    $.fn.title3 = function(){
+        $timer3 = setInterval(function retimer3(){
+            $("#a_mntitle").stop().fadeOut();
+            clearInterval($timer3);
+            $timer3 = setInterval(retimer3,10000);
+        },10000);
+    }
+    $.fn.title3();
+
+    $.fn.title4 = function(){
+        $timer4 = setInterval(function retimer4(){
+            $("#a_mntitle").stop().fadeIn();
+            clearInterval($timer4);
+            $timer4 = setInterval(retimer4,11000);
+        },11000);
+    }
+    $.fn.title4();
+
+    let $ntime;
+    $.fn.nbanner = function(){
+        $ntime = setTimeout(function n_re(){
+            $("#a_mnpoutline2").animate({
+                "left":-(180)+"px"
+            },500,function(){
+                var $clone = $("#a_mnpoutline2>div").eq(0).clone();
+                $("#a_mnpoutline2>div").eq(0).remove();
+                $(this).css("left","0px");
+                $(this).append($clone);
+            });
+            $("#n_disc>.a_mndli1").css("background-color","#ff8679");
+            $nnode++;
+            if($nnode>=$nd_ea){
+                $nnode = 0;
+            }
+            $("#n_disc>.a_mndli1").eq($nnode).css("background-color","#628dc8");     
+            clearTimeout($ntime);
+            $ntime = setTimeout(n_re,10000);
+        },10000);
+    }
+    $.fn.nbanner();
+
+    let $new = $("#a_mnpoutline2>div").eq(0).width();
+        let $nb_ea = $("#a_mnpoutline2>div").length;
+        let $nd_ea = $("#n_disc>.a_mndli1").length;
+        let $nnode = 0;
+        $("#n_rightbtn").bind({
+            "click":function(){
+                console.log($new);
+                $("#a_mnpoutline2").animate({
+                "left":-(180)+"px"
+            },500,function(){
+                var $clone = $("#a_mnpoutline2>div").eq(0).clone();
+                $("#a_mnpoutline2>div").eq(0).remove();
+                $(this).css("left","0px");
+                $(this).append($clone);
+            });
+            $("#n_disc>.a_mndli1").css("background-color","#ff8679");
+            $nnode++;
+            if($nnode>=$nd_ea){
+                $nnode = 0;
+            }
+            $("#n_disc>.a_mndli1").eq($nnode).css("background-color","#628dc8");
+            },
+            "mouseenter":function(){
+                clearTimeout($ntime);
+            },
+            "mouseleave":function(){
+                $.fn.nbanner();
+            }
+        });
+
+        $("#n_leftbtn").bind({
+            "click":function(){
+                var $clone = $("#a_mnpoutline2>div").eq($nb_ea-1).clone();
+                $("#a_mnpoutline2>div").eq($nb_ea-1).remove();
+                $("#a_mnpoutline2").css("left",-(180)+"px");
+                $("#a_mnpoutline2").prepend($clone);
+                $("#a_mnpoutline2").animate({
+                    "left":"0px"
+                },500);
+            $("#n_disc>.a_mndli1").css("background-color","#ff8679");
+            
+            if($nnode<=0){
+                $nnode = $nd_ea-1;
+            }
+            else{
+                $nnode--;
+            }
+            console.log($nnode);
+            $("#n_disc>.a_mndli1").eq($nnode).css("background-color","#628dc8");
+            },
+            "mouseenter":function(){
+                clearTimeout($ntime);
+            },
+            "mouseleave":function(){
+                $.fn.nbanner();
+            }
+        });
+
+    let cm2;
+    function ajax2(){
+        function windowck2(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function file2(){
+            if(cm2.readyState==XMLHttpRequest.DONE && cm2.status==200){
+                jsonfile2(JSON.parse(this.response));
+            }
+        }
+        cm2 = windowck2();
+        cm2.onreadystatechange = file2;
+        cm2.open("GET","./new.json",true);
+        cm2.send();
+    }
+    ajax2();
+
+    function jsonfile2(j){
+        var f;
+        var html = "";
+        for(f in j.new_product){
+            console.log(j.new_product[f]);
+            html += '<div class="a_mnproduct"><ul>\
+	        <li class="a_mnproduct1"><img src="'+j.new_product[f].a_newimg+'"></li>\
+	        <li class="a_mnproduct2" >'+j.new_product[f].a_newtitle+'</li>\
+	        <li class="a_mnproduct3"><strike>'+j.new_product[f].a_newpd+'</strike></li>\
+	        <li class="a_mnproduct4" style="width:45%;">'+j.new_product[f].a_newdp+'</li>\
+	        <li class="a_mnproduct4" style="width:55%;">'+j.new_product[f].a_newap+'</li>\
+	        <li class="a_mnproduct5"><img src="'+j.new_product[f].a_newico+'"></li></ul></div>';
+            document.getElementById("a_mnpoutline2").innerHTML = html;
+        }  
+    }
+    });
+
+
+</script>

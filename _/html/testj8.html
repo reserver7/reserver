@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 복습(8),(선택문)</title>
+<script>
+var a="A";
+var b="이순신";
+switch(a){
+    case "A":
+    if(b=="이순신" || b=="거북선"){
+        document.write("해당 사용자는 A그룹에 있습니다.");
+    }
+    else{
+        document.write("해당 그룹에는 등록된 이름이 없습니다.");
+    }
+    break;
+    case "B":
+    if(b=="유관순" || b=="태극기"){
+        document.write("해당 사용자는 B그룹에 있습니다.");
+    }
+    else{
+        document.write("해당 그룹에는 등록된 이름이 없습니다.");
+    }
+    break;
+    case "C":
+    if(b=="세종대왕" || b=="한글"){
+        document.write("해당 사용자는 C그룹에 있습니다.");
+    }
+    else{
+        document.write("해당 그룹에는 등록된 이름이 없습니다.");
+    }
+    break;
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

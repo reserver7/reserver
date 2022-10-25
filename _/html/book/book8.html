@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + css 2-52</title>
+<style>
+    .box1{
+        width: 800px; height: 140px; margin: 0 auto;
+    }
+    .box1 > div:nth-child(1){
+        width: 800px; height: 50px; background-color: red; line-height: 50px;
+    }
+    .box1 > div:nth-child(2){
+        width: 200px; height: 80px; background-color: blue; line-height: 80px;
+        float: left; margin-top: 10px;
+    }
+    .box1 > div:nth-child(3){
+        width: 600px; height: 80px; background-color: green; line-height: 80px;
+        float: left; margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+<!--
+    응용문제8 (html + css)
+    해당 html 태그는 모드 div로 작성
+    red : 800 * 50 (header)
+    blue : 200 * 80 (aside)
+    green : 600 * 80 (content)
+    화면 정 가운데 오도록
+-->
+<div class="box1">
+    <div>Header</div>
+    <div>Aside</div>
+    <div>Content</div>
+</div>
+
+</body>
+</html>

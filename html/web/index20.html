@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(각종 명령어-onkey)</title>
+<!--
+onkeypress : 키를 누르는 순간 (특수키x - 대문자,소문자 키를 확인함)
+onkeydown : 키를 눌렀을 때 (특수키 코드가 작동함 - 대문자,소문자 키는 확이 안됨)
+onkeyup : 키를 눌렀다가 놓았을 때
+-->
+<script>
+    function aaa(){
+        alert("a");
+    }
+    function bbb(){
+        var b = event.keyCode;
+        alert(b);
+        var h = document.getElementById("div");
+        switch(b){
+            case 65:
+            h.style.backgroundColor = "red";
+            break;
+            
+            case 66:
+            h.style.backgroundColor = "yellow";
+            break;
+
+            case 67:
+            h.style.backgroundColor = "green";
+            break;
+        }
+    }
+    function ccc(){
+        var c = event.keyCode;  //키값을 확인하기 위한 이벤트 명령어
+        //a:97, b:98, c:99
+        switch(c){
+            case 97:
+            document.getElementById("search").value="apple";
+            break;
+
+            case 98:
+            document.getElementById("search").value="banana";
+            break;
+        }
+    }
+</script>
+</head>
+<body>
+<input type="text" onkeyup="aaa();">
+<br>
+<input type="text" onkeydown="bbb();">
+<div id="div" style="width:100px; height:100px; background-color: black;">
+</div>
+<br>
+<input type="text" id="search" onkeypress="ccc();">
+</body>
+</html>

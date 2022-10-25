@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-AU-compatible" content="IE-edge,chrome=1">
+    <meta http-equiv="imagetoolbar" content="no">
+    <meta name="viewport" content="width=device-width">
+    <title>밀림펫</title>
+    <meta name="publisher" content="김미주">
+    <meta name="robots" content="index,follow">
+<!--
+문제1. 상단에 메뉴 회원가입/탈퇴 ~ 기타까지 배열로 출력 되도록 합니다.
+현재는 HTML로 퍼블리싱이 되어 있는 상황입니다.
+[배열 메뉴 부분]
+회원가입/탈퇴,포인트,상품관련,배송관련,결제사항,쿠폰/이벤트,기타
+
+문제2. 문의하기 버튼 클릭시 첨부파일 외에 모든 부분이 입력 되어야 합니다.
+문의하기 클릭시 "http://reduck.dothome.co.kr/retest.php"로 POST 전송하시면
+됩니다.
+
+문제3. 휴대폰 번호 일 경우 "-"를 사용할 경우 숫자만 입력되도록 검토 합니다.
+또한 휴대폰 번호 10자리 이하일 경우 "올바르지 않는 휴대폰 번호 입니다."
+라는 경고창이 나와야 합니다.
+
+문제4. 답변보기 클릭시 "https://help.naver.com/support/home.help"로 이동 
+되도록 합니다.
+
+문제5. 상단 메뉴 중 결제사항 메뉴 클릭시
+"https://pay.naver.com/about" 로 이동 되도록 합니다.
+-->
+
+
+
+<style>
+body { margin: 0; padding: 0;}
+.headcss { height:60px;}
+.customercss { height:800px; }
+
+.qacss { width:1000px; height:800px;
+		 padding-top: 30px;
+		 position: absolute;
+		 z-index: 10;
+		 left: 50%; margin-left: -500px;}
+		 
+.qatitle { width:950px; height: 100px;
+    	   font-family: "notom";
+    	   line-height: 50px; text-align: center;
+           margin: 0 auto;
+           }
+    	   
+.qacate { width:950px; height:50px; margin:0 auto;}
+
+.qacate_ul {width:100%; height:40px; list-style: none;
+			font-weight: 100; margin: 0; padding: 0;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;}
+
+/******************************************************************************/
+.qacate_ul>li {width:160px; height:40px;
+			   line-height: 40px; text-align: center;
+			   border-right: 0.5px solid #ddd; 
+    		   background-color: #f1f1f1;
+    		   color: #949494;
+    		   font-size:14px; font-weight:400;
+    		   cursor: pointer;}
+    
+.qacate_ul>li:hover {color:#00c77f}
+.qacate_ul>li:last-child{border-right:0;}
+
+/******************************************************************************/
+
+.clear {clear: both;}
+.nbsp {height: 20px;}
+
+/******************************************************************************/
+
+.qa_insert {width: 950px; height: 600px;
+			margin: 0 auto; 
+ 			font-size: 12px;}
+ 			
+.qa_sotitle {width: 100%; height: 40px; 
+    		 line-height: 40px;
+    		 font-size: 20px; font-family: "notom"; 
+    		 margin-bottom: 8px; padding-left: 75px;
+             box-sizing: border-box;
+             }
+
+
+.qaselect {width: 200px; height: 35px;
+     	   border: 1px solid #ccc;}
+
+
+.qa_insert > dl {width: 800px; height: auto;
+     			 margin: 0 auto;}
+
+.qa_insert > dl > div > dt { width: 100px; height: 40px;
+							 text-align: right; 
+   							 padding:8px 20px 0 0; float: left;
+                            box-sizing: border-box;    
+                            }
+
+.qa_insert > dl > div > dd {width: 700px; height: 40px; margin-left: 100px; }
+.qa_insert > dl > div:nth-child(5) > dd {height: 240px; margin-left: 0;}
+ 
+.qainput {width: 250px; height: 30px;
+     	  border: 1px solid #ddd;
+   		  text-indent: 10px;}
+
+.qainput:nth-child(3) {margin-bottom: 10px;}
+    
+.qainput2 {width: 575px; height: 200px;
+     	   border: 1px solid #ddd; 
+    	   padding: 10px;}
+
+
+.qabtn {width: 120px; height: 35px;
+    	float: right; margin:0px 75px 0 0;
+     	font-size: 12px; color: #fff;
+    	background-color: #000;
+    	border: 0 ; border-radius: 5px;}
+    	
+/*****************************************************************************/
+.reply_div {width: 800px; height: auto;
+			margin: 0 auto;
+            font-family: "notor";
+            font-size: 16px;}
+            
+.reply_ul {width:800px; height:40px;
+           border: 1px solid #ddd;
+           border-bottom:0;
+           font-weight: 250;
+           background-color: #f1f1f1;
+           color: #949494;
+           cursor: pointer; clear: both;}
+          
+
+.reply_ul:nth-child(1){margin-top: 100px;}
+		  
+		  
+.reply_ul > li{height: 40px;
+               line-height: 40px;
+			   float: left;}
+			    
+.reply_ul > li:nth-child(1) {width: 200px; /*text-align: center;*/ text-indent: 10px; border-right: 1px solid #ddd;}
+.reply_ul > li:nth-child(2) {width: 400px; border-right: 1px solid #ddd; text-indent: 10px;}
+.reply_ul > li:nth-child(3) {width: 100px; text-indent: 10px;}
+
+
+.reply_ul2{width:800px; height:400px;
+           clear: both;	  	
+           border-top: 0;
+           display: none;}
+		  	
+.reply_ul2 > li {width: 800px; height: 100px;
+				 line-height: 100px;
+				 text-indent: 10px;
+				 color: #949494;
+				 font-weight: 250;}	
+				 	  	
+ .reply_ul2 > li:nth-child(1) {height: 50px; line-height: 50px; border-bottom: 2px dashed #ddd;}
+ .reply_ul2 > li:nth-child(3) {height: 50px; line-height: 50px; border-bottom: 2px dashed #ddd;}
+ .reply_ul2 > li:nth-child(2) {border-top: 0; overflow: auto;}
+
+
+ .qaimgs{width: 160px; height: 160px; margin-top: -20px; margin-left: 15px;}
+</style>
+</head>
+
+    <body>
+        <form name="fa" id="fa">
+    <!-- 최상단 -->
+    <header class="headcss">
+    </header>
+    <!-- 고객센터 파트 -->
+<section class="customercss" >
+  <div class="qacss" >
+  
+	<div class="qatitle" >
+        <label><img src="http://reduck.dothome.co.kr/j/img/QNA.png" class="qaimgs"></label>
+    </div>
+	
+	<div class="qacate" >
+        <ul class="qacate_ul" id="qacate_ul" onclick="click();">
+            
+        </ul>
+	</div>
+	
+	<div class="clear nbsp"></div>
+	
+	<div class="qa_insert" >
+	<div class="qa_sotitle" >1:1 문의</div>
+    <dl>
+    <div>
+    <dt>질문유형 :</dt>
+    <dd>
+	<select name="qaselect" class="qaselect" id="qaselect">
+        <option value="">질문 유형을 선택해 주세요</option>
+        <option value="qa1">회원가입/탈퇴</option>
+        <option value="qa2">포인트</option>
+        <option value="qa3">상품관련</option>
+        <option value="qa4">배송관련</option>
+        <option value="qa5">결제사항</option>
+        <option value="qa6">쿠폰/이벤트</option>
+        <option value="qa7">기타</option>
+	</select>  ※ 질문 유형을 선택해 주세요
+    </dd>
+    </div>
+    <div>
+            <dt>E-mail :</dt>
+            <dd><input type="text" class="qainput" name="qaemail" id="qaemail">  ※ 회신받으실 이메일 주소를 정확하게 입력해 주세요</dd>
+    </div>
+
+    <div>
+            <dt>휴대폰 :</dt>
+            <dd><input type="text" class="qainput" name="qatel" id="qatel" maxlength="11">  ※ "-" 사용없이 숫자만 입력하세요</dd>
+    </div>
+
+    <div>
+            <dt>제목 :</dt>
+            <dd><input type="text" class="qainput" name="qasubject" id="qasubject"> ※ 제목은 최대 50자까지만 입력이 가능합니다.</dd>
+    </div>
+
+    <div>
+            <dt>질문내용 :</dt>
+            <dd><textarea class="qainput2" name="qatext" id="qatext"></textarea></dd>
+    </div>
+
+    <div>
+            <dt>첨부파일 :</dt>
+            <dd><input type="file" name="qafile" id="qafile"></dd>
+    </div>
+    </dl>
+
+    <button type="button" class="qabtn" onclick="aaa();">문의하기</button>
+    <button type="button" class="qabtn" style="margin-right: 10px;" onclick="bbb();">답변보기</button>
+    <input type="hidden" name="qakey" value="qasec">
+    </div>
+    </div>
+     </section>
+    </form>
+    </body>
+
+<script>
+    var array = ["회원가입/탈퇴","포인트","상품관련","배송관련","결제사항","쿠폰/이벤트","기타"];
+    var num = array.length;
+    var f;
+    var html="";
+    for(f=0;f<num;f++){
+        html += '<li id="lic">'+array[f]+'</li>';
+        var click1 = document.getElementById("lic");
+    }
+    document.getElementById("qacate_ul").innerHTML = html;
+    
+    document.querySelector("li:nth-child(5)").onclick=function(){
+        location.href="https://pay.naver.com/about";
+    }
+
+    function aaa(){
+        var qaemail = fa.qaemail.value;
+        var qatel = fa.qatel.value;
+        var qasubject = fa.qasubject.value;
+        var qatext = fa.qatext.value;
+        var qafile = fa.qafile.value;
+        var ck = qatel.match(/[-|a-z|A-Z|ㄱ-ㅎ ㅏ-ㅣ 가-힣]/g);
+        if(qaemail==""){
+            alert("이메일을 작성해 주세요.");
+        }
+        else{
+            if(qatel==""){
+                alert("휴대폰 번호를 작성해 주세요.");
+            }
+            else if(ck!=null){
+                alert("휴대폰 번호는 숫자만 입력해 주세요.");
+            }
+            else{
+                if(qasubject==""){
+                    alert("제목을 입력해 주세요.");
+                }
+                else{
+                    if(qatext==""){
+                        alert("질문내용을 입력해 주세요.");
+                    }
+                    else{
+                        ccc();
+                    }
+                }
+            }
+        }
+    }
+
+    function ccc(){
+        var qaselect = document.getElementById("qaselect").value;
+        if(qaselect==""){
+            alert("질문유형을 선택해 주세요.");
+        }
+        else{
+            fa.method="POST";
+            fa.action="http://reduck.dothome.co.kr/retest.php";
+            fa.submit();
+        }
+    }
+
+    function bbb(){
+        location.href="https://help.naver.com/support/home.help";
+    }
+    
+</script>
+</html>
+<!--
+문제1. 상단에 메뉴 회원가입/탈퇴 ~ 기타까지 배열로 출력 되도록 합니다.
+현재는 HTML로 퍼블리싱이 되어 있는 상황입니다.
+[배열 메뉴 부분]
+회원가입/탈퇴,포인트,상품관련,배송관련,결제사항,쿠폰/이벤트,기타
+
+문제2. 문의하기 버튼 클릭시 첨부파일 외에 모든 부분이 입력 되어야 합니다.
+문의하기 클릭시 "http://reduck.dothome.co.kr/retest.php"로 POST 전송하시면
+됩니다.
+
+문제3. 휴대폰 번호 일 경우 "-"를 사용할 경우 숫자만 입력되도록 검토 합니다.
+또한 휴대폰 번호 10자리 이하일 경우 "올바르지 않는 휴대폰 번호 입니다."
+라는 경고창이 나와야 합니다.
+
+문제4. 답변보기 클릭시 "https://help.naver.com/support/home.help"로 이동 
+되도록 합니다.
+
+문제5. 상단 메뉴 중 결제사항 메뉴 클릭시
+"https://pay.naver.com/about" 로 이동 되도록 합니다.
+-->

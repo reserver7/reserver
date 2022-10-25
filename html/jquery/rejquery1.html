@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 복습</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        //jquery는 id,class 만 사용
+        //jqurry : ani = sliderDown, sliderUp, fadeIn, fadeOut, animated, show, hide
+        $("#d1").click(function(){
+            $(this).slideUp();
+        });
+
+        $("#d2").click(function(){
+            $(this).fadeOut(1500);  //서서히 사라짐 (자기 공간이 사라짐)
+        });
+        //animate에서 유일하게 display + position 은 사용을 하지 않음
+        $("#d3").click(function(){
+            $(this).animate({
+                "opacity":"0"   //서서히 사라짐 (자기 공간이 남아있음)
+            },1000,function(){
+                //$(this).slideUp();  //ani 가 끝나고 슬라이드업
+                $(this).css("display","none");  //공간이 사라짐 display는 전에 행동을 끝마쳐야 가능
+            });
+        });
+
+        $("#d4").click(function(){
+            //$(this).css("position","absolute");
+            //$(this).css("top","0px"); // 한칸에 하나씩 쓰는 형태
+            $(this).css({   // ({}) 는 복합적으로 사용이 가능하게 함 한칸에 모든걸 쓰는 형태
+                "position":"absolute",
+                "top":"0px"
+            });
+        });
+
+        $("#btn").click(function(){
+                $("#sbox").animate({
+                    "right":"0px"
+                },2000,function(){
+                    $("#sbox").animate({
+                        "bottom":"0px"
+                },2000);
+            });
+        });
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0; }
+    div{
+        width: 100px; height: 100px;
+    }
+    .d1{
+        background-color: lightskyblue;
+    }
+    .d2{
+        background-color: lightsalmon;
+    }
+    .d3{
+        background-color: lightgrey;
+    }
+    .d4{
+        background-color: lightseagreen;
+    }
+    .box{
+        width: 1000px; height: 500px; background-color: red;
+        margin: 0 auto; position: relative;
+    }
+    .sbox{
+        width: 100px; height: 100px; background-color: yellow;
+        display: block; position: absolute;
+    }
+</style>
+</head>
+<body>
+<!-- div 4개 생성 각각 사이즈 (100*100) 색상을 모두 다르게 -->
+<div class="d1" id="d1"></div>
+<div class="d2" id="d2"></div>
+<div class="d3" id="d3"></div>
+<div class="d4" id="d4"></div>
+<br>
+<div class="box" id="box">
+    <label class="sbox" id="sbox"></label>
+</div>
+<input type="button" value="이동" id="btn">
+</body>
+</html>

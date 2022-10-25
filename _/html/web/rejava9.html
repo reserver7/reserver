@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>최종복습(스크립트 html 출력형태)</title>
+<script>
+var array=["HOME", "LOGIN", "MYINFO"]   //array[0], array[1]
+//var aaa = Object.keys(array); //배열에 데이터 노드 숫자 카운터
+
+/*
+var array1 = { name : "hong", blood : "A형"};
+var aaa = Object.keys(array1);  //array1['name']
+alert(array1['name']);
+*/
+
+/*
+var aaa = Object.values(array1);    //"hong","A형"
+alert(aaa[0]);
+*/
+</script>
+</head>
+<body onload="aaa();">
+<!-- <div id="box">
+
+</div>     -->
+<ul class="ulcss" id="ulcss">
+<!-- <li>HOME</li>
+<li>LOGIN</li>
+<li>MYINFO</li> -->
+</ul>
+</body>
+<script>
+    function aaa(){
+    var a="연습입니다.";
+    document.getElementById("box").innerHTML=a;    
+    }
+        //aaa(); 
+</script>
+</html>

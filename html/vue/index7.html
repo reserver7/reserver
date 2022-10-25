@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue 2일차 - 핸들링+조건문2 (응용문제)</title>
+<script src="vue.js"></script>
+<style>
+    .btn{
+        width: 50px; height: 50px; display: inline-block;
+        background-color: skyblue; color: #fff; text-align: center; line-height: 50px;
+    }
+</style>
+</head>
+<body>
+    <div id="news">
+        <span class="btn" v-on:click="btn(1);">{{btn1}}</span> <span class="btn" v-on:click="btn(2);">{{btn2}}</span>
+        <ul>
+            <li v-if="ndata && num==1">{{nmsg1}}</li>
+            <li v-else-if="ndata && num==2">{{nmsg2}}</li>
+            <li v-else>{{nmsg3}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    let a = new Vue({
+        el:"#news",
+        data:{
+            btn1:"이전",
+            btn2:"다음",
+            nmsg1:"연합뉴스 > 건보 BTJ열방센터 단체-개인 구상청구...",
+            nmsg2:"연합뉴스 > 개인정보위 이루다 개발사 스캐터랩 조사...",
+            nmsg3:"연합뉴스 > 일본, 한국, 중국등 비즈니스 트랙 왕래 중단...",
+            ndata:true,
+            num:1
+        },
+        methods:{
+            btn:function(span_num){
+                if(span_num==1){
+                    this.num--;
+                    if(this.num<1){
+                        this.num = 3;
+                    }
+                }
+                else{
+                    this.num++;
+                    if(this.num>3){
+                        this.num = 1;
+                    }
+                }
+                console.log(this.num);
+            }
+        }
+    });
+</script>
+</html>

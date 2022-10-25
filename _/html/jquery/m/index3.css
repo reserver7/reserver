@@ -1,0 +1,125 @@
+@charset "UTF-8";
+body { margin: 0; padding: 0; }
+/* display:none part  pc에서 보이지 않아도 되는 부분 */
+.m_topdiv { display: none; }
+.rightmenu { display: none; }
+.leftmenu { display: none; }
+
+
+
+/* display:none part */
+
+.top { height: 30px; background-color: gray; }
+.topdiv {
+    width: 1200px; height: 30px; margin: 0 auto; 
+    position: relative;
+}
+.topdiv > ul{
+    width:calc(80*4px); height: 30px; list-style: none; 
+    margin: 0; padding: 0; font-size: 12px; line-height: 30px;
+    position: absolute;
+    right:0;
+}
+.topdiv > ul >li{
+    width:80px; text-align: center;
+    float: left; cursor: pointer; 
+    position: relative;
+    color: white;
+}
+.topdiv > ul >li::after{
+    content: " | ";
+    position: absolute;
+    right:0;
+}
+.topdiv > ul >li:nth-child(4)::after {
+    content: "";
+}
+.ci{
+    height: 150px; 
+}
+.logo{
+    width: 1200px; height: 150px; margin: 0 auto;
+    text-align: center; position: relative;
+}
+.label1{
+    width: 250px; height: 150px; display: inline-block;
+    margin: 0 auto; line-height: 150px; 
+    /* margin:0 auto 와 float: left는 절대 같이 못씀 */
+}
+.logo > .label1 > img {
+    width: 250px; vertical-align: middle;
+    /* vertical-align: middle을 쓰면 엄마한테 line-height를 써야함 */
+}
+/*
+.label2{
+    width: 100px; height: 150px; display: inline-block; border: 1px solid black;
+    line-height: 150px; position: absolute; right: 0;
+}
+*/
+/* table-cell  margin: 0 auto; , position 적용 XX / 왼쪽정렬
+    vertical-align: middle;는 부모오브젝트의 height을 지정해 주어도 가운데로 안가게 되는데
+    부모 오브젝트의 자식 오브젝트 정렬 line-height를 지정해 주어야 한다.
+
+    부모오브젝트가 margin: 0 auto;면 자식 오브젝트 margin: 0 auto; 못함 겹쳐서 사용 못함
+    단, 부모보다 자식이 width 길이가 작으면 가능
+
+    margin: 0 auto;는 float속성과 display: inline-block 같이 사용하지 않음!!
+
+*/
+
+/* 상단 모바일 css *//*모바일 용 로고는 가로가 길고 세로가 짧게 세로가 너무 길면 모바일에 적용할때 힘들다*/
+
+/* 모바일 css */
+@media screen and (min-width:340px) and (max-width:750px){
+    .top {height:60px; background-color: black;}   
+    .top_menu{display: none;}
+    .ci{ display: none;}
+    .m_topdiv { 
+        display: block; height: 60px; width: 100%; margin: 0 auto; 
+        position: relative; text-align: center;
+    }
+    .m_topdiv>label{ 
+        display: inline-block; height: 60px; line-height: 60px;
+        position: absolute;
+    }
+    .m_topdiv>label:nth-child(1){
+        width: 30px; left: 0px;
+        margin-left: 5px; 
+    }
+    .m_topdiv>label:nth-child(2){ 
+        width: 120px; margin-left: -60px;
+    }
+    /* 오른쪽으로 치우쳐진 만큼 -60px *inline-block는 margin:0 auto 안먹음 
+    꼭 margin-left: 50%; 하지 않아도 부모 오브젝트에 text-align: center; 해도 됨 */
+    .m_topdiv>label:nth-child(3){
+        width: 30px; right: 5px; 
+    }
+    .m_topdiv>label>img{ 
+        width: 100%; vertical-align: middle;
+    } 
+
+    /* 오른쪽 메뉴 */
+    /* pc에서는 필요없는 내용은 display none 모바일은 display block 해야함 */
+    .rightmenu{
+        display: block;
+        width: 0px; height: 500px; background-color: blue; float: right;
+    }
+    /* 왼쪽 메뉴 */
+    .leftmenu{
+        display: block; position: absolute;
+        width: 0px; height: 500px; background-color: red;
+    }
+}
+/*
+    [이미지 파일]
+    jpg, jpeg, bmp, gif, png, tiff
+
+    [웹 & 모바일] - web design
+    png, jpg, gif(광고)
+
+    [웹 & 모바일 아이콘] 
+    svg : 벡터 그래픽 + XML 코드
+    - 용량이 작고
+    - 원하는 색상을 마음껏 변경가능
+    - 크기를 조정하더라도 이미지 깨짐이 없음
+*/

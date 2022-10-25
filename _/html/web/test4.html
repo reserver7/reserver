@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제3)</title>
+<script>
+    function aaa(){ //버튼
+        var a = document.getElementsByClassName("agree").length;
+        var aa;
+        var cc = "yes";
+        for(aa=0;aa<a;aa++){
+            var ids = "a"+aa;
+            if(document.getElementById(ids).checked==false){
+                cc = "no";
+            }
+        }
+        if(cc=="yes"){
+            alert("감사합니다. 회원가입 되셔습니다.");
+        }
+        else{
+            alert("모두 동의하셔야만 회원가입이 됩니다.");
+        }
+    }
+    function bbb(){ //각 동의함 체크박스
+        f.allck.checked=false;
+    }
+    function ccc(){ //전체동의함 체크박스 (class만 이용할 경우)
+        var a = document.getElementsByClassName("agree").length;
+        var b = 0;
+        var c;
+        if(f.allck.checked==false){
+            c = true;
+        }
+        else{
+            c = false;
+        }
+        do{
+            document.getElementsByClassName("agree")[b].checked=c;
+            //class노드 형태를 확인하는 방법
+            b++
+        }while(b<a);
+    }
+
+    /*
+    function aaa(){
+        var a = document.getElementsByClassName("agree").length;
+        var b = 0;
+        var check = "no";
+        while(b<a){
+            var c = "a"+b;
+            if(document.getElementById(c).checked==true){
+                check = "yes";
+            }
+            b++;
+        }
+        if(check=="no"){
+            alert("모두 동의하셔야만 회원가입이 됩니다.");
+        }
+        else{
+            if(){
+
+            }
+        }
+    }
+    */
+</script>
+</head>
+<body>
+<!--
+응용문제3.
+회원가입에 대한 각종 약관에 동의하는 웹 페이지를 제작
+각 정책별로 모두 동의함에 체크가 되어야만 "감사합니다. 회원가입 되셔습니다."
+라고 메세지를 출력하게 되며
+개인정보 보호정책~위치정보 이용약관 까지 하나라도 체크가 되지 않을시
+"모두 동의하셔야만 회원가입이 됩니다."라고 메세지 출력
+단, 전체동의를 클릭시 모두 동의함에 체크가 되어야 하고, 
+전체동의 체크아웃시 모든 정책의 동의함에 체크 아웃 되어야 합니다.
+-->
+<form name="f" id="f">
+<p>개인정보 보호정책</p>
+<input type="checkbox" name="ckagree1" value="0" class="agree" id="a0">
+<label for="a0" onclick="bbb()">동의함</label>
+<br>
+
+<p>이용약관 정책</p>
+<input type="checkbox" name="ckagree2" value="1" class="agree" id="a1">
+<label for="a1" onclick="bbb()">동의함</label>
+<br>
+
+<p>위치정보 이용약관</p>
+<input type="checkbox" name="ckagree3" value="2" class="agree" id="a2">
+<label for="a2" onclick="bbb()">동의함</label>
+<br>
+
+<p>서비스 전체 모두 동의함</p>
+<input type="checkbox" name="allck" value="all" class="allck" id="all">
+<label for="all" onclick="ccc()">전체동의</label>
+
+<input type="button" value="확인" onclick="aaa();">
+</form>
+
+</body>
+</html>

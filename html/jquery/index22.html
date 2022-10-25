@@ -1,0 +1,77 @@
+<?php
+    $data = date("Y-m-d H:i:s");
+    echo $data;
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 5일차 - (시간타이머)</title>
+<script src="./jquery.js"></script>
+<!--
+    시간타이머 예시 : 보안코드, 시간제한, 배너, 실시간 데이터 반영,
+    접속 로그기록, 결제일자, 택배일자
+    Greenwich Mean Time      Coordinated Universal Time
+    GMT : 시간변환표(Client), UTC : 각 나라별 시차(Server)
+-->
+<script>
+    var a = new Date(); 
+    //현재 window 시간을 가져올 때 사용함 (년도,월,일,주일,시간,분,초)
+    document.write("<br>"+a);
+    var b = a.getFullYear();    //getFullYear 년도만 출력
+    document.write("<br>"+b);
+    var c = a.getMonth()+1; //getMonth 월 만 출력 단,0~11까지 형태로 되어 있어서 +1을 해줘야 함
+    document.write("<br>"+c);
+    var d = a.getDate();    //getDate 일 만 출력
+    document.write("<br>"+d);
+    var e = a.getDay();     //getDay 월~일 주일 표시 (0 = 일요일 ~ 6 = 토요일)
+    switch (e){
+        case 0:
+        document.write("일요일");
+        break;
+        case 1:
+        document.write("월요일");
+        break;
+        case 2:
+        document.write("화요일");
+        break;
+        case 3:
+        document.write("수요일");
+        break;
+        case 4:
+        document.write("목요일");
+        break;
+        case 5:
+        document.write("금요일");
+        break;
+        case 6:
+        document.write("토요일");
+        break;
+    }
+    document.write("<br>");
+    var h = a.getHours();   //getHours 시간 (몇 시 인지)를 뜻함
+    document.write("<br>"+h);
+    var i = a.getMinutes(); //getMinutes 시간 (몇 분 인지)를 뜻함
+    document.write("<br>"+i);
+    var s = a.getSeconds(); //getSeconds 시간 (몇 초 인지)를 뜻함
+    document.write("<br>"+s);
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+</style>
+</head>
+<body>
+<div id="timer"></div>
+<input type="button" value="새로고침" onclick="abc();">
+</body>
+<script>
+    var view = document.getElementById("timer");
+    var times = b + "년" + c + "월" + d + "일" + " " + h + "시" + i + "분" + s + "초";
+    view.innerHTML = times;
+
+    function abc(){
+        window.location.reload();   //해당 페이지를 새로고침 할 때 이용됨
+    }
+</script>
+</html>

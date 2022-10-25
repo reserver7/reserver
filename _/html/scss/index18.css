@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.divbox {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto;
+  top: 100px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: rotateX(-15deg) rotateY(30deg);
+          transform: rotateX(-15deg) rotateY(30deg);
+}
+
+.front {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  text-align: center;
+  line-height: 100px;
+  -webkit-transform: translate3d(0, 0, 50px);
+          transform: translate3d(0, 0, 50px);
+  position: absolute;
+}
+
+.divbox:hover > .top {
+  -webkit-transform: rotateX(90deg) translate3d(50px, 0, 50px);
+          transform: rotateX(90deg) translate3d(50px, 0, 50px);
+}
+
+.top {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  text-align: center;
+  line-height: 100px;
+  position: absolute;
+  -webkit-transform: rotateX(90deg) translate3d(0, 0, 50px);
+          transform: rotateX(90deg) translate3d(0, 0, 50px);
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+}
+
+.left {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  text-align: center;
+  line-height: 100px;
+  position: absolute;
+  -webkit-transform: rotateY(-90deg) translate3d(0, 0, 50px);
+          transform: rotateY(-90deg) translate3d(0, 0, 50px);
+}
+/*# sourceMappingURL=index18.css.map */

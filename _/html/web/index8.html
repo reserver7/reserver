@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(반복문)</title>
+<script>
+    function abc(){
+        /* typeof : 문자 or 숫자 인지 확인하는 명령어
+        var a = 123;
+        var b = typeof(a);
+        alert(b);
+        */
+        //  NaN : not a number, isNaN : true(문자), false(숫자)
+        var a = Number(document.getElementById("a").value);
+        if(isNaN(a)==true){
+            alert("숫자만 입력하세요!");
+        }
+        else{
+            var b;
+            for(b=1;b<=a;b++){
+                //document.write(b+"<br>");
+            }
+            //응용문제1. 두자리 숫자 입력 while문 사용 오름차순으로 출력
+            var c=1;
+            while(c<=a){
+                document.write(c+"<br>");
+                c++;
+            }
+            var d=99;   // 두자리 숫자 입력 do while 내림차순
+            do{
+                //document.write(d+"<br>");
+                d--;
+            }while(d>=a);
+        }
+    }
+</script>
+</head>
+<body>
+<input type="text" id="a" maxlength="2">
+<input type="button" value="결과확인" onclick="abc();">
+</body>
+</html>

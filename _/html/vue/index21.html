@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue5일차 - 로그인 만들기(응용)</title>
+<script src="./vue.js"></script>
+<style>
+    body{ margin: 0; padding: 0; line-height: 1; }
+    main { display: flex; height: 100vh; justify-content: center;
+    flex-direction: row; align-items: center;
+    }
+    .divcss { width: 300px; height: auto; border: 1px solid black; 
+    border-radius: 10px; box-sizing: border-box; 
+    padding: 5px; margin: 0 auto; 
+    }
+    .ulcss{ width: 100%; height: auto; list-style: none; margin: 0; padding: 0;}
+    .ulcss > li{ height: 35px; line-height: 35px; text-align: center; }
+    .inputs{ width: 250px; height: 30px; border: 1px solid #ccc;
+    border-radius: 5px; text-indent: 10px;
+    }
+    .btn{ width: 250px; height: 30px; border: 0; background-color: darkslateblue;
+    color: #fff; border-radius: 5px;
+    }
+</style>
+</head>
+<script>
+    function loadvue(){
+    var arrs = [
+        ["ADMINISTRAOTR"],
+        ["<input type='text' name='mid' id='mid' v-model='mid' class='inputs' placeholder='아이디를 입력해 주세요.'>"],
+        ["<input type='password' name='mpass' id='mpass' class='inputs' v-model='mpass' placeholder='패스워드를 입력해 주세요.'>"]
+    ]
+    Vue.component("liverpool",{
+        props:["liver"],
+        template:"<li v-html='liver[0]'></li>"
+    });
+
+    var lis = {
+        template:"<li><input type='button' value='로그인' class='btn' @click='loginck()'></li>",
+        methods:{
+            loginck:function(){
+                var recall = login.allcheck();
+                if(recall[1]!="ok"){
+                    alert(recall[0]);
+                    recall[2].focus();
+                }
+                //리턴 받은 값중 ok단어로 받으면 form이 작동 되도록함
+                else{
+                    f.method="POST";
+                    f.action="loginok.php";
+                    f.submit();
+                }
+            }
+        }
+    }
+
+    var login = new Vue({
+        el:"#login",
+        data:{
+            div:"divcss",
+            ul:"ulcss",
+            liarr:arrs,
+            mid:"",
+            mpass:""
+        },
+        methods:{
+            allcheck:function(){
+                //아이디 패스워드 검사 부분
+                var msg = "";
+                var ok = "no";
+                var focus = "";
+                if(f.mid.value==""){
+                    msg = "아이디를 입력해 주세요.";
+                    focus = f.mid;
+                }
+                else if(f.mpass.value==""){
+                    msg = "패스워드를 입력해 주세요.";
+                    focus = f.mpass;
+                }
+                //모든 부분이 확인이 되면 값을 리턴 시킴
+                else{
+                    ok = "ok";
+                }
+                return [msg,ok,focus];
+            }
+        },
+        components:{
+            "liverpool2":lis
+        }
+    });
+    }
+</script>
+<body onload="loadvue();">
+<form id="f" name="f">
+<main id="login">
+    <div v-bind:class="div">
+        <ul v-bind:class="ul">
+            <liverpool v-bind:liver="vf" v-for="vf in liarr"></liverpool>
+            <liverpool2></liverpool2>
+        </ul>
+    </div>
+</main>
+</form>
+</body>
+</html>

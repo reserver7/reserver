@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery-Ajax-복습(json)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            url:"./researcher.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.html_make($result);
+            },
+            error:function(){
+                console.log("데이터 접근 오류");
+            }
+        });
+        var $html = "";
+        var $gender_ck;
+        $.fn.html_make = function($result){
+            $($result.membership).each(function($node,$name){
+                $gender_ck = $name["gender"];
+                    $html = '<ul class="ulcss">\
+                    <li>'+($node+1)+'</li>\
+                    <li>'+$name["first_name"]+'</li>\
+                    <li>'+$name["last_name"]+'</li>\
+                    <li>'+$name["email"]+'</li>\
+                    <li>'+$name["gender"]+'</li>\
+                    </ul>';
+                $("#box").append($html);
+                console.log($name["gender"]);
+                console.log($ck);
+            });
+        }
+
+        $("#ok_btn").click(function(){
+                var $male = $("#male").is(":checked");
+                var $female = $("#female").is(":checked");
+                if($male==true && $gender_ck=="Male"){
+                    
+                }
+        });
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0;}
+    *{ box-sizing: border-box;}
+    .outline { 
+        width: 650px; height: auto; margin: 0 auto;
+        display: flex; flex-direction: row; justify-content: center;
+        align-items: center;
+    }
+    .p{ text-align: center; font-size: 20px; font-weight: bold;}
+    .divcss1 { 
+        width: 500px; height: 40px;
+    }
+    .divcss1 > label{
+        width: 150px; height: 40px; float: left;;
+        text-align: center; line-height: 40px;
+    }
+    .divcss1 > label:nth-of-type(1){
+        width: 100px; height: 40px; text-align: center; line-height: 40px;
+    }
+    .divcss2 { width: 310px; height: auto; margin: 0 auto; margin-top: 10px;}
+    .divcss2 > span { 
+        width: 150px; height: 40px; display: inline-block; cursor: pointer;
+    }
+    .divcss2 > span > input { 
+        width: 100%; height: 40px; border: 0; background-color: cornflowerblue;
+        color: white; text-align: center; line-height: 40px; cursor: pointer;
+        font-size: 17px;
+    }
+    .box{
+        width: 1000px; height: auto; border: 1px solid #aaa; margin: 0 auto;
+        margin-top: 20px;
+    }
+    .ulcss {
+        width: 100%; height: auto; list-style: none; margin: 0; padding: 0; text-align: center;
+        border-bottom: 1px dashed #aaa;
+    }
+    .ulcss>li { height: 40px; display: inline-block; line-height: 40px;}
+    .ulcss>li:nth-of-type(1) { width: 50px;}
+    .ulcss>li:nth-of-type(2) { width: 150px;}
+    .ulcss>li:nth-of-type(3) { width: 150px;}
+    .ulcss>li:nth-of-type(4) { width: 300px;}
+    .ulcss>li:nth-of-type(5) { width: 150px;}
+    .ulcss:nth-of-type(1){
+        background-color: #aaa; font-size: 17px;
+        color: white; font-weight: bold; letter-spacing: 1px;
+    }
+    .ulcss:last-child { border-bottom: 1px solid #aaa;}
+</style>
+</head>
+<body>
+<fieldset class="outline">
+    <legend class="p">[그린컴퓨터 연구원 명단]</legend>
+    <div class="divcss1">
+        <label><input type="radio" name="radio" id="male">Male</label>
+        <label><input type="radio" name="radio" id="female">Female</label>
+    </div>
+    <div class="divcss2">
+    <span><input type="button" value="확인" id="ok_btn" class="ok_btn"></span>
+    <span><input type="button" value="취소" id="cancel_btn" class="cancel_btn"></span>
+    </div>
+</fieldset>
+<aside class="box" id="box">
+    <ul class="ulcss">
+        <li>No.</li>
+        <li>First name</li>
+        <li>Last name</li>
+        <li>Email</li>
+        <li>Gender</li>
+    </ul>
+</aside>
+</body>
+<script>
+</script>
+</html>

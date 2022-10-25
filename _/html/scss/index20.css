@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.box {
+  width: 200px;
+  height: 30px;
+  background-color: black;
+  position: absolute;
+  -webkit-animation-name: ani;
+          animation-name: ani;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+@-webkit-keyframes ani {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 600px;
+  }
+}
+
+@keyframes ani {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 600px;
+  }
+}
+
+.divcss {
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-perspective: 700px;
+          perspective: 700px;
+}
+
+.box2 {
+  width: 235px;
+  height: 235px;
+  border-radius: 235px;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation: spin 5s linear infinite;
+          animation: spin 5s linear infinite;
+  overflow: hidden;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    background-size: cover;
+    background-image: url("./images/coin_f.png");
+  }
+  50% {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+    background-size: cover;
+    background-image: url("./images/coin_b.png");
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+    background-size: cover;
+    background-image: url("./images/coin_f.png");
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    background-size: cover;
+    background-image: url("./images/coin_f.png");
+  }
+  50% {
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+    background-size: cover;
+    background-image: url("./images/coin_b.png");
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+    background-size: cover;
+    background-image: url("./images/coin_f.png");
+  }
+}
+/*# sourceMappingURL=index20.css.map */

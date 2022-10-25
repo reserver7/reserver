@@ -1,0 +1,44 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 9일차 달력 UI 컨텐츠 (JqueryUI전용)</title>
+<script src="../jquery.js"></script>
+<!-- 
+    jquery ui는 반드시 jquery엔진 다음에 위치 하도록 합니다!!!!!!!!!!!
+    jquery ui 엔진 이며, css ui도 함께 사용해야만 정상적으로 ui가 반영되어 짐 -->
+<script src="./jquery-ui.js?v=1"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        $("#a").datepicker();   //ui 전용 달력
+        $("#b").datepicker();
+        $("#box").draggable();  //마우스클릭 후 드래그 할 경우 해당 위치로 이동 됨
+        $("#box2").resizable(); //이미지(갤러리보드) 확대,축소 할 때 사용
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0;}
+    .box{
+        width: 400px; height: 600px; background-color: skyblue;
+    }
+    .box2{
+        width: 100px; height: 100px; background-color: darkblue;
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+<div class="box2" id="box2"></div>
+<input type="text" id="a" autocomplete="off"> <!-- autocomplete : 자동완성 off -->
+<input type="text" id="b" autocomplete="off">
+<br><br>
+<div class="box" id="box"></div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+    "acc_product" : [
+        {"product_nm":"핑크 USB 유선 이어폰 헤드셋","product_money":"58000","product_img":"./product/1000000000_main_036.jpg","product_url":"product_view.html?goodsno=4"},
+        {"product_nm":"석고인형 A트","product_money":"8000","product_img":"./product/1000000001_main_030.jpg","product_url":"product_view.html?goodsno=3"},
+        {"product_nm":"고급 빈티지 커피잔","product_money":"19400","product_img":"./product/1000000002_main_054.jpg","product_url":"product_view.html?goodsno=2"},
+        {"product_nm":"고급 학용품 세트","product_money":"50000","product_img":"./product/1000000003_main_052.jpg","product_url":"product_view.html?goodsno=1"},
+        {"product_nm":"미니 선인장 ","product_money":"10000","product_img":"./product/1000000006_main_086.jpg","product_url":"product_view.html?goodsno=20"},
+        {"product_nm":"우드 받침대 ","product_money":"8000","product_img":"./product/1000000008_main_093.jpg","product_url":"product_view.html?goodsno=21"},
+        {"product_nm":"아트무비 갤러리 액자","product_money":"10000","product_img":"./product/1000000007_main_06.jpg","product_url":"product_view.html?goodsno=12"},
+        {"product_nm":"벽화분 걸이","product_money":"20000","product_img":"./product/1000000012_main_068.jpg","product_url":"product_view.html?goodsno=13"},
+        {"product_nm":"다이어리 & 미니펜","product_money":"20000","product_img":"./product/1000000013_main_089.jpg","product_url":"product_view.html?goodsno=14"},
+        {"product_nm":"우드 모니터 받침대","product_money":"88000","product_img":"./product/1000000014_add2_019.jpg","product_url":"product_view.html?goodsno=19"},
+        {"product_nm":"빈티지 노트 2EA","product_money":"10000","product_img":"./product/1000000011_main_034.jpg","product_url":"product_view.html?goodsno=17"},
+        {"product_nm":"빈티지 찻잔 셋트","product_money":"5000","product_img":"./product/1000000015_main_051.jpg","product_url":"product_view.html?goodsno=23"}
+    ]
+}

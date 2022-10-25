@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 1일차(비교문법2-and, or)</title>
+<script>
+// && : and(모든 조건을 만족할때)
+// || : or (두가지 조건 중 한개라도 조건에 만족하면 사용함)
+var a = 10;
+var b = 20;
+if(a==10 && b==20){
+    document.write("두수의 조건이 만족합니다.");
+}
+
+if(a==10 || b==20){
+    document.write("두가지 조건중 한가지가 맞습니다.");
+}
+//응용문제
+var aa ="blue";
+if(aa=="red" || aa=="green" || aa=="blue"){
+    document.write("신호등 색상 입니다.");
+}
+else {
+    document.write("해당 색상은 신호등 색상에 포함 되지 않습니다.");
+}
+
+var g="이순신";
+var p="bold";
+//경우의 수 : BOLD, Bold, bold, boLD
+// && 와 || 같이 사용할 경우 ()로 정확하게 구분하여 사용해야 함
+if(g=="홍길동" && (p=="bold" || p=="BOLD")){
+    document.write("등록된 사용자 입니다.");
+}
+else if(g=="홍길동" && (p=="Bold" || p=="boLD")){
+    document.write("정확한 아이디를 입력하세요.");
+}
+else {
+    document.write("해당 사용자는 없습니다.");
+}
+//응용문제 && || 두 기호를 응용하여 풀이
+//통신사를 구분하여 등록된 사용자와 매칭 하는 조건문을 제작하시오.
+//SKT, LGT, KT 세가지 통신사가 있으며, 홍길동 과 이순신 (SKT 멤버)
+//유관순 과 강감찬 (LGT 멤버), 세종대왕 만 사용 (KT 멤버)
+//결과는 다음과 같이 나옵니다. 
+//두 값이 다들 경우 해당 멤버 그룹이 아닐경우 "해당 통신사에 사용자가 아닙니다."
+//두 값이 같을 경우 해당 멤버 그룹이 아닐경우 "통신사명 (SKT,KT,LGT) 사용자가 맞습니다."
+var member="세종대왕";
+var tel="SKT";
+if((member=="홍길동" || member=="이순신") && tel=="SKT"){
+    document.write("SKT 사용자가 맞습니다.");
+}
+else if((member=="유관순" || member=="강감찬") && tel=="LGT"){
+    document.write("LGT 사용자가 맞습니다.");
+}
+else if(member=="세종대왕" && tel=="KT"){
+    document.write("KT 사용자가 맞습니다.");
+}
+else {
+    document.write("해당 통신사에 사용자가 아닙니다.");
+}
+//기호표시 (==같다,!=같지 않다,<=작거나 같다,>=크거나 같다) - 숫자는 모두 사용
+//기호표시 (==같다,!=같지 않다) - 문자만 사용
+//기호표시 (===, !==) - 문자와 숫자를 명확하게 구분할때 사용
+var aacc="9";
+/* if(aacc>=10){
+    document.write("해당 숫자는 10이상 또는 10에 포함된 숫자 입니다.");
+} */
+if(aacc===9){
+    document.write("9 숫자가 맞습니다.");
+}
+</script>
+</head>
+<body>
+<!-- 
+    조건문
+    var : 변수 (상수)선언
+    +,-,*,/
+    문자+문자, 숫자+숫자, 문자,숫자
+    "",''(문자)
+    <script>
+    </script>
+    if() - 무조건 있어야함
+    else if() - 여러번 쓸수 있음 (if의 반대)
+    else  (둘다 아닐경우)
+    변수= 변수에 넣고자하는 문자, 숫자값
+    ==, != (문자만)
+    <=, >= (모두다 가능)
+    ===(숫자와 문자 완벽히 구별) , !== (조금이라도 형태가 틀리면 사용 못하게)
+    && (And) || (or) 
+    * , / , && , || => ()괄호를 어떻게 그룹화 하는지 중요
+    location.href (a href 비슷한 형태)
+    자동으로 현재 페이지를 이동시키는 명령어(함수)
+-->
+</body>
+</html>

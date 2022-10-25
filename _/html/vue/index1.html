@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue(2일차) - 기본문법 (vue-bind, vue-model, 그룹별 관리)</title>
+<script src="vue.js"></script>
+<!-- 대규모 개발 : 이러닝, 내부시스템(통계), AI 시스템 : CDN설치로 셋팅함 -->
+</head>
+<body>
+<div id="vue">
+    {{ test }} {{ test2 }}
+</div>
+<div id="vue2">
+    {{ test2 }}
+</div>
+<div id="vue3" v-bind:title="titles" style="width: 100px; height: 100px; border: 1px solid red;">
+    <input type="text" name="mid" id="mid" v-model="texts"><br>
+    <input type="button" v-model="btns">
+    <!-- {{}} 글자나 내용을 출력할 때 사용합니다. (HTML 태그에는 사용하지 않음) 
+    v-model = value
+    v-bind:title = title
+    -->
+</div>
+</body>
+<script>
+    let a = new Vue({ //첫번째 그룹 (렌더링)
+        el:"#vue",
+        data:{
+            test:"연습입니다.",
+            test2:"test2출력 부분"
+        }
+    });
+    let b = new Vue({ //두번째 그룹 (렌더링)
+        el:"#vue2", 
+        data:{
+            test2:"두번째 vue 출력 부분"
+        }
+    });
+    let c = new Vue({
+        el:"#vue3",
+        data:{
+            titles:"타이틀 출력 입니다.",
+            texts:"아이디를 입력하세요!",
+            btns:"로그인"
+        }
+    });
+</script>
+</html>

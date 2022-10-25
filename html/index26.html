@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<mate http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+<title>HTML5 신규태그 부분 (1차)</title>
+<style>
+    .box { width:100px; height:100px; background-color:yellowgreen;
+    display: block;
+    }
+</style>
+</head>
+<body>
+<!-- 
+    label : span기능을 모두 가지고 있으며, 
+    추가로 input을 컨트롤 할 수 있는 기능이 추가 되었습니다. 
+-->
+<input type="radio" id="a"><label for="a">동의함</label><br>
+<input type="checkbox" id="b"><label for="b">수신 동의 합니다.</label>
+<br><br>
+
+<label class="box"></label><br><br>
+<input type="radio" name="sms" id="cc">
+<label for="cc">SMS 수신 동의함</label>
+<input type="radio" name="sms" id="dd" checked>
+<label for="dd">SMS 수신 동의안함</label>
+<br><br>
+<!-- for, id는 중복사용이 어려움 전체 체크를 사용시
+Javascript 또는 Jquery를 이용해야만 적용 할 수 있음
+-->
+<input type="checkbox" id="aa" ><label for="aa">전체동의</label>
+<input type="checkbox" id="bb" ><label for="bb">회원정보공개</label>
+<input type="checkbox" id="qq" ><label for="qq">이메일 수신동의</label>
+<br><br>
+<input type="text">
+<!-- 반응형 (X) 모바일 전용 사이트-->
+<input type="number"> <!-- 숫자만 입력하는 사항-->
+<input type="color"> <!-- 색상을 선택하는 사항-->
+<br>
+<input type="date"> <!-- 날짜 입력 사항 -->
+<input type="time"> <!-- 시간 입력 사항 -->
+<input type="week"> <!-- 주를 입력 사항 -->
+<br>
+<input type="datetime-local"> <!-- 날짜+시간 -->
+<br>
+<input type="tel"> <!-- 전화번호 입력 사항 -->
+<br>
+<input type="email"> <!-- 이메일 입력 사항 -->
+<br>
+0<input type="range" min="1" max="9">9
+<!-- 입력사항에 대한 범위를 이용하여 선택하는 조절바 -->
+</body>
+
+</html>

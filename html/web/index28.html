@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(다함수 응용5)</title>
+<script>
+    function aaa(){
+        var a = document.getElementById("tn").value;
+        if(a==""){
+            alert("휴대폰 번호를 입력해 주셔야 합니다.");
+        }
+        else{
+            var b = a.length;   //length부분에서 숫자는 갯수를 파악하지 못함
+            if(b<10){
+                alert("정확한 휴대폰 번호를 입력해 주세요!");
+            }
+            else{
+                var c = document.getElementById("tc").value;
+                if(c==""){
+                    alert("통신사를 선택해 주셔야 합니다.");
+                }
+                else{
+                    switch(c){
+                        case "SKT":
+                        skt(a); //사용자가 입력한 휴대폰 번호 == a
+                        break;
+
+                        case "KT":
+                        kt(a);
+                        break;
+
+                        case "LGT":
+                        lgt(a);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+//SKT 휴대폰 번호 확인
+    function skt(b){
+        if(b=="0101234567"){
+            alert("번호 조회를 시작합니다.");
+        }
+        else{
+            alert("해당 사용자는 SKT 멤버가 이닙니다.");
+        }
+    }
+//LGT 휴대폰 번호 확인
+    function lgt(b){
+        if(b=="01022223333"){
+            alert("번호 조회를 시작합니다.");
+        }
+        else{
+            alert("해당 사용자는 LGT 멤버가 이닙니다.");
+        }
+    }
+//KT 휴대폰 번호 확인
+    function kt(b){
+        if(b=="01055556666"){
+            alert("번호 조회를 시작합니다.");
+            var return_msg = re(b); 
+            //re라는 함수 모두를 return_msg변수로 등록시킴
+            alert(return_msg);
+        }
+        else{
+            alert("해당 사용자는 KT 멤버가 이닙니다.");
+        }
+    }
+//변수의 종류 : 지역, 전역, 글로벌 변수
+//번호조회 결과에 따른 계정 결과값
+    function re(checks){    //checks가 사용자 번호
+        if(checks=="01055556666"){
+            var g = "해당 고객은 서비스 사용중 입니다.";
+            return g;   
+            //해당 결과값을 체크 한 후 다시 return_msg변수로 값을 돌려보냄
+        }
+    }
+</script>
+</head>
+<body>
+<select id="tc">
+    <option value="">통신사 선택</option>
+    <option value="SKT">SKT</option>
+    <option value="KT">KT</option>
+    <option value="LGT">LGT</option>
+</select>
+<input type="tel" maxlength="11" id="tn">
+<button type="button" onclick="aaa();">번호조회</button>
+</body>
+</html>

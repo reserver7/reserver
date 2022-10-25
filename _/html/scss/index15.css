@@ -1,0 +1,63 @@
+@charset "UTF-8";
+*, body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.box {
+  width: 300px;
+  height: 80px;
+  position: relative;
+  border: 1px solid black;
+  margin: 0 auto;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ckbox {
+  position: relative;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.ckbox:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid purple;
+  position: absolute;
+  background-color: white;
+  top: -6px;
+  left: -2px;
+}
+
+.ckbox:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -1px;
+  left: 4px;
+  color: purple;
+  font-size: 15px;
+}
+
+.ckbox:checked:after {
+  content: "✔";
+}
+/*# sourceMappingURL=index15.css.map */

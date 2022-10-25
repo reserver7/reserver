@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue5일차 - SVG이미지 컨트롤</title>
+<script src="./vue.js"></script>
+<style>
+    .svg-enter-active, .svg-leave-active{
+        transition: all 1s ease;
+    }
+    .svg-enter-active{
+        position: absolute;
+    }
+    .svg-enter, .svg-leave-to{
+        opacity: 0;
+        transform: translate(-30px);
+    }
+</style>
+</head>
+<body>
+<section id="box">
+    <button v-on:click="object">변경하기</button>
+    <!--ns란? nameserver의 약자 임-->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <transition name="svg">
+        <cat v-bind:fill="fill" v-bind:key="fill"></cat> 
+        <!-- v-bind:key : Vue에서 넘어온 값을 임시 저장하는 값 -->
+    </transition>
+    </svg>
+</section>
+</body>
+<script>
+    // v-bind:fill="fill"
+    Vue.component("cat",{
+        template:'<g><path v-bind:fill="fill" d="M14,12l-2,2l-2-2l2-2L14,12z M12,6l2.12,2.12l2.5-2.5L12,1L7.38,5.62l2.5,2.5L12,6z M6,12l2.12-2.12l-2.5-2.5L1,12 l4.62,4.62l2.5-2.5L6,12z M18,12l-2.12,2.12l2.5,2.5L23,12l-4.62-4.62l-2.5,2.5L18,12z M12,18l-2.12-2.12l-2.5,2.5L12,23l4.62-4.62 l-2.5-2.5L12,18z"/></g>',
+        props:{
+            fill:String //문자로 반환하는 부분입니다. Number 숫자만 반환
+        }
+    });
+    var a = new Vue({
+        el:"#box",
+        data:{
+            view:false
+        },
+        methods:{
+            object:function(){
+                this.view = !this.view;
+            }
+        },
+        computed:{
+            fill:function(){
+                /*
+                if(this.view==true){
+                    return "pink";
+                }
+                else{
+                    return "blue";
+                }
+                */
+                return this.view?"pink":"blue";
+            }
+        }
+    });
+</script>
+</html>

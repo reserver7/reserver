@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>css test7</title>
+<style>
+body { margin: 0; padding: 0; }
+    .box{
+        width: 200px; height: 450px; 
+        background-image: url("./1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .box > div:nth-child(1){
+        width: 200px; height: 150px; 
+        background-image: url("./2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover; margin-left: 200px;
+    }
+    .box > div:nth-child(2){
+        width: 200px; height: 150px; 
+        background-image: url("./3.jpg");
+        background-repeat: no-repeat;
+        background-size: cover; margin-left: 200px;
+    }
+    .box > div:nth-child(3){
+        width: 200px; height: 150px; 
+        background-image: url("./4.jpg");
+        background-repeat: no-repeat;
+        background-size: cover; margin-left: 200px;
+    }
+</style>
+</head>
+<body>
+<div class="box">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>

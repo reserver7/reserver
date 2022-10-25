@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equi="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>array배열3</title>
+<script>
+    var array = [
+        ["red","빨강"],
+        ["blue","파랑"],
+        ["green","녹색"],
+        ["yellow","노랑"],
+        ["pink","분홍"],
+        ["black","검정"]
+    ];
+    var arraynum = array.length;
+    var f;
+    var color = "white";
+    var ck = "1";   //임시변수
+    for(f=0;f<arraynum;f++){
+        if(array[f][0]==color){
+            alert("동일한 색상이 있습니다.");
+            ck = "2";
+        }
+        //document.write(array[f][0]+"<br>");
+    }
+    if(ck=="1"){
+        alert("해당 색상이 없습니다.");
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>

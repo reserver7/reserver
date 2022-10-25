@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>최종복습 (break - 해당 문구외에 더 이상 실행 시키지 않는다)</title>
+<script>
+    /*
+    var a;
+    for(a=1;a<=10;a++){
+        if(a<4){
+            document.write(a+"<br>"); 
+        }
+        else{
+            break;
+        }
+    }
+    */
+/* 
+반복문 : 구구단을 제작하시오. 2~9단까지 출력되는 구구단(더블 for,while)
+만약에 해당 반복문을 이용하여 사용자가 원하는 구구단 숫자를 입력하면
+해당 구구단만(break;) 출력되게 하세요
+ */
+
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<div id="box" name="box">
+
+</div>
+<input type="text" name="num" id="num" maxlength="1">
+<input type="button" value="출력" onclick="gugudan(2);">
+<input type="button" value="구구단 전체출력" onclick="gugudan(1);">
+</form>
+<script>
+    function gugudan(part){
+    if(part==2){
+        var nums = f.num.value;
+        if(nums==""){
+            alert("검색할 구구단 숫자 2~9중 하나를 입력하세요.");
+        }
+        else{
+            //문구작성 (break;)
+            document.getElementById("box").innerHTML="";
+        var i = 2;
+        var j;
+        var sum;
+        while(i<=9){
+            for(j=1;j<=9;j++){
+                sum = i * j;
+                if(nums==i){
+                    sum = nums * j;
+                    document.getElementById("box").innerHTML += nums+"*"+j+"="+sum+"<br>";
+                }
+            }
+            i++;
+        }
+    }
+    }
+    else{
+    var i = 2;
+    var j;
+    var sum;
+    while(i<=9){
+        for(j=1;j<=9;j++){
+            sum = i * j;
+            document.getElementById("box").innerHTML += i+"*"+j+"="+sum+"<br>";
+        }
+        i++;
+    }
+}
+}
+gugudan(1);
+</script>
+</body>
+</html>

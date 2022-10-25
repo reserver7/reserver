@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue4일차 - Vue component2</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<section id="box">
+    <snack v-text="btn"></snack>
+</section>
+<script>
+    Vue.component("snack",{ //컴포넌트는 외부 형태로 꾸민 후 html에 적용 되도록 함
+        template:"<button @click='aaa()'></button>",
+        methods:{   //컴포넌트에 methods를 이용하여 부모 파트의 함수로 전달 하도록 함
+            aaa:function(){
+                a.abc();    //Vue a라는 전역함수에서 abc라는 methods 파트로 전달함
+            }
+        }
+    });
+
+    var a = new Vue({
+        el:"#box",
+        data:{
+            btn:"클릭"
+        },
+        methods:{
+            abc:function(){
+                alert("test");
+            }
+        }
+    });
+</script>
+</body>
+</html>

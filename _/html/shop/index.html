@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<?
+    $v=date("YmdHis");
+?>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>쇼핑몰테스트</title>
+<script src="./js/jquery.js"></script>
+<link type="text/css" href="./css/index.css?v=<? echo $v; ?>" rel="stylesheet">
+<link type="text/css" href="./css/banner.css?v=<? echo $v; ?>" rel="stylesheet">
+<link type="text/css" href="./css/product.css?v=<? echo $v; ?>" rel="stylesheet">
+<script>
+    $(document).ready(function(){
+        $("#close").click(function(){
+            $("#topbanner").slideUp(1500);
+        });
+    });
+</script>
+</head>
+<body>
+    <!-- 탑 배너 -->
+    <section class="topbanner clear" id="topbanner">
+        <?php include "topbanner.html"; ?>
+    </section>
+    <!-- 최상단 메뉴 부분 -->
+    <header class="top clear">
+        <?php include "top.html"; ?>
+    </header>
+    <!-- 메뉴 및 로고, 검색-->
+    <nav class="clear nav">
+        <?php include "menu.html"; ?>
+    </nav>
+    <!-- 배너 -->
+    <section class="clear banner">
+        <?php include "banner.html"; ?>
+    </section>
+    <!-- 상품리스트 -->
+    <main class="main">
+        <section class="mainoutline">
+            <!-- 신규상품-->
+            <article>
+                <?php include "newproduct.html"; ?>
+            </article>
+            <!-- 인기상품-->
+            <article>
+                <?php include "bestproduct.html"; ?>
+            </article>
+        </section>
+    </main>
+    <!-- 카피라이터 -->
+    <footer></footer>
+
+    <!--
+    <input type="text" class="testinput" maxlength="20">
+    -->
+</body>
+</html>

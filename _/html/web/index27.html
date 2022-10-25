@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(다함수 응용4)</title>
+<script>
+    function aaa(){   //검토 if
+        var a = Number(document.getElementById("num1").value);
+        var b = Number(document.getElementById("num2").value);
+        if(a>b){
+            alert("시작값이 종료값보다 작아야 합니다.");
+        }
+        else if(a==b){
+            alert("동일한 숫자는 사용할 수 없습니다.");
+        }
+        else{
+            bbb(a,b);
+        }
+    }
+    function bbb(j,k){  //반복문
+        //alert(typeof(j));
+        /*
+        var c=0;
+        while(j<=k){
+            c = c + j;
+            j++;
+        }  document.write(c);
+        */
+        var c=null; //null를 typeof로 찍게 되면 object (number,string)
+        //alert(typeof(c));
+        var d;
+        for(d=j;d<=k;d++){
+            c = c + d;
+        }
+        document.write(c);
+    }
+</script>
+<!--
+    응용문제2.
+    사용자가 시작값과 종료값을 입력
+    단, 종료값이 시작값 보다 적으면 안됨 (조건)
+    해당 두값이 모두 맞을 경우 반복문을 통해 시작값~종료값까지 모두 더한
+    반복문을 작성하여 최종 결과값만 출력 되도록 합니다.
+    * 중요사항 반복문 처리 하는 사항은 다른 함수(function)을 이용
+    반복문은 free
+-->
+</head>
+<body>
+<!-- type(number) : maxlenght(x) 대체하는 속성은 min, max를 이용 -->
+<input type="number" id="num1" placeholder="시작값" min="0" max="99">
+<input type="number" id="num2" placeholder="종료값" min="0" max="99">
+<input type="button" value="계산하기" onclick="aaa();">
+</body>
+</html>

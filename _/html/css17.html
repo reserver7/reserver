@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>CSS3 FLEX 중,상급2</title>
+<style>
+    body{ margin: 0; padding: 0;}
+    .top{ 
+        margin: 0 auto; width: 420px; height: 40px; border: 1px solid red;
+        display: flex; flex-direction: row; justify-content: space-between;
+        align-items: center; box-sizing: border-box;
+    }
+    .span1{
+        width: 30px; height: 30px; background-color: orange;
+        margin-left: 5px;
+    }
+    .span2{
+        width: 200px; height: 30px; background-color: green;
+    }
+    .span3{
+        width: 30px; height: 30px; background-color: purple;
+        margin-right: 5px;
+    }
+    .ulcss{
+        list-style: none; padding: 0; box-sizing: border-box;
+        margin: 0 auto; width: 420px; height: 500px; border: 1px solid black;
+        display: flex; flex-direction: column; justify-content: center;
+        align-items: center;
+    }
+    .ulcss >li { box-sizing: border-box;
+        width: 250px; height: 40px; background-color: cornflowerblue;
+        border: 1px dashed black; display: flex; flex-direction: row;
+        align-items: center; justify-content: flex-end; padding-right: 5px;
+    }
+    .ulcss >li>label{
+        width: 20px; height: 20px; background-color: orange;
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="top">
+        <span class="span1"></span>
+        <span class="span2"></span>
+        <span class="span3"></span>
+    </div>
+</header>
+<section>
+    <ul class="ulcss">
+        <li>
+            <label></label>
+        </li>
+        <li>
+            <label></label>
+        </li>
+        <li>
+            <label></label>
+        </li>
+        <li>
+            <label></label>
+        </li>
+    </ul>
+</section>
+</body>
+</html>

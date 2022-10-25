@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 7일차 파라미터 한글 값 복원</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            f.method = "GET";
+            f.action = "./index37.html";
+            f.enctype="application/x-www-form-urlencoded";  //모든 데이터를 암호화 해서 보냄
+            f.submit();
+        });
+
+        var $name = "서울특별시 종로구 종로3가 14-21";
+        //encode, decode : 암호화 코드를 해석하는 함수
+        //encodeURIComponent & decodeURIComponent
+        //URL : 홈페이지 주소
+        //URI : URL + URN을 통칭하는 말 (파라미터값도 포함)
+        //URN : 인터넷에 있는 파일 식별번호 (port 번호 ex.21, 80, 8001 등등)
+        var $encode = encodeURI($name); //$name 값을 암호화
+        var $decode = decodeURI($encode);   //암호화 된 $name 값을 풀어줌
+        document.write($decode);
+
+
+
+
+        //var $c = location.search;
+        //if($c!=""){
+            //var $d = $c.split("pnm=");
+            //document.write(decodeURI($d[1]));
+        //}
+        
+    });
+</script>
+<style>
+        
+</style>
+</head>
+<body>
+<form name="f" id="f">
+<input type="text" id="pnm" name="pnm">
+<input type="button" value="전송" id="btn">
+</form>
+</body>
+</html>

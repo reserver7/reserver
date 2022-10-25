@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-copatible" content="IE=Edge, chrome=1">
+<title>Ul, Ol 추가옵션 + TABLE HTML5</title>
+<link type="text/css" href="./css5.css?v=1" rel="stylesheet">
+</head>
+<body>
+<!-- 
+list-style-type (각 li형태 모양 설정)
+circle: 비어있는 디스크 모양
+square: 사각형 모양 
+decimal: 숫자 형태로 출력
+-->
+<ul style="list-style-type:square;">
+    <li>목록1</li>
+    <li>목록2</li>
+</ul>
+<ol type="1" start="5">
+    <li>목록1</li>
+    <li>목록2</li>
+</ol>
+<!-- 
+type: 1, A, i ( ul은 할 수 없음)
+start: 숫자 카운터를 조절 할 수 있습니다.
+-->
+<table border="1" style="width:500px;">
+    <caption>년도별 취업현황</caption> <!-- caption: 테이블 타이틀 -->
+    <thead> <!-- thead: 테이블 각 파트별 제목 (th 만)-->
+    <tr>
+        <th>2016</th> <!-- td : 칸, th : 제목 칸(bold, center 로 잡힘) -->
+        <th>2017</th>
+        <th>2018</th>
+        <th>2019</th>
+        <th>2020</th>
+    </tr>
+    </thead>
+    <tdody> <!-- 테이블 데이터 값 파트 (th,td)-->
+        <tr>
+            <td>80%</td>
+            <td>50%</td>
+            <td>20%</td>
+            <td>70%</td>
+            <td>40%</td>
+        </tr>
+    </tdody>
+    <tfoot> <!-- 테이블 결과 파트 (th,td) -->
+        <tr>
+            <th colspan="5">해당 정보는 000 민간 서치 기업에서 조사함.</th>
+        </tr>
+    </tfoot>
+</table>
+<br><br>
+<!-- 추가 테이블 -->
+<table border="1" style="width:400px; height:200px;">
+    <caption>행, 열 개수 셋팅법</caption>
+    <colgroup> <!-- colspan 보다 쉽게 적용하기 위해 나온 HTML5 태그-->
+    <col style="background-color: yellow;"> 
+<!-- td 갯수에 맞춰서 컨트롤 할 수 있는태그-->
+    <col span="2" style="background-color: green;">
+<!-- span 속성을 사용하게 되면, td의 범위 만큼 스타일을 적용할 수 있습니다.-->
+    <col>
+    </colgroup>
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+</table>
+
+</body>
+</html>

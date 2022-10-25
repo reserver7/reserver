@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatibel" content="IE=Edge, chrome=1">
+<title>CSS3 노드 차이 - 중,상급</title>
+<style>
+    .box { width: 400px; height: 500px; border: 1px solid red; }
+    /*#box > p:nth-child(3) { color: red; }*/
+    #box > p:nth-of-type(3) { color: red; }
+
+    /* nth-of-type : 해당 태그를 복합적으로 사용하였을 경우
+    정확한 노드 값을 가져오고 싶을 때 사용 함
+    */
+</style>
+</head>
+<body>
+    <div class="box" id="box">
+        <p>메뉴1</p>
+        <span>메뉴2</span>
+        <p>메뉴3</p>
+        <span>메뉴4</span>
+        <p>메뉴5</p>
+        <span>메뉴6</span>
+    </div>
+</body>
+</html>

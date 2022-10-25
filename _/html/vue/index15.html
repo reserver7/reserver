@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue4일차 - 노드삭제+추가2</title>
+<script src="./vue.js"></script>
+<script>
+    function vueload(){
+        const arr = [{mname:"홍길동"},{mname:"유관순"},{mname:"강감찬"},{mname:"이순신"},{mname:"안중근"}];
+        let a = new Vue({
+            el:"#box",
+            data:{
+                arrays:arr,
+                btn:"클릭"
+            },
+            methods:{
+                node_modify:function(){
+                    //this.arrays.shift(); //제일 상단에 있는 노드만 삭제
+                    //this.arrays.unshift({mname:"세종대왕"}); //제일 상단에 있는 노드에 추가
+                    //this.arrays.push({mname:"세종대왕"});    //제일 하단에 있는 노드에 추가
+                    this.arrays.pop(); //제일 하단에 있는 노드만 삭제
+                }
+            }
+        });
+    }
+
+</script>
+<style>
+    body{ margin: 0; padding: 0; line-height: 1; box-sizing: border-box;}
+    #box2{ height: auto; }
+    #box2 > ul{
+        width: 100%; height: auto; list-style: none; margin: 0; padding: 0;
+        display: flex; flex-direction: row;
+    }
+    #box2 > ul >li{
+        width: 80px; height: 50px; background-color: rgb(75, 118, 196);
+        text-align: center; line-height: 50px; color: #fff;
+        border: 1px solid rgb(146, 145, 145); box-sizing: border-box;
+    }
+    #box2 > ul >li:nth-of-type(2){ width: 220px; }
+    #box2 > ul >li:nth-of-type(3){ width: 300px; }
+    #box2 > ul >li:nth-of-type(5){ width: 240px; }
+    #box2 > ol {
+        width: 100%; height: auto; list-style: none; margin: 0; padding: 0;
+        display: flex; flex-direction: row;
+    }
+    #box2 > ol >li{
+        width: 80px; height: 40px; background-color: #e8f0fa; text-align: center; line-height: 40px;
+        border: 1px solid rgb(146, 145, 145); box-sizing: border-box;  
+    }
+    #box2 > ol >li:nth-of-type(2){ width: 220px; }
+    #box2 > ol >li:nth-of-type(3){ width: 300px; }
+    #box2 > ol >li:nth-of-type(5){ width: 240px; }
+    .btn{
+        width: 120px; height: 40px; background-color: cornflowerblue;
+        color: #fff; text-align: center; line-height: 40px;
+        border: 0; margin-top: 20px;
+    }
+</style>
+<body onload="vueload();">
+<section id="box">
+    <ul>
+        <li v-for="(list,index) in arrays" v-text="list.mname"></li>
+    </ul>
+    <input type="button" v-model="btn" v-on:click="node_modify();">
+</section>
+<br><br>
+<!-- 응용문제1. 해당 사용자 정보를 출력하는 페이지를 작서하며, 
+     멤버 추가 및 삭제가 되도록 하시오
+-->
+<section id="box2">
+    <ul>
+        <li>NO</li>
+        <li>이름</li>
+        <li>이메일</li>
+        <li>성별</li>
+        <li>접속IP</li>
+    </ul>
+    <!-- 데이터 출력 파트-->
+    <ol v-for="f,index in m_list">
+        <li v-text="f.id"></li>
+        <li>{{ f.first_name }} {{ f.last_name }}</li>
+        <li v-text="f.email"></li>
+        <li v-text="f.gender"></li>
+        <li v-text="f.ip_address"></li>
+    </ol>
+    <input class="btn" type="button" v-model="add_btn" v-on:click="member_add()">
+    <input class="btn" type="button" v-model="del_btn" v-on:click="member_del()">
+</section>
+</body>
+<script>
+const members = [{
+  "id": 1,
+  "first_name": "Jeanette",
+  "last_name": "Penddreth",
+  "email": "jpenddreth0@census.gov",
+  "gender": "Female",
+  "ip_address": "26.58.193.2"
+}, {
+  "id": 2,
+  "first_name": "Giavani",
+  "last_name": "Frediani",
+  "email": "gfrediani1@senate.gov",
+  "gender": "Male",
+  "ip_address": "229.179.4.212"
+}, {
+  "id": 3,
+  "first_name": "Noell",
+  "last_name": "Bea",
+  "email": "nbea2@imageshack.us",
+  "gender": "Female",
+  "ip_address": "180.66.162.255"
+}];
+const members_plus=[{
+  "id": 4,
+  "first_name": "Willard",
+  "last_name": "Valek",
+  "email": "wvalek3@vk.com",
+  "gender": "Male",
+  "ip_address": "67.76.188.26"
+}];
+//html 태그 {{}} 절대 사용안됨, 배열 부분 수정을 하면 안됨
+    let list = new Vue({
+        el:"#box2",
+        data:{
+            m_list:members,
+            m_plus:members_plus,
+            add_btn:"추가",
+            del_btn:"삭제"
+        },
+        methods:{
+            member_add:function(){
+                this.m_list.push(this.m_plus[0]);
+            },
+            member_del:function(){
+                this.m_list.shift();
+            }
+        }
+    });
+</script>
+</html>

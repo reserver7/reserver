@@ -1,0 +1,90 @@
+{
+    "datas" : [
+        {
+    "1" : [
+        {
+            "seoul":114,
+            "gyeonggi":32,
+            "city":41
+        }
+    ],
+    "2" : [
+        {
+            "seoul":93,
+            "gyeonggi":27,
+            "city":16
+        }
+    ],
+    "3" : [
+        {
+            "seoul":67,
+            "gyeonggi":14,
+            "city":7
+        }
+    ],
+    "4" : [
+        {
+            "seoul":45,
+            "gyeonggi":12,
+            "city":8
+        }
+    ],
+    "5" : [
+        {
+            "seoul":28,
+            "gyeonggi":8,
+            "city":11
+        }
+    ],        
+    "6" : [
+        {
+            "seoul":16,
+            "gyeonggi":6,
+            "city":19
+        }
+    ],
+    "7" : [
+        {
+            "seoul":32,
+            "gyeonggi":11,
+            "city":9
+        }
+    ],        
+    "8" : [
+        {
+            "seoul":49,
+            "gyeonggi":9,
+            "city":16
+        }
+    ],
+    "9" : [
+        {
+            "seoul":34,
+            "gyeonggi":6,
+            "city":3
+        }
+    ],        
+    "10" : [
+        {
+            "seoul":21,
+            "gyeonggi":4,
+            "city":7
+        }
+    ],        
+    "11" : [
+        {
+            "seoul":19,
+            "gyeonggi":6,
+            "city":17
+        }
+    ],
+    "12" : [
+        {
+            "seoul":7,
+            "gyeonggi":2,
+            "city":16
+        }
+    ]
+        }
+        ]
+}

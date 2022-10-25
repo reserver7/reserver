@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(셀렉트 컨트롤)</title>
+<script>
+    function abc(){
+        var a = document.getElementById("tels").value;
+        if(a=="통신사 선택"){
+            alert("통신사를 선택해 주셔야 합니다.");
+        }
+        else{
+            alert("보안코드 4자리 입력 바랍니다.");
+        }
+    }
+
+    function bbb(){
+        var aa = document.getElementById("email2").value;
+        document.getElementById("email").value = aa;
+    }
+</script>
+</head>
+<body>
+<!-- 
+    select는 option과 함께 사용 추가로 Javascript에서는 무조건
+    value를 확인 하게 됨 단, value값이 없을 경우는 데이터 전송 못함
+    
+    datalist에 사용되는 option은 셀렉트와 다른 성향임 
+    동일한 형태를 가지지 않음
+-->
+<select id="tels">
+    <option>통신사 선택</option>    
+<!-- 
+    value="" if문에 반영이됨 단, 위와 같이 value가 없을 경우는
+    option태그 사이에 있는 단어 전체를 if문에 사용해야 함 
+-->
+    <option value="SKT">SKT</option>
+    <option value="KT">KT</option>
+    <option value="LGT">LGT</option>
+</select>
+<input type="button" value="인증번호 받기" onclick="abc();">
+<br><br>
+<!-- select와 input 결합 -->
+<!-- onclick, onsubmit, onchange, onkeypress-->
+<!-- 
+     onchange : 거의 select 태그에 많이 사용이 되며, 사용자가 직접 선택한
+     값을 Javascript로 보내게 됨 
+-->
+<input type="text" id="email">
+<select id="email2" onchange="bbb();">
+    <option value="hanmail.com">hanmail.com</option>
+    <option value="hotmail.com">hotmail.com</option>
+    <option value="naver.com">naver.com</option>
+    <option value="nate.com">nate.com</option>
+    <option value="" selected>직접입력</option> 
+                <!-- selected 제일 상단에 표시 -->
+</select>
+<!--
+    function abc(){
+
+    }
+    function abc(a){
+
+    }
+    function abc(a,b){
+        
+    }
+    onclick, onsubmit, onchange
+    value
+    <form> = onsubmit
+    form 사용시 주의사항 return false 사용해야 함
+
+    radio, checkbox 사용시
+    document.getElementById("b").checked  (true, false 확인)
+    id 중복이 절대 되면 안됨
+
+    f.tf[0].checked 노드사용 방법 0부터 카운터 css는 1부터 카운터
+
+-->
+</body>
+</html>

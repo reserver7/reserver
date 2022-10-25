@@ -1,0 +1,34 @@
+@charset "utf-8";
+body { margin:0; padding:0;}
+span,label { display: block;}
+.clear{
+    clear: both;
+}
+.product{
+    width:250px; height:auto; border: 1px solid #cccccc;
+    padding: 5px;box-sizing: border-box; cursor: pointer;
+}
+.product>dl{
+    width:100%; height:auto;
+    margin: 0; padding: 0;
+    
+}
+.product>dl>dt{
+    width:250px; height:200px;
+    background-image: url("./product/product.jpg");
+    background-repeat: no-repeat; background-size: 95%;
+}
+.product>dl>dd{
+    margin: 0; padding: 0; text-align: center;
+    font-weight: bold; font-size:17px; width:100%; height:60px;
+    border: 1px solid red;
+    display: table-cell; vertical-align: middle;
+}
+.product>dl>dd:nth-child(3){
+    width:100%; height:30px; line-height:30px;
+    margin:0; padding:0; font-size:15px;
+    color: red;
+}
+.product>dl>dd:nth-child(2){
+    font-weight: unset;
+}

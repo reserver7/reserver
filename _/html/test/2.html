@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+ const arr = [
+     {"이순신":"61점"},
+     {"홍길동":"88점"},
+     {"강감찬":"100점"},
+     {"유관순":"22점"},
+     {"이성계":"78점"},
+     {"김유신":"94점"},
+ ];
+ /* 출력시 높은 점수 순으로 출력 되게끔 하십시오 */
+    arr.forEach(function(a1,a2,a3){
+        var a = Object.keys(arr[a2]);
+        var b = a1[a].split("점");
+        var c = [2,5,1,4,0,3];
+        console.log(arr[c[a2]]);
+        //console.log(arr[c[a2]]);
+    });
+
+</script>

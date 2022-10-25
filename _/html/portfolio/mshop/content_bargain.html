@@ -1,0 +1,57 @@
+<style>
+	.content_bargain_outline { width:330px; height:245px; margin:15px auto 0 auto; }
+	.e-outline{clear:both; width:360px; height:auto; }
+	.e-banner{width:330px; height:120px; margin-bottom:15px; }
+	.e-sobanner{width:100%;}
+	.e-sobanner ul{list-style:none; margin:0; padding:0; width:330px; 
+    display: flex; justify-content: space-between;}
+	.e-sobanner ul li{height:110px; float:left; }
+	.e-soli{width:100px; }
+	.e-blank { width:15px; }
+</style>
+
+<div class="content_bargain_outline" id="content_bargain_outline">
+	<bye class="e-banner"></bye>
+	<div class="e-sobanner">
+		<ul>
+            <hello v-for="list,index in sobanner" :img="list.img" :url="list.url"></hello>
+		</ul>
+	</div>
+</div>
+<script>
+const array=[
+        {"img":"./img/sobanner1.png","url":"http://m.www.bluepops.co.kr/product/list.html?cate_no=747"},
+        {"img":"./img/sobanner2.png","url":"http://m.www.bluepops.co.kr/product/list_thumb.html?cate_no=46"},
+        {"img":"./img/sobanner3.png","url":"http://m.www.bluepops.co.kr/product/list_thumb.html?cate_no=559"},
+    ];
+
+Vue.component("hello",{
+    props:["img","url"],
+    template:"<li @click='img_ck(url)' class='e-soli'><img :src='img'></li>",
+    methods:{
+        img_ck:function(url){
+            location.href = url;
+        }
+    }
+
+});
+
+var ebanner = {
+    template:"<div><img src='./img/sobanner.png' @click='ebanner'></div>",
+    methods:{
+        ebanner:function(){
+            window.open("http://m.www.bluepops.co.kr/product/list.html?cate_no=749");
+        }
+    }
+}
+
+let li = new Vue({
+    el:"#content_bargain_outline",
+    data:{ 
+        sobanner:array
+    },
+    components:{
+        "bye":ebanner
+    }
+});
+</script>

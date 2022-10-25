@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue4일차 - 노드삭제+추가</title>
+<script src="vue.js"></script>
+</head>
+<script>
+        function abc(){
+        
+        //const arr = ["홍길동","유관순","강감찬","이순신","안중근"]; //키가 없는 배열
+        const arr = [{mname:"홍길동"},{mname:"유관순"},{mname:"강감찬"},{mname:"이순신"},{mname:"안중근"}];
+        //const arr = [{mname:"홍길동",nick:"hong",id:1},{mname:"강감찬",nick:"kang",id:0}];
+        //vue key를 사용하기 위해서는 배열에 중복 되지 않는 
+        //데이터 키가 있을 경우에만 사용할 수 있습니다. (숫자만 사용합니다.)
+
+        const arr2 = [{mname:"김유신"},{mname:"왕건"}];
+
+        let a = new Vue({
+            el:"#box",
+            data:{
+                datas:arr,
+                btn:"추가하기",
+                datas2:arr2
+            },
+            methods:{
+                node_delete:function(node){
+                    //this.$delete(this.datas, node);   //index값으로 삭제가 가능 (v1.x)
+                    //this.datas.splice(this.datas.indexOf(node), 1); //name값으로 삭제가 가능
+                    //this.datas.splice(node, 1); //index값으로 삭제가 가능
+                    //Vue.delete(this.datas, node);   //index값으로 삭제가 가능 (v2.x)
+                },
+                node_add:function(){
+                    //this.datas.splice(1,0,{mname:"세종대왕"});
+                    //splice() = 추가,삭제,수정 (리스트 노드번호, 노드번호 기준, 추가할 데이터)
+                    //(1,0,"") = 1번노드에서 앞에 삭제하지 말고 추가
+                    //(1,1,"") = 1번노드에서 앞에 1번노드를 삭제하고 추가
+                    //this.datas.splice(0,0,this.datas2[0]);
+                    
+                    var w=0;
+                    var ea = this.datas2.length;
+                    while(w<ea){
+                        this.datas.splice(0,0,this.datas2[w]);
+                        w++;
+                    }
+                    console.log(ea);
+                    
+                    var f;
+                    for(f in this.datas2){
+                        this.datas.splice(0,0,this.datas2[f]);
+                    }
+                }
+            }
+        });
+        
+        }
+</script>
+<body onload="abc();">  <!-- html을 다 읽은 후 abc펑션을 작동시킴 -->
+<section id="box">
+    <ul>
+        <li v-for="(name,index,key) in datas" v-text="name.mname" @click="node_delete(name)"></li>
+    </ul>
+    <input type="button" v-model="btn" @click="node_add()">
+</section>
+</body>
+</html>
+<!--
+    v-for : 리스트 출력
+
+    [v-for] 1개 : 1차원배열, 2차원 배열 : 키 값이 없을 경우(대표)
+    [v-for] 2개 : 2차원배열, 다차원 배열 : 키 값이 있을 경우(대표)
+
+    변이 메소드
+    splice()
+-->

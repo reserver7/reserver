@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>Javascript - 84p(부가사항17)</title>
+<script>
+/*
+    응용문제20
+    다음과 같이 데이터가 존재 합니다.
+    고객 데이터는 다음과 같습니다.
+    홍길동,이순신,강감찬,유관순,유리왕,김구
+
+    해당 사용자만 출력 하시오.
+    강감찬
+    유리왕
+*/
+    var a = ["홍길동","이순신","강감찬","유관순","유리왕","김구"];
+    var b = a.length;
+    var c;
+    for(c=0; c<b; c++){
+        if(c%2==0){ // var d = c % 2; // d==0 && d>0
+            if(c>0){
+                document.write(a[c]+"<br>");
+            }
+        } 
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>

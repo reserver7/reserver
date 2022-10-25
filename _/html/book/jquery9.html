@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery9 (함수핸들링)</title>
+<script src="../jquery/jquery.js"></script>
+<script>
+    function abc(){
+        var a = 8;
+        var b;
+        var c;
+            for(b=1;b<=9;b++){
+                c = a * b;
+                document.write(a+"*"+b+"="+c+"<br>");
+            }
+    }
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            $.fn.abc();
+        });
+
+        $.fn.abc = function(){
+            var $a = 5;
+            var $b;
+            var $c;
+            for($b=1;$b<=9;$b++){
+                $c = $a * $b;
+                document.write($a+"*"+$b+"="+$c+"<br>");
+            }
+        };
+
+        $("#btn2").click(function(){
+            abc();
+        });
+
+        $("#btn3").click(function(){
+            var $a = $("#mid").val();
+            if($a==""){
+                alert("값을 입력해 주세요.");
+            }
+            else{
+                var $re = $.fn.bbb($a);
+                if($re!=""){    //밑에 펑션에서 else 가 아닐경우
+                    alert($re); //"7자리 이상 입력해 주세요" 경고창을 띄워라
+                }
+            }
+        });
+        $.fn.bbb = function($re){
+            var $msg = "";
+            if($re.length<7){
+               $msg = "7자리 이상 입력해 주세요";
+            }
+            else{
+                $msg = "";
+            }
+            return $msg;
+        }
+    });
+</script>
+</head>
+<body>
+<input type="button" value="구구단 5단" id="btn">
+<input type="button" value="구구단 8단" id="btn2">
+<input type="text" id="mid">
+<input type="button" value="체크" id="btn3">
+<!--
+    btn3 클릭시 mid사용자가 입력하는 값 유/무 체크 한 후
+    입려시 7자리 이상 입력 되었는지 확인 하는 return을 만드시오
+    jquery bbb 함수를 사용
+-->
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (1일차) - Javascript(상수)</title>
+<script>
+    var a = "abcd"; //변수 (이름 중복사용O, 값 변경O)
+    var a = "bbbb";
+
+    let b = "abcd"; //재할당 변수 (이름 중복사용X, 값 변경O) - IE11 이하는 작동안됨
+    b = "bbbb";
+
+    const c = "abcd"; //IE11 이하는 작동안됨
+    //상수는 절대 변하지 않는 값 (이름 중복사용X, 값 변경X)
+    //상수는 이름 생성 및 값이 동시에 들어가야 함
+    let aa = 5;
+    let bb = 10;
+    let cc = aa * bb;
+    console.log(cc);
+
+    /*
+    let bb;
+    function abc(){
+        var bb = "123";
+        console.log(bb);
+    }
+    function bbb(){
+        bb = "abcd";
+    }
+    abc();
+    */
+</script>
+</head>
+<body>
+
+</body>
+</html>

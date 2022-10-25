@@ -1,0 +1,340 @@
+@charset "UTF-8";
+/* 서브페이지 기본 셋팅 부분 */
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+@mixin font($family,$fweight,$fsize,$fcolor) {
+    //(font-weight 100,300,400,500,700,900)
+    $fontfamily:"";
+    @if($family=="noto"){
+        $fontfamily: 'Noto Sans KR', sans-serif;
+    }
+    @else if($family=="pen"){
+        $fontfamily: 'Nanum Pen Script', cursive;
+    }
+    @else if($family=="big"){
+        $fontfamily: 'Big Shoulders Stencil Display', cursive;
+    }
+    @else if($family=="gothic"){
+        $fontfamily: 'Nanum Gothic', sans-serif;
+    }
+    @else if($family=="open"){
+        $fontfamily: 'Open Sans', sans-serif;
+    }
+    font-family: $fontfamily; 
+    font-weight: $fweight;
+    font-size: $fsize+px; 
+    color: $fcolor;
+}
+@mixin subpage {
+    height: auto;
+    @include font("noto",400,14,rgb(51,51,51));
+}
+@mixin flex($flexpart,$just,$direct,$items,$wrap,$content) {
+    display: flex; 
+    justify-content: $just;
+    flex-direction: $direct;
+    align-items: $items;
+    @if($flexpart==1){
+        flex-wrap: $wrap;
+        align-content: $content;
+    }
+}
+@mixin sizes($div_width,$div_height,$div_margin,$div_padding,$div_border) {
+    width: $div_width; height: $div_height;
+    @if($div_margin=="auto"){
+        margin: 0 auto;
+    }
+    @else{
+        margin: $div_margin;
+    }
+    padding: $div_padding; border: $div_border;
+}
+@mixin position($ps) {
+    @if($ps=="ab"){
+        position: absolute;
+    }
+    @else if($ps=="re"){
+        position: relative;
+    }
+    @else if($ps=="fi"){
+        position: fixed;
+    }
+}
+@mixin bg($ap,$bgcolor,$bgurl) {
+    @if($ap==0){
+        background-color: rgba($bgcolor);
+    }
+    @else if($ap==1){
+        background-color: $bgcolor;
+    }
+    @else if($ap==2){
+        background-image: url($bgurl);
+        background-repeat: no-repeat;
+    }
+}
+.section_subpage{
+    @include subpage;
+}
+em { font-style: normal; font-weight: 800; }
+.goods_outline{
+    @include sizes(1100px,auto,auto,0,0);
+    margin-top: 80px;
+    margin-bottom: 80px;
+    display: flex; 
+}
+.goods_img_outline,.goods_title{
+    @include sizes(50%,800px,0,20px,"");
+}
+.goods_img_outline{
+    @include flex(1,center,row,space-around,wrap,space-around);
+}
+.goods_img_outline>.goods_top{
+    @include sizes(500px,500px,0,0,""); overflow: hidden;
+    &>img{ @include sizes(500px,auto,0,0,""); object-fit: contain; }
+}
+.goods_img_outline>.goods_bottom{
+    @include sizes(500px,70px,0,0,"");
+    @include flex(0,space-between,row,center,"","");
+    @for $svg from 1 to 3{
+        &>span:nth-of-type(#{$svg}){
+            @include sizes(20px,20px,0,0,""); cursor: pointer;
+            @if($svg==1){ @include bg(2,"","../images/gv-prev.png");}
+            @else{ @include bg(2,"","../images/gv-next.png"); }
+        }
+    }
+    &>ul{
+        @include sizes(460px,70px,0,0,"");
+        @include flex(0,center,row,center,"","");
+        &>li{
+            @include sizes(70px,70px,0,0,""); margin-left: 20px; cursor: pointer;
+            &>img{ @include sizes(70px,70px,0,0,""); object-fit: cover; }
+        }
+    }
+}
+.goods_title{
+    padding-left: 40px;
+    &>.goods_subject{
+        @include sizes(470px,30px,0,0,""); border-bottom: 1px solid #ccc;
+        @include flex(0,space-between,row,center,"",""); margin-top: 15px; padding-bottom: 5px;
+        @include position("re");
+        &>label:nth-of-type(1){
+            @include font("noto",700,16,"");
+            letter-spacing: 0.5px;
+        }
+        &>label:nth-of-type(2){ 
+            @include sizes(60px,25px,0,0,1px solid #ccc);
+            @include font("gothic",500,13,""); cursor: pointer;
+            @include bg(1,#eee,"");
+            letter-spacing: 0.5px; text-align: center; line-height: 22px;
+        }
+        &>label:nth-of-type(2):after{
+            content: "";
+            @include sizes(15px,15px,0,0,"");
+            @include bg(2,"","../images/arrow_down.svg");
+            @include position("ab");
+            background-repeat: no-repeat; background-size: 100%;
+            display: inline-block; top: 3px;
+        }
+        &>label:nth-of-type(2):hover{ @include bg(1,#444,""); color: #fff; }
+    }
+    &>.goods_info{
+        @include sizes(470px,auto,0,0,"");
+        &>ol{ @include sizes(100%,auto,0,0,""); 
+            &>li{
+                @include sizes(100%,auto,0,0,"");
+                @include flex(0,center,row,center,"",""); margin-top: 15px;
+                @include position("re");
+                &>label{
+                    @include sizes(80px,25px,0,0,"");
+                    @include flex(0,flex-start,row,center,"","");
+                    @include font("gothic",600,13,"");
+                    padding-left: 5px;
+                }
+                &>span{
+                    @include sizes(410px,25px,0,0,"");
+                    @include flex(0,flex-start,row,center,"","");
+                    @include font("gothic",400,12,"");
+                    &>label{
+                        padding-left: 10px;
+                    }
+                }
+            }
+            &>.goods_delivery > span> button{
+                @include sizes(100px,25px,0,0,1px solid #ccc);
+                @include bg(1,#eee,"");
+                margin-left: 20px; cursor: pointer;
+            }
+            &>.goods_delivery > span> button:after{
+                content: "";
+                @include sizes(15px,15px,0,0,"");
+                @include position("ab");
+                @include bg(2,"","../images/arrow_down.svg");
+                background-repeat: no-repeat; background-size: 100%;
+                display: inline-block; top: 5px;
+            }
+            &>.goods_delivery > span> button:hover{ @include bg(1,#444,""); color: #fff; }
+        }
+    }
+}
+.goods_option{
+    @include sizes(100%,auto,0,0,""); 
+    @include flex(0,flex-start,row,center,"","");
+    border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;
+    margin-top: 15px; padding: 25px 0 15px 0;
+    &>label{
+        @include sizes(80px,25px,0,0,"");
+        @include flex(0,flex-start,row,center,"","");
+        @include font("gothic",600,13,"");
+        padding-left: 5px;
+    }
+    &>span{
+        @include flex(0,flex-start,row,center,"","");
+        &>select{
+            @include sizes(390px,25px,0,0,"");
+            @include font("gothic",400,12,""); 
+            padding-left: 5px; cursor: pointer;
+        }
+        &>#product_ea{
+            @include sizes(100px,25px,0,0,"");
+            padding-left: 5PX;
+        }
+        &>em{
+            @include font("gothic",400,12,""); padding-left: 5px;
+        }
+    }
+}
+.goods_total{
+    @include sizes(470px,auto,0,0,"");
+    @include flex(0,flex-start,row,center,"",""); margin-top: 10px;
+    &>label{
+        @include sizes(80px,25px,0,0,"");
+        @include flex(0,flex-start,row,center,"","");
+        @include font("gothic",600,13,"");
+        padding-left: 5px;
+    }
+    &>span{
+        @include sizes(410px,25px,0,0,"");
+        @include flex(0,flex-start,row,center,"","");
+        @include font("gothic",800,20,tomato); padding-left: 5px;
+    }
+}
+.goods_btn{
+    @include sizes(100%,auto,0,0,"");
+    @include flex(0,space-between,row,center,"","");
+    padding-top: 50px;
+    &>button{
+        @include sizes(130px,55px,0,0,0);
+        @include bg(1,#ddd,"");
+        @include font("gothic",600,13,"");
+        cursor: pointer;
+    }
+    &>button:first-child{
+        @include sizes(150px,55px,0,0,0);
+        @include bg(1,rgb(87, 85, 85),"");
+        @include font("gothic",600,13,#fff);
+    }
+    &>button:first-child:hover{
+        @include bg(1,rgb(73, 72, 72),"");
+    }
+}
+
+.product_dtc{
+    @include sizes(1100px,auto,auto,0,""); padding-bottom: 100px;
+    &>.product_box{
+        @include sizes(100%,auto,0,0,"");
+        &>ul{
+            @include sizes(100%,auto,0,0,"");
+            @include flex(0,center,row,center,"","");
+            &>li{
+                @include sizes(250px,40px,0,0,1px solid #ddd);
+                @include bg(1,#eee,"");
+                @include font("noto",400,12,#999);
+                text-align: center; line-height: 40px;
+                border-bottom: 1px solid #aaa; cursor: pointer;
+            }
+            &>li:hover{
+                color: #000;
+            }
+        }
+    }
+    &>label{
+        @include sizes(100%,auto,auto,0,"");
+        @include font("noto",600,12,""); 
+        margin-top: 20px; padding-left: 50px;
+        &>.admin-msg{
+            @include sizes(800px,auto,auto,0,"");
+            @include font("noto",400,12,#999); 
+            line-height: 25px;
+        }
+    }
+    &>.img_label{
+        @include flex(1,center,column,"",wrap,center);
+        height: auto; margin-bottom: 30px; margin-left: -10px;
+    }
+}
+
+@mixin li_border {
+    @include bg(1,#fff,""); border: 1px solid #aaa; border-bottom: none; color: #000;
+}
+.product_box>.product_details>li:nth-of-type(1){
+    @include li_border;
+    &>a{ color: #000; }
+}
+.product_box>.product_change{
+    &>li:nth-of-type(1){
+        border-bottom: 1px solid #aaa;
+    }
+    &>li:nth-of-type(2){
+        @include li_border;
+        &>a{ color: #000; }
+    }
+}
+.product_box>.product_review{
+    &>li:nth-of-type(3){
+        @include li_border;
+        &>a{ color: #000; }
+    }
+}
+.product_box>.product_ask{
+    &>li:nth-of-type(4){
+        @include li_border; 
+        border-right: 1px solid #aaa; 
+        &>a{ color: #000; }
+    }
+}
+.p_write{
+    @include sizes(1000px,auto,auto,0,"");
+    &>.p_btn{
+        @include sizes(100%,auto,0,0,"");
+        text-align: right; padding-top: 50px; padding-bottom: 30px;
+        &>button{
+            @include sizes(120px,35px,0,0,0);
+            @include font("gothic",400,11,""); cursor: pointer;
+        }
+        &>button:first-child{
+            @include bg(1,#fff,"");
+            border: 2px solid black;
+        }
+        &>button:last-child{
+            @include bg(1,rgb(87, 85, 85),"");
+            color: #fff;
+        }
+        &>button:last-child:hover{
+            @include bg(1,rgb(73, 72, 72),"");
+        }
+    }
+    &>div{
+        @include sizes(100%,100px,0,0,"");
+        @include font("gothic",400,11,"");
+        text-align: center; line-height: 100px;
+        border-top: 1px solid #aaa; border-bottom: 1px solid #aaa;
+    }
+}
+.information{
+    @include sizes(900px,auto,auto,5px,""); line-height: 25px;
+    color: #555;
+}

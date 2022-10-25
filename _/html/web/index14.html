@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(테스트 두개의 반복문)</title>
+<script>
+    function abc(){
+        var aa = Number(document.getElementById("a").value); //시작(사용자가 입력)
+        var bb = Number(document.getElementById("b").value); //끝(사용자가 입력)
+        var bbb; //큰 for
+        var cc; //작은 for
+        var dd; //결과
+        /*
+        while(aa<=bb){
+            for(cc=1;cc<=9;cc++){
+                dd = aa * cc;
+                document.write(aa+"*"+cc+"="+dd+"<br>");
+            }
+            aa++;
+        }
+        */
+        if(aa>bb){  //시작값보다 끝값이 작을 경우
+            alert("구구단 시작 숫자보다 커야합니다.");
+        }
+        else{   //시작값보다 끝값이 클 경우
+            for(bbb=aa;bbb<=bb;bbb++){
+                for(cc=1;cc<=9;cc++){
+                    dd = bbb * cc;
+                    document.write(bbb+"*"+cc+"="+dd+"<br>");
+                }
+            }
+        }
+    }
+</script>
+</head>
+<!--
+테스트1. 사용자가 구구단 시작과 끝을 각각 한자리 숫자를 입력합니다.
+반복문 2개 이용(for, while, do while) free 사용 구구단 출력
+ex)시작은 3을 9 까지 출력을 하고 구구단 끝 부분 5를 입력 9까지 출력
+-->
+<body>
+<input type="text" name="a" id="a" maxlength="1" placeholder="구구단 시작">
+<input type="text" name="b" id="b" maxlength="1" placeholder="구구단 끝">
+<input type="button" value="결과확인" onclick="abc();">
+</body>
+</html>

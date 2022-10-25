@@ -1,0 +1,73 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>Jquery 13일차 (상품출력 부분 - 가로,세로)</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css?v=2">
+<style>
+    body { margin: 0; padding: 0; }
+    .s { width: 400px; height: auto; }
+    .allbox{ width: calc(305*3px); border: 1px solid red; }
+    .divbox{ width: 100%; max-width: 300px; height: auto; display: inline-block; }
+    .label1{ width: 100%; height: 150px; background-color: blue; display: block; }
+    .label2{ width: 100%; height: 50px; background-color: green; display: block; }
+    .topbox{ width: 400px; height: 60px; background-color: black; position: relative;
+        padding-top: 10px; box-sizing: border-box;
+    }
+    .box1{ 
+        width: 200px; height: 40px; background-color: yellow; margin: 0 auto;
+        /* margin: 0 auto는 position이 잡혀있지 않아야 함 */
+    }
+    .box2{ 
+        width: 40px; height: 40px; background-color: skyblue; position: absolute;
+        left: 5px;
+    }
+    .btncss{
+        width: 300px; height: 60px; border: 1px solid black;
+        font-size: 13px; line-height: 60px; 
+    }
+    .text{ vertical-align: 1px;}
+</style>
+</head>
+<body>
+<section class="s">
+<div class="allbox">
+    <div class="divbox">
+        <label class="label1"></label>
+        <label class="label2"></label>
+    </div>
+
+    <div class="divbox">
+        <label class="label1"></label>
+        <label class="label2"></label>
+    </div>
+
+    <div class="divbox">
+        <label class="label1"></label>
+        <label class="label2"></label>
+    </div>
+
+    <div class="divbox">
+        <label class="label1"></label>
+        <label class="label2"></label>
+    </div>
+</div>
+</section>
+    
+<section class="topbox">
+    <div class="box2"></div>
+    <div class="box1"></div>
+</section>
+
+<div class="btncss">
+    <input type="radio"> <label class="text">동의함</label>
+</div>
+</body>
+</html>

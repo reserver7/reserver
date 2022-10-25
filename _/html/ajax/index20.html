@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge,Chrome=1">
+<title>Ajax(4일차)-POST로 데이터 주고받기</title>
+<script>
+    /* Ajax POST를 이용하는 형태 : 사용자가 입력한 값을 form형태가 아니고
+    Ajax형태로 데이터를 해당 URL로 보낼때 사용하게 됨(암호화)
+    Back-End쪽에서 해당 데이터를 받은 후 결과 값을 다시 return해 줍니다.
+    return을 front-end쪽에서 받아 처리하느 사항
+
+    예) 아이디 중복체크, 인증번호 받기, 글쓰기, 삭제시 패스워드 입력,
+    글 읽기 기능중 패스워드를 넣어야만 글을 볼 수 있는 형태
+     */
+    function loginck(){
+        /* 아이디 & 패스워드 입력 검사 */
+        var a = "mid=" + document.getElementById("mid").value;
+        var b = "&mpass=" + document.getElementById("mpass").value;
+        const lgdata = a + b;
+        //사용자가 입력한 값을 전체적으로 Back-end 코드와 맞춰서 작성하게 됨
+        ajaxpost(lgdata);
+    }
+    
+    let datas;
+    function ajaxpost(formdata){
+        function windowck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function loginpost(){
+            if(datas.readyState==XMLHttpRequest.DONE && datas.status==200){
+                alert(this.response);
+            }
+        }
+        datas = windowck();
+        datas.onreadystatechange = loginpost;
+        //POST로 전송하며, 백엔드가 받는 파일명으로 던지게 됩니다.
+        datas.open("POST","index20.php",true);
+        datas.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        datas.send(formdata);   //send(사용자가 입력한 사항이 등록됨)
+        //console.log(datas);
+    }
+</script>
+</head>
+<!--
+     post 방식에서는 form 태그, name 값 사용하지 않음
+     backend쪽에서 id값 지정
+-->
+<body>
+<input type="text" id="mid">
+<input type="password" id="mpass">
+<input type="button" value="로그인" onclick="loginck();">
+</body>
+</html>
+<!--
+    Ajax : POST (Back-end 데이터를 보낸다) > 응답을 받아서 처리
+    Ajax : GET (Back-end 데이터를 받는다) > HTML에 출력을 함
+
+    mid=123&mpass=123
+    data=apple|12345|홍길동|
+    (back-end가 원하는 형식으로 전달)
+    send(mid=123&mpass=123);
+
+1)  ? ->get으로 보낼때
+
+2)  post로 보내면 back-end쪽에서 신호 전달
+    ok or no (정상 or 비정상 신호 받음)
+    보안문제로 datas.setRequestHeader("Context-type","application/x-www-form-urlencoded");로 암호화하여 전달
+    첨부파일이 있을 경우 multipart/form-data
+
+
+    enctype="text/html"css,xml,json / image/png
+-->

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 3일차(반복문-do while)</title>
+<script>
+var a=1;    //do 시작값
+do{ //do while문법 시작
+    //document.write(a+"<br>");   //프린팅
+    a++;    //증가, 감소
+}while(a<10);   //종료값(범위)
+
+//응용문제 내림차순 10~1 까지 출력 (do while)
+var b=10;
+do{
+    //document.write(b+"<br>");
+    b--;
+}while(b>=1);
+
+//do while + if
+var bb=1;
+var cc;
+do{
+    cc = 2 * bb;    //계산부분 (cc는 계산된 값)
+    if(cc<=10){ 
+    //document.write(cc+"<br>");
+    }
+    bb++;
+}while(bb<10);
+
+//응용문제 구구단 7단 40이상 값만 출력
+var b1=1;
+var b2=7;
+var b3;
+do{
+    b3 = b2 * b1;
+    if(b3>=40){
+    //document.write(b3+"<br>");
+    }
+    b1++;
+}while(b1<10);
+
+//do while + for (구구단 2단 ~ 4단)
+var zz=2;
+var pp;
+var ss;
+do{
+    for(pp=1;pp<10;pp++){
+        ss = zz * pp;
+        //document.write(zz+"*"+pp+"="+ss+"<br>");
+    }
+    zz++;
+}while(zz<5);
+
+//응용문제 구구단 5단 ~ 3단 내림차순 출력
+var qq=5;
+var ww;
+var ee;
+do{
+    for(ww=9;ww>=1;ww--){
+  //for(ww=1;ww<=9;ww++){
+        ee = qq * ww;
+        //document.write(qq+"*"+ww+"="+ee+"<br>");
+    }
+    qq--;
+}while(qq>=3);
+
+//do while + while
+var c4=2;   // do while 시작값
+var h4;    // 수식 결과값
+do{
+    var d4=1;   // while 시작값
+    while(d4<10){   // while 범위값
+        h4 = c4 * d4;
+        //document.write(c4+"*"+d4+"="+h4+"<br>");
+        d4++;   // while 증가,감소
+    }
+    c4++;   // do while 증가,감소
+}while(c4<5);   // do whilr 범위값
+
+//응용문제 do while + while * 6개 오름차순 출력
+var pp=1;
+do{
+    var oo=0;
+    while(oo<pp){
+        document.write("*");
+        oo++;
+    }
+    pp++;
+    document.write("<br>");
+}while(pp<=6);
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

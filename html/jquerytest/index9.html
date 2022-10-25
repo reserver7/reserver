@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>문제9</title>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $array=[
+            ["1","집값 상승여파 대구 지역 종부세 적용!!","홍길동","2020-11-20","841"],
+            ["2","1인 미디어 안성맞춤!! 초가성비 녹음장비","강감찬","2020-11-22","322"],
+            ["3","1년에 청년 만명 지역 떠난다. 문제는 일자리!","이순신","2020-11-22","98"],
+            ["4","네이버 직원들 레벨 정한다. 평가제 도입~","안중근","2020-11-24","126"],
+            ["5","인터넷 익스플로러(ie)가 단계별로 종료됩니다.","마이크로","2020-11-26","103"]
+            ];
+            var $num = $array.length;
+            var $f;
+            var $html;
+            for($f=0;$f<$num;$f++){
+                $html = '<tr>\
+                <td width="70">'+$array[$f][0]+'</td>\
+                <td width="500">'+$array[$f][1]+'<a href=""></a></td>\
+                <td width="120">'+$array[$f][2]+'</td>\
+                <td width="100">'+$array[$f][3]+'</td>\
+                <td width="100">'+$array[$f][4]+'</td>\
+                </tr>';
+                $("#tbody").append($html);
+            }
+        });
+    </script>
+<!--
+문제9 다음 게시글이 출력되도록 하십시오.
+
+["1","집값 상승여파 대구 지역 종부세 적용!!","홍길동","2020-11-20","841"]
+["2","1인 미디어 안성맞춤!! 초가성비 녹음장비","강감찬","2020-11-22","322"]
+["3","1년에 청년 만명 지역 떠난다. 문제는 일자리!","이순신","2020-11-22","98"]
+["4","네이버 직원들 레벨 정한다. 평가제 도입~","안중근","2020-11-24","126"]
+["5","인터넷 익스플로러(ie)가 단계별로 종료됩니다.","마이크로","2020-11-26","103"]
+
+-->
+    <style>
+        body { margin: 0; padding: 0;}
+        * {box-sizing: border-box;}
+        a {
+	text-decoration: none;
+	color:#333;
+}
+ul li {
+	list-style:none;
+}
+
+/* 공통 */
+.fl {
+	float:left;
+}
+.tc {
+	text-align:center;
+}
+
+/* 게시판 목록 */
+#board_area {
+	width: 900px;
+	position: relative;
+}
+.list-table {
+	margin-top: 40px;
+}
+.list-table thead th{
+	height:40px;
+	border-top:2px solid #09C;
+	border-bottom:1px solid #CCC;
+	font-weight: bold;
+	font-size: 17px;
+}
+.list-table tbody td{
+	text-align:center;
+	padding:10px 0;
+	border-bottom:1px solid #CCC; height:20px;
+	font-size: 14px 
+}
+#write_btn {
+	position: absolute;
+	margin-top:20px;
+	right: 0;
+}
+    </style>
+</head>
+
+<body>
+    <div id="board_area"> 
+        <h1>자유게시판</h1>
+        <h4>자유롭게 글을 쓸 수 있는 게시판입니다.</h4>
+          <table class="list-table">
+            <thead>
+                <tr>
+                    <th width="70">번호</th>
+                      <th width="500">제목</th>
+                      <th width="120">글쓴이</th>
+                      <th width="100">작성일</th>
+                      <th width="100">조회수</th>
+                  </tr>
+              </thead>
+            <tbody id="tbody">
+              
+            </tbody>
+          </table>
+          <div id="write_btn">
+            <a href="#"><button>글쓰기</button></a>
+          </div>
+        </div>
+</body>
+</html>
+<!--
+    <tr>
+                <td width="70"></td>
+                <td width="500"><a href=""></a></td>
+                <td width="120"></td>
+                <td width="100"></td>
+                <td width="100"></td>
+              </tr>
+-->

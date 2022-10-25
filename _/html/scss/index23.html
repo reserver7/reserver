@@ -1,0 +1,95 @@
+<?php
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCSS 7일차 - Jquery + transform</title>
+<link rel="stylesheet" type="text/css" href="./index23.css?v=<?php echo $date?>">
+<script src="../jquery/jquery.js"></script>
+<script>
+    $(function(){
+        var $f;
+        var $html="";
+        var $num = 1;
+        for($f=0;$f<8;$f++){
+            $html += '<li>\
+                    <span class="menus">'+"MENU"+$num+'</span>\
+                    </li>';
+                $num++;
+            $("#top_menu").html($html);
+        }
+        $("#top_menu>li").bind({
+            "click":function(){
+                var $node = $(this).index();  
+            },
+            "mouseenter":function(){
+                var $node = $(this).index(); 
+                $("#top_menu>li").eq($node).css({
+                    "transform":"rotateY(180deg)",
+                    "background-color":"rgb(39, 111, 245)"
+                }); 
+                $("#top_menu>li:eq("+$node+")>.menus").css({
+                    "transform":"rotateY(180deg)",
+                    "color":"black"
+                });
+            },
+            "mouseleave":function(){
+                var $node = $(this).index();    
+                $("#top_menu>li").eq($node).css({
+                    "transform":"none",
+                    "background-color":""
+                });   
+                $("#top_menu>li:eq("+$node+")>.menus").css({
+                    "transform":"none",
+                    "color":"white"
+                });
+            }
+        });
+
+        $("#btn").click(function(){
+            var $v = $("#div_box").css("transform"); 
+            //최초값은 none로 체크가 되며, transform 작동후 matrix3d로 값이 변화가 됨
+            console.log($v);
+            if($v=="none"){
+                $("#div_box").css({
+                    "transform":"rotateX(180deg)",
+                    "background-color":"gray"
+                });
+                $(".spanbox").css({
+                    "transform":"rotateX(180deg)",
+                    "bottom":0
+                });
+            }
+            else{
+                $("#div_box").css({
+                    "transform":"none",
+                    "background-color":"black"
+                });
+                $(".spanbox").css({
+                    "transform":"none",
+                    "bottom":""
+                });
+            }
+        });
+    });
+</script>
+</head>
+<body>
+    <header class="headercss">
+        <div class="top_div">
+            <ul class="top_menu" id="top_menu">
+
+            </ul>
+        </div>
+    </header>
+    <section>
+        <div class="div_box" id="div_box">
+            <span class="spanbox">TEST EFFECT!!</span>
+        </div>
+        <input type="button" value="효과" id="btn">
+    </section>
+</body>
+</html>

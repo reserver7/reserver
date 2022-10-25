@@ -1,0 +1,51 @@
+@charset "utf-8";
+body { margin:0; padding:0;}
+
+.board1,.board2 { 
+    width:750px; height:auto; margin:0; padding:0; margin:0 auto;
+}
+.board1>dt:nth-child(1) { 
+    width:750px; height:30px; text-align:center; font-weight: bold;
+    font-size:20px; margin:0; padding:0; line-height:30px;
+}
+.board1>dd {
+    height:30px; margin:0; padding:0; background: rgb(48,120,186);
+    font-size:14px; font-weight: bold; text-align: center;
+    line-height:30px; color:white; display: inline-block;
+}
+.board1>dd:nth-child(2) {
+    width:80px;
+}
+.board1>dd:nth-child(3) {
+    width:300px;
+}
+.board1>dd:nth-child(4) {
+    width:100px;
+}
+.board1>dd:nth-child(5) {
+    width:120px;
+}
+.board1>dd:nth-child(6) {
+    width:100px;
+}
+.board2>dd { 
+    height:30px; margin:0; padding:0; background:rgb(228,238,248);
+    font-size:13px; text-align: center; line-height:30px; color:black;
+    display: inline-block; overflow: hidden;
+}
+.board2>dd:nth-child(5n+1) {
+    width:80px;
+}
+.board2>dd:nth-child(5n+2) {
+    width:300px; text-align: left; cursor: pointer;
+    text-overflow: ellipsis; white-space: nowrap;
+}
+.board2>dd:nth-child(5n+3) {
+    width:100px;
+}
+.board2>dd:nth-child(5n+4) {
+    width:120px;
+}
+.board2>dd:nth-child(5n+5) {
+    width:100px;
+}

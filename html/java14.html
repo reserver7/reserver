@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 4일차(HTML+Javascript)</title>
+<script>
+    function abc(){ // function : html에서 오더를 받아서 처리하는 함수
+        document.write("데이터 전송확인");
+    }
+    function bbb(){
+        location.href="http://www.naver.com"; 
+        // 조건문, 반복문이랑 결합해사용할수 있음
+    }
+    function ccc(){
+        document.write("전송 데이터 발송");
+    }
+
+</script>
+</head>
+<body>
+<!-- 
+    onclick : 자바스크립트,제이쿼리 함수를 호출하여 페이지에 동적으로
+    운영되도록 하는 속성값
+    onclick 사용시 함수명을 사용 단, 함수명 사용시 주의사항은
+    함수명(); 를 이용하여 사용해야 함
+    사용자가 클릭을 하게 되면 script쪽 abc 함수명 확인해서 작동
+-->
+<form method="POST" action="http://naver.com" onsubmit="ccc();">
+<input type="button" value="전송" onclick="abc();"><br>
+<input type="button" value="링크" onclick="bbb();"><br>
+<input type="submit" value="작동">
+<!-- submit에는 onclick을 사용하지 않음(form 안에서 움직이기 때문에)
+     단, form에 onsubmit이라고 속성을 적용 후 Javascript 함수를 호출하게 됨
+-->
+<button type="button" onclick="abc();">링크</button>
+<button type="submit">링크1</button>
+<!-- 잘못된 예시 (button의 기본값은 submit이기 때문에) -->
+<button onclick="bbb();">주소찾기</button>
+</form>
+</body>
+</html>

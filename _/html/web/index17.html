@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(각종 명령어-Math)</title>
+<script>
+    function abc(){
+        var n = Number(document.getElementById("s").value); //사용자 입력값
+        //var a = Math.floor(Math.random()*n);    //컴퓨터가 알아서 무작위의 숫자를 뽑아내는 형태
+        // *라는 부분은 사직연산이 아니고, 한계숫자 범위를 말합니다.
+
+        //var b = Math.random()*10; //소수점까지 모두 출력이 됩니다.
+        //var b = Math.ceil(Math.random()*10);  //ceil 소수점 자리 올림
+        var b = Math.floor(Math.random()*10);   //floor 소수점 자리를 없앰
+        //var b = Math.round(Math.random()*10);   //round 반올림 0.5 이상이면 1이됨
+        
+        if(n==b){
+            alert("당첨");
+        }
+        else{
+            alert("다음기회에~");
+        }
+    }
+</script>
+</head>
+<body>
+<input type="text" id="s" maxlength="2" placeholder="1~10까지 숫자를 입력하세요">
+<input type="button" value="결과확인" onclick="abc();">
+</body>
+</html>

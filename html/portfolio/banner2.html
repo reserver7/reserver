@@ -1,0 +1,34 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>PC 전용 Fade배너</title>
+<script src="./js/jquery.js"></script>
+<script src="./js/jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="./js/jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="./css/banner2.css?v=<?php echo $date?>">
+<script src="./js/banner2.js?v=<?php echo $date?>"></script>
+</head>
+<body>
+<nav class="navcss">
+    <section class="sectioncss" id="sectioncss">
+        <!-- button -->
+        <span id="left"><img src="./js/images/icons-svg/carat-l-black.svg"></span>
+        <span id="right"><img src="./js/images/icons-svg/carat-r-black.svg"></span>
+        <!-- banner -->
+        <ul class="banner_ul" id="banner_ul">
+            
+        </ul>
+        <!-- disc -->
+        <ol class="disc_ol" id="disc_ol">
+            
+        </ol>
+    </section>
+</nav>
+</body>
+</html>

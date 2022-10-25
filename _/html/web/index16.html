@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(선택문-switch case2)</title>
+<script>
+    function abc(n){
+        //var aa = typeof(n);
+        //alert(aa);
+        switch(n){
+            case "1":
+            location.href="http://www.naver.com";
+            break;
+
+            case "2":
+            location.href="http://www.nate.com";
+            break;
+
+            case "3":
+            location.href="http://www.google.com";
+            break;
+
+            case "4":
+            location.href="http://www.bing.com";
+            break;
+
+            default:
+            break;
+        }
+    }
+</script>
+</head>
+<body>
+<!-- 
+    this.value란? 버튼을 이용하지 않고, 해당 값을 바로 함수에 태워서
+    값을 보내는 것을 말함 
+-->
+<select onchange="abc(this.value);">
+    <option value="">[계열사]</option>
+    <option value="1">네이버</option>
+    <option value="2">네이트</option>
+    <option value="3">구글</option>
+    <option value="4">bing</option>
+</select>
+</body>
+</html>

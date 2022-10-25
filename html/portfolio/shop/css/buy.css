@@ -1,0 +1,1250 @@
+@charset "UTF-8";
+/* 서브페이지 기본 셋팅 부분 */
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+.order_outline {
+  width: 1000px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+  margin-top: 50px;
+  margin-bottom: 80px;
+  letter-spacing: 0.3px;
+}
+
+/* 주문 상세내역 */
+.order_detail {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.order_title {
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  line-height: 100px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  color: "";
+  text-align: center;
+}
+
+.order_view {
+  width: 1000px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  border-top: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 14px;
+  color: "";
+}
+
+.order_stitle {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: #555;
+  line-height: 30px;
+  padding-top: 20px;
+  padding-left: 5px;
+}
+
+.order_css {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  text-align: center;
+}
+
+.order_css > li {
+  float: left;
+}
+
+.order_css > li:nth-of-type(1) {
+  width: 25%;
+}
+
+.order_css > li:nth-of-type(2) {
+  width: 5%;
+}
+
+.order_css > li:nth-of-type(3) {
+  width: 15%;
+}
+
+.order_css > li:nth-of-type(4) {
+  width: 15%;
+}
+
+.order_css > li:nth-of-type(5) {
+  width: 15%;
+}
+
+.order_css > li:nth-of-type(6) {
+  width: 25%;
+}
+
+.order_ul {
+  width: 100%;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #555;
+  line-height: 35px;
+  border-top: 1px solid black;
+  margin-top: 30px;
+}
+
+.order_ol {
+  width: 100%;
+  height: 85px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  clear: both;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.order_ol > li {
+  height: 85px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #111;
+}
+
+.order_ol > li:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 20px;
+}
+
+.order_ol > li:first-child > span:first-child {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+}
+
+.order_ol > li:first-child > span:last-child {
+  width: 75px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.order_ol > li:first-child > span:last-child > label {
+  width: 200px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  text-align: left;
+  padding-left: 10px;
+}
+
+.order_ol > li:first-child > span:last-child > label:first-child {
+  font-weight: 800;
+  color: #777;
+}
+
+.order_ol > li:first-child > span:last-child > label:nth-of-type(2) {
+  color: #999;
+}
+
+.order_ol > li:last-child {
+  color: #999;
+  font-weight: normal;
+}
+
+.order_basket {
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  padding-left: 5px;
+  margin-top: 10px;
+}
+
+.order_basket > a {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 11px;
+  color: #999;
+  border-bottom: 1px solid #999;
+}
+
+.order_basket::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-image: url("../images/shopping_cart.svg");
+  background-repeat: no-repeat;
+  background-size: 13px;
+  display: inline-block;
+  padding-right: 5px;
+  vertical-align: -3px;
+}
+
+.order_pay {
+  width: 100%;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+}
+
+.order_pay > ul {
+  height: 20px;
+  padding-right: 30px;
+}
+
+.order_pay > ul > li {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  height: 20px;
+  float: left;
+  line-height: 20px;
+}
+
+.order_pay > ul > li:first-child > em:first-child {
+  font-style: normal;
+  color: #f87b90;
+  font-weight: 700;
+}
+
+.order_pay > ul > li:first-child > em:nth-of-type(2) {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+}
+
+.order_pay > ul > li:nth-of-type(2) > img {
+  width: 22px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding-left: 5px;
+  padding-top: 3px;
+}
+
+.order_pay > ul > li:nth-of-type(2) > em {
+  font-style: normal;
+  padding-left: 5px;
+  vertical-align: 4px;
+}
+
+.order_pay > ul > li:nth-of-type(2) > em:nth-of-type(2) {
+  font-weight: 700;
+  color: #555;
+}
+
+.order_pay > ul > li:nth-of-type(3) > img {
+  width: 25px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding-left: 10px;
+  padding-top: 3px;
+}
+
+.order_pay > ul > li:nth-of-type(3) > em {
+  font-style: normal;
+  padding-left: 5px;
+  vertical-align: 2px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+}
+
+.order_pay > span {
+  color: #f87b90;
+  font-size: 11px;
+  padding-right: 30px;
+  padding-top: 5px;
+}
+
+/* 주문자 정보 */
+.order_info {
+  width: 1000px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+  margin-top: 70px;
+}
+
+.order_div {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.info_ol {
+  margin-top: 30px;
+  border-top: 1px solid #aaa;
+}
+
+.info_ol > li {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+  line-height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.info_ol > li > span {
+  width: 200px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  background-color: #eee;
+  padding-left: 20px;
+}
+
+.info_ol > li > label {
+  width: 800px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  padding-left: 20px;
+  font-weight: normal;
+}
+
+.info_ol > li > label > input {
+  width: 180px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  text-indent: 10px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  color: #555;
+}
+
+.info_ol > li > label > select {
+  width: 100px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.info_ol > li:nth-of-type(2) > label > input:nth-of-type(1) {
+  width: 100px;
+}
+
+.info_ol > li:nth-of-type(2) > label > input:nth-of-type(2), .info_ol > li:nth-of-type(2) input:nth-of-type(3) {
+  width: 250px;
+  margin-left: 1px;
+}
+
+/* 배송정보 */
+.delivery_info {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+  margin-top: 70px;
+}
+
+.delivery_div {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.delivery_ol {
+  margin-top: 30px;
+  border-top: 1px solid #aaa;
+}
+
+.delivery_ol > li {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+  line-height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.delivery_ol > li > span {
+  width: 200px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  background-color: #eee;
+  padding-left: 20px;
+}
+
+.delivery_ol > li > label {
+  width: 800px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  padding-left: 20px;
+  font-weight: normal;
+}
+
+.delivery_ol > li > label > input {
+  width: 180px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 10px;
+}
+
+.delivery_ol > li:nth-child(1) > label > span {
+  width: 550px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.delivery_ol > li:nth-child(1) > label > span > label {
+  cursor: pointer;
+}
+
+.delivery_ol > li:nth-child(1) > label > span > label > input {
+  cursor: pointer;
+  vertical-align: -3px;
+}
+
+.delivery_ol > li:nth-child(1) > label > span > button {
+  width: 90px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #555;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.delivery_ol > li:nth-child(3) {
+  height: 100px;
+}
+
+.delivery_ol > li:nth-child(3) > label > span:first-child > input {
+  width: 150px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 10px;
+}
+
+.delivery_ol > li:nth-child(3) > label > span:first-child > button {
+  width: 90px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #555;
+  line-height: 25px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.delivery_ol > li:nth-child(3) > label > span:nth-of-type(2) > input {
+  width: 350px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 10px;
+}
+
+.delivery_ol > li:nth-child(3) > label > span:nth-of-type(2) > input:nth-of-type(2) {
+  width: 300px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  margin-left: 5px;
+}
+
+.delivery_ol > li:nth-child(3) > label > span:nth-of-type(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.delivery_ol > li:nth-child(3) > label > span:nth-of-type(3) > input {
+  margin-top: -2px;
+  cursor: pointer;
+}
+
+.delivery_ol > li:nth-child(3) > label > span:nth-of-type(3) > label {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #2c9efc;
+  margin-top: -15px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.delivery_ol > li:nth-child(6) > label > input {
+  width: 95%;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 10px;
+}
+
+.delivery_ol > li:nth-child(7) > label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.delivery_ol > li:nth-child(7) > label > input {
+  width: 12.8px;
+  height: 12.8px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  margin-left: 3.5px;
+  cursor: pointer;
+}
+
+.delivery_ol > li:nth-child(7) > label > label {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #555;
+  margin-left: 7px;
+  cursor: pointer;
+}
+
+.delivery_ol > li:nth-child(7) > label > label > em {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  color: #555;
+  font-style: normal;
+  padding-left: 5px;
+}
+
+/* 결제정보 */
+.pay_info {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+  margin-top: 70px;
+}
+
+.pay_div {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.pay_ul {
+  margin-top: 30px;
+  border-top: 1px solid #aaa;
+}
+
+.pay_ul > li {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+  line-height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pay_ul > li > span {
+  width: 200px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  background-color: #eee;
+  padding-left: 20px;
+}
+
+.pay_ul > li > label {
+  width: 800px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  padding-left: 20px;
+  font-weight: normal;
+}
+
+.pay_ul > li > label > input {
+  width: 180px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 10px;
+}
+
+.pay_ul > li > label > button {
+  width: 120px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #555;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.pay_ul > li:first-child > label {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: #555;
+}
+
+.pay_ul > li:nth-of-type(3) {
+  height: 70px;
+}
+
+.pay_ul > li:nth-of-type(3) > label > span {
+  height: 25px;
+}
+
+.pay_ul > li:nth-of-type(3) > label > span > em:first-child {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #555;
+  font-style: normal;
+}
+
+.pay_ul > li:nth-of-type(3) > label > span > em:nth-of-type(2) {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  color: #555;
+  font-style: normal;
+}
+
+.pay_ul > li:nth-of-type(3) > label > span:first-child {
+  margin-top: 3px;
+}
+
+.pay_ul > li:nth-of-type(3) > label > span:first-child:before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-image: url("../images/sale.png");
+  background-repeat: no-repeat;
+  background-size: 13px;
+  display: inline-block;
+  padding-right: 5px;
+  vertical-align: -3px;
+}
+
+.pay_ul > li:nth-of-type(3) > label > span:nth-of-type(2):before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-image: url("../images/mileage.png");
+  background-repeat: no-repeat;
+  background-size: 13px;
+  display: inline-block;
+  padding-right: 5px;
+  vertical-align: -3px;
+}
+
+.pay_ul > li:nth-of-type(5) {
+  height: 70px;
+}
+
+.pay_ul > li:nth-of-type(5) > label > span {
+  height: 25px;
+}
+
+.pay_ul > li:nth-of-type(5) > label > span > input {
+  width: 100px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  background-color: #ddd;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 10px;
+}
+
+.pay_ul > li:nth-of-type(5) > label > span > em {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #2c9efc;
+  font-style: normal;
+  padding-left: 20px;
+}
+
+.pay_ul > li:nth-of-type(5) > label > span:nth-of-type(2) {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #2c9efc;
+}
+
+.pay_ul > li:nth-of-type(6) > label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pay_ul > li:nth-of-type(6) > label > input:first-child {
+  width: 100px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 10px;
+}
+
+.pay_ul > li:nth-of-type(6) > label > input:nth-of-type(2) {
+  width: 12.8px;
+  height: 12.8px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  margin-left: 10px;
+  vertical-align: -3px;
+  cursor: pointer;
+}
+
+.pay_ul > li:nth-of-type(6) > label > em:nth-of-type(1) {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  color: #555;
+  font-style: normal;
+  padding-left: 5px;
+}
+
+.pay_ul > li:nth-of-type(6) > label > em:nth-of-type(1) > label {
+  cursor: pointer;
+}
+
+.pay_ul > li:nth-of-type(6) > label > em:nth-of-type(2) {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #2c9efc;
+  font-style: normal;
+  padding-left: 20px;
+}
+
+.pay_ul > li:last-child > span {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #444;
+}
+
+.pay_ul > li:last-child > label {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: #444;
+}
+
+.pay_ul > li:last-child > label > em {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #444;
+  font-style: normal;
+}
+
+/* 결제수단 선택 / 결제 */
+.pay_choice {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+  margin-top: 70px;
+}
+
+.pay_c_div {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.pay_c_ol {
+  margin-top: 30px;
+  border-top: 1px solid #aaa;
+}
+
+.pay_c_ol > li {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+  height: 40px;
+  line-height: 40px;
+}
+
+.pay_c_ol > li > span {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pay_c_ol > li > span > input {
+  vertical-align: -5px;
+}
+
+.pay_c_ol > li:first-child > span {
+  background-color: #eee;
+}
+
+.pay_c_ol > li:first-child > span > input {
+  cursor: pointer;
+}
+
+.pay_c_ol > li:first-child > span > label {
+  cursor: pointer;
+}
+
+.pay_c_ol > li:nth-of-type(2) {
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.pay_c_ol > li:nth-of-type(2) > span:first-child > input {
+  cursor: pointer;
+}
+
+.pay_c_ol > li:nth-of-type(2) > span:first-child > label {
+  cursor: pointer;
+}
+
+.pay_c_ol > li:nth-of-type(2) > span:nth-of-type(2) {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  color: #999;
+  margin-top: -15px;
+}
+
+.pay_c_ol > li:nth-of-type(3) {
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.pay_c_ol > li:nth-of-type(3) > span > input {
+  width: 150px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 10px;
+  margin-left: 10px;
+}
+
+.pay_c_ol > li:nth-of-type(3) > span > select {
+  width: 300px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #555;
+  text-indent: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.pay_c_ol > li:last-child {
+  background-color: #eee;
+}
+
+.pay_c_ol > li:last-child > span > input {
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.pay_c_ol > li:last-child > span > label {
+  cursor: pointer;
+}
+
+.pay_total {
+  width: 100%;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0;
+  border: 2px solid #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+  padding-right: 40px;
+}
+
+.pay_total > span {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: #555;
+}
+
+.pay_total > span > em:first-child {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 800;
+  font-size: 21px;
+  color: #000;
+  font-style: normal;
+  padding-left: 5px;
+}
+
+.pay_total > span > em:nth-of-type(2) {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #000;
+  font-style: normal;
+}
+
+.pay_btn_box {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pay_btn_box > span:first-child {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pay_btn_box > span:first-child > input {
+  vertical-align: -4px;
+  cursor: pointer;
+}
+
+.pay_btn_box > span:first-child > label {
+  cursor: pointer;
+}
+
+.pay_btn_box > span:first-child > label > em {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #555;
+  font-style: normal;
+}
+
+.pay_btn_box > span:nth-of-type(2) {
+  margin-top: 20px;
+}
+
+.pay_btn_box > span:nth-of-type(2) > button {
+  width: 200px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #555;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #fff;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.pay_btn_box > span:nth-of-type(2) > button:hover {
+  background-color: #444;
+}
+
+.direct {
+  display: none !important;
+}
+/*# sourceMappingURL=buy.css.map */

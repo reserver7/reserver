@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');
+/*font-family: 'Noto Sans KR', sans-serif;(100,300,400,500)*/
+@mixin base{
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    box-sizing: border-box;
+}
+body,*{
+    @include base;
+}
+@mixin flex($just,$direction,$rap,$items,$content,$part) {
+    display: flex;
+    justify-content:$just;
+    flex-direction:$direction;
+    align-content:$content;
+    @if($part==1){
+        flex-wrap: $rap;
+        align-items: $items;
+    }
+}
+
+$msize:1200px;
+@function size($split){
+    @return $msize/$split;
+}
+
+@mixin noto($b,$f,$w){
+    @if($b=="noto"){
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+    font-size: $f+px;
+    font-weight: $w;
+}
+
+@mixin div($width,$height,$font,$fontsize,$fontweight) {
+    width: size($width);
+    height: size($height);
+    @include noto($font,$fontsize,$fontweight);
+}
+
+@mixin li($bgc,$fc,$fs,$flo) {
+    width: 100%; height: size(30); background-color:$bgc;
+    color: $fc; font-size: $fs+px; text-align: $flo;
+    line-height: size(30); cursor: pointer;
+}
+/* 애니메이션 */
+@mixin transition($property,$duration,$timing) {
+    transition: $property $duration $timing;
+}
+
+.headercss{
+    height: size(30);
+}
+.top_div{
+    @include div(1,30,"noto",15,300);
+    margin: 0 auto;
+     &>.top_menu{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: cornflowerblue;
+        @include flex(space-between,row,"","","center",0); 
+        &>li{
+            position: relative;
+            border: 1px solid white;
+            @include li(cornflowerblue,white,15,center);
+            @include transition(all,0.8s,linear);
+        }
+    }
+}
+.menus{ 
+    position: absolute;
+    width: 100%;
+    height: size(30);
+    line-height: size(30);
+    display: block;
+    @include transition(all,0.8s,linear); 
+}
+.div_box{
+    width: 200px; height: 200px; background-color: black; color: white;
+    position: relative;
+    @include transition(all,0.8s,linear); 
+}
+.spanbox{
+    width: 100%; height: 50px; line-height: 50px; 
+    position: absolute; text-align: center; border: 1px solid white;
+    @include transition(all,0.8s,linear); 
+}
+
+
+
+/*
+    @mixin
+    1. font (font-family, font-size, font-weight, font-color)
+    2. ul,ol (flex로 생성),( ul,ol 전용(display:inline-block, float:left) )
+    3. image (background)
+    4. flex
+    5. @media screen
+    6. span,label
+    7. input (text,password,number,date,tel 등등), select, textarea
+    8. transition, transform
+    9. color(배열로 구성많이 함), opacity
+*/

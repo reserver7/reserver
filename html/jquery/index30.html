@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>보이스 피싱 년도별 데이터 입력 및 그래프 출력</title>
+<script src="./jquery.js?v=10"></script>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            var $txt1 = Number($("#txt1").val());
+            var $txt2 = Number($("#txt2").val());
+            var $txt3 = Number($("#txt3").val());
+
+            if($txt1=="" || $txt2=="" || $txt3==""){
+                alert("데이터 값을 입력해 주세요.");
+            }
+            else{
+                if(isNaN($txt1)==true || isNaN($txt2)==true || isNaN($txt3)==true){
+                    alert("해당 데이터는 숫자를 입력하셔야 합니다.");
+                }
+                else{
+                    if($txt1<1000 || $txt2<1000 || $txt3<1000){
+                        alert("최소 입력값은 1000이상 최대 10000이하 입니다");
+                    }
+                    else if($txt1>10000 || $txt2>10000 || $txt3>10000){
+                        alert("최소 입력값은 1000이상 최대 10000이하 입니다");
+                    }
+                    else{
+                        f.method = "GET";
+                        f.action = "http://reserver1.dothome.co.kr/jquery/index30_1.html";
+                        f.submit();
+                    }
+                }   
+            }
+        });
+    });
+</script>
+<style>
+
+</style>
+</head>
+<body>
+<form name="f" id="f">
+<p>[보이스 피싱 년도별 데이터]</p>
+<input type="text" name="txt1" id="txt1" placeholder="2018년도 발생건수" maxlength="5">
+<input type="text" name="txt2" id="txt2" placeholder="2019년도 발생건수" maxlength="5">
+<input type="text" name="txt3" id="txt3" placeholder="2020년도 발생건수" maxlength="5">
+<br><br>
+<input type="button" value="데이터 입력완료" id="btn">
+</form>
+</body>
+</html>
+<!--
+    [page1]
+    Data 형태가 GET
+    입력값은 총 3가지를 입력합니다.
+
+    2018년도 발생거수 :
+    2019년도 발생건수 :
+    2020년도 발생건수 :
+    
+    수치 최소값은 1000 이상 최대값 10000이하
+    숫자만 입력이 되도록 합니다.
+    "데이터 입력완료" 버튼을 클릭시 page2으로 넘어갑니다.
+    2018~2020년도까지 모든 데이터가 다 입력되어야 합니다.
+    "해당 데이터가 정확하게 입력 되지 않았습니다."
+    경고메세지 출력
+
+    [page2]
+    GET으로 데이터를 받아서 그래프로 전환
+    단, 이미지에 맞게 세로 막대로 그래프가 나와야 합니다.
+    숫자 1000단위 당 50px 나와야 합니다.
+    그래프의 색상 코드는 #454545 입니다
+    delay는 각 년도별로 2초 입니다.
+-->

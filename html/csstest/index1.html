@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>css test1</title>
+<style>
+body { margin: 0; padding: 0; }
+    .box{
+        width: 400px; height: 400px; background-color: blue;
+        position: relative;
+    }
+    .box > div:nth-child(1){
+        width: 50px; height: 50px; background-color: black;
+        cursor: pointer; margin-left: 400px;
+    }
+    .box > div:nth-child(2){
+        width: 260px; height: 40px; background-color: red; 
+        position: absolute; bottom: 50px; left: 70px;
+    }
+</style>
+</head>
+<body>
+<div class="box">
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>
+<!--
+    http://naver.me/FkpocRqI 클라우드 주소
+-->

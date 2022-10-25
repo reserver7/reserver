@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ajax (2일차) - 통신셋팅</title>
+<script>
+    //let cm = new XMLHttpRequest();  
+    let cm;
+    //통신객체 응답 신호 명령어를 사용하겠음
+    //console.log(cm);
+    //on : 송수신 완료 사항 및 에러사항 파악
+    //readyState : 송수신 상황 (수신중, 송신중, 송신완료, 수신완료, 대기)
+    //response : 응답형태 (텍스트, 이미지, URL, 파일형태, 파일크기)
+    //timeout : 송수신에 따른 시간 오버가 되었을 경우 차단되는 시간을 말함
+    function sendcm(){
+        function startcm(){
+            if(window.XMLHttpRequest){//해당 브라우져의 종류를 파악
+                return new XMLHttpRequest();
+                //readyState
+                //status
+            }
+        }
+        function response(){
+            //XMLHttpRequest 통신 상태가 요청 완료이고, 
+            //서버에 해당 문서가 존재 할 경우 데이터를 가져오게 함
+            //파일 - 200(성공), 203(신뢰할수 없는 정보), 204(콘텐츠가 없음)
+            //페이지 - 401(권한없음), 403(서버에서 접속거부), 404(요청한 페이지가 없을 경우), 408(요청시간 초과)
+            if(cm.readyState == XMLHttpRequest.DONE && cm.status==200){
+                document.getElementById("cmdiv").innerHTML = cm.responseText;
+            }
+        }
+        cm = startcm(); //() return 값을 cm에게 넘겨줌
+        //해당 핸들링일 경우 if의 대한 조건 값을 가져와서 사용하기 위한 사항임 return이 없으면 ()가 필요없음
+        cm.onreadystatechange = response; 
+        cm.open("GET","./data.txt",true); 
+        //GET 방식 : 비동기식 요청 http:형태로 요청을 함
+        //POST 방식 : 동기식 요청 http:, https:, 소켓통신을 사용하는 경우도 있음
+        cm.send(); ///send = action(form)
+    }
+</script>
+</head>
+<body>
+<div id="cmdiv"></div>
+<input type="button" value="통신체크" onclick="sendcm();">
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 2일차(배너 애니메이션 연습)</title>
+<script src="./jquery.js"></script> <!--Jquery 엔진 탑재-->
+<script>
+    $("document").ready(function(){ //document 만 ""를 넣어도 되고 안넣어도 됨
+        $(".text1").animate({
+            "opacity":"1"
+        },2000)
+
+        $(".spanbtn").animate({
+            "top":"140px",   
+            "opacity":"1"
+        },3000);
+
+        $(".spanbtn").click(function(){ //class,로 클릭 이벤트 핸들링
+            location.href="http://www.naver.com";
+        });
+
+        $(".text2").animate({
+            "margin-right":"40px"
+        },1500);
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .banner{
+        width: 1000px; height: 500px; background-color: black;
+        margin: 0 auto; position: relative; overflow: hidden;
+    }
+    .text1{
+        width: 600px; height: 60px; display: block; font-size: 50px;
+        font-weight: "돋움체"; color: white;text-align: center; 
+        position: absolute; top: 50px; left: 50px; 
+        opacity: 0;
+    }
+    .spanbtn{
+        width: 120px; height: 30px; color: black; background-color: white;
+        display: block; font-size: 12px; border-radius: 15px; text-align: center;
+        line-height: 30px; position: absolute; top: 80px; left: 300px; 
+        cursor: pointer; opacity: 0;    /* 시작값을 80부터 140까지 이동 */
+    }
+    .text2{
+        color: pink; position: absolute;
+        font-size: 12px; right: 0; bottom: 25px; margin-right: -400px;
+    }
+</style>
+</head>
+<body>
+<div class="banner">
+    <label class="text1">Galaxy Z Fold2 5G</label>
+    <span class="spanbtn">구매 혜택 보기</span>
+    <label class="text2">2020.11 특가할인 판매이며, 11월 한달만 20% 할인이 적용 됩니다.</label>
+</div>
+</body>
+</html>

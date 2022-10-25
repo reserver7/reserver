@@ -1,0 +1,38 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1;
+    list-style: none; 
+}
+@mixin ulcss {
+    width: 400px; height: 400px; border: 1px solid black; display: flex;
+    flex-direction: column; justify-content: space-around;
+}
+*,body{ @include base; }
+
+$w : 25px;
+$h : 25px;
+$colors : skyblue,green,yellow,orange,purple,black;
+.ulcss{
+    @include base;
+    @include ulcss;
+    &>li{
+        width: $w; height: $h; position: relative;
+        left: 10px;
+    }
+    &:hover > li{
+        left: 335px; transform: rotate(360deg) scale(2);
+    }
+}
+@mixin trans($times) {
+    transition-duration: $times+s;
+    transition-timing-function: ease;
+    transition-property: all;
+}
+$i:0;
+@while($i<=5){
+    .box#{$i}{
+        @include trans($i+1);
+        background-color: nth($colors,$i+1);
+    }
+    $i:$i+1;
+}

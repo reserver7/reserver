@@ -1,0 +1,7 @@
+/* stylesheet 전용 파일 입니다. HTML 태그(X) */ 
+body { margin:0; padding:0; }
+.div1 { width:100%; height:100px; background-color:blue;}
+.sdiv { width:800px; height:100px; background-color:yellow;
+margin:0 auto;
+}
+header { height:100px;}

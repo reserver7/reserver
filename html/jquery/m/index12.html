@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 10일차 모바일 메뉴2(쉐도우 메뉴 - 도어 메뉴)</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        $("#tbtn").click(function(){
+            var $offset = $("#main").offset().left; //해당 오브젝트의 left값을 가져옴
+            //console.log($offset);
+            if($offset==0){
+                $("#main").animate({
+                    "left":"50%"
+                },800);
+            }
+            else{
+                $("#main").animate({
+                    "left":"0"
+                },800);
+            }
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; position: relative;}
+    .headercss{ height: 60px; }
+    .top{
+        width: 100%; max-width: 460px; height: 60px; background-color: skyblue;
+        display: flex; flex-wrap: wrap; align-content: center;
+        align-items: center;
+    }
+    .tbtn{
+        width: 40px; height: 40px; background-color: black; display: block;
+    }
+    .product{
+        height: 600px; background-color: gray;
+    }
+    main{ width: 100%; max-width: 460px; height: auto; display: block; 
+        background-color: red; position: absolute;
+    }
+    .menus{
+        width: 100%; max-width: 460px; height: 640px; background-color: yellow;
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+    <!-- 메뉴 부분 -->
+    <div class="menus">
+        <?php include "index12menu.html"; ?>
+    </div>
+    <!-- 메뉴 부분 -->
+
+    <main id="main"> <!-- main태그는 display: block를 꼭 써야함 -->
+    <header class="headercss">
+        <div class="top">
+            <label class="tbtn" id="tbtn"></label>
+        </div>
+    </header>
+    <section class="product">
+
+    </section>
+    </main>
+</body>
+</html>

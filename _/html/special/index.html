@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>return 특강(연산자 함수, 생성자 함수)</title>
+</head>
+<script>
+    //함수, 이벤트함수, return함수, 타임함수, 핸들링함수, 
+    //선언함수(함수에 값을 태우는 형태), 
+    //익명함수(함수가 변수로 만들어진 형태)
+    //연산자함수, 생성자함수
+
+    /*  연산자 함수
+    function abc(username,userid,useremail){
+        this.name = username;
+        this.userid = userid;
+        this.useremail = useremail;
+    }
+    let aaa = new abc("홍길동","hong","hong@gmail.com");
+    console.log(aaa);
+    */
+
+    //생성자 함수
+    function bbb(nm){
+        //console.log(new.target);
+        //console.log(this.name);
+        if(new.target==null){   //new 없이 호출
+            return new bbb(nm);
+        }
+        this.aaa = nm;  //new가 있을 경우
+    }
+    let h = bbb("홍길동");
+    console.log(h.aaa);
+</script>
+<body>
+    <input type="text" name="user" id="user">
+</body>
+<script>
+    //document.getElementById("user").value = aaa.name;
+</script>
+</html>

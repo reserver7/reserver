@@ -1,0 +1,192 @@
+<meta charset="UTF-8">
+<?php
+require_once('./stdpay/libs/INIStdPayUtil.php');
+$SignatureUtil = new INIStdPayUtil();
+
+$mid = "INIpayTest"; 		
+
+$signKey = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";
+$timestamp = $SignatureUtil->getTimestamp(); 
+
+$orderNumber = $mid . "_" . $SignatureUtil->getTimestamp(); 
+$price = $_POST['price2']; 
+
+$cardNoInterestQuota = "11-2:3:,34-5:12,14-6:12:24,12-12:36,06-9:12,01-3:4";
+$cardQuotaBase = "2:3:4:5:6:11:12:24:36";
+$mKey = $SignatureUtil->makeHash($signKey, "sha256");
+
+$params = array(
+    "oid" => $orderNumber,
+    "price" => $price,
+    "timestamp" => $timestamp
+);
+$sign = $SignatureUtil->makeSignature($params, "sha256");
+$siteDomain = "http://reserver1.dothome.co.kr/portfolio/shop";
+?>
+<script src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js"></script>
+<!--결제 및 배송정보 입력 파트-->
+<nav class="order_outline">
+<form name="order_f" id="order_f" method="POST">
+<input type="hidden" name="version" value="1.0">
+<input type="hidden" name="goodsno" value="<?php echo $_POST['goodsno']?>">
+<input type="hidden" name="mid" value="<?php echo $mid?>">
+<input type="hidden" name="goodname" id="goodname" value="<?php echo $_POST['goodname']?>"><!---->
+<input type="hidden" name="oid" value="<?php echo $orderNumber?>">
+<input type="hidden" name="price" id="price" value="<?php echo $_POST['price2']?>"><!---->
+<input type="hidden" name="goodea" id="goodea" value="<?php echo $_POST['goodea']?>"><!---->
+<input type="hidden" name="currency" value="WON">
+<input type="hidden" name="mKey" value="<?php echo $mKey?>">
+<input type="hidden" name="closeUrl" value="<?php echo $siteDomain?>/close.php">
+<input type="hidden" name="popupUrl" value="<?php echo $siteDomain?>/popup.php">
+<input type="hidden" name="nointerest" value="<?php echo $cardNoInterestQuota?>">
+<input type="hidden" name="quotabase" value="<?php echo $cardQuotaBase?>">
+<input type="hidden" name="gopaymethod" value="">
+<input type="hidden" name="timestamp" value="<?php echo $timestamp?>">
+<input type="hidden" name="signature" value="<?php echo $sign?>">
+<input type="hidden" name="payViewType" value="overlay">
+<input type="hidden" name="charset" value="UTF-8">
+<input type="hidden" name="options" id="options" value="<?php echo $_POST['product_option']?>">
+<input type="hidden" name="returnUrl" value="http://reserver1.dothome.co.kr/portfolio/shop/return.php">
+<input type="hidden" name="acceptmethod" value="HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" >
+
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+<div class="order_detail">
+    <span class="order_title">PAY_ORDER</span>
+    <div class="order_view"></div>
+</div>
+    <!-- 주문자 정보 -->
+    <div class="order_info" style="margin-top: -5px;">
+        <span class="order_stitle">주문자 정보</span>
+        <div class="order_div">
+            <ol class="info_ol">
+                <li>
+                    <span>주문하시는 분</span>
+                    <label><input type="text" name="buyername" id="buy_name" class="buy0" value="<?php echo $_POST['buyername']?>" readonly></label>
+                </li>
+                <li>
+                    <span>주소</span>
+                    <label>
+                        <input type="text" name="order_post" id="order_post" class="buy1"  value="<?php echo $_POST['order_post']?>" readonly maxlength="5"> 
+                        <input type="text" name="order_addr1" id="order_addr1" class="buy2"  value="<?php echo $_POST['order_addr1']?>" readonly> 
+                        <input type="text" name="order_addr2" id="order_addr2" class="buy3" value="<?php echo $_POST['order_addr2']?>" readonly>
+                    </label>
+                </li>
+                <li>
+                    <span>전화번호</span>
+                    <label><input type="text" name="buy_tel" id="buy_tel" class="buy4" placeholder="- 없이 입력하세요" maxlength="11" value="<?php echo $_POST['buy_tel']?>" readonly></label>
+                </li>
+                <li>
+                    <span>휴대폰 번호</span>
+                    <label><input type="text" name="buyertel" id="buy_hp" class="buy5" placeholder="- 없이 입력하세요" maxlength="11" value="<?php echo $_POST['buyertel']?>" readonly></label>
+                </li>
+                <li>
+                    <span>이메일</span>
+                    <label>
+                        <input type="text" name="buyeremail" id="buy_email" value="<?php echo $_POST['buyeremail']?>" readonly>
+                    </label>
+                </li> 
+            </ol>
+        </div>
+    </div>
+    <!-- 주문자 정보 끝-->
+    <!-- 배송정보 -->
+    <div class="delivery_info">
+        <span class="order_stitle">배송정보</span>
+        <div class="delivery_div">
+            <ol class="delivery_ol">
+                <li>
+                    <span>배송지 확인</span>
+                    <label>
+                        <span>
+                            <?php echo $_POST['receiver_delpart'];?>
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <span>받으실 분</span>
+                    <label><input type="text" name="receiver_name" id="receiver_name" class="del0" value="<?php echo $_POST['receiver_name']?>" readonly></label>
+                </li>
+                <li>
+                    <span>받으실 곳</span>
+                    <label>
+                        <span><input type="text" name="receiver_post" id="receiver_post" class="info_post postcodify_postcode5 del1" value="<?php echo $_POST['receiver_post']?>" readonly></span>
+                        <span><input type="text" name="receiver_addr" id="receiver_addr" class="postcodify_address del2" value="<?php echo $_POST['receiver_addr']?>" readonly><input type="text" name="receiver_addr2" id="receiver_addr2" class="del3" value="<?php echo $_POST['receiver_addr2']?>" readonly></span>
+                    </label>
+                </li>
+                <li>
+                    <span>전화번호</span>
+                    <label><input type="text" name="receiver_tel" id="receiver_tel"  class="del4" placeholder="- 없이 입력하세요" maxlength="11" value="<?php echo $_POST['receiver_tel']?>" readonly></label>
+                </li>
+                <li>
+                    <span>휴대폰 번호</span>
+                    <label><input type="text" name="receiver_hp" id="receiver_hp"  class="del5" placeholder="- 없이 입력하세요" maxlength="11" value="<?php echo $_POST['receiver_hp']?>" readonly></label>
+                </li>
+                <li>
+                    <span>요청 사항</span>
+                    <label><input type="text" name="receiver_say" id="receiver_say" value="<?php echo $_POST['receiver_say']?>" readonly></label>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- 배송정보 끝 -->
+    <!-- 결제정보-->
+    <div class="pay_info">
+        <span class="order_stitle">결제정보</span>
+        <div class="pay_div">
+            <ul class="pay_ul">
+                <li>
+                    <span>상품 합계 금액</span>
+                    <label id="order_total4"><?php echo number_format($_POST['price']);?>원</label>
+                </li>
+                <li>
+                    <span>배송비</span>
+                    <label>2,500원</label>
+                </li>
+                <li>
+                    <span>할인 및 적립</span>
+                    <label>
+                        <span>할인 : <em>(-) 0원</em> <em>( 상품 0원, 회원 0원, 쿠폰 0원)</em></span>
+                        <span>적립 마일리지 : <em>(+) 0원</em> <em>( 상품 0원, 회원 0원, 쿠폰 0원)</em></span>
+                    </label>
+                </li>
+                <li>
+                    <span>쿠폰 사용</span>
+                    <label></label>
+                </li>
+                <li>
+                    <span>마일리지 사용</span>
+                    <label>
+                        <span><input type="text" name="mileage_use" value="<?php echo $_POST['mileage_use']?>" readonly> 원 <em>(보유 마일리지 : 0원)</em></span>
+                        <span>※ 0원 이상 보유해야 사용이 가능합니다.</span>
+                    </label>
+                </li>
+                <li>
+                    <span>예치금 사용</span>
+                    <label><input type="text" name="deposit_use" value="<?php echo $_POST['deposit_use']?>" readonly>&nbsp;원</em><em>(보유 예치금 : 0원)</em></label>
+                </li>
+                <li>
+                    <span>최종 결제 금액</span>
+                    <label id="order_total5"><em style="font-weight: 800;"><?php echo number_format($_POST['price2'])?>원</em></label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 결제정보 끝-->
+    <!-- 결제수단 선택 / 결제 -->
+
+    <div class="pay_total">
+        <span>최종 결제 금액 <em id="order_total6"><?php echo number_format($_POST['price2'])?>원</em></span>
+    </div>
+    <!-- 결제수단 선택 / 결제 끝 -->
+    <!-- 결제하기 버튼  -->
+    <div class="pay_btn_box">
+        <span></span>
+        <span><button type="button" onclick="gopay_pass();">결제진행</button></span>
+    </div>
+</form>
+</nav>
+<script>
+    function gopay_pass(){
+        INIStdPay.pay("order_f");
+    }
+</script>

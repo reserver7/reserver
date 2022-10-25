@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 1일차(엔진+핸들링)</title>
+<script src="./jquery.js"></script> <!-- Jquery엔진 탑재(이름에 버젼을 쓸 경우 해킹의 위험노출) -->
+<script>
+    $(document).ready(function(){
+        //현재 페이지가 준비(Jquery)문법이 되었으며, 어떤 행동(지침)을
+        //사용 할 수 있도록 하겠다 라는 뜻 Jquery 쓸 경우 무조건 써야함
+        //이 공간에는 핸들링을 쓸 수 없음 Jquery 변수는 무조건 $를 써야함
+        //Jquery는 onclick 그리고 name 안씀 id 또는 class만 사용 가능
+        var $a = 10;
+        var $b;
+        /*
+        for($b=0;$b<$a;$b++){
+            document.write($b+"<br>");
+        }
+        */
+        /*
+        switch($a){
+            case 10:
+                alert("숫자 10을 선택했습니다.");
+            break;
+            case 20:
+                alert("숫자 20을 선택했습니다.");
+            break;
+            default:
+                alert("선택한 숫자 범위가 아닙니다.");
+            break;
+        }
+        */
+        $("#btn").click(function(){    //클릭 이벤트 핸들링 형태
+            //id, class명으로 설정을 함 css기준 기호와 동일 (# 또는 .)
+            //alert("test");
+            //var $aa = $("#mid").val(); //HTML에서 mid(id)의 값을 가져올때 val() == value 같은뜻
+            //$("#mid").val("test");   //HTML에서 mid(id)의 값을 넣을 경우 
+            //$(".mids").val("test");   //HTML에서 mids(class)의 값을 넣을 경우
+        });
+        //$("#btn2").click(function(){
+            //location.href="http://www.naver.com";
+        //});
+        $("#login").click(function(){   //login 이름의 버튼을 클릭시
+            //값을 function 태워서 보내는 형태가 어려움
+            //Jquery 무조건 값을 선언한 후에 처리 해야함
+            var $id = $("#mid").val();  //mid 라는 이름의 값
+            var $pw = $("#mpass").val(); //mpass 라는 이름의 값
+            if($id==""){
+                alert("아이디를 입력하세요.");
+            }
+            else if($pw==""){
+                alert("패스워드를 입력하세요.");
+            }
+            else{
+                location.href="http://nate.com";
+            }
+        });
+    });
+    /*
+    응용문제.
+    mid,mpass에 값이 없을 경우 "아이디값을 입력하세요."
+    "패스워드를 입력하세요" 라고 경고창이 나오도록 출력 버튼 클릭시
+    */
+    
+</script>
+</head>
+<body>
+<input type="text" name="mid" id="mid" class="mids">
+<input type="password" name="mpass" id="mpass" class="mids">
+<button type="button" id="login">로그인</button>
+<!--
+<input type="button" value="확인" id="btn" class="btnclass">
+<br>
+<input type="button" value="취소" id="btn2" class="btnclass">
+-->
+</body>
+</html>
+<!--
+    JS [Javascript] - ES4~ES5
+    - HTML & CSS + Javascript 사용
+
+    -엔진을 장착해야지만 작동이 됨 [Javascript에서 파생됨]-
+    Jq [Jquery] - vision.1.3 ~ 3.5 Jquery.com
+    Jquery-min-3.5.1  암호화가 된 코드 (백엔드가 많이 사용)
+    Jquery-3.5.1    엔진을 다 바꿀수가 있음 (프론트엔드가 많이 사용)
+
+
+    TS [Typescript] - vision.1.7 ~ 3.6 마이크로소프트
+    Vue, Angular, React [Framework] - vision.2.4 ~ 3.3
+    장점 : 애니메이션, 공동작업, UI, 애플리케이션
+    단점 : 버젼별로 명령어가 틀림
+
+    Ajax, Node.js(버젼-엔진이 있음), Socket   - 서비스 관련 엔진 ex.통신, 채팅 등등
+-->

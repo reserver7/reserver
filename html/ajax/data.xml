@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<members>
+    <ship>
+        <mname>홍길동</mname>
+        <mid>hong</mid>
+        <mtel>01011345567</mtel>
+    </ship>
+    <ship>
+        <mname>이순신</mname>
+        <mid>leess</mid>
+        <mtel>01001235566</mtel>
+    </ship>
+    <ship>
+        <mname>강감찬</mname>
+        <mid>kks</mid>
+        <mtel>01055443399</mtel>
+    </ship>
+        <ship>
+        <mname>유관순</mname>
+        <mid>yks</mid>
+        <mtel>01012345678</mtel>
+    </ship>
+</members>

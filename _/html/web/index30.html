@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+팝업창+파라미터(부모창)</title>
+<script>
+    function abc(){
+        window.open("./popup.html","","width=500,height=500");
+        //window.open : 팝업창을 띄울때 사용하는 명령어
+        //window.open("팝업창 파일경로","","팝업창 사이즈,위치,팝업창 스크롤바")
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<input type="text" name="addno" id="addno" size="6" readonly>
+<input type="text" name="addr" id="addr" readonly>
+<button type="button" onclick="abc();">주소찾기</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+@charset "utf-8";
+body{ margin:0; padding:0; }
+
+
+.mid{
+    width:150px; height:30px; text-align: center; 
+}
+.btn{
+    width:100px; height:30px; border: 0; 
+    background-color: black; color: white;
+}
+.mpass{
+    width:250px; height:30px; text-align: center; margin-top: 5px;
+}
+.mpass_check{
+    width:250px; height:30px; text-align: center; margin-top: 5px;
+}
+.mnm{
+    width:250px; height:30px; text-align: center; margin-top: 5px;
+}
+.memail1{
+    width:80px; height:30px; text-align: center; margin-top: 5px;
+}
+.memail2{
+    width:145px; height:30px; text-align: center; margin-top: 5px;
+}
+.mtel{
+    width:250px; height:30px; text-align: center; margin-top: 5px;
+}
+.maddr{
+    width:100px; height:30px; text-align: center; margin-top: 5px;
+}
+.btn2{
+    width:150px; height:30px; border: 0; 
+    background-color: black; color: white; margin-top: 5px;
+}
+.maddr2{
+    width:250px; height:30px; text-align: center; margin-top: 5px;
+}
+.maddr3{
+    width:250px; height:30px; text-align: center; margin-top: 5px;
+}
+.agree{
+    width:250px; height:30px; border: 1px solid black;
+}
+.btn3{
+    width:250px; height:30px; background-color: skyblue; color: white;
+    border: 0; 
+}
+.btn4{
+    width:250px; height:30px; background-color: #cccccc; border: 0;
+    margin-top: 5px; 
+}

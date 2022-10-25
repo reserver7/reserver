@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+body{ @include base; }
+/* transform 사용시 z-index 사용불가 */
+/* 안쪽 오브젝트 제작시 front방향이 5시 방향으로 제작 되어야만 
+안쪽 오브젝트를 제작할 수 있음 */
+.divbox{    //안쪽 오브젝트 생성시 방향이 오른쪽 방향으로 적용 되어야만 가능함
+    width: 100px; height: 100px;
+    position: relative; margin: 0 auto; top: 100px;
+    transform-style: preserve-3d;
+    transform: rotateX(30deg) rotateY(45deg);
+    &:hover{
+        top: 150px; left: 150px;
+    }
+}
+@mixin size($w,$h,$c,$p) {
+    width: $w+px; height: $h+px; background-color: $c;
+    position: $p;
+}
+.top{
+    @include size(100,100,yellow,absolute);
+    transform: rotateX(-90deg) translate3d(0,0,-50px);
+}
+.front{
+    @include size(100,100,green,absolute);
+    transform: translate3d(0,0,-50px);
+}
+.right{
+    @include size(100,100,skyblue,absolute); 
+    transform: rotateY(-90deg) translate3d(0,0,-50px);
+}

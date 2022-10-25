@@ -1,0 +1,40 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>기본 로그인 페이지</title>
+</head>
+<body>
+    <!-- tabindex는 사용자 입력 사항 중 tab키에 대한 UI를
+    순서대로 배치 시키기 위한 속성 값 입니다.
+    숫자가 적을 수록 tab 순서에 맞춰서 이동하게 됩니다.-->
+
+    <!-- style속성 : 해당 태그 기준으로 제작자가 원하는 형태로
+    변경이 가능하도록 하는 속성을 말합니다.(css 초기버젼)
+    -->
+    <form method="POST" action="./loginok.php">
+    <table border="1" cellspacing="0" cellpadding="0">
+        <tr align="center">
+        <td bgcolor="yellow" width="100" height="30">아이디</td>
+        <td width="200">
+        <input type="text" name="mid" tabindex="1" style="width:150px;">
+        </td>
+        <td rowspan="2" width="150">
+        <input type="submit" value="로그인" tabindex="3" style="width:120px; height:50px;">
+        </td>
+        </tr>
+        <tr align="center">
+        <td bgcolor="yellow" height="30">패스워드</td>
+        <td>
+        <input type="password" name="mpass" tabindex="2" style="width:150px;">
+        </td>
+        </tr>
+        <tr align="center">
+        <td colspan="3" height="30">회원가입/아이디 비밀번호 찾기</td>
+        </tr> 
+    </table>
+</form>
+
+
+</body>
+</html>

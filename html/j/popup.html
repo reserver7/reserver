@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제2(도로명주소)</title>
+    <!--
+        해당 도로명 주소는 팝업창 출력시
+        바로 출력되는 데이터 입니다.
+        
+        도로명 주소 데이터
+        03125,서울 특별시 영등포구 여의도동 14-32
+        51738,경상남도 창원시 마산합포구 3·15대로 162(중앙동2가) 
+        07052,서울특별시 동작구 국사봉10길 4(상도동) 
+        03386,서울특별시 은평구 통일로 827(대조동) 
+        05952,전라북도 전주시 완산구 서신천변10길 1(서신동) 
+        34675,대전광역시 동구 동부로10번길 55(판암동) 
+        12546,경기도 양평군 양평읍 애곡길10번길 3 
+        28698,충청북도 청주시 서원구 수곡로10번길(분평동)
+        innerHtml 사용 해야함
+    -->
+
+
+
+    <style>
+        body{ margin: 0; padding: 0;}
+        .p_css { width:500px; height:50px; text-align: center;
+        font-size: 14px; font-weight: bold; margin: 0 auto;
+        line-height: 50px;
+        }
+        .addlist { width:500px; height:600px; border:1px solid #ccc;
+        position:relative; margin: 0 auto;
+        }
+        .ulcss { height: auto; list-style: none; padding: 0;
+        margin: 0; }
+        .close_btn { width:80px; height:35px; 
+        background-color: darkslategray; color: white; 
+        font-size: 12px; border: 0;
+        position: absolute; right: 20px; bottom: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <form name="f" id="f">
+    <section>
+    <p class="p_css">도로명 주소 리스트</p>
+    <div class="addlist" name="addlist">
+    <ul class="ulcss" name="ulcss" id="ulcss">
+    <!-- 도로명 주소가 나오는 부분-->
+    </ul>
+    <input type="button" value="창닫기" class="close_btn" onclick="aaa();">
+    </div>
+    </section>
+</form>
+</body>
+<script>
+    var array = [
+        ["03125","서울 특별시 영등포구 여의도동 14-32"],
+        ["51738","경상남도 창원시 마산합포구 3·15대로 162(중앙동2가)"],
+        ["07052","서울특별시 동작구 국사봉10길 4(상도동)"],
+        ["03386","서울특별시 은평구 통일로 827(대조동)"],
+        ["05952","전라북도 전주시 완산구 서신천변10길 1(서신동)"],
+        ["34675","대전광역시 동구 동부로10번길 55(판암동)"],
+        ["12546","경기도 양평군 양평읍 애곡길10번길 3"],
+        ["28698","충청북도 청주시 서원구 수곡로10번길(분평동)"]
+    ]
+
+    var node = array.length;
+    var f;
+    var ul;
+    for(f=0;f<node;f++){
+        ul = document.getElementById("ulcss");
+        var htmlli = "<a href='javascript:aaa();'><li name='licss' class='licss'>"+array[f]+"</li></a>";
+        ul.innerHTML += htmlli; 
+        var ul1 = array[f][0];
+        var ul2 = array[f][1];
+        window.opener.f.member_addrno.value = ul1;  
+        window.opener.f.member_addr.value = ul2;       
+    }
+
+
+
+    function aaa(){
+        self.close();
+    }
+</script>
+</html>

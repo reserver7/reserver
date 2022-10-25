@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.labelcss {
+  display: block;
+  width: 100px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.labelcss:active + .ck + .box {
+  width: 300px;
+  height: 150px;
+  background-color: green;
+}
+
+.ck:checked + .box {
+  width: 300px;
+  height: 300px;
+  background-color: blue;
+}
+
+.box {
+  width: 300px;
+  height: 50px;
+  background-color: yellow;
+  -webkit-transition: height 5s;
+  transition: height 5s;
+  -webkit-transition-delay: 2s;
+          transition-delay: 2s;
+}
+/*# sourceMappingURL=index8.css.map */

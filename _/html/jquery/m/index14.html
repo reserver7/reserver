@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 11일차 (상품출력 부분)</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css?v=2">
+<script>
+
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .headercss{ height: 60px; background-color: black; }
+    .productcss{ height: auto; }
+    .footercss{ height: 100px; background-color: gray; }
+    .product{
+        width: 100%; max-width: 420px; height: auto; border: 1px solid blue;
+        box-sizing: border-box;
+    }
+</style>
+</head>
+<body>
+<header class="headercss">
+
+</header>
+<!--  메뉴 또는 배너 -->
+<nav>
+
+</nav>
+<!-- 상품출력 파트 -->
+<section class="productcss">
+    <div class="product">
+        <!-- index14p.html : HTML 상품 직접코드 -->
+        <!-- index14a.html : 상품 배열로 출력 -->
+        <!-- index14b.html : 상품 2개씩 출력 HTML 상품 직접코드 -->
+        <!-- index14c.html : 상품 배열로 2개씩 출력 -->
+        <?php include "index14c.html" ?>
+    </div>
+</section>
+<!-- 카피라이터 -->
+<footer class="footercss">
+
+</footer>
+</body>
+</html>
+<!--
+    [카피라이터] - PC (100px ~ 350px)
+    Mobile (100px ~ 150px)
+
+    - 회사명
+    - 대표자
+    - 사업자번호
+    - 통신사업자 번호(결제시스템)
+    - 주소
+    - 대표번호
+    - 대표메일
+    - 개인보호 정책 담당자
+    - SSL, 보안정책 마크
+-->

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 22일차 - unbind (바인딩)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $w = 0;
+        /*
+        $("#start").click(function(){
+            $(this).unbind("click"); //한번 클릭 후 click핸들링 사용하지 않게 됨
+            $w += 50;
+            $(".box").css({
+                "width":$w+"px"
+            });
+        });
+        */
+        $("#start").bind({ 
+            //bind로 핸들링을 만들경우 각 파트별로 별도로
+            //unbind를 사용 할 수도 있음
+            "click":function(){
+                $w += 50;
+                $(".box").css({
+                    "width":$w+"px"
+                });
+                //$(this).unbind("click");
+            },
+            "mouseenter":function(){
+                alert("test");
+                //$(this).unbind("mouseenter");
+            }
+        });
+        $("#start").unbind();   
+        //해당 라인으로 사용시 전체 해당 이벤트 핸들링은 모두 사용하지 못함
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box { 
+        width: 0px; height: 100px; background-color: black; transition: 5s;
+    }
+</style>
+</head>
+<body>
+<div class="box"></div>
+<input type="button" value="start" id="start">
+</body>
+</html>

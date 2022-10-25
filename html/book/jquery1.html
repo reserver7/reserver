@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery1</title>   <!-- base태그는 중복이 안됨 단 한번만 사용가능 -->
+<base href="../image/"><!-- base태그 : 기본 경로를 미리 셋팅하는 태그 끝에 /를 무조건 넣어야함 -->
+<script src="../jquery/jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        //구구단 8단
+        var $a = 8;
+        var $b;
+        var $c;
+        for($b=1;$b<=9;$b++){
+            $c = $a * $b;
+            document.write($a+"*"+$b+"="+$c+"<br>");
+        }
+    });
+</script>
+</head>
+<body>
+<img src="./car1.jpg">  <!-- base기점으로 이미지 파일명만 사용하여 출력함 -->
+</body>
+</html>

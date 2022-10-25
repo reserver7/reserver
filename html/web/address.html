@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(도로명 주소) + 배열(array)</title>
+<link type="text/css" href="./index34.css?v=1" rel="stylesheet"></link>
+<script>
+/*  해당 부분 배열로 반복문을 사용하였음
+    var a = ['1','2','3','4','5']; //1차원 배열
+    //배열구조도 0부터 시작하며, 노드와 같은 기호를 사용합니다.
+    var b = a.length; //배열 전체 갯수를 가져올 때 사용합니다. (5개가 있음)
+    var c;
+    for(c=0;c<b;c++){
+        document.write(a[c]+"<br>");
+    }
+*/
+// [ [],[],[] ]    2차원 배열형태
+// { "abc" : [] }  json (배열형태 구조 - 다차원)
+    var a = [
+        ["홍길동","A","RH-"], //a[0], 이름만 찍을 경우 a[0][0], 형액형 : a[0][1]
+        ["이순신","B","RH+"], //a[1], 이름만 찍을 경우 a[1][0], 형액형 : a[1][1]
+        ["유관순","O","RH+"], //a[2], 이름만 찍을 경우 a[2][0], 형액형 : a[2][1]
+        ["강감찬","AB","RH-"] //a[3], 이름만 찍을 경우 a[3][0], 형액형 : a[3][1]
+    ];
+    //alert(a[0][1]);
+
+    //예시
+    //홍길동님은 형액형은 A 형입니다. 라고 출력
+    var c,d,e,f;
+    var z;
+        c = a.length;   //큰 for문
+        for(e=0;e<c;e++){
+            d = a[e].length;    //작은배열 안에 데이터 갯수
+            for(f=0;f<d;f++){
+                //var z = a[e][f];
+                if(f==0){
+                    z = a[e][f] + "님은";
+                }
+                else if(f==1){
+                    z = z + "혈액형은" + a[e][f] + "입니다.";
+                }
+                else if(f==2){
+                    z = z + " 해당 사용자는 " + a[e][f];
+                }
+            }
+            //document.write(z + "<br>");
+        }
+    
+    //응용문제2. 다음 쌍for문을 while + while 문으로 제작
+    var cc,dd;
+    var ee=0;
+    cc = a.length;
+    var zz;
+    while(ee<cc){
+        var ff=0;
+        dd=a[ee].length;
+        while(ff<dd){
+            if(ff==0){
+                zz = a[ee][ff] + "님은";
+            }
+            else if(ff==1){
+                zz = zz + " 혈액형은 " + a[ee][ff] + "입니다.";
+            }
+            else if(ff==2){
+                zz += " 해당 사용자는 " + a[ee][ff];
+            }   //zz = zz + " 해당 사용자는 " + a[ee][ff]; 위에 뜻 과 같음
+            ff++;
+        }
+        //document.write(zz + "<br>");
+        ee++;
+    }
+
+    // 도로명
+    
+    var oksign = "y";
+    function search(ws){
+        if(ws=="종로" || ws=="종로구"){
+        var addr = [
+        ["03138","서울특별시 종로구 돈화문로 지하30(묘동)"],
+        ["03139","서울특별시 종로구 수표로 104(종로 3가)"],
+        ["03139","서울특별시 종로구 종로 109(종로 3가)"],
+        ["03139","서울특별시 종로구 종로 111(종로 3가)"],
+        ["03139","서울특별시 종로구 종로 111-1(종로 3가)"]
+    ];
+}
+        else if(ws=="중구" || ws=="을지로"){
+        var addr = [
+        ["04533","서울특별시 중구 을지로 6"],
+        ["04533","서울특별시 중구 을지로 지하12"],
+        ["04533","서울특별시 중구 을지로 16"],
+        ["04523","서울특별시 중구 을지로 19"],
+        ["04523","서울특별시 중구 을지로 23"]
+    ];
+}
+        else{
+            alert("현재 검색할 주소가 없습니다.");
+            oksign = "n";
+        }
+        if(oksign=="y"){
+            var fors;
+            var add_array = addr.length;
+            for(fors=0;fors<add_array;fors++){
+                    //innerHTML 적용
+                    var vw = document.getElementById("adview");
+                    vw.innerHTML += '<label class="adlist"><span class="adno">'+ addr[fors][0] +'</span>' + addr[fors][1]+ '</label>';
+                }
+            /*  <label>을 innerHTML로 제작한 후에 해당 class 부분을 불러 옴 
+                해당 <label> class가 몇개가 생성 되었는지 확인 후 addclick 함수로
+                보내게 됨 
+            */
+            var query = document.querySelectorAll(".box > .adlist");
+            var querylg = query.length;
+            var qf;
+            for(qf=0;qf<querylg;qf++){  //DOM객체 부분을 배열로 변경
+                addclick(qf)
+            }
+        }
+    }
+    function addclick(selectadd){ //해당 데이터(배열)에 대한 함수 호출
+        var query = document.querySelectorAll(".box > .adlist");
+        query[selectadd].onclick = function(){
+            var addtext = query[selectadd].innerText;
+            //배열로 설정된 문자를 가져와서 출력함
+            //alert(addtext);
+            //우편번호 와 도로명 주소를 분리 작업
+            var addr1 = addtext.substr(0,5);    //우편번호
+            var addr2 = addtext.substr(5,100);  //도로명 주소
+            window.opener.mb.maddr.value = addr1; //부모창 값 전달 (우편번호)
+            window.opener.mb.maddr2.value = addr2; //부모창 값 전달 (도로명 주소)
+            window.opener.mb.maddr3.focus();    //부모창 상세주소 커서 자동이동
+            self.close();   //자식창 종료
+        }  
+    }
+</script>
+<style>
+    .box{
+        width:550px; height:300px; border:1px solid black;
+        margin-top: 20px; padding: 5px; box-sizing: border-box;
+    }
+    .adlist{
+        font-size: 13px; width:100%; height:30px; line-height:30px;
+        display: block; cursor: pointer;
+    }
+    .adno{
+        margin-right:10px;
+    }
+</style>
+</head>
+<body>
+<form name="fs" id="fs" method="GET">
+<input type="text" name="search" id="search">
+<input type="button" value="주소검색" id="sbtn">
+<div id="adview" class="box"></div>
+</form>
+</body>
+<script>
+    var btnid = document.getElementById("sbtn");
+    //btnid.addEventListener("click",search,false); //밑에랑 같은 뜻
+    btnid.onclick=function(){   //더블 펑션이랑 같은 뜻
+        if(fs.search.value==""){
+            alert("주소명을 입력해 주세요!");
+            fs.search.focus();
+        }
+        else{
+            search(fs.search.value);
+        }
+    }
+</script>
+</html>
+<!--
+    [도로명 주소]
+    1. HTML에 name, id를 제작
+    2. 버튼 클릭 해서 (팝업창 주소, 레이어 팝업) - 주소창
+    3. 검색 부분 제작
+    4. 조건문을 이용해서 도로명 주소를 배열로 가져옵니다.
+    5. 반복문을 사용 출력 -검색된 내용에 한해서
+    6. 사용자가 해당 node를 클릭
+    7. 클릭 node의 값을 부모창으로 전달
+    8. 자식창 종료
+-->
+<!--
+    self-점검
+    - 조건문(a,b에 대한 값을 비교) if, else if, else
+    - 반복문(for, while, do~while) 1~10까지 합산 결과 정답:55
+    - 선택문(switch ~ case)
+
+    - 조건문 + 반복문 
+    (a가 b보다 클 경우, a~b까지 출력 반복적으로)
+    - 반복문 + 반복문 (for+for x) - (for+while o)
+    (구구단)
+    - html + 조건문 (함수필수)
+    - html + 조건문 + 함수에 값 함께 이용
+    - html + 반복문 (checkbox, radio)
+    - html + CSS + Javascript (핸들링) - 객체 컨트롤
+    - 더블 function, return
+    - 절삭, 반올림, 단어 필터(Match), 단어 자르기(substr)
+-->

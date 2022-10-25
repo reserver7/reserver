@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery5</title>
+<script src="../jquery/jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#box").click(function(){
+            //var $node = $(this).attr("datas");
+            //alert($node);
+            $(this).attr("class","box2");
+        });
+    });
+</script>
+<style>
+    .box { width: 100px; height: 100px; 
+        background-color: darkorchid;}
+    .box2 { width: 100px; height: 100px; 
+        background-color: blue;}
+</style>
+</head>
+
+<body>
+<div class="box" datas="divbox" id="box"></div>    
+</body>
+</html>

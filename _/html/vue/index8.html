@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue 2일차 - select</title>
+<script src="vue.js"></script>
+</head>
+<body>
+    <!-- select 태그는 두가지 형태가 있음 
+    1. option value를 사용하지 않을 경우 기본적으로 Vue 엔진에서 텍스트를 가지고 감
+    2. option value를 사용할 경우 Vue 엔진에서 value값을 가지고 감
+    -->
+<section id="box">
+    <select v-model="boxea">
+        <option value="">[선택해주세요]</option>
+        <option>1EA</option>
+        <option>2EA</option>
+        <option>3EA</option>
+    </select>
+    <span>수량 : {{ boxea }}</span>
+</section>
+</body>
+<script>
+    let a = new Vue({
+        el:"#box",
+        data:{
+            boxea:null
+        }
+    });
+</script>
+</html>

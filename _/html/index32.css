@@ -1,0 +1,48 @@
+@charset "utf-8";
+body { margin:0; padding:0; }
+
+div { width:100px; height:100px;}
+.box1 { background-color: rgb(255,0,0); border-radius: 100px;
+    animation-name: abc; /* html id값 처럼 고정 이름 keyframes 이름 */
+    animation-duration: 5s; /* duration : 애니메이션 시간 5s (5초)*/
+}
+@keyframes abc{ /* keyframes은 animation과 함께 사용 */
+    from { margin-left: 600px;} /* 시작점 */
+    to { margin-left:0px; } /* 끝나는 지점 */
+}
+.box2 { background-color: rgba(255,0,0,0.5); /* 50% 투명도*/ 
+    border-radius: 100px;
+}
+.box3 { background-color: rgba(255,0,0,0); /* 100% 투명도*/
+    border-radius: 100px; cursor: pointer; 
+    border:1px solid rgb(255,0,0,0.5); /* 50% 투명도 */
+}
+/* RGB (Red, Green, Blue) 
+a = alpha (투명도 0~1)
+*/
+.box4 { width:600px; height:400px; 
+    background: linear-gradient(45deg, red,blue,yellow);
+}
+/* to left, right top, bottom을 사용할 수 있으며, 45deg는 (각도 45도) */
+.box5 { width:200px; height:200px; border-radius: 100px;
+background: radial-gradient(red 10%,blue 30%,yellow 60%);
+/* %는 100%를 기준으로 합니다. */
+}
+/* radial-gradient(원형 글라이언트), linear-gradient(선형 글라이언트) */
+.box6 { background-color: greenyellow; 
+   /* transform:rotateX(50deg); X축 방향으로 회전 */
+   /* transform:rotateY(50deg); Y축 방향으로 회전 */
+   /* transform:rotateZ(70deg); Z축 방향으로 회전 */
+   /* transform: rotate(45deg); 시계방향으로 회전 */
+}
+.box6:hover { transform: scale(0.5); } /* 크기를 조정합니다. (숫자는 배수) */ 
+   /* transform: rotate(45deg);} */
+.box7 { border-radius:100px; background-color:blue;
+    box-shadow: 50px 50px 50px gray; cursor: pointer;
+    animation-name: aaa; position: absolute; left:50%; z-index:1;
+    animation-duration: 3s;
+}
+@keyframes aaa { 
+    from {top:0;}
+to { top:500px;}
+}

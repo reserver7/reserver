@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 4일차(HTML+Javascript) + if문</title>
+<script>
+function abc(){
+    var a = document.getElementById("a").value;
+    if(a==""){  // ""를 사용하는 이유는 input type="text"즉, 문자로 인식하기 때문에
+        // alert : 경고창 메세지를 출력 할 때 사용하는 명령어
+        alert("숫자를 입력해 주시길 바랍니다.");
+    }
+    else{   // 값이 입력 되었을 때 작동
+        alert("값이 입력 되었습니다.");
+    }
+}
+
+function bbb(){
+    var b =Number(document.getElementById("b").value);
+    var c =Number(document.getElementById("c").value);
+    var d;
+
+    //응용문제 if b,c모두 입력 단, 하나라도 입력 되지 않으면 사용할 수 없음
+    if(b=="" || c==""){
+        alert("단 하나라도 입력이 되지 않으면 사용할 수 없습니다.");
+    }
+    else{
+        // d = Number(b) + Number(c);
+        d = b + c;
+        // Number 라는 속성은 문자를 숫자로 변환 해줌 대문자,소문자 구분해야 함
+        // "1" => 1 로 변환한거와 같음 단, Number("연습") (X) 아라비아 숫자만
+        alert("두 숫자의 합은" + d + "입니다.");
+    }
+}
+</script>
+</head>
+<body>
+<!--
+<input type="text" id="a" placeholder="하나의 숫자를 입력해 주세요">
+<input type="button" value="결과확인" onclick="abc();">
+-->
+<input type="text" id="b">
+<input type="text" id="c">
+<input type="button" value="계산하기" onclick="bbb();">
+
+</body>
+</html>

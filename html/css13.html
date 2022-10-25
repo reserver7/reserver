@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>CSS 전용 변수형태</title>
+<style>
+    :root { /* css 기본 변수형태의 코드 (암호화 하기 위해) */
+        --box-color:red;    /* 변수는 --를 기점으로 만들어 집니다. */
+        --box-width:100px;
+        --box-height:40px;
+        --ul-m : 0px;
+        --ul-p : 0px;
+        --ul-list : none;
+        --li-float : left;
+        --color:blue;
+    }
+    body { margin: 0; padding: 0; }
+    /* var코드를 이용하여 :root에 있는 값을 가져오는 형태 */
+    .box {
+        color:var(--box-color); width:var(--box-width);
+        height:var(--box-height); line-height: 40px; border: 1px solid red;
+        text-align: center;
+    }
+    .ulcss{
+        margin: var(--ul-m); padding: var(--ul-p); list-style: var(--ul-list);
+        width: 600px; height: 40px;
+    }
+    .ulcss > li{
+        width: 100px; height: 40px; background-color: greenyellow; line-height: 40px;
+        float: var(--li-float); text-align: center;
+    }
+</style>
+</head>
+<body>
+    <div class="box">TEST</div>
+    <ul class="ulcss">
+        <li>MENU1</li>
+        <li>MENU2</li>
+    </ul>
+</body>
+</html>
+<!--
+    [신입 Front-end]
+    - HTML & CSS (상)
+    - Javascript (노드, 비동기, 동기화, 소켓통신, 배열)
+    - Jquery (Jquery필터, Jquery엔진 커스텀)
+    - Ajax (Javascript, Jquery 차이점)
+    - Json, Xml 파싱, 파서
+    - 프레임워크 사용한 프로그램 (Vue)
+    - DB (데이터베이스)
+    - Node.js - Server, localhost
+    - Scss, Less
+    - Git 
+
+    
+    [경력 Front-end]
+    - HTML & CSS (상)
+    - Javascript (노드, 비동기, 동기화, 소켓통신, 배열)
+    - Jquery (Jquery필터, Jquery엔진 커스텀)
+    - Ajax (Javascript, Jquery 차이점)
+    - Json, Xml 파싱, 파서
+    - 프레임워크 사용한 프로그램 (Vue)
+    - DB (데이터베이스)
+    - Node.js - Server, localhost
+    - Scss, Less
+    - Git
+    - 컴파일 코드 작성 여부
+    - 암호화 인코딩
+    - 속도개선
+    - 쿠키, 세션
+-->

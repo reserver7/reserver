@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 10일차 모바일 메뉴(슬라이드 메뉴)</title>
+    <script src="../jquery.js"></script>
+    <script src="./jquery-ui.js"></script>
+    <link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+    <script>
+        $(document).ready(function(){
+            /* 세로화면 전용 사이트 */
+            $(window).on("orientationchange",function(event){
+                //alert(window.orientation);
+                //window.orientation : 모바일 각도 0 :세로 90:시계방향 가로 -90:시계반대방향 가로  
+                if(window.orientation==90 || window.orientation==-90){
+                    alert("해당 사이트는 세로화면으로만 접속이 가능합니다.");
+                    $("body").css("display","none");  
+                }
+                else{
+                    $("body").css("display","block"); 
+                }
+            });
+            $("#hbtn").click(function(){
+                var $width = $("#menus").width();
+                if($width == 0){
+                    $("#menus").css("display","block");
+                    $("#menus").animate({
+                    "width":"90%"
+                    },800,function(){
+                        $("#ulcss").css("display","block");
+                    });
+                }
+                else{
+                    $("#menus").animate({
+                    "width":"0%"
+                    },800,function(){
+                        $("#menus").css("display","none");
+                    });
+                }
+
+            });
+
+        });
+    </script>
+    <style>
+        /* 모바일 웹페이지 전용 @media를 사용하지 않음 */
+        body { margin: 0; padding: 0; }
+        .headercss { height: 60px; }
+        .top { width: 100%; max-width:460px; 
+        background-color: gainsboro; height: 60px;
+        display: flex; flex-wrap: wrap; 
+        align-content: center;
+        align-items: center;
+        }
+        /* 
+        align-content : flex-wrap과 함께 사용하여 수직 방향 정렬 방식 (오브젝트 1개 이상)
+        align-item : 오브젝트 객체 수직방향 정렬 방식 (오브젝트 1개)
+        */
+        .hbtn { width: 40px; height: 40px; background-color: black;
+        display: block; margin-left: 10px; }
+        .product { height:600px; background-color: gray; }
+        .menus { width:0; height: 100vh; 
+        background-color: green; position: absolute;
+        display: none; }
+    </style>
+</head>
+<body>
+<header class="headercss">
+    <div class="top">
+        <label class="hbtn" id="hbtn"></label>
+    </div>
+</header>
+<!--슬라이드 메뉴-->
+<div class="menus" id="menus">
+<meta charset="utf-8">
+<script>
+    $(document).ready(function(){
+            $("#ulcss>li").click(function(){
+                /* 
+                해당 대메뉴 클릭시 소메뉴를 미리 반복문으로 모두
+                slideUp 사용하여 초기화 시킵니다.
+                */
+                var $ea = $("#ulcss>li").length;
+                var $f;
+                var $nodeid;
+                for($f=0;$f<$ea;$f++){
+                    $nodeid = "#olcss" + $f;
+                    $($nodeid).slideUp();
+                }
+                /* 
+                초기화된 메뉴 중 사용자가 선택한 메뉴만 slideDown
+                이용하여 출력하게 됩니다.
+                 */
+
+                var $node = $(this).index();
+                var $node_nm = "#olcss" + $node;            
+                //$($node_nm).slideToggle();
+           /* 
+           slideToggle() : slideDown, slideUp 두가지를 한번에 사용을 함
+           */
+                var $s = $($node_nm).is(":visible");
+    //visible : 해당 오브젝트가 보이는 상태 또는 보이지 않는 상태 유/무 확인
+                if($s==false){
+                    $($node_nm).slideDown();
+                }
+                else{
+                    $($node_nm).slideUp();
+                }
+                
+            });
+
+            $("#olcss0>li").click(function(){
+                var $node = $(this).index();
+                var $url;
+                //0:네이버, 1:다나와, 2:네이트, 3:구글
+                switch($node){
+                    case 0:
+                    $url = "http://naver.com";
+                    break;
+
+                    case 1:
+                    $url = "http://danawa.com";
+                    break;
+
+                    case 2:
+                    $url = "http://nate.com";
+                    break;
+
+                    case 3:
+                    $url = "http://google.com";
+                    break;
+                }
+                location.href=$url;
+            });
+
+            $("#olcss1>li").click(function(){
+                var $node = $(this).index();
+                var $url;
+                //0:삼성, 1:LG, 2:HP, 3:Dell
+                switch($node){
+                    case 0:
+                    $url = "http://www.samsung.com";
+                    break;
+
+                    case 1:
+                    $url = "http://www.lg.co.kr";
+                    break;
+
+                    case 2:
+                    $url = "http://www8.hp.com";
+                    break;
+
+                    case 3:
+                    $url = "https://www.dell.com/ko-kr?c=kr&l=ko&s=,gen&~ck=cr&redirect=1";
+                    break;
+                }
+                location.href=$url;
+            });
+
+    });
+</script>
+<style>
+    .ulcss { width: 300px; height: auto;
+    list-style: none; margin: 0; padding: 0;
+    margin-top: 10px; margin-left: 10px;
+    display: none;
+    }
+    .ulcss > li { width: 300px; height:auto; 
+    background-color: yellow;
+    line-height: 40px; text-indent: 5px; font-size: 14px;
+    border-bottom: 1px solid darkorange;
+    }
+    /* 아이콘 적용 */
+    .ulcss > li:nth-child(1)::before{
+        content: url('./images/img0.svg');
+        vertical-align: 5px;
+    }
+    .ulcss > li:nth-child(2)::before{
+        content: url('./images/img1.svg');
+    }
+    .ulcss > li:nth-child(3)::before{
+        content: url('./images/img2.svg');
+    }
+    .ulcss > li:nth-child(4)::before{
+        content: url('./images/img3.svg');
+    }
+    .ulcss > li:nth-child(5)::before{
+        content: url('./images/img4.svg');
+    }
+    
+
+    .olcss { width:200px; height:auto; list-style: none;
+    margin: 0; padding: 0; display: none;
+    }
+    .olcss > li { width: 200px; height: 40px;
+    background-color: orange;
+    line-height: 40px; text-indent: 5px; font-size: 14px;
+    border-bottom: 1px solid black;
+    }
+</style>
+<ul class="ulcss" id="ulcss">
+    <li>가전 | TV
+        <ol class="olcss" id="olcss0">
+            <li>TV</li>
+            <li>홈시어터</li>
+            <li>프로젝트</li>
+            <li>셋톱박스</li>
+        </ol>        
+    </li>
+    <li>컴퓨터 | 노트북 | 조립PC
+        <ol class="olcss" id="olcss1">
+            <li>삼성</li>
+            <li>LG</li>
+            <li>HP</li>
+            <li>Dell</li>
+        </ol>         
+    </li>
+    <li>아웃도어 | 스프츠
+        <ol class="olcss" id="olcss2">
+            <li>캠핑</li>
+            <li>낚시</li>
+            <li>등산</li>
+            <li>수영</li>
+        </ol>
+    </li>
+    <li>자동차 | 용품
+        <ol class="olcss" id="olcss3">
+            <li>타이어/휠/배터리</li>
+            <li>오일/필터</li>
+            <li>세차/와이퍼</li>
+            <li>매트/시트</li>
+            <li>전동드릴</li>
+        </ol>
+    </li>
+    <li>식품 | 유아 | 완구
+        <ol class="olcss" id="olcss4">
+            <li>건강식품</li>
+            <li>라면/면류/통조리</li>
+            <li>커피/차</li>
+            <li>생수/음료/두유</li>
+        </ol>
+    </li>
+</ul>
+</div>
+<!--슬라이드 메뉴-->
+<!--배너, 상품, 게시판-->
+<section class="product">
+</section>
+</body>
+</html>
+

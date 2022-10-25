@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(반복문4(checkbox) - name 이용)</title>
+<script>
+    function abc(){
+        var aa = f.num.length;
+        var bb=0;
+        var cc="n";
+        /*
+        for(bb=0;bb<aa;bb++){
+            if(f.num[bb].checked==true){
+                cc="y";
+            }
+        }
+        if(cc=="n"){
+            alert("하나라도 체크를 하셔야만 합니다.");
+        }
+        else{
+            alert("해당 사항을 전달 하였습니다.");
+        }
+        */ 
+        // 응용문제5. while 사용 체크박스 유/무 검사 하는 반복문
+        while(bb<aa){
+            if(f.num[bb].checked==true){ // 하나라도 체크가 되면
+                cc="y";                 // cc가 y로 변경 해라
+            }
+            bb++;
+        }
+        if(cc=="n"){
+            alert("하나라도 체크를 하셔야만 합니다.");
+        }
+        else{
+            alert("해당 사항을 전달 하였습니다.");
+        }
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<input type="checkbox" name="num" value="1" id="a">
+<label for="a">숫자1</label>
+<input type="checkbox" name="num" value="2" id="b">
+<label for="b">숫자2</label>
+<input type="checkbox" name="num" value="3" id="c">
+<label for="c">숫자3</label>
+<input type="checkbox" name="num" value="4" id="d">
+<label for="d">숫자4</label>
+<input type="checkbox" name="num" value="5" id="e">
+<label for="e">숫자5</label>
+<button type="button" onclick="abc();">결과확인</button>
+</form>
+</body>
+</html>

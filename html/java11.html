@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 3일차(Free 테스트 for, while, do while 중 한가지 선택</title>
+<script>
+//while
+var a1=30;
+var a2=31;  //초기값
+while(a2<61){
+    a1 = a1 * a2; //반복적인 계산
+    a2++;
+} 
+document.write(a1+"<br>");
+
+//for
+var b1=30;  //처음에 곱할 값
+var b2; //for문 사용하는 변수
+for(b2=31;b2<=60;b2++){
+    b1 = b1 * b2;
+}
+document.write(b1+"<br>");
+
+//do while
+var a=31;   //초기값
+var b=30;   //처음 곱할 값
+do{
+    b = a * b;
+    a++;
+}while(a<=60);  //반복 값의 범위
+document.write(b+"<br>");
+
+// 두번째 문제 1~50 짝수만 모두 더하기
+var aa=1;   //시작값
+var bb; //몫값을 구하는 변수
+var cc=null; //값을 지속적으로 증가시키는 변수값 
+            //(null 숫자,문자도 아닌 비어있는공간)
+while(aa<51){
+    bb = aa % 2;
+    if(bb==0){
+        cc = cc + aa;
+    }
+    aa++;
+};
+document.write(cc+"<br>");
+//do while
+var c1=1;
+var d1;     //몫값 결과를 가져오는 변수
+var e1=null;
+do{
+    d1 = c1 % 2;
+    if(d1==0){
+        e1 = e1 + c1;
+    }
+    cc++;
+}while(cc<=50);
+document.write(e1);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

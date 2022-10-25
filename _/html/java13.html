@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 4일차(switch문+반복문)</title>
+<script>
+//내림차순 (for)
+var a=10;
+var b;
+switch(a){
+    case 10:
+        for(b=10;b>0;b--){
+            //document.write(b+"<br>");
+        }
+    break;
+
+    default:
+    document.write("조회하고자 하는 숫자 범위는 10이하 입니다.");
+    break;
+}
+//응용문제 switch 이용 구구단 출력
+//문자 : 2단 2*1시작, 4단 4*1시작 (2단, 4단만 제작)
+//반복문 free
+var c="4단";
+var d=1;    //while 초기값
+//var d;  for문
+var f;  //구구단에 대한 숫자값
+var e;  // 결과값
+switch(c){
+    case "2단":
+        f=2;
+        while(d<=9){
+            e = f * d;
+            document.write(f+"*"+d+"="+e+"<br>");  
+            d++;
+        }
+    break;
+
+    case "4단":
+        f=4;
+        do{
+            e = f * d;
+            document.write(f+"*"+d+"="+e+"<br>");  
+            d++;
+        }while(d<=9);
+    break;
+}
+
+/*
+    변수선언
+    if문
+    for문
+    while문
+    do ~ while문
+    switch ~ case문
+*/
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

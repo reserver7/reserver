@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@import "./index14_1.scss"; 
+//scss 기본 문법 또는 기본 엔진을 모아서 적용 후 
+//import를 이용하여 코드를 단순화 함
+//단, import하는 파일을 수정시 import를 로드하는 scss,css모두 저장해야만 적용됨
+.radios{
+    display: flex; flex-direction: row;
+    width: 500px; height: 40px; flex-wrap: nowrap;
+    align-content: center; align-items: center;
+    justify-content: center;
+}
+.radios >label{ 
+    display: block; margin-right: 5px; font-size: 12px;
+    width: 80px; height: 40px; line-height: 40px;
+}
+.radiocss{ //라디오 버튼  class명
+    position: relative; 
+    margin-right: 10px;
+    /* 
+    라디오 버튼을 꾸미기 위해서는 before,after를 같이 사용하게 됨
+    before 배경으로 설정하고, after가 변경되는 형식 (겹쳐서 사용하는 형태)
+    */
+    &::before{
+        @include radiosmix; //index14_1.scss에 mixin을 가져옴
+    }
+    &::after{
+        @include radiosmix2; //index14_1.scss에 mixin을 가져옴
+    }
+    &:checked{
+        //radio.checkbox는 checked라는 속성이 있음 해당 속성이 적용될 경우
+        &::after{   //해당 radio에 after만 색상을 변경하여 출력 하게 됨
+            background-color: pink;
+        }
+    }
+}

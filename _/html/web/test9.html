@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제7)</title>
+<script>
+//함수 : 일반함수, 가변함수(값을 태워서), 리텀함수, 인스턴스함수
+    /*
+    function aaa(a,b){
+        var ccc = bbb(a,b); //f의 값을 ccc로 받음
+        alert(ccc);
+        
+    }
+    function bbb(c,d){
+        //alert 출력
+        var f = eval(c*d);
+        return f;   //f의 값을 ccc에 보냄
+    }
+    */
+    function aaa(){
+        var cc = bbb();
+        document.write(cc);
+    }
+    function bbb(){
+        /*
+        var a = 2;
+        var b;
+        var z;
+        var msg;
+        var msg2="";
+        while(a<=9){
+            for(b=1;b<=9;b++){
+                z = a * b;
+                msg = a+"*"+b+"="+z+"<br>";
+                msg2 = msg2 + msg;
+            }
+            a++;
+        }
+        return msg2;
+        */
+        /*
+        var b;
+        var c;
+        var d;
+        var e;
+        for(b=2;b<=9;b++){
+            for(c=1;c<=9;c++){
+                d = b * c;
+            }
+        }
+        */
+    }
+    function bbb(){
+        var a = 2;
+        var b;
+        var f;
+        var gg ="";
+        do{
+            for(b=1;b<=9;b++){
+                f = a*b;
+                 gg = (a+"*"+b+"="+f+"<br>") + gg;
+            }
+            a++;
+        }while(a<10)
+        return gg;
+    }
+</script>
+</head>
+<!-- aaa함수에 두개의 값을 임의로 넣습니다.
+bbb함수에서 두개의 값을 곱하는 수식구를 만드시오.
+단, Number 함수를 사용하지 않습니다.
+-->
+<!--
+응용문제7. 리턴함수를 이용하여 구구단 2단,9단까지 작동하는 코드를 작성
+-->
+<body>
+<input type="button" value="확인" onclick="aaa();">
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue 2일차 - v-model 및 class 이용</title>
+<script src="vue.js"></script>
+<style>
+    .box{ width: 100px; height: 100px; background-color: black; color:white; }
+</style>
+</head> 
+<body>
+<div id="vue" class="vue box">
+    {{test}}
+</div>
+<div id="vue2">
+    <!-- v-model에 입력된 값을 {{mid}}로 출력하는 형태 -->
+    <input type="text" name="mid" id="mid" v-model="mid"><br>
+    {{mid}}
+</div>
+<div id="vue3">
+    <!-- white-space: pre-line; = 엔터클릭시 밑으로 자동 이동 -->
+    <span style="white-space: pre-line;">{{mtext}}</span><br>
+    <textarea v-model="mtext"></textarea>
+</div>
+</body>
+<script>
+    let a = new Vue({
+        el:".vue",
+        data:{
+            test:"연습"
+        }
+    });
+    let b = new Vue({
+        el:"#vue2",
+        data:{
+            mid:""  //빈 데이터를 만듬 : "" 또는 null로 사용할 수 있음
+        }
+    });
+    let c = new Vue({
+        el:"#vue3",
+        data:{
+            mtext:null
+        }
+    });
+</script>
+</html>

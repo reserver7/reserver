@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>CSS ul,ol transform - 중,상급</title>
+<style>
+    body{ margin: 0; padding: 0; }
+    .banner { width: 100px; height: 100px; position: relative; overflow: hidden; }
+    .ulcss{ 
+        position: absolute; list-style: none; margin: 0; padding: 0;
+        width: 300%; border: 1px solid red; height: auto; 
+        transform: translate3d(0px,0px,0px);
+        /* translate3d(X좌표,Y좌표,Z좌표) x:가로 y:세로 z:평행 */
+        /* 부모 오브젝트가 정확한 width 값이 잡혀 있을 경우에  
+        ul width %값 지정 가능 100,200,300 모두 가능함*/
+    }
+    .ulcss >li { float: left; width: 100px; height: 100px; }
+    .ulcss >li:nth-child(1) { background-color: blue; }
+    .ulcss >li:nth-child(2) { background-color: green; }
+    .ulcss >li:nth-child(3) { background-color: gray; }
+</style>
+</head>
+<body>
+<div class="banner">
+    <ul class="ulcss">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 6일차 - (시간타이머)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        //1000 = 1초
+        //var $a = new Date();
+        //var $b = $a.getFullYear();
+        //document.write($b);
+        var $time = 10;
+        //setInterval(function(){   //정지가 안되는 구조 
+            //setInterval (시간에 맞춰서 지속적으로 실행되는 반복함수)
+            //document.write("시간 체크" + "<br>");
+            //$time = $time - 1;
+            //document.write($time + "<br>");
+            //location.href="http://naver.com";
+        //},5000);    //시간을 꼭 셋팅해야만 작동이 됨
+
+        var $set = setInterval(function(){ //정지가 되는 구조
+            //해당 반복함수를 컨트롤 하기 위해서는 변수로 등록해야 함
+            $time = $time - 1;
+            console.log($time + "<br>");
+        },1000);
+
+        $("#stop").click(function(){
+            clearInterval($set);    
+            //반복함수를 정지 시킬때 사용하는 함수 (정지시킬 변수명)
+        });
+    });
+</script>
+</head>
+<body>
+<input type="button" value="중지" id="stop">
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 9일차 모바일 웹(direction + important)</title>
+<script src="../jquery.js"></script>
+<style>
+    /* text-align:center; 엄마이면 자식은: direction:ltr, rtl을 많이 사용 함 
+    ltr : left to right 글자의 방향을 말함
+    rtl : right to left 글자의 방향을 말함
+    */
+    body{ margin: 0; padding: 0; }
+    div{ color: red !important; }
+    .box1{
+        width: 200px; height: 30px; border: 1px solid black;
+        direction: ltr; /* 왼쪽 정령 */
+        /* direction: 텍스트만!!! 사용 가능 */
+        color: blue;
+    }
+    .box2{
+        width: 200px; height: 30px; border: 1px solid black;
+        direction: rtl; /* 오른쪽 정렬 */
+        color: green !important;
+    }
+    /* !important : 우선적용 할 때 사용함 (강제적용), (모든 속성에 사용 가능) */
+</style>
+</head>
+<body>
+<div class="box1"><s>TEST</s></div> <!-- s : 취소선-->
+<div class="box2">TEST</div>
+</body>
+</html>

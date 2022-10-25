@@ -1,0 +1,84 @@
+<meta charset="UTF-8">
+<form name="qa" id="qa" method="POST" action="./qawriteok.php" enctype="multipart/form-data">
+<div class="write_outline">
+    <label>상품문의</label>
+    <ul class="write_content">
+        <li>
+            <span>제목</span>
+            <label><input type="text" name="qa_subject" autocomplete="off"></label>
+        </li>
+        <li>
+            <span>상품 선택</span>
+            <label>
+                <input type="text" name="qa_product" id="qa_product" value="" placeholder="선택된 상품이 없습니다." readonly>
+                <label><input type="button" id="product_list" value="상품 선택"></label>
+            </label>
+        </li>
+        <li>
+            <span>질문 카테고리</span>
+            <label>
+                <select name="qa_part">
+                    <option value="" selected>카테고리</option>
+                    <option value="상품">상품</option>
+                    <option value="배송">배송</option>
+                    <option value="반품/환불">반품/환불</option>
+                    <option value="교환/변경">교환/변경</option>
+                    <option value="결제">결제</option>
+                    <option value="기타">기타</option>
+                </select>
+            </label>
+        </li>
+        <li>
+            <span>작성자</span>
+            <label><input type="text" name="qa_writer" autocomplete="off"></label>
+        </li>
+        <li>
+            <span>비밀번호</span>
+            <label><input type="password" name="qa_passwd" autocomplete="off"></label>
+        </li>
+        <li id="add_app">
+            <span>첨부파일(이미지)</span>
+            <label>
+                <input type="text" id="qa_wf1" readonly>
+                <label class="write_btn1" for="write_file1">
+                    <em>찾아보기</em>
+                    <input type="file" id="write_file1" name="qa_file1" style="display: none;">
+                </label> 
+                <button type="button" id="add_btn"><em class="embtn">추가</em></button> 
+            </label>
+        </li>
+        <li>
+            <span>본문</span>
+            <div>
+                <span><input type="checkbox" name="check_num" id="write_ck" value="Y" style="cursor: pointer;"><label for="write_ck">비밀글</label></span>
+                <span>
+                    <textarea id="qatext" name="qatext"></textarea>
+                    <script>
+                        CKEDITOR.replace("qatext",{width:750,height:255});
+                    </script>
+                </span>
+            </div>
+        </li>
+        <li>
+            <span>자동등록방지</span>
+            <div>
+                <label>
+                    <img src="./code.php" id="code_img">
+                </label>
+                <ol>
+                    <li>보이는 순서대로<br>숫자 및 문자를 입력해 주세요.</li>
+                    <li><input type="text" name="qa_code" id="security_txt" maxlength="6" autocomplete="off"></li>
+                    <li><input type="button" onclick="code();" value="이미지 새로고침"></li>
+                </ol>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="write_btn">
+    <span>
+        <input type="button" value="등록취소" onclick="javascript:void history.go(-1);">        
+        <input type="button" value="질문등록" onclick="write_btn();">
+    </span>
+</div>
+</form>
+<script src="../js/qawrite.js"></script>

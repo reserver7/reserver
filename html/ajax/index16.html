@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" contant="IE=Edge,Chrome=1">
+<title>Ajex(3일차)-(Json-회원정보 검색 for in)</title>
+<!-- members.json -->
+<script>
+    function search_member(){
+        let ck = f.searchw.value;
+        if(ck==""){
+            alert("검색할 단어를 입력해 주시길 바랍니다.");
+            f.searchw.focus();
+            return false;
+        }
+        else{
+            f.method = "GET";
+            f.action = "./index16.html";
+            f.submit();
+        }
+    }
+</script>
+<style>
+body{ margin:0; padding:0;}
+*{box-sizing: border-box; font-size: 12px;}
+.sectioncss{ 
+    height: 100px; border: 1px solid #ccc; margin: 0 auto; text-align: center;
+    padding: 20px; display: flex; justify-content: center; flex-wrap: wrap; align-items: center; align-content: center;
+}
+.spart{ width: 100px; height: 30px; border: 1px solid#ccc; }
+.searchw { width: 200px; height: 30px; border: 1px solid #ccc; margin-left: 5px; text-indent: 10px;}
+.sbtn{
+    width: 100px; height: 30px; background-color: cornflowerblue; color: white;
+    margin-left: 15px; font-weight: bolder;
+    line-height: 30px; text-align: center; cursor: pointer;
+}
+.datalist{ height: auto;}
+.member_list{ display: block; width: 1000px; height: auto; border: 1px solid #ccc; margin: 0 auto;}
+.ulcss{ background-color: #ccc;
+    list-style: none; margin: 0; padding: 0; width: 100%; height: 30px; font-size: 13px;
+}
+.ulcss >li {height: 30px; text-align: center; line-height: 30px; float: left; }
+.ulcss > li:nth-of-type(1) { width: 50px; }
+.ulcss > li:nth-of-type(2) { width: 150px; }
+.ulcss > li:nth-of-type(3) { width: 150px; }
+.ulcss > li:nth-of-type(4) { width: 350px; }
+.ulcss > li:nth-of-type(5) { width: 100px; }
+.ulcss > li:nth-of-type(6) { height: 30px; }
+/* 고객정보 리스트 출력 css 부분 */
+.viewcss { list-style: none; margin: 0; padding: 0; width: 100%; height: auto; }
+.viewcss > li { width: 100%; height: 30px; border-bottom: 1px dashed #ccc ;}
+.viewcss > li:nth-of-type(even){ background-color: cornsilk;}
+.viewcss > li:last-child{ border: 0;}
+.viewcss > li > span { display: block; float: left; height: 30px; line-height: 30px; text-align: center; }
+.viewcss > li > span:nth-of-type(1){width: 50px;}
+.viewcss > li > span:nth-of-type(2){width: 150px;}
+.viewcss > li > span:nth-of-type(3){width: 150px;}
+.viewcss > li > span:nth-of-type(4){width: 350px;}
+.viewcss > li > span:nth-of-type(5){width: 100px;}
+.viewcss > li > span:nth-of-type(6){height: 30px;}
+/* 총 가입자 수 출력 파트 */
+.total { 
+    width: 150px; height: 30px; line-height: 30px; display: inline-block; text-align: right;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<form name="f" id="f">
+<section class="sectioncss">
+<select class="spart" id="spart" name="spart">
+    <option value="1" selected>아이디</option>
+    <option value="2">이름</option>
+    <option value="3">이메일</option>
+    <option value="4">전화번호</option>
+</select>
+<input type="text" class="searchw" id="searchw" name="searchw" placeholder="검색할 단어를 입력해 주세요!" autocomplete="off">
+<span class="sbtn" onclick="search_member();">회원검색</span>
+<span class="sbtn" onclick="location.href='./index16.html'">전체회원</span>
+<label id="total" class="total"></label>
+</section>
+</form>
+<!-- 데이터 리스트 -->
+<div class="datalist">
+    <label class="member_list">
+        <ul class="ulcss">
+            <li>NO</li>
+            <li>아이디</li>
+            <li>고객명</li>
+            <li>이메일</li>
+            <li>전화번호</li>
+            <li>지역</li>
+        </ul>
+        <ul class="viewcss" id="viewcss">
+
+        </ul>
+    </label>
+</div>
+</body>
+<script>  
+    //회원리스트 출력
+    let mdata;
+    let total_member;
+    function memberlist(){
+        function windowsck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function memberget(){
+            if(mdata.readyState==XMLHttpRequest.DONE && mdata.status==200){
+                member_list(this);
+            }
+        }
+        mdata = windowsck();
+        mdata.onreadystatechange = memberget;
+        mdata.open("GET","./members.json",true);
+        mdata.send();
+    }
+    memberlist();
+
+    function member_list(m){
+        const datas = JSON.parse(m.response);
+        //total_member = datas.members.length;  : IE(O)
+        //Object.keys, Object.values, Object.assign : IE(X)
+        total_member = Object.keys("members").length;
+        document.getElementById("total").innerHTML = "가입자는 총 " + total_member + "명 입니다.";
+        //console.log(datas.members[0]["id"]);
+
+        /* 검색파트 부분 */
+        //console.log(fdata); console확인시 fdata, decode가 없는 값으로 나와 searchw이 undifined가 뜸
+        //아래와 같이 조건문으로 조절
+        let fdata = decodeURI(location.search);
+        if(fdata!=""){
+            var spart = fdata.split("spart=");
+            spart = spart[1].substr(0,1);
+            var decode = fdata.split("searchw=");
+            document.getElementById("spart").value = spart;
+            document.getElementById("searchw").value = decode[1].replace("%40","@");
+            var search_data = decode[1];
+        }
+        /* 검색파트 부분 끝 */
+        var f;
+        var total2 = 1;
+        if(spart=="1"){ //아이디로 검색하는 파트
+            memberinfo("id",search_data); //함수 호출시 데이터와 함께 던지기
+        }
+        else if(spart=="2"){  //이름으로 검색하는 파트
+            memberinfo("name",search_data);
+        }
+        else if(spart=="3"){  //이메일로 검색하는 파트
+            memberinfo("email",search_data.replace("%40","@"));
+        }
+        else if(spart=="4"){  //전화번호로 검색하는 파트
+            memberinfo("phone",search_data);
+        }
+        else{
+        /* 전체 회원 출력 부분 */
+        for(f in datas.members){
+            var list_html = document.createElement("li");
+            var z;
+            list_html.innerHTML = "<span>" + total_member + "</span>";
+            for(z in datas.members[f]){
+                if(z=="area"){
+                    z = "phone";
+                }
+                else if(z=="phone"){
+                    z = "area";
+                }
+                list_html.innerHTML += "<span>" + datas.members[f][z] + "</span>";
+            }
+            total_member--;
+            document.getElementById("viewcss").append(list_html);
+        }
+    }
+        /* 검색시 사용되는 함수 부분 */
+        function memberinfo(info,ms){
+            var f;
+            var total2 = 1
+            for(f in datas.members){
+                var list_html = document.createElement("li");
+                var z; 
+                list_html.innerHTML = "<span>"+total2+"</span>";
+                for(z in datas.members[f]){
+                    if(ms==datas.members[f][info]){
+                        if(z=="area"){
+                            z = "phone";
+                        }
+                        else if(z=="phone"){
+                            z = "area";
+                        }
+                        list_html.innerHTML += "<span>" + datas.members[f][z] + "</span>";  
+                        document.getElementById("viewcss").append(list_html); 
+                        total2++; 
+                    } 
+                }
+            }
+        }
+    }
+</script>
+</html>
+<!--
+    decodeURI() : 한글이 깨질 경우 사용 해야함
+-->

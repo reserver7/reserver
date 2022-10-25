@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 3일차(반복문-while문)</title>
+<script>
+/*
+    for문
+    while문
+    do~while문
+
+    계산처리 속도 (5천 이상)
+    for(팝업창, 메뉴)  <  while(게시판,갤러리보드)  <  do~while(상품썸네일+)
+*/
+//응용문제 10~1 내림차순
+var a=10;    // while 시작값(초기값)
+while(a>=1){    // while 범위값(종료값)
+
+    //document.write(a+"<br>");
+    a--;    //while 증가 또는 감소형태
+}
+//구구단 2단
+//응용문제 8단 내림차순 8*9=72 ~ 8*1=8
+var b=9;
+var c=8;
+var d;
+while(b>=1){
+    d = c * b;
+    //document.write(c+"*"+b+"="+d+"<br>");
+    b--;
+}
+//while + if (%몫값) 을 이용하여 1~10 짝수만 출력
+var aa=1
+var bb;
+while(aa<=10){
+    bb = aa % 2
+    if(bb==0){
+        //document.write(aa+"<br>");
+    }
+    aa++
+}
+//응용문제 100~50 내림차순으로 홀수 출력 
+var a1=100; // 시작값
+var b1;  // 계산값
+while(a1>=50){  // 범위값
+    b1 = a1 % 2; // a1을 2로 나눴을때 b1이 0이면 짝수 값이 남으면 홀수
+    if(b1!=0){ // !=몫값이 있을 경우(홀수), ==몫값이 없을경우(짝수)
+        document.write(a1+"<br>");
+    }
+    a1--; // 내림차순
+}
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

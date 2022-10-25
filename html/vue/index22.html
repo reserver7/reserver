@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue5일차 - 임의숫자 출력(component) & computed</title>
+<script src="./vue.js"></script>
+<style>
+    span { width: 200px; height: 30px; text-align: center; 
+    line-height: 30px; display: block; border: 1px solid black;
+    font-size: 13px;
+    }
+</style>
+</head>
+<body>
+<section id="box">
+    <span>총 상품 수는 {{ def }} 개 입니다.</span>
+    <!-- def는 computed에 포함되어 있는 함수이며, return으로 결과값을 바로 출력 함 -->
+    <span>5,000원 이상 상품 {{ search.length }} 개 입니다.</span>
+    <!-- search.length : search는 함수명이며, return 받고나서 length 갯수로 파악 함  -->
+    <love v-bind:bbb="abc()"></love>
+    <!-- abc()는 methods에 있는 함수를 바로 호출 할 때 사용 -->
+    <angry v-model="cc"></angry>
+</section>
+</body>
+<script>
+    Vue.component("love",{
+        props:["bbb"],
+        template:"<span>{{bbb}}</span>"
+    });
+    Vue.component("angry",{
+        template:"<input type='text'>"
+    });
+    var arrs = [
+        {id:0, product:"볼펜", price:1000},
+        {id:1, product:"의자", price:80000},
+        {id:2, product:"색연필", price:5000}
+    ]
+    let a = new Vue({
+        el:"#box",
+        data:{
+            aa:"",
+            cc:"admin",
+            arrys:arrs
+        },
+        methods:{
+            abc:function(){
+                return Math.ceil(Math.random()*10+1);
+            }
+        },
+        computed:{  //어떤 이벤트가 발생하지 않고 실행되어서 출력하는 형태의 함수
+            //결과값을 바로 받아서 사용하는 경우
+            def:function(){
+                //return Math.ceil(Math.random()*10+1);
+                var ea = arrs.length;
+                return ea;
+            },
+            search:function(){
+                var money = 5000;   //숫자를 입력 (사용자가 지정한 숫자를 사용 함)
+                return this.arrys.filter(function(data){
+                    //filter는 해당 배열 또는 데이터를 가져옴 단, 키를 자동으로 구분하여
+                    //비교군으로 만들수 있도록 조정한는 함수 명령어
+                    return data.price >= money;
+                });
+            }
+        }
+    });
+</script>
+</html>

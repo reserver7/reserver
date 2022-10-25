@@ -1,0 +1,162 @@
+<style>
+	.pop_nonmember_bg_outline { display:none; width:360px; background-color:rgba(0,0,0,0.6); position:absolute; z-index:499; }
+	.pop_nonmember_outline { width:330px; height:370px; background-color:white; position:absolute; z-index:500; margin:15px; }
+
+	.pop_nonmember_bg_outline ul {list-style:none;}
+  .pop_nonmember_bg_outline h2 {margin:0; padding:0; text-align:center; font-size:15px; padding:40px 0 25px 0;}
+
+	.d_closebtn {  width:25px; height:25px;display:inline-block; position:absolute; top:10px; right:10px; }
+
+	.d_mno_member {width:330px; height:370px; background:#fff; margin:0 auto; position:relative;}
+	.d_no_logo {width:245px; height: 170px; margin:0 auto; padding:0;}
+	.d_no_logo li{width:245px; height:40px; margin:0 auto; line-height:40px;}
+    .d_no_logo > li:nth-of-type(2){
+        display: flex; justify-content: space-evenly;
+    }
+
+	.d_mno_input {width:245px; height:30px; border:1px solid #000; text-indent:10px;}
+	.hipen {width:5px; height:40px; display:inline-block; }
+
+	.d_mno_input2 { width:calc(230px/2); margin-left: 5px; height:30px; border:1px solid #000; text-indent:10px;}
+	.d_mno_input2:first-child { margin-top:7px; }
+
+	.d_mno_input3 {width:100%; height:30px; background:#000; border:none; font-size:14px; color:#fff; cursor:pointer; line-height:15px; }
+
+	.d_mno_coupon {width:235px; height:100px; border:1px solid #ddd; margin:0 auto; overflow:hidden; box-sizing:border-box;}
+	.d_mno_coupon ul { margin:0; padding:0; }
+	.d_mno_coupon li {width:235px; height:80px; float:left;  padding-top:20px; background:#fff; box-sizing:border-box; color:#333; text-align:center; font-size:14px; font-weight:bold;}
+
+	.d_mno_subtitle { width:100%; height:auto; font-size:14px; color:#000; }
+</style>
+
+<div class="pop_nonmember_bg_outline" id="pop_nonmember_bg_outline">
+	<div class="pop_nonmember_outline">
+		<div class="d_mno_member">
+
+		<span id="nonmember_close" class="d_closebtn"><img src="./img/close.png" onclick="nonclose();" style="width:100%;"></span>
+
+			<div class="d_mno_membox">
+
+			<h2>NON-MEMBER LOGIN</h2>
+
+				<ul class="d_no_logo">
+					<li>
+                    <input type="text" id="d_mno_nm" class="d_mno_input" placeholder="주문자이름" required>
+                    </li>
+                    <li>
+                    <input type="text" id="d_mno_num1" class="d_mno_input2" placeholder="주문번호 앞 6자리" maxlength="6" required>
+                    <div style="width:3px; height:40px; margin-left: 1px;">-</div>
+                    <input type="text" id="d_mno_num2" class="d_mno_input2" placeholder="주문번호 뒤 7자리" maxlength="7" style="margin-top:7px;" required>
+                    </li>
+					<li>
+                    <input type="password" id="d_mno_pw" class="d_mno_input" placeholder="비밀번호" required>
+                    </li>
+					<li>
+                    <button type="button" id="d_mno_mem" class="d_mno_input3" onclick="nonbtn();">비회원주문조회</button>
+                    </li>
+				</ul>
+
+			</div>
+
+			<!-- 하단 혜택 -->
+			<div class="d_mno_coupon">
+				<ul id="coupon">
+					<li id="d_m0"><span class="d_mno_subtitle">회원가입시 쿠폰2장</span><br> 무료배송 + <br> 즉시할인 2,0000원</li>
+					<li id="d_m1"><span class="d_mno_subtitle">무료배송</span><br> 5만원이상 구매시<br> 무료배송 혜택</li>
+					<li id="d_m2"><span class="d_mno_subtitle">포토리뷰 적립금</span><br> 리뷰퀸 10,000원 <br> 2,3등 5,000원 / 3,000원</li>
+					<li id="d_m3"><span class="d_mno_subtitle">배송지연 보상</span><br> 배송지연 2,000원+<br> 품절시 5% 적립</li>
+					<li id="d_m4"><span class="d_mno_subtitle">등급별 회원혜택</span><br> 구매 등급별<br> 커지는 할인 & 적립</li>
+				</ul>
+			</div>
+
+		</div>
+		<!-- 비회원 login end-->
+	</div>
+</div>
+<script>
+    function nonclose(){
+        document.getElementById("pop_nonmember_bg_outline").style.display = "none";
+        document.getElementById("pop_member_bg_outline").style.display = "none";
+    }
+    
+    function nonbtn(){
+        var non_nm = document.getElementById("d_mno_nm").value;
+        var non_num1 = document.getElementById("d_mno_num1").value;
+        var non_num2 = document.getElementById("d_mno_num2").value;
+        var non_pw = document.getElementById("d_mno_pw").value;
+        if(non_nm==""){
+            alert("주문자 이름을 입력해주세요.");
+            document.getElementById("d_mno_nm").focus();
+            return false;
+        }
+        else if(non_num1=="" || non_num2==""){
+            alert("주민번호를 입력해주세요.");
+            document.getElementById("d_mno_num1").focus();
+            return false;
+        }
+        else if(isNaN(non_num1)==true || isNaN(non_num2)==true){
+            alert("주민번호는 숫자만 입력해주세요.");
+            document.getElementById("d_mno_num1").focus();
+            return false;
+        }
+        else if(non_num1.length!=6 || non_num2.length!=7){
+            alert("주민번호를 다시 확인해주세요.");
+            document.getElementById("d_mno_num1").focus();
+            return false;
+        }
+        else if(non_pw==""){
+            alert("비밀번호를 입력해주세요.");
+            document.getElementById("d_mno_pw").focus();
+            return false;
+        }
+        else{
+            var non_data = "order_name="+non_nm+"&order_number="+non_num1+non_num2+"&order_pass="+non_pw;
+            non_ck(non_data);
+        }
+    }
+
+    function non_ck(non_data){
+        let cm;
+        function n_ck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function nonfile(){
+            if(cm.readyState==XMLHttpRequest.DONE && cm.status==200){
+                console.log(this.response);
+                if(this.response=="ok"){
+                    alert("잠시만 기다려 주세요! 출력 중입니다.");
+                }
+                else if(this.response=="no"){
+                    alert("해당 정보는 확인 되지 않습니다.");
+                    return false;
+                }
+                else if(this.response=="error"){
+                    console.log("데이터 오류");
+                }
+            }
+        }
+        cm = n_ck();
+        cm.onreadystatechange = nonfile;
+        cm.open("POST","./m_order.php",true);
+        cm.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        cm.send(non_data);
+    }
+
+    $(function(){
+        var $cu_no=0;
+        var $cu_id="#d_m"+$cu_no;        
+        var $c_timer=setInterval(function(){
+            $($cu_id).fadeOut(300);
+            if($cu_no>=4){
+                $cu_no=0;  
+            }
+            else{
+                $cu_no++;
+            }
+            $cu_id="#d_m"+$cu_no; 
+            $($cu_id).fadeIn(300);
+        },2000);
+    });
+</script>

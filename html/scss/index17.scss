@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+*,body{ @include base; }
+.divcss{
+    width: 150px; height: 150px; margin: 10px; border: 1px solid black;
+}
+@mixin trans($r) {
+    transform: rotateX($r+deg);
+    //transform: rotateY($r+deg);
+    //transform: rotateZ($r+deg);
+    //transform: translate($r+px);
+}
+#box1{
+    @include trans(60);
+}
+#box2{
+    @include trans(120);
+}
+#box3{
+    @include trans(180);
+}
+#box4{
+    @include trans(240);
+}

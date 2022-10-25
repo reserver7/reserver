@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 6일차 - (시간타이머3)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $timer; //setInter컨트롤 변수(전역변수)
+        $.fn.times = function(){    
+            //$.fn.times 함수를 이용하여 setInterval 함수 전체를 컨트롤
+            $timer = setInterval(function(){
+                console.log("연습" + "<br>");
+            },1000);
+        }
+
+        $("#start").click(function(){
+            $.fn.times();   //클릭시 times함수를 실행시킴
+        });
+
+        $("#stop").click(function(){
+            clearInterval($timer);  //해당 전역변수를 정지시킴(setInterval)
+        });
+
+        $("#restart").click(function(){
+            $timer="";  //재시작시 전역값을 초기화 함
+            $.fn.times();   //해당 함수를 호출함
+        });
+    });
+</script>
+</head>
+<body>
+<input type="button" value="시작" id="start">
+<input type="button" value="중지" id="stop">
+<input type="button" value="재시작" id="restart">
+</body>
+</html>
+<!--
+    [클릭시 자동으로 이동, 페이지변경, 이벤트변경] - 중지
+    재시작(x) - index24.html
+    SMS 인증번호 받기
+    - 새로인증받기 (location.reload())
+
+    [재시작이 필요한 사항은] - 공용함수 코드를 사용해야 합니다.
+    Banner
+    동영상 skip 
+-->

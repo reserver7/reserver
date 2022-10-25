@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+body { margin:0; padding:0; }
+span,label { display: block;}
+
+.divimg {
+    width:300px; height:200px; 
+    background-image: url("./product/product.jpg");
+    overflow: hidden;
+    background-size: 100%;
+    /* background-size: 100px 100px; 가로px 세로px */
+
+    /* contain : 가로, 세로 비율에 맞춰서 자동으로 최적화를 적용하게 됨 
+    (사진 확대, 축소 할 때 많이 씀) 
+    100% : 가로, 세로가 정해진 사이즈에 맞게 크기가 조절 됨
+    */
+    background-repeat: no-repeat;
+    /* background-repeat : 배경 이미지를 반복 사용 유/무를 결정하게 됨 */
+
+    background-position-x:0px; 
+    background-position-y:-20px;
+    /* background-position: 이미지 위치를 강제 변경 할 수 있음 
+    x: 가로축 y: 세로축  */
+
+    border:1px solid red;
+}
+.div1 {
+    width:500px; height:500px; background-color:orange;
+    position: relative;
+}
+.div2 {
+    width:100px; height:100px; 
+    background-image: url("./product/product1.jpg");
+    overflow: hidden; background-size:100px 100px; 
+    background-repeat: no-repeat; position: absolute; z-index: 1;
+    right:0; bottom:0; border:1px solid black; 
+}
+.div2:hover { width:500px; height:500px; background-size:contain; }
+
+.banner {
+    width:300px; height:auto; box-sizing: border-box;
+    border:1px solid #cccccc;
+}
+.banner>dl { 
+    width:99%; height:auto; margin:0; padding:0;;
+}
+.imgs { width:100%;}
+.banner>dl>dt {
+    width:100%; height:250px;
+}
+.banner>dl>dd {
+    width:100%; text-align: center; color: blue; font-size:20px;
+    margin:0; padding:0;
+}
+.product_dl>dd:nth-child(2) {
+    height:80px; font-weight: bold; 
+    vertical-align: middle; display: table-cell; overflow: hidden;
+} 
+.product_dl>dd:nth-child(3) {
+    height:60px; line-height:60px; font-weight: bold; font-size:22px;
+}

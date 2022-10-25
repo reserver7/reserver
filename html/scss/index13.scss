@@ -1,0 +1,74 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+*,body{ @include base }
+@function sizes($size,$no){ //SCSS function 수식계산 형태로 이루어져 있음
+    @return $size / $no;    //function을 사용하면 무조건 return을 사용함
+} 
+.box{
+    width: sizes(500px,5);
+    height: sizes(500px,5);
+    background-color:blue;
+}
+$boxsize : 500px;
+@function setting($w){
+    @return $boxsize / $w;
+}
+
+@function colorsetting($color_code){
+    $code:""; //function 밖에 적용시에 기본 값을 return에 적용해 버립니다.
+    //단, function안에  변수를 생성하고 조건문을 해당 변수값에 적용하게 되면 
+    //return이 올바르게 값을 받아서 전달하는 형태 입니다.
+    @if($color_code==1){
+        $code : #ffccee;
+    }
+    @else{
+        $code:green;
+    }
+    @return $code;
+}
+.ulbox{
+    list-style: none; width: 500px; height: 500px;
+    border: 1px solid black;
+    &>li{
+        background-color: green;
+    }
+}
+.ulbox >li:nth-of-type(1){ 
+    width: setting(8); height: setting(8);
+    background-color: colorsetting(2);
+}
+.ulbox >li:nth-of-type(2){
+    width: setting(5); height: setting(5);
+    background-color: colorsetting(2);
+}
+.ulbox >li:nth-of-type(3){ 
+    width: setting(3); height: setting(3);
+    background-color: colorsetting(1);
+}
+
+/*  응용문제 */
+$wi : 50px;
+$he : 50px;
+$colors:green,skyblue,purple,black,gray;
+@mixin labelcss {
+    width: 350px; height: 350px; border: 1px solid black;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center;
+}
+@function spancss($wid){
+    @return $wi * $wid;
+}
+.labelbox{
+    @include labelcss;
+    &>span{
+        height: $he;
+    }
+    @for $f from 1 to 6{
+        span:nth-of-type(#{$f}){
+            background-color:nth($colors,$f);
+            width: spancss($f);
+        }
+    }
+}

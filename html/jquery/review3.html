@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 복습 (bind)</title>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            //"=" function
+            //$.fn.abc =
+            //$abc = setInterval(function(){ })
+            //$abc = $.fn.abc()
+            
+            //bind
+            //마우스 오버시 box 길이는 가로 400px로 늘어납니다.
+            //마우스 클릭시 box는 점점 사라집니다.
+            $("#box").bind({
+                
+                "click":function(){
+                    $(this).fadeOut();
+                },
+                "mouseover":function(){
+                    $(this).animate({
+                        "width":"400px"
+                    },1000)
+                }
+                //마우스 아웃시 다시 원래 상태로 돌아가기
+
+            });
+        });
+    </script>
+    <style>
+        .box { width:100px; height:100px; background-color: blue;}
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+</body>
+</html>

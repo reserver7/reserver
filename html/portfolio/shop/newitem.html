@@ -1,0 +1,55 @@
+<meta charset="UTF-8">
+<script>
+    $(function(){
+        $.ajax({
+            url:"./product/new_pd.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.product_make($result);
+            },
+            error:function(){
+                console.log("데이터 접근 오류");
+            }
+        });
+
+        var $product_list;
+        $.fn.product_make = function($result){
+            $($result["new_product"]).each(function($node,$name){
+                //console.log($name);
+                $product_list = '<li product_url="'+$name["goodsno"]+'">\
+                    <div><img class="new_img" title="'+$name["product_nm"]+'" src="'+$name["product_img"]+'"></div>\
+                    <div>'+$name["product_nm"]+'</div></li>';
+                $("#new_ul").append($product_list);
+            });
+
+            $("#new_ul>li").bind({
+                "click":function(){
+                    let $links = $(this).attr("product_url");
+                    location.href = "product_view.html?goodsno=" + $links;
+                },
+                "mouseenter":function(){
+                    var $new_node = $(this).index();
+                    $(".new_img").eq($new_node).css("transform","scale(1.10)");
+                },
+                "mouseleave":function(){
+                    $(".new_img").css("transform","scale(1)");
+                }
+            });
+        }
+    });
+</script>
+<div class="product_css">
+    <span class="bestphoto"><img src="./product/best_product0.jpg"></span>
+    <span class="newitem">
+        <label class="newtitle"><img src="./product/new_title.jpg"></label>
+        <ul class="new_ul" id="new_ul">
+
+        </ul>
+        <ol class="new_ol">
+            <li><img src="./product/best_event0.jpg"></li>
+            <li><img src="./product/best_event1.jpg"></li>
+        </ol>
+    </span>
+</div>

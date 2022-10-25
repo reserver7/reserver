@@ -1,0 +1,66 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 연습</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#ulcss>li").click(function(){
+            var $node = $(this).index();
+            switch($node){
+                case 0:
+                    var $a = $("#box").css("background-image","url(./m/images/banner0.jpg)");
+                    $($a).css("display","none");
+                    $($a).fadeIn();
+                break;
+
+                case 1:
+                    var $a = $("#box").css("background-image","url(./m/images/banner1.jpg)");
+                    $($a).css("display","none");
+                    $($a).fadeIn();
+                break;
+
+                case 2:
+                    var $a = $("#box").css("background-image","url(./m/images/banner2.jpg)");
+                    $($a).css("display","none");
+                    $($a).fadeIn();
+                break;
+
+                case 3:
+                    var $a = $("#box").css("background-image","url(./m/images/banner3.jpg)");
+                    $($a).css("display","none");
+                    $($a).fadeIn();
+                break;
+            }
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .box { width: 600px; height: 600px; border: 1px solid black; 
+        background-size: cover; background-repeat: no-repeat; 
+    }
+    ul { width: 100%; height: auto; list-style: none; margin: 0; padding: 0; }
+    ul > li {
+        width: 200px; height: 200px; border: 1px solid blue; display: inline-block;
+    }
+    img { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<br><br>
+<ul id="ulcss">
+    <li id="img1"><img src="./m/images/banner0.jpg"></li>
+    <li id="img2"><img src="./m/images/banner1.jpg"></li>
+    <li id="img3"><img src="./m/images/banner2.jpg"></li>
+    <li id="img4"><img src="./m/images/banner3.jpg"></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome1=1">
+<title>Jquery-Ajax (1일차)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $.ajax({
+            url:"myinfo.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($array,$result){
+                //$($array.members).each(function($node,$names){
+                $($array["members"]).each(function($node,$names){
+                    //console.log($array.members[$node].id);
+                    //console.log($(this)[$node].id);
+                    //console.log($(this)[$node]["id"]);
+                    //console.log($names["id"]);
+                    //console.log($names.id);
+                    $("#mid").text($names["id"]);
+                    $("#mname").text($names["name"]);
+                    $("#mhp").text($names["phone"]);
+                    $("#memail").text($names["email"]);
+                });
+            },
+            error:function(){
+                console.log("데이터 접근이 제한 되었습니다.");
+            }
+        });
+    });
+</script>
+<style>
+    .fd{ width: 500px; height: auto; }
+    .lg{ 
+        border: 0; box-sizing: border-box; margin: 0 auto;
+        /* padding:양쪽 선밀림  padding-left: 10px; padding-right: 10px; */
+    }
+    .fd > span { width: 80%; height: 30px; display: inline-block; }
+</style>
+</head>
+<body>
+<!-- 
+    legend 태그 사용시 무조건 fieldset과 함께 사용해야 함!!!! 
+    사이트 메인 페이지에 게시판,공지사항,갤러리 등 최신목록을 보여줄 때 많이 사용
+    카피라이터로 사용하는 경우도 있음
+-->
+<fieldset class="fd">
+    <legend class="lg">[ MY INFO ]</legend>
+    아이디 : <span id="mid"></span><br>
+    이름 : <span id="mname"></span><br>
+    휴대폰번호 : <span id="mhp"></span><br>
+    이메일 : <span id="memail"></span> 
+</fieldset>
+</body>
+</html>

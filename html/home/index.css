@@ -1,0 +1,731 @@
+@charset "UTF-8";
+/* 서브페이지 기본 셋팅 부분 */
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+body, * {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body, div, span, label, section, aside, footer, header, nav, video, table, tr, td, th {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+}
+
+section, aside, footer, header, nav, main, span, label {
+  display: block;
+}
+
+ul, ol, dd {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navcss {
+  height: auto;
+  width: 480px;
+}
+
+.headercss {
+  height: auto;
+}
+
+.s_css1 {
+  height: auto;
+}
+
+.s_css2 {
+  height: auto;
+}
+
+.s_css3 {
+  height: auto;
+}
+
+.maincss {
+  height: auto;
+}
+
+.footercss {
+  height: auto;
+}
+
+.header_pop {
+  width: 480px;
+  height: 60px;
+  margin: 0;
+  padding: 10px;
+  border: "";
+  background-color: #484848;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header_pop > ul {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+}
+
+.header_pop > ul > li {
+  color: #fff;
+  font-family: "돋움체";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.header_pop > span {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header_pop > span > img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.menudiv {
+  width: 480px;
+  height: 480px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  background-color: #fff;
+  position: absolute;
+  z-index: 5;
+  padding-top: 10px;
+  left: -480px;
+}
+
+.menudiv > .menuclose {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  padding-left: 10px;
+}
+
+.menudiv > .menuclose > img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.menuul {
+  width: 480px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  margin-top: 20px;
+}
+
+.menuul > li {
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: "";
+  padding-left: 10px;
+  line-height: 24px;
+}
+
+.somenuol {
+  width: 480px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.somenuol > li {
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: "";
+  position: relative;
+  padding-left: 34px;
+  line-height: 24px;
+}
+
+.somenuol > li > img {
+  position: absolute;
+  right: 10px;
+  width: 15px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.section_outline {
+  width: 480px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
+}
+
+.menu {
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.search_box {
+  position: absolute;
+  top: 60px;
+  z-index: 3;
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #484848;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+}
+
+.search_box > div > input {
+  width: 350px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  border-radius: 5px;
+  text-indent: 10px;
+}
+
+.search_box > button {
+  width: 60px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "돋움체";
+  border-radius: 5px;
+}
+
+.banner {
+  width: 480px;
+  height: 480px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  overflow: hidden;
+}
+
+.banner > .banner_list {
+  width: 960px;
+  height: 480px;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.banner > .banner_list > li {
+  float: left;
+}
+
+.product_box {
+  width: 480px;
+  height: 150px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.product_box > ul {
+  width: 100%;
+  height: 150px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product_box > ul > li {
+  width: 160px;
+  height: 150px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.product_box > ul > li > img {
+  width: 70%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.shoshul_box {
+  width: 480px;
+  height: 350px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.shoshul_box > ol {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.shoshul_box > ol > li {
+  width: 240px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
+  float: left;
+}
+
+.shoshul_box > ol > li > img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.shoshul_box > ol > li:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-image: url("./img/facebookico.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  left: 10px;
+  top: 10px;
+}
+
+.shoshul_box > ol > li:nth-child(odd)::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-image: url("./img/instaico.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  left: 10px;
+  top: 10px;
+}
+
+/* 메인보드 */
+.maincss {
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+}
+
+.mainoutline {
+  width: 100%;
+  height: 360px;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+}
+
+.mainoutline > span {
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 10px;
+  font-family: "돋움체";
+  text-align: center;
+  line-height: 15px;
+  margin-top: 10px;
+}
+
+.mainbox_top {
+  width: 400px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.mainbox_top > .main_title {
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+  background-color: #000;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+}
+
+.mainbox_top > div {
+  width: 100%;
+  height: 150px;
+  margin: 0 auto;
+  padding: 0;
+  border: 1px solid #ddd;
+  background-color: #f7f7f8;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: "";
+  text-align: center;
+  padding-top: 20px;
+}
+
+.mainbox_top > div > span {
+  width: 100%;
+  height: 75px;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+}
+
+.mainbox_bottom {
+  width: 400px;
+  height: 170px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  background-color: #f7f7f8;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: "";
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 0;
+}
+
+.mainbox_bottom > span {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.mainbox_bottom > span:nth-of-type(2) > label {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #ff0304;
+  margin-right: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mainbox_bottom > span:nth-of-type(2) > div > input {
+  width: 150px;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #333;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: black;
+}
+
+.mainbox_bottom > span:nth-of-type(3) > button {
+  width: 110px;
+  height: 35px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  border-radius: 5px;
+  background-color: black;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: white;
+}
+
+/* 카피라이터*/
+a:link, a:visited, a:hover, a:active {
+  color: #666;
+}
+
+.copy_box {
+  width: 480px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+  margin-top: 100px;
+  border-top: 1px solid #aaa;
+}
+
+.c_top {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  border: "";
+  margin-top: 30px;
+}
+
+.c_top > ul {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.c_top > ul > li {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  color: #666;
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  text-align: center;
+  line-height: 30px;
+}
+
+.c_top > ul > li:nth-of-type(1) {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 100;
+  font-size: 13px;
+  color: #006ac6;
+}
+
+.c_top > ul > li:nth-of-type(5) {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #666;
+}
+
+.c_top > .language {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  text-align: center;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: #666;
+  margin-top: 13px;
+}
+
+.c_top > .language::before {
+  content: "";
+  background-image: url("./img/earthico.png");
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  background-size: 24px;
+  display: inline-block;
+  vertical-align: -6px;
+  padding-right: 3px;
+}
+
+.c_bottom {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.c_bottom > ul {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: "";
+}
+
+.c_bottom > ul > li {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: "";
+  font-size: 12px;
+  color: #666;
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  line-height: 30px;
+}
+
+.c_bottom > ul > li {
+  height: 40px;
+}
+/*# sourceMappingURL=index.css.map */

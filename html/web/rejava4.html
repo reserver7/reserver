@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>최종복습 (이벤트 선언 핸들링)</title>
+<style>
+    ul > li {
+        width: 100px; height:50px; line-height:50px;
+        border: 1px solid black; text-align: center; cursor: pointer;
+    }
+    .olcss > li { width:100px; height:50px; line-height: 50px;
+    border:1px solid red; cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<ul id="menu" style="list-style: none; margin: 0; padding: 0; width: 300px;">
+    <li data="http://naver.com">메뉴1</li>
+    <li data="http://nate.com">메뉴2</li>
+    <li data="http://google.com">메뉴3</li>
+    <li data="http://zum.com">메뉴4</li>
+</ul>
+<br><br>
+<ol class="olcss" id="linkmenu">
+    <li links="1">링크1</li>
+    <li links="2">링크2</li>
+    <li links="3">링크3</li>
+    <li links="4">링크4</li>
+</ol>
+<!--
+    이벤트 선언 핸들링은 class, id 값이 필요함
+    function에 묶여있지 않고 바로 실행 되기 때문에 body아래에 있어야함
+-->
+</body>
+<script>
+    var menus = document.querySelectorAll("#menu > li");
+    var menu_no = menus.length; //nth-child 형태를 노드 형태로 바꿈
+    var m = 0;  //반복문 변수
+    do{
+        menu_btn(m);    //menu_btn 이라는 함수로 넘김
+        m++;
+    }while(m<menu_no);
+
+    function menu_btn(mm){
+        menus[mm].onclick = function(){ //메뉴를 클릭시
+            var data = menus[mm].getAttribute("data");  //html에 태그를 만드는 속성
+            location.href=data; //data 에 있는 링크로 이동
+        }
+    }
+/*
+    응용문제.
+    4개의 메뉴가 있습니다. 해당 메뉴별로 출력 형태가 다르게 됩니다.
+    다음과 같이 메뉴 노드에 맞춰서 작동 되는 코드를 제작하시길 바랍니다.
+    메뉴1 : http://dothome.co.kr 로 이동하는 메뉴
+    메뉴2 : confirm 확인 부분을 클릭시 naver.com으로 이동
+    단, confirm  메세지는 "해당 페이지를 정말 이동 하시겠습니까?" 라고 출력
+    메뉴3 : 해당 메뉴를 클릭시 이전 페이지로 이동 되도록 하십시오(history.go)
+    메뉴4 : 해당 메뉴를 클릭시 페이지를 종료하도록 하십시오.(self.close())
+    조건문 또는 선택문이 필요함
+*/
+var links = document.querySelectorAll("#linkmenu > li");
+    var linksnum = links.length;
+    var aa;
+    for(aa=0;aa<linksnum;aa++){
+        menus(aa);
+    }
+    function menus(aa){
+        links[aa].onclick = function(){
+            var cc = links[aa].getAttribute("links");
+            switch(cc){
+                case "1":
+                location.href='http://dothome.co.kr';
+                break;
+
+                case "2":
+                    if(confirm("네이버로 이동 하시겠습니까?")){
+                        location.href='http://naver.com';
+                    }
+                break;
+
+                case "3":
+                history.go(-1);
+                break;
+
+                case "4":
+                self.close();
+                window.close();
+                //self.opener=self;
+                //window.close();
+                break;
+
+            }
+
+        }
+    }
+</script>
+</html>

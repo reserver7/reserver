@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue3일차 - HTML 코드 사용하기 + img src 형태</title>
+<script src="vue.js"></script>
+<style>
+    #ol_vue > li:nth-of-type(2){ color: blue; }
+</style>
+</head>
+<body>
+<section id="box">
+    <div v-text="texts"></div>
+    <div v-html="htmls"></div> 
+    <!--
+        v-text: text 문자를 해당 오브젝트에 출력할 때 사용함 
+        v-html: html 태그를 사용할 수 있으며, 해당 오브젝트에 추가를 할 수 있음 
+    -->
+    <button type="button" v-text="btn"></button>
+</section>
+<!-- 응용문제1. HTML 해당 오브젝트 추가하기-->
+<section id="box2">
+    <ol v-html="html_li" v-if="ol_vue" id="ol_vue">
+        
+    </ol>
+    <button type="button" v-text="btxt" v-on:click="btn"></button>
+</section>
+<section id="box3" v-html="imgs" style="height: 50px; border:1px solid red;" v-on:click="box3img">
+   <!--<img v-bind:src="src">  v-bind:src는 Vue전용 src속성을 가지고 있음 -->
+</section>
+</body>
+<script>
+    let a = new Vue({
+        el:"#box",
+        data:{
+            btn:"확인",
+            texts:"홍길동",
+            htmls: "<span style='display:block; width:100px; height:100px; border:1px solid red;'></span>"
+        }
+    });
+
+    let b = new Vue({
+        el:"#box2",
+        data:{
+            btxt:"출석리스트",
+            html_li:"",
+            ol_vue:false
+        },
+        methods:{
+            btn:function(){
+                this.ol_vue = !this.ol_vue;
+                this.html_li = "<li>홍길동</li><li>강감찬</li><li>이순신</li>";
+            }
+        }
+    });
+
+    let c = new Vue({
+        el:"#box3",
+        data:{
+            src:"../123.jpg",
+            imgs:""
+        },
+        methods:{
+            box3img:function(){ 
+                //v- 과 같은 형태는 html태그에만 사용가능 
+                //그래서 밑에는 v-bind:src를 사용하지 못함
+                this.imgs = "<img src=" + this.src + ">";
+            }
+        }
+    });
+</script>
+</html>

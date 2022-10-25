@@ -1,0 +1,317 @@
+@charset "UTF-8";
+html,body,div,span,label,section,aside,footer,header,nav,video,table,tr,td,th{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;  
+    
+}
+a:link,a:visited,a:hover,a:active { text-decoration: none; color: black; }
+section,aside,footer,header,nav,main,span,label{
+    display: block;
+}
+ol,ul,dd{ list-style: none; margin: 0; padding: 0; }
+* { box-sizing: border-box;}
+input:focus { outline: none; }
+button:focus { outline: none; }
+select:focus { outline: none; }
+
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+@mixin font($family,$fweight,$fsize,$fcolor) {
+    //(font-weight 100,300,400,500,700,900)
+    $fontfamily:"";
+    @if($family=="noto"){
+        $fontfamily: 'Noto Sans KR', sans-serif;
+    }
+    @else if($family=="pen"){
+        $fontfamily: 'Nanum Pen Script', cursive;
+    }
+    @else if($family=="big"){
+        $fontfamily: 'Big Shoulders Stencil Display', cursive;
+    }
+    @else if($family=="gothic"){
+        $fontfamily: 'Nanum Gothic', sans-serif;
+    }
+    @else if($family=="open"){
+        $fontfamily: 'Open Sans', sans-serif;
+    }
+    font-family: $fontfamily; 
+    font-weight: $fweight;
+    font-size: $fsize+px; 
+    color: $fcolor;
+}
+@mixin flex($flexpart,$just,$direct,$items,$wrap,$content) {
+    display: flex; 
+    justify-content: $just;
+    flex-direction: $direct;
+    align-items: $items;
+    @if($flexpart==1){
+        flex-wrap: $wrap;
+        align-content: $content;
+    }
+}
+@mixin sizes($div_width,$div_height,$div_margin,$div_padding,$div_border) {
+    width: $div_width; height: $div_height;
+    @if($div_margin=="auto"){
+        margin: 0 auto;
+    }
+    @else{
+        margin: $div_margin;
+    }
+    padding: $div_padding; border: $div_border;
+}
+@mixin position($ps) {
+    @if($ps=="ab"){
+        position: absolute;
+    }
+    @else if($ps=="re"){
+        position: relative;
+    }
+    @else if($ps=="fi"){
+        position: fixed;
+    }
+}
+@mixin bg($ap,$bgcolor,$bgurl) {
+    @if($ap==0){
+        background-color: rgba($bgcolor);
+    }
+    @else if($ap==1){
+        background-color: $bgcolor;
+    }
+    @else if($ap==2){
+        background-image: url($bgurl);
+        background-repeat: no-repeat;
+    }
+}
+main { height: 100vh; }
+#admin_page{
+    @include flex(0,center,row,center,"","");
+}
+.manager{
+    @include sizes(400px,200px,auto,0,1px solid #ccc);
+    @include flex(0,space-around,column,center,"","");
+    border-radius: 10px;
+}
+.manager>.label_css{
+    @include sizes(350px,45px,0,0,"");
+    @include flex(0,center,row,center,"","");
+}
+.manager>.label_css:first-child{ @include font("gothic",bold,18,#666); }
+.inputcss{
+    @include sizes(250px,30px,0,0,1px solid #ccc);
+    @include font("gothic",bold,13,"");
+    text-indent: 10px; border-radius: 5px;
+}
+.btncss{
+    @include sizes(120px,40px,0,0,0);
+    @include bg(1,#666,"");
+    @include font("gothic","",15,#fff);
+    cursor: pointer; border-radius: 5px; line-height: 40px;
+    &:hover{ @include bg(1,#444,""); }
+}
+
+/* admin top 부분 */
+.maintop{
+    @include position("re");
+    height: 70px; overflow: hidden; 
+}
+.mainsub{
+    @include position("re");
+    height: auto; 
+}
+.mainfoot{
+    @include position("re");
+    @include bg(1,#555,"");
+    height: 40px; overflow: hidden; 
+}
+.top_class{
+    @include flex(0,space-between,row,center,"","");
+    @include bg(1,#555,""); 
+}
+.top_class > .logo_css{
+    @include sizes(200px,40px,0,0,"");
+    @include font("gothic",bold,20,#fff);
+    line-height: 40px; text-align: center; cursor: pointer;
+}
+.menu_li{
+    display: inline-block;
+    @include sizes(100px,40px,0,0,"");
+    @include font("gothic","",12,#fff);
+    line-height: 40px; text-align: center; cursor: pointer;
+    letter-spacing: -0.3px;
+}
+
+/* admin sub page */
+.subview{
+    @include sizes(1100px,auto,auto,0,1px solid #ccc);
+    margin-top: 30px; margin-bottom: 80px;
+}
+.aside_css{
+    @include sizes(100%,auto,0,0,""); min-height: 500px;
+}
+.part_css{
+    @include font("gothic","",14,#fff);
+    @include sizes(150px,30px,0,0,"");
+    @include bg(1,#555,"");
+    text-align: center; line-height: 30px;
+}
+.chart_css{
+    @include sizes(1000px,auto,auto,0,"");
+    margin-top: 10px;
+}
+.chart_ol,.chart_ol2,.chart_ol3{
+    @include sizes(100%,30px,0,0,"");
+    @include bg(1,#555,"");
+}
+.chart_ol>li,.chart_ol2>li,.chart_ol3>li{
+    @include font("gothic","",13,#fff); height: 30px;
+    text-align: center; line-height: 30px; float: left;
+}
+@for $n from 1 through 6{
+    .chart_ol > li:nth-child(#{$n}){
+        @if($n==1){ width: 5%;}
+        @else if($n==2){ width: 10%; }
+        @else if($n==3){ width: 10%; }
+        @else if($n==4){ width: 15%; }
+        @else if($n==5){ width: 15%; }
+        @else if($n==6){ width: 45%; }
+    }
+    .chart_ol2 > li:nth-child(#{$n}){
+        @if($n==1){ width: 5%;}
+        @else if($n==2){ width: 45%; }
+        @else if($n==3){ width: 15%; }
+        @else if($n==4){ width: 10%; }
+        @else if($n==5){ width: 10%; }
+        @else if($n==6){ width: 15%; }
+    }
+}
+.chart_data{
+    @include bg(1,#ccc,"");
+    @include font("gothic","",13,black);
+    border-top: 1px solid #ccc; 
+    &>li{
+        color: #000;
+    }
+}
+.text_left{
+    text-align: left !important;
+}
+.chart_ol > .nofile, .chart_ol2 > .nofile, .chart_ol3 > .nofile{
+    clear: both; background-color: #ccc; text-align: center;
+    width: 100% !important; color: black;
+}
+/* 카피라이트 */
+.footcss{
+    @include font("open",300,14,#fff); text-align: center; line-height: 40px;
+}
+
+/* 상품관리 */
+@for $n from 1 through 7{
+    .chart_ol3 > li:nth-child(#{$n}){
+        @if($n==1){ width: 5%;}
+        @else if($n==2){ width: 15%; }
+        @else if($n==3){ width: 33%; }
+        @else if($n==4){ width: 12%; }
+        @else if($n==5){ width: 12%; }
+        @else if($n==6){ width: 10%; }
+        @else if($n==7){ width: 10%; }
+    }
+}
+.product_img{ width: 20px; height: 20px; vertical-align: -5px; object-fit: cover; }
+
+@mixin btns($bwidth,$bheight,$bboard,$bcolor,$bbgcolor){
+    width:$bwidth;
+    height:$bheight;
+    border:$bboard;
+    color:$bcolor;
+    background-color: $bbgcolor;
+}
+@mixin inputs($in_w,$in_h,$in_b,$in_r){
+    @include font("gothic","",13,#000);
+    width: $in_w; height: $in_h; border: $in_b; border-radius: $in_r;
+    text-indent: 5px;
+}
+.div_btn{ 
+    width: 1000px; height: 30px; margin: 0 auto; text-align: right; margin-top: 20px; margin-bottom: 20px;
+} 
+.btncss1{ 
+    @include btns(100px,30px,0,#fff,#444); cursor: pointer;
+}
+.btncss2{ 
+    @include btns(100px,30px,1px solid #000,#000,#fff); cursor: pointer;
+}
+.btncss3{
+    @include btns(100px,30px,0,#fff,red); cursor: pointer;
+}
+.btncss1:hover{ @include bg(1,#444,""); }
+
+
+/* 상품등록 */
+.ul_insert, .ol_insert{
+    @include sizes(100%,auto,0,0,"");
+}
+.ol_insert{
+    @include flex(0,flex-start,row,flex-start,"",""); 
+}
+.ul_insert >li{ width: 100%; height: 30px; border-bottom: 1px dashed #ccc;}
+.ul_insert >li:last-of-type{ border-bottom: none; }
+.ol_insert >li { 
+    display: inline-block; height: 30px; line-height: 30px; 
+    @include font("gothic","",13,#000); text-indent: 5px;
+    &>label{
+        display: inline-block;
+        text-align: left;
+        &:last-of-type{
+            margin-right: 15px;
+        }
+        &>input{
+            vertical-align: -2px;
+        }
+    }
+}
+.ol_insert >li:nth-of-type(1){ width: 15%;  }
+.ol_insert >li:nth-of-type(2){ width: 84.5%; background-color: #fff; }
+@for $z from 1 through 12{
+    .ul_insert>li:nth-of-type(#{$z}){
+        @if($z<11){
+            height: 30px; background-color: lightgray;
+        }
+        @else if($z==11){
+            height: 100px; background-color: lightgray;
+            &>ol>li:nth-of-type(2){
+                height: 100px;
+                @include flex(1,center,column,flex-start,wrap,flex-start); 
+            }
+        }
+        @else{
+            height: 250px; background-color: lightgray;
+            &>ol>li:nth-of-type(2){
+                height: 250px;
+                @include flex(0,flex-start,row,center,"","");        
+            }
+        }
+    }
+}
+.input_read{
+    @include inputs(120px,25px,1px solid #ccc,5px);
+}
+.input_read2{
+    @include inputs(240px,25px,1px solid #ccc,5px);
+}
+.input_read3{
+    @include inputs(350px,25px,1px solid #ccc,5px);
+}
+.input_read4{
+    @include inputs(450px,25px,1px solid #ccc,5px);
+}
+.input_read5{
+    @include inputs(700px,25px,1px solid #ccc,5px);
+}
+.product_dc{ display: inline;}
+.tright{ text-align: right; }

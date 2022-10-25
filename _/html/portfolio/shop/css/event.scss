@@ -1,0 +1,184 @@
+@charset "UTF-8";
+/* 서브페이지 기본 셋팅 부분 */
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+@mixin font($family,$fweight,$fsize,$fcolor) {
+    //(font-weight 100,300,400,500,700,900)
+    $fontfamily:"";
+    @if($family=="noto"){
+        $fontfamily: 'Noto Sans KR', sans-serif;
+    }
+    @else if($family=="pen"){
+        $fontfamily: 'Nanum Pen Script', cursive;
+    }
+    @else if($family=="big"){
+        $fontfamily: 'Big Shoulders Stencil Display', cursive;
+    }
+    @else if($family=="gothic"){
+        $fontfamily: 'Nanum Gothic', sans-serif;
+    }
+    @else if($family=="open"){
+        $fontfamily: 'Open Sans', sans-serif;
+    }
+    font-family: $fontfamily; 
+    font-weight: $fweight;
+    font-size: $fsize+px; 
+    color: $fcolor;
+}
+@mixin subpage {
+    height: auto;
+    @include font("noto",400,14,rgb(51,51,51));
+}
+@mixin flex($flexpart,$just,$direct,$items,$wrap,$content) {
+    display: flex; 
+    justify-content: $just;
+    flex-direction: $direct;
+    align-items: $items;
+    @if($flexpart==1){
+        flex-wrap: $wrap;
+        align-content: $content;
+    }
+}
+@mixin div($div_width,$div_height,$div_margin,$div_padding,$div_border) {
+    width: $div_width; height: $div_height;
+    @if($div_margin=="auto"){
+        margin: 0 auto;
+    }
+    @else{
+        margin: $div_margin;
+    }
+    padding: $div_padding; border: $div_border;
+}
+@mixin position($ps) {
+    @if($ps=="ab"){
+        position: absolute;
+    }
+    @else if($ps=="re"){
+        position: relative;
+    }
+    @else if($ps=="fi"){
+        position: fixed;
+    }
+}
+@mixin bg($ap,$bgcolor,$bgurl) {
+    @if($ap==0){
+        background-color: rgba($bgcolor);
+    }
+    @else if($ap==1){
+        background-color: $bgcolor;
+    }
+    @else if($ap==2){
+        background-image: url($bgurl);
+        background-position: center 10%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+}
+
+.section_subpage{
+    @include subpage;
+}
+.sub_div{
+    @include div(1100px,auto,auto,0,1px solid black);
+    display: grid;
+    grid-template-rows: 80px 700px;
+    grid-template-columns: 100%;
+    $z:1;
+    @while($z<=2) {
+        & > div:nth-of-type(#{$z}){
+            grid-row: $z;
+        }
+        $z:$z+1;
+    }
+}
+.event_div1{
+    @include font("open",700,20,black);
+    @include flex(0,center,row,center,"","");
+}
+.event_div2{
+    @include bg(2,"","../event/event_img.jpg");
+    @include position("re"); top: -10px;
+}
+.number_css{
+    @include position("ab");
+    left: 50%; margin-left: -20px; top: 2%; border: 1px solid #fff;
+    border-radius: 5px;
+    &>img{
+        width: 40px; object-fit: cover;
+    }
+}
+.game_info{
+    @include position("ab");
+    bottom: 10px;
+    right: 10px;
+    &>ul{
+        @include div(400,auto,0,0,"");
+        @include font("noto",400,12,grey);
+        &>li{
+            height: 20px; line-height: 20px; text-align: right;
+        }
+    }
+}
+.game_check{
+    @include position("re");
+    cursor: pointer; 
+    width: (1100px/2);
+    /* 
+    calc (전체사이즈(px,%,vh) 사칙연산기호 숫자) 
+    calc (전체사이즈(px,%,vh) 사칙연산기호 숫자 사칙연산기호(px,%,vh))
+    예) calc((10% * 4) - 40px / 2);
+    예) calc(80%-100px);
+    */
+    height: 549px;
+    top: 15px; left: 50%;
+}
+
+@mixin okpoint($p_part,$x,$y,$pwidth,$pheight) { /* 틀린그림 정답 좌표 부분 */
+    @if($p_part=="left"){
+        left: $x+px;
+        top: $y+px;
+    }
+    @else if($p_part=="right"){
+        right: $x+px;
+        top: $y+px;
+    }
+    width: $pwidth+px; height: $pheight+px; z-index: 10; 
+    cursor: pointer;
+}
+.okbtn:nth-of-type(1){
+    @include position("ab");
+    @include okpoint("right",70,80,50,50);
+}
+.okbtn:nth-of-type(2){
+    @include position("ab");
+    @include okpoint("right",15,210,50,50);
+}
+.okbtn:nth-of-type(3){
+    @include position("ab");
+    @include okpoint("right",200,155,50,50);
+}
+.okbtn:nth-of-type(4){
+    @include position("ab");
+    @include okpoint("right",190,445,50,50);
+}
+.okbtn:nth-of-type(5){
+    @include position("ab");
+    @include okpoint("right",495,350,50,50);
+}
+.okbtn:nth-of-type(6){
+    @include position("ab");
+    @include okpoint("right",450,100,50,50);
+}
+.okbtn:nth-of-type(7){
+    @include position("ab");
+    @include okpoint("right",260,480,50,50);
+}
+.okbtn>img{
+    @include position("ab");
+    width: 100px; height: 100px; object-fit: cover;
+    top: -25px; left: -25px;
+}

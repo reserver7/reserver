@@ -1,0 +1,34 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');
+/*font-family: 'Noto Sans KR', sans-serif;(100,300,400,500)*/
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+body,*{ @include base; }
+@mixin flex($just,$direction,$rap,$items,$content,$part) {
+    display: flex;
+    justify-content:$just;
+    flex-direction:$direction;
+    align-items: $items;
+    @if($part==1){
+        flex-wrap: $rap;
+        align-content:$content;
+    }
+}
+@mixin noto($b,$f,$w){
+    @if($b=="noto"){
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+    font-size: $f+px;
+    font-weight: $w;
+}
+
+$mobile : "Only screen and (min-width:340px) and (max-width:540px)";
+$desktop : "screen and (min-width:541px)";
+
+@media #{$mobile}{
+    @import "./index30.scss";
+}
+@media #{$desktop}{
+    @import "./index31.scss";
+}

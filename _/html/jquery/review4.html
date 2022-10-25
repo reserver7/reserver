@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 복습 (delay)</title>
+<script src="./jquery.js"></script>
+<script>
+    /* delay(시간) 해당 애니메이션을 작동하기 전에 잠시 멈춤 형태로
+    사용되는 명령어
+     */
+    $(document).ready(function(){
+        /*
+        응용문제
+        box0 가로 : 400px
+        box1 가로 : 320px
+        box2 가로 : 170px
+        2초 간격으로 늘어나도록 출력
+        */
+        var $node = $(".box").length;
+        var $width;
+        var $a;
+        for($a=0;$a<$node;$a++){
+            var $delay = $a * 2000;
+            switch($a){
+                case 0:
+                $width = "400px";
+                break; 
+
+                case 1:
+                $width = "320px";
+                break; 
+
+                case 2:
+                $width = "170px";
+                break; 
+            }
+            $(".box").eq($a).delay($delay).animate({
+            "width":$width
+            },1000);
+        }
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    div{ width: 0px; height: 50px;}
+    div:nth-child(1){ background-color: green;}
+    div:nth-child(2){ background-color: gold;}
+    div:nth-child(3){ background-color: pink;}
+</style>
+</head>
+<body>
+<div class="box0 box"></div>
+<div class="box1 box"></div>
+<div class="box2 box"></div>
+</body>
+</html>

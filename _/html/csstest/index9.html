@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>  
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>css test9</title>
+<style>
+body{ margin: 0; padding: 0;}
+    .ul1{
+        width: 400px; height: 100px; border: 1px solid black; 
+        list-style: none; padding: 5px; box-sizing: border-box; 
+        position: relative; top: 30px; margin: 0 auto;
+    }
+    .ul1>li{ 
+        float: left; box-sizing: border-box; 
+    }
+    .ul1>li:nth-child(1){
+        width: 100px; height: 90px; background-color: yellow; 
+    }
+    .ul1>li:nth-child(2){
+        width: 280px; height: 90px; padding: 5px;
+    }
+    .div1{ 
+        font-size: 15px; font-weight: bold; clear: both; 
+    }
+    .div2{ 
+        font-size: 12px; color: #555555; margin-top: 5px;
+    }
+</style>
+</head>
+<body>
+<ul class="ul1">
+    <li></li>
+    <li>
+        <div class="div1">"웹 퍼블리셔" 공지안내 입니다."</div>
+        <div class="div2">2020년도 웹 표준화에 대한 추가 교육이 있습니다.</div>
+    </li>
+</ul>
+</body>
+</html>

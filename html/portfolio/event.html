@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link type="text/css" rel="stylesheet" href="./css/event.css?v=1">
+<title>이벤트 참여 페이지</title>
+<script>
+    let postdata;
+    var ename;
+    var eemail;
+    var ecode1;
+    var ecode2;
+    var ecode3;
+    var ecode_ck;
+    function eventbtn(){
+        ename = document.getElementById("event_name").value;
+        eemail = document.getElementById("event_email").value;
+        ecode1 = document.getElementById("event_code1").value;
+        ecode2 = document.getElementById("event_code2").value;
+        ecode3 = document.getElementById("event_code3").value;
+        ecode_ck = (ecode1 + ecode2 + ecode3).length;
+        if(ename==""){
+            alert("고객명을 입력해 주세요.");
+        }
+        else if(eemail==""){
+            alert("이메일을 입력해 주세요.");
+        }
+        else{
+            if(ecode1=="" || ecode2=="" || ecode3==""){
+                alert("쿠폰번호를 모두 입력해 주세요.");
+            }
+            else{
+                if(ecode_ck < 9){
+                    alert("정확한 쿠폰번호를 입력해 주세요.");
+                }
+                else{
+                    postdata = "event_name=" + ename;
+                    postdata += "&event_email=" + eemail;
+                    postdata += "&event_code1=" + ecode1;
+                    postdata += "&event_code2=" + ecode2;
+                    postdata += "&event_code3=" + ecode3;
+                    event_join(postdata);
+                }
+            }
+        }
+    }
+
+    let edata;
+    function event_join(e){
+        function request(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function datapost(){
+            if(edata.readyState==XMLHttpRequest.DONE && edata.status==200){
+                //응답현황 (ok,no,data_error,coupon_error(9자리 쿠폰번호 미입력시))
+                if(this.response=="ok"){
+                    alert("이벤트에 참여 완료 되었습니다.");
+                    location.reload();
+                }
+                else{
+                    alert("이벤트에 이미 등록 되었습니다.");
+                    location.reload();
+                }
+                console.log(this.response);
+            }
+        }
+
+        edata = request();
+        edata.onreadystatechange = datapost;
+        edata.open("POST","eventok.php",true);
+        edata.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        edata.send(e);
+    }
+</script>
+</head>
+<body>
+<section class="backgb">
+    <div class="event">
+        <label class="logobox"><img src="./mv/event_logo.png"></label>
+        <label class="couponbox">
+            <span class="textbox">
+                <p>이벤트 참여는 공식 홈페이지에서만 등록하실 수 있습니다.<br><u>※ 해당 이벤트는 한번만 참여 가능합니다.</u></p>
+                <ul class="ulcss">
+                    <li><input type="text" id="event_name" placeholder="이벤트 참여 고객명" class="input"></li>
+                    <li><input type="text" id="event_email" placeholder="이벤트 회신 이메일 주소" class="input"></li>
+                    <li>
+                        <input type="text" id="event_code1" maxlength="3" class="input2" placeholder="xxx">
+                        <input type="text" id="event_code2" maxlength="3" class="input2 inp" placeholder="xxx">
+                        <input type="text" id="event_code3" maxlength="3" class="input2 inp" placeholder="xxx"></li>
+                    <li><input type="button" value="이벤트 참여하기" class="btn" onclick="eventbtn();"></li>
+                </ul>
+            </span>
+        </label>
+        <video id="videos" muted loop autoplay>
+            <source type="video/mp4" src="./mv/landing.mp4">
+        </video>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery-Ajax(4일차) + 게시판 만들기</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        $("#btn").click(function(){
+            location.href = "./jndex9.html";
+        });
+
+        $.ajax({
+            url:"./notice.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($result){
+                $.fn.htmlmaker($result);
+            },
+            error:function(){
+                console.log("접근이 잘못되었습니다.");
+            }
+        });
+
+        $.fn.htmlmaker = function($array){
+            //파라미터 값 가져오기 (페이지 번호를 눌렀을 경우)
+            var $url = location.search;
+            var $url_ck = $url.split("?page=")[1];
+            var $ea = Object.keys($array.notice[0]).length; //배열 총 갯수
+            var $eqs;
+            var $startpage,$endpage; //(시작값,종료값)
+            var $no;    //게시물 번호를 출력하는 변수
+            var $pnos = 10; // 한 페이지당 출력하느 갯수
+            //전체게시물 갯수 + 한 페이지당 출력하는 갯수 - (한 페이지당 출력갯수 * 페이지번호)
+            if($url==""){ //최초 url접속시에는 파라미터 값이 없음
+                $eqs = 0;
+                $no = $ea;
+                $startpage = 0;
+                $endpage = $pnos * 1;   //최초 1번 페이지 부분
+            }
+            else{   
+                //페이지 번호를 클릭시 해당 번호로 노드값으로 변화하여 eq()에 전달
+                $eqs = Number($url_ck)-1;
+                //시작값을 말함 = 0 * 10 두번째 1 * 10
+                $startpage = $eqs * $pnos;
+                //종료값 = 10 * 2
+                $endpage = $pnos * Number($url_ck);
+                //번호(역순 번호) = (총 갯수+한 페이지당 출력갯수) - 종료값
+                $no = ($ea + $pnos) - $endpage;
+            }
+
+            var $html = ""; //게시판 리스트 출력
+            var $date;  //날짜 글자 짜르기
+            $($array.notice[0]).each(function($node,$name){
+                $date = $name["bindate"].substr(0,10);
+                //console.log($node);
+                if($node >= $startpage && $node < $endpage){ 
+                    //노드 범위를 설정하여 해당 범위 안에 있는 것만 출력하게 함
+                    $html = '<ul class="ulcss">\
+                        <li>'+$no+'</li>\
+                        <li inode="'+$name["bidx"]+'">'+$name["bsubject"]+'</li>\
+                        <li>'+$name["bname"]+'</li>\
+                        <li>'+$date+'</li>\
+                        <li>'+$name["bview"]+'</li>\
+                        </ul> ';
+                    $("#board_view").append($html);
+                    $no--;  //게시판 임의 숫자를 역순으로 출력하는 부분
+                }
+            });
+
+            var $nos = Object.keys($array.notice[0]).length;
+            var $page = Math.ceil($nos / 10);   //한 페이지당 10개씩 출력
+            var $w = 1; //페이지 숫자 1부터 시작
+            var $pagehtml = ""; //페이징번호를 출력
+            //console.log($page);
+            while($w<=$page){
+                $pagehtml = "<li data="+$w+">"+$w+"</li>";
+                $("#page_view").append($pagehtml);
+                $w++;
+            }
+            //페이징 번호 색상
+            $("#page_view>li").eq($eqs).css("background-color","cornflowerblue");
+
+            $("#page_view>li").click(function(){
+                var $gopage = $(this).attr("data");
+                location.href="./jndex8.html?page="+$gopage;
+                //console.log($gopage);
+            });
+
+            $(".ulcss>li").click(function(){
+                var $inode = $(this).attr("inode");
+                var $ckecks = $(this).index();
+                if($ckecks==1){
+                    location.href = "./jndex10.html?bidx="+$inode;
+                }
+            });
+        }
+    });
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500&display=swap');
+    body{ margin: 0; padding: 0;}
+    *{box-sizing: border-box;}
+    ol,ul,dl,dd { list-style: none; margin: 0; padding: 0;}
+    span,label { display: block;}
+    .scss{ height: auto; font-family: 'Noto Sans KR', sans-serif;} 
+    .top { width: 1000px; height: auto; margin: 0 auto; }
+    .top >dt{ text-align: center; font-size: 25px; font-weight: 500; padding-top: 10px;}
+    .top >dd{ 
+        height: 40px; text-align: center; line-height: 40px; margin-top: 20px;
+        display: inline-block; background-color: cornflowerblue;
+        font-weight: 500; border-radius: 5px;
+    }
+    .top >dd:nth-of-type(1){ width: 80px; letter-spacing: 2px;}
+    .top >dd:nth-of-type(2){ width: 495px; letter-spacing: 2px;}
+    .top >dd:nth-of-type(3){ width: 150px; letter-spacing: 0.5px;}
+    .top >dd:nth-of-type(4){ width: 150px; letter-spacing: 2px;}
+    .top >dd:nth-of-type(5){ width: 100px; letter-spacing: 0.5px;}
+    .ulcss{ width: 1000px; height: auto; margin: 0 auto; margin-top: 5px;}
+    .ulcss > li { 
+        height: 40px; text-align: center; line-height: 40px; border-radius: 5px;
+        display: inline-block; background-color: darkgray; font-weight: 300;
+    }
+    .ulcss >li:nth-of-type(1){ width: 80px;}
+    .ulcss >li:nth-of-type(2){ width: 495px; text-align: unset; text-indent: 10px; cursor: pointer;}
+    .ulcss >li:nth-of-type(3){ width: 150px;}
+    .ulcss >li:nth-of-type(4){ width: 150px;}
+    .ulcss >li:nth-of-type(5){ width: 100px;}
+    .pagecss{ width: 1000px; height: 40px; margin: 0 auto; text-align: center; margin-top: 50px; }
+    .pagecss > li { cursor: pointer; margin-left: 5px;
+        display: inline-block; width: 40px; height: 40px; text-align: center;
+        line-height: 40px; background-color: darkgray; color: white; border-radius: 5px;
+    }
+    .btnbox { width: 100px; height: 40px; margin: 0 auto; margin-top: 30px; }
+    .btnbox > span { 
+        width: 100px; height: 40px; background-color: cornflowerblue; cursor: pointer;
+        text-align: center; line-height: 40px; color: white; letter-spacing: 0.5px; border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+<section class="scss">
+    <dl class="top" >
+        <dt>[공지사항 게시판]</dt>
+        <dd>번호</dd>
+        <dd>제목</dd>
+        <dd>글쓴이</dd>
+        <dd>날짜</dd>
+        <dd>조회수</dd>
+    </dl>
+    <div id="board_view">
+
+    </div>
+    <ol class="pagecss" id="page_view">
+
+    </ol>
+    <label class="btnbox">
+        <span id="btn">글쓰기</span>
+    </label>
+</section>
+</body>
+</html>

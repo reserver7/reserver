@@ -1,0 +1,45 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML4일차 4.0 + CSS2.0 - 복습 및 예습</title>
+
+<style>
+#aaa { width:200px; height:30px;} /* #:id를 지칭함 */
+.aaa { width:500px; height:30px;} /* .:class를 지칭함 */
+.bbb { width:100px; height:30px; background-color:green;}
+.btn { width:100px; height:45px; color:#ffffff; font-size:15px;
+  font-weight: bold; background-color: darkblue; border:0;
+  cursor: pointer;
+}
+.cbtn { width:100px; height:45px; color:#ffffff; font-size:15px;
+  font-weight: bold; background-color :#333333; border:0;
+  cursor: pointer;
+}
+.qwe { width:100px; height:35px; border:2px solid #219D47;}
+.asd { width:100px; height:40px; background-color:black; 
+color:white; font-size:15px; border:none; cursor: pointer;}
+.zxc { width:450px; height:35px; border:2px solid #219D47;}
+.rty { width:450px; height:35px; border:2px solid #219D47;}
+</style>
+</head>
+<body>
+<input type="text" id="aaa"><br>
+<input type="text" class="aaa"><br>
+<input type="text" name="bbb" id="bbb" class="bbb">
+<!--
+   name : 백엔드 전달 값(속성)
+   id : Jquery, Javascript
+   class : publisher + style 
+-->
+<br><br>
+<input type="button" value="회원가입" id="btn" class="btn" title="회원가입">
+<input type="button" value="가입취소" id="cbtn" class="cbtn" title="가입취소">
+<br><br>
+<input type="text" maxlength="5" id="qwe" class="qwe"><input type="button" value="주소검색" title="주소검색" id="asd" class="asd">
+<br>
+<input type="text" id="zxc" class="zxc">
+<br>
+<input type="text" id="rty" class="rty">
+</body>
+</html>

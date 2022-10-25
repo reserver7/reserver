@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery 문제4</title>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $timer;
+            $.fn.re = function(){
+                $timer = setTimeout(function retimer(){
+                $("#sbox").animate({
+                    "margin-left":"950px"
+                },2000,function(){
+                    $("#sbox").animate({
+                        "margin-left":"0px"
+                    },2000);
+                });
+                $timer = setTimeout(retimer,2000);
+            });
+        };
+
+            $("#start").click(function(){
+                $.fn.re();
+            });
+            $("#stop").click(function(){
+                clearTimeout($timer);
+            });
+            $("#restart").click(function(){
+                $.fn.re();
+            });
+        });
+    </script>
+    <style>
+        body { margin: 0; padding: 0;}
+        .box { width:1000px; height:50px;
+        border:1px solid black;}
+        .sbox { width:50px; height:50px;
+        background-color: blue;
+        }
+    </style>
+</head>
+<!-- 문제4. 
+    start 버튼을 클릭시 .box 안에
+    sbox박스가 좌, 우로 계속 왕복 되도록 합니다.
+    단, stop를 누를 경우 정지되며, restart를 누르면 다시
+    계속 왕복이 되도록 합니다.
+-->
+<body>
+<div class="box">
+<div class="sbox" id="sbox"></div>    
+</div>
+<br><br><br>
+<input type="button" value="start" id="start">
+<input type="button" value="stop" id="stop">
+<input type="button" value="restart" id="restart">
+</body>
+</html>

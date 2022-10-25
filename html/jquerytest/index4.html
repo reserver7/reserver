@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>문제4</title>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $array=[
+            "./image/right_banner1.png","./image/right_banner2.png","./image/right_banner3.png","./image/right_banner4.png"
+            ];
+            var $list=0;
+            var $num=$array.length;
+            var $f;
+            for($f=0;$f<$num;$f++){
+                $("#rightbanner").append("<span><img src='"+$array[$f]+"'></span>");
+            }
+            var $timer;
+            $.fn.timer = function(){
+                $timer = setTimeout(function retimer(){
+                    $("#rightbanner>span").eq($list).fadeOut();
+                    $list++;
+                    if($list>=$num){
+                    $list=0;
+                    }
+                    
+                    $("#rightbanner>span").eq($list).fadeIn();
+                    $timer = setTimeout(retimer,10000);
+                },10000); 
+            }
+            $("#rightbanner").bind({
+                "mouseenter":function(){
+                    clearTimeout($timer);    
+                },
+                "mouseleave":function(){
+                    $.fn.timer();
+                }
+            });
+
+            $.fn.timer();
+  
+        });
+    </script>
+    <style>
+        body { margin: 0; padding: 0;}
+        .top { margin:0 auto; width:1000px; height:200px; background-color: teal;}
+        .main { margin:0 auto; width:1000px; height:800px; background-color: gray;
+        position: relative;
+        }
+        .footer { margin:0 auto; width:1000px; height:200px; background-color: black;}
+        #rightbanner { display: block; width:100px; height:300px;
+        position: relative; left: 100%; margin-left:20px;
+        }
+        #rightbanner>span{ position: absolute; display: none;}
+        #rightbanner>span:nth-of-type(1){display:block;}
+        #rightbanner>span>img{ width: 100%;}
+    </style>
+</head>
+<!-- 문제4
+right_banner1.png
+right_banner2.png
+right_banner3.png
+right_banner4.png
+
+4개의 날개 배너가 있습니다.
+해당 배너가 1~4번까지 10초에 한번씩 자동으로 변경되도록 하십시오.
+또한 마우스 오버시 이미지가 변경되면 안됩니다.
+마우스 아웃시 다시 배너가 이미지가 변경 되어야 합니다.
+배너 변경은 점점사라졌다가 나타나는 형태로 합니다.
+-->
+<body>
+<header>
+    <div class="top"></div>
+</header>
+<section>
+    <div class="main">
+        <span id="rightbanner"></span>        
+    </div>
+</section>
+<footer>
+    <div class="footer"></div>
+</footer>
+</body>
+</html>

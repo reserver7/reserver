@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 4일차 - (노드 + css수정)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $node = 0;  //기초 노드 카운팅을 위해
+
+        $("#btn").click(function(){
+            var $a = $("#dl_disc > dd").length; //노드의 갯수
+            var $b;
+            for($b=0;$b<$a;$b++){   //초기화 하기 위한 반복문
+                $("#dl_disc > dd").eq($b).css("background-color","black");
+            }
+            if($node<2){
+                ++$node;
+            }
+            else{
+                $node = 0;
+            }
+            $("#dl_disc > dd").eq($node).css("background-color","red");
+        });
+
+        //right 부분
+        $("#btn2").click(function(){
+            var $a = $("#dl_disc>dd").length;
+            var $b;
+            for($b=0;$b<$a;$b++){
+                $("#dl_disc>dd").eq($b).css("background-color","black");
+            }
+            if($node==0){
+                $node=2;  
+            }
+            else {
+                --$node;  
+            }
+            $("#dl_disc>dd").eq($node).css("background-color","red");
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .dlcss{
+        width: 100%; height: auto; margin: 0; padding: 0;
+    }
+    .dlcss > dd {
+        width: 30px; height: 30px; border-radius: 30px;
+        margin: 0; padding: 0; background-color: black;
+        display: inline-block;
+    }
+    .dlcss > dd:nth-child(1){
+        background-color: red;
+    }
+</style>
+</head>
+<body>
+<dl id="dl_disc" class="dlcss">
+    <dd></dd>
+    <dd></dd>
+    <dd></dd>
+</dl>
+<button type="button" id="btn"><< 이동</button>
+<button type="button" id="btn2">>> 이동</button>
+</body>
+</html>

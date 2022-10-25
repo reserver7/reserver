@@ -1,0 +1,555 @@
+@charset "UTF-8";
+/* 서브페이지 기본 셋팅 부분 */
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500,700,900) */
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+/* 영어 font-family: 'Open Sans', sans-serif; */
+@mixin font($family,$fweight,$fsize,$fcolor) {
+    //(font-weight 100,300,400,500,700,900)
+    $fontfamily:"";
+    @if($family=="noto"){
+        $fontfamily: 'Noto Sans KR', sans-serif;
+    }
+    @else if($family=="pen"){
+        $fontfamily: 'Nanum Pen Script', cursive;
+    }
+    @else if($family=="big"){
+        $fontfamily: 'Big Shoulders Stencil Display', cursive;
+    }
+    @else if($family=="gothic"){
+        $fontfamily: 'Nanum Gothic', sans-serif;
+    }
+    @else if($family=="open"){
+        $fontfamily: 'Open Sans', sans-serif;
+    }
+    font-family: $fontfamily; 
+    font-weight: $fweight;
+    font-size: $fsize+px; 
+    color: $fcolor;
+}
+@mixin subpage {
+    height: auto;
+    @include font("noto",400,14,rgb(51,51,51));
+}
+@mixin flex($flexpart,$just,$direct,$items,$wrap,$content) {
+    display: flex; 
+    justify-content: $just;
+    flex-direction: $direct;
+    align-items: $items;
+    @if($flexpart==1){
+        flex-wrap: $wrap;
+        align-content: $content;
+    }
+}
+@mixin sizes($div_width,$div_height,$div_margin,$div_padding,$div_border) {
+    width: $div_width; height: $div_height;
+    @if($div_margin=="auto"){
+        margin: 0 auto;
+    }
+    @else{
+        margin: $div_margin;
+    }
+    padding: $div_padding; border: $div_border;
+}
+@mixin position($ps) {
+    @if($ps=="ab"){
+        position: absolute;
+    }
+    @else if($ps=="re"){
+        position: relative;
+    }
+    @else if($ps=="fi"){
+        position: fixed;
+    }
+}
+@mixin bg($ap,$bgcolor,$bgurl) {
+    @if($ap==0){
+        background-color: rgba($bgcolor);
+    }
+    @else if($ap==1){
+        background-color: $bgcolor;
+    }
+    @else if($ap==2){
+        background-image: url($bgurl);
+        background-repeat: no-repeat;
+    }
+}
+input:focus { outline: none; }
+button:focus { outline: none; }
+select:focus { outline: none; }
+
+.order_outline{
+    @include sizes(1000px,auto,auto,0,"");
+    margin-top: 50px; margin-bottom: 80px; letter-spacing: 0.3px;
+}
+/* 주문 상세내역 */
+.order_detail{
+    @include sizes(100%,auto,0,0,"");
+}
+.order_title{
+    @include sizes(100%,100px,0,0,""); line-height: 100px;
+    @include font("noto",500,17,""); text-align: center;
+}
+.order_view{
+    @include sizes(1000px,auto,0,0,""); border-top: 1px solid #ccc;
+    @include font("gothic","",14,"");
+}
+.order_stitle{
+    @include sizes(100%,30px,0,0,""); 
+    @include font("gothic",800,13,#555);
+    line-height: 30px; padding-top: 20px; padding-left: 5px; 
+}
+.order_css{
+    @include sizes(100%,auto,0,0,""); text-align: center;
+    &>li{
+        float: left;
+    }
+    @for $order_li from 1 to 7{
+        &>li:nth-of-type(#{$order_li}){
+            @if($order_li==1){ width: 25%;}
+            @else if($order_li==2){ width: 5%; }
+            @else if($order_li==6){ width: 25%;}
+            @else { width: 15%;}
+        }
+    }
+}
+.order_ul{
+    @include sizes(100%,35px,0,0,""); 
+    @include font("gothic",bold,12,#555);
+    line-height: 35px; border-top: 1px solid black; margin-top: 30px;
+}
+.order_ol{
+    @include sizes(100%,85px,0,0,"");
+    clear: both; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;
+    &>li{
+        height: 85px; @include flex(0,center,row,center,"","");
+        @include font("gothic",800,12,#111);
+    }
+    &>li:first-child{
+        @include flex(0,flex-start,row,center,"","");
+        padding-left: 20px;
+        &>span:first-child{
+            @include sizes(50px,50px,0,0,1px solid #ccc);
+        }
+        &>span:last-child{
+            @include sizes(75px,auto,0,0,"");
+            &>label{
+                @include sizes(200px,20px,0,0,"");
+                text-align: left; padding-left: 10px;
+            }
+            &>label:first-child{ font-weight: 800; color: #777; }
+            &>label:nth-of-type(2){ color: #999; }
+        }
+    }
+    &>li:last-child{ color: #999; font-weight: normal; }
+}
+.order_basket{
+    @include sizes(100%,50px,0,0,"");
+    padding-left: 5px; margin-top: 10px;
+    &>a { 
+        @include font("gothic","",11,#999);
+        border-bottom: 1px solid #999;
+    }
+}
+.order_basket::before{
+    content: ""; width: 13px; height: 13px;
+    @include bg(2,"","../images/shopping_cart.svg");
+    background-size: 13px; display: inline-block;
+    padding-right: 5px; vertical-align: -3px;
+}
+
+.order_pay{
+    @include sizes(100%,80px,0,0,1px solid #ccc);
+    @include flex(1,center,column,flex-end,nowrap,flex-end);
+    &>ul{
+        height: 20px; padding-right: 30px;
+        &>li{
+            @include font("gothic","",12,#555);
+            height: 20px; float: left; line-height: 20px;
+        }
+        &>li:first-child>em:first-child{
+            font-style: normal; color: rgb(248, 123, 144); font-weight: 700;
+        }
+        &>li:first-child>em:nth-of-type(2){
+            font-style: normal; font-size: 14px; font-weight: 800; color: #000;
+        }
+        &>li:nth-of-type(2)>img{
+            width: 22px; object-fit: cover; padding-left: 5px; padding-top: 3px;
+        }
+        &>li:nth-of-type(2)>em{
+            font-style: normal; padding-left: 5px; vertical-align: 4px;
+        }
+        &>li:nth-of-type(2)>em:nth-of-type(2){
+            font-weight: 700; color: #555;
+        }
+        &>li:nth-of-type(3)>img{
+            width: 25px; object-fit: cover; padding-left: 10px; padding-top: 3px;
+        }
+        &>li:nth-of-type(3)>em{
+            font-style: normal; padding-left: 5px; vertical-align: 2px;
+            @include font("gothic",700,18,#000);
+        }
+    }
+    &>span{
+        color: rgb(248, 123, 144); font-size: 11px; padding-right: 30px; padding-top: 5px;
+    }
+}
+
+/* 주문자 정보 */
+.order_info{
+    @include sizes(1000px,auto,auto,0,"");
+    margin-top: 70px;
+}
+.order_div{
+    @include sizes(100%,auto,0,0,"");
+}
+.info_ol{
+    margin-top: 30px; border-top: 1px solid #aaa;
+    &>li{
+        @include font("gothic",700,12,#555);
+        border-bottom: 1px solid #ccc;
+        height: 40px; line-height: 40px; display: flex;
+        &>span{
+            @include sizes(200px,auto,0,0,"");
+            @include bg(1,#eee,""); padding-left: 20px;
+        }
+        &>label{
+            @include sizes(800px,auto,0,0,""); padding-left: 20px;
+            font-weight: normal;
+            &>input{ 
+                @include sizes(180px,25px,0,0,1px solid #ccc); text-indent: 10px;
+                @include font("gothic",normal,12,#555);
+            }
+            &>select{
+                @include sizes(100px,25px,0,0,1px solid #ccc);
+                margin-left: 5px; cursor: pointer;
+            }
+        }
+    }
+    &>li:nth-of-type(2){
+        &>label>input:nth-of-type(1){
+            width: 100px;
+        }
+        &>label>input:nth-of-type(2),input:nth-of-type(3){
+            width: 250px; margin-left: 1px;
+        }
+    }
+}
+
+/* 배송정보 */
+.delivery_info{
+    @include sizes(100%,auto,auto,0,""); margin-top: 70px;
+}
+.delivery_div{
+    @include sizes(100%,auto,0,0,"");
+}
+.delivery_ol{
+    margin-top: 30px; border-top: 1px solid #aaa;
+    &>li{
+        @include font("gothic",700,12,#555);
+        border-bottom: 1px solid #ccc;
+        height: 40px; line-height: 40px; display: flex;
+        &>span{
+            @include sizes(200px,auto,0,0,"");
+            @include bg(1,#eee,""); padding-left: 20px;
+        }
+        &>label{
+            @include sizes(800px,auto,0,0,""); padding-left: 20px;
+            font-weight: normal;
+            &>input{
+                @include sizes(180px,25px,0,0,1px solid #ccc);
+                @include font("gothic","",12,#555);
+                text-indent: 10px;
+            }
+        }
+    }
+    &>li:nth-child(1){
+        &>label>span{
+            @include sizes(550px,40px,0,0,0);
+            @include flex(0,space-between,row,center,"","");
+            &>label{
+                cursor: pointer;
+                &>input{
+                    cursor: pointer;
+                    vertical-align: -3px;
+                }
+            }
+            &>button{
+                @include sizes(90px,25px,0,0,1px solid #ddd);
+                @include font("gothic",bold,12,#555);
+                line-height: 25px; cursor: pointer;
+            }
+        }
+    }
+    &>li:nth-child(3){
+        height: 100px;
+        &>label>span:first-child>input{
+            @include sizes(150px,25px,0,0,1px solid #ccc);
+            @include font("gothic","",12,#555);
+            text-indent: 10px;
+        }
+        &>label>span:first-child>button{
+            @include sizes(90px,25px,0,0,1px solid #ddd);
+            @include font("gothic",bold,12,#555);
+            line-height: 25px; cursor: pointer; margin-left: 5px;
+        }
+        &>label>span:nth-of-type(2)>input{
+            @include sizes(350px,25px,0,0,1px solid #ccc);
+            @include font("gothic","",12,#555);
+            text-indent: 10px;
+        }
+        &>label>span:nth-of-type(2)>input:nth-of-type(2){
+            @include sizes(300px,25px,0,0,1px solid #ccc);
+            margin-left: 5px;
+        }
+        &>label>span:nth-of-type(3){
+            display: flex;
+            &>input{ margin-top: -2px; cursor: pointer;}
+            &>label{
+                @include font("gothic",800,12,rgb(44, 158, 252));
+                margin-top: -15px; margin-left: 5px; cursor: pointer;
+            }
+        }
+    }
+    &>li:nth-child(6){
+        &>label>input{
+            @include sizes(95%,25px,0,0,1px solid #ccc);
+            @include font("gothic","",12,#555);
+            text-indent: 10px;
+        }
+    }
+    &>li:nth-child(7){
+        &>label{
+            display: flex; flex-direction: row; justify-content: flex-start;
+            align-items: center;
+            &>input{
+                @include sizes(12.8px,12.8px,0,0,""); margin-left: 3.5px; cursor: pointer;
+            }
+            &>label{
+                @include font("gothic",800,12,#555); margin-left: 7px; cursor: pointer;
+                &>em{
+                    @include font("gothic",normal,12,#555); font-style: normal;
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+/* 결제정보 */
+.pay_info{
+    @include sizes(100%,auto,auto,0,""); margin-top: 70px;
+}
+.pay_div{
+    @include sizes(100%,auto,0,0,"");
+}
+.pay_ul{
+    margin-top: 30px; border-top: 1px solid #aaa;
+    &>li{
+        @include font("gothic",700,12,#555);
+        border-bottom: 1px solid #ccc;
+        height: 40px; line-height: 40px; display: flex;
+        &>span{
+            @include sizes(200px,auto,0,0,"");
+            @include bg(1,#eee,""); padding-left: 20px;
+        }
+        &>label{
+            @include sizes(800px,auto,0,0,""); padding-left: 20px;
+            font-weight: normal;
+            &>input{
+                @include sizes(180px,25px,0,0,1px solid #ccc);
+                @include font("gothic","",12,#555);
+                text-indent: 10px;
+            }
+            &>button{
+                @include sizes(120px,25px,0,0,1px solid #ddd);
+                @include font("gothic",bold,12,#555);
+                line-height: 25px; cursor: pointer;
+            }
+        }
+    }
+    &>li:first-child>label{
+        @include font("gothic",800,15,#555);
+    }
+    &>li:nth-of-type(3){
+        height: 70px;
+        &>label>span{
+            height: 25px;
+            &>em:first-child{
+                @include font("gothic",800,12,#555); font-style: normal;
+            }
+            &>em:nth-of-type(2){
+                @include font("gothic",normal,12,#555); font-style: normal;
+            }
+        }
+        &>label>span:first-child{
+            margin-top: 3px;
+        }
+        &>label>span:first-child:before{
+            content: ""; width: 13px; height: 13px;
+            @include bg(2,"","../images/sale.png");
+            background-size: 13px; display: inline-block;
+            padding-right: 5px; vertical-align: -3px;
+        }
+        &>label>span:nth-of-type(2):before{
+            content: ""; width: 13px; height: 13px;
+            @include bg(2,"","../images/mileage.png");
+            background-size: 13px; display: inline-block;
+            padding-right: 5px; vertical-align: -3px;
+        }
+    }
+    &>li:nth-of-type(5){
+        height: 70px;
+        &>label>span{
+            height: 25px;
+            &>input{
+                @include sizes(100px,25px,0,0,1px solid #ccc);
+                @include bg(1,#ddd,"");
+                @include font("gothic","",12,#555);
+                text-indent: 10px;
+            }
+            &>em{
+                @include font("gothic",800,12,rgb(44, 158, 252)); font-style: normal; padding-left: 20px;
+            }
+        }
+        &>label>span:nth-of-type(2){
+            @include font("gothic",800,12,rgb(44, 158, 252));
+        }
+    }
+    &>li:nth-of-type(6){
+        &>label{ 
+            @include flex(0,flex-start,row,center,"","");
+        }
+        &>label>input:first-child{
+            @include sizes(100px,25px,0,0,1px solid #ccc);
+            @include font("gothic","",12,#555);
+            text-indent: 10px;
+        }
+        &>label>input:nth-of-type(2){
+            @include sizes(12.8px,12.8px,0,0,""); margin-left: 10px; vertical-align: -3px; cursor: pointer;
+        }
+        &>label>em:nth-of-type(1){
+            @include font("gothic",normal,12,#555); font-style: normal; padding-left: 5px;
+            &>label { cursor: pointer; }
+        }
+        &>label>em:nth-of-type(2){
+            @include font("gothic",800,12,rgb(44, 158, 252)); font-style: normal; padding-left: 20px;
+        }
+    }
+    &>li:last-child{
+        &>span{
+            @include font("gothic",800,12,#444);
+        }
+        &>label{
+            @include font("gothic",800,15,#444);
+            &>em{ 
+                @include font("gothic",700,13,#444); font-style: normal;
+            }
+        }
+    }
+}
+
+/* 결제수단 선택 / 결제 */
+.pay_choice{
+    @include sizes(100%,auto,auto,0,""); margin-top: 70px;
+}
+.pay_c_div{
+    @include sizes(100%,auto,0,0,"");
+}
+.pay_c_ol{
+    margin-top: 30px; border-top: 1px solid #aaa;
+    &>li{
+        @include font("gothic",700,12,#555);
+        border-bottom: 1px solid #ccc;
+        height: 40px; line-height: 40px;
+        &>span{
+            @include sizes(100%,auto,0,0,"");
+            padding-left: 20px; display: flex; flex-direction: row;
+            justify-content: flex-start; align-items: center;
+            &>input{
+                vertical-align: -5px;
+            }
+        }
+    }
+    &>li:first-child>span{
+        @include bg(1,#eee,"");
+        &>input{cursor: pointer;}
+        &>label{cursor: pointer;}
+    }
+    &>li:nth-of-type(2){
+        height: 70px;
+        @include flex(1,flex-start,row,center,wrap,center);
+        &>span:first-child{
+            &>input{cursor: pointer;}
+            &>label{cursor: pointer;}
+        }
+        &>span:nth-of-type(2){ 
+            @include font("gothic",normal,12,#999); margin-top: -15px;
+        }
+    }
+    &>li:nth-of-type(3){
+        height: 100px;
+        @include flex(1,flex-start,row,center,wrap,center);
+        &>span>input{
+            @include sizes(150px,25px,0,0,1px solid #ccc);
+            @include font("gothic","",12,#555);
+            text-indent: 10px; margin-left: 10px;
+        }
+        &>span>select{
+            @include sizes(300px,25px,0,0,1px solid #ccc);
+            @include font("gothic","",12,#555);
+            text-indent: 6px; margin-left: 10px; cursor: pointer;
+        }
+    }
+    &>li:last-child{
+        @include bg(1,#eee,"");
+        &>span>input{
+            margin-left: 30px; cursor: pointer;
+        }
+        &>span>label{ cursor: pointer; }
+    }
+}
+.pay_total{
+    @include sizes(100%,70px,auto,0,2px solid #ccc);
+    @include flex(0,flex-end,row,center,"","");
+    margin-top: 30px; padding-right: 40px;
+    &>span{
+        @include font("gothic",800,13,#555);
+        &>em:first-child{
+            @include font("gothic",800,21,#000); font-style: normal; padding-left: 5px;
+        }
+        &>em:nth-of-type(2){
+            @include font("gothic",700,14,#000); font-style: normal;
+        }
+    }
+}
+.pay_btn_box{
+    @include sizes(100%,auto,auto,0,""); margin-top: 50px;
+    @include flex(0,space-around,column,center,"","");
+    &>span:first-child{
+        @include font("gothic",700,12,red);
+        @include flex(0,flex-start,row,center,"","");
+        &>input{
+            vertical-align: -4px; cursor: pointer;
+        }
+        &>label{ cursor: pointer; }
+        &>label>em{
+            @include font("gothic",700,12,#555); font-style: normal;
+        }
+    }
+    &>span:nth-of-type(2){
+        margin-top: 20px;
+        &>button{
+            @include sizes(200px,50px,0,0,0);
+            @include bg(1,#555,"");
+            @include font("gothic",bold,12,#fff);
+            line-height: 50px; cursor: pointer;
+        }
+        &>button:hover{@include bg(1,#444,"");}
+    }
+}
+.direct{
+    display: none !important;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript - 131p~157p 함수</title> 
+<script>
+/*
+    문제3
+    pernm 이라는 name을 가진 입력값에 사용자를 입력합니다.
+    단, 숫자만 입력 했을 경우 경고메세지로
+    "숫자와 문자를 함께 입력하세요." 라고 출력
+    정상적으로 입력이 되었을 경우
+    POST로 데이터를 
+    http://reduck.dothome.co.kr/book/java28.php
+    로 이동 되도록 합니다.
+*/
+    function aaa(aa){
+        var a = Number(aa);
+        if(isNaN(a)==false){
+            alert("숫자와 문자를 함께 입력하세요.");
+        }
+        else{
+            f.method="POST";
+            f.action="http://reduck.dothome.co.kr/book/java28.php";
+            f.submit();
+        }
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<input type="text" name="pernm">
+<input type="button" value="확인" onclick="aaa(f.pernm.value);">
+</form>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<meta charset="UTF-8">
+<script>
+    $(function(){
+        /*
+        var $ajax2 = $.ajax("./product/best_pd.json")
+        .done(function($best_rs){
+            $.fn.bestitem_view($best_rs);
+        })
+        .fail(function(){
+            console.log("데이터 오류");
+        });
+        */
+        $.getJSON({
+            url:"./product/best_pd.json",
+            cache:false,
+            type:"GET",
+            dataType:"json",
+            success:function($best_rs){
+                $.fn.bestitem_view($best_rs);
+            },
+            error:function(){
+                console.log("데이터 오류");
+            }
+        });
+
+        var $best_html;
+        var $money_num;
+        var $money_ck;
+        $.fn.bestitem_view = function($best_rs){
+            $($best_rs["best_product"]).each(function($node,$name){
+                $money_num = Number($name["product_money"]);
+                $money_ck = $money_num.toLocaleString();
+                $best_html = '<li best_url="product_view.html?goodsno=11278197">\
+                    <label><img class="best_img" title="'+$name["product_nm"]+'" src="'+$name["product_img"]+'"></label>\
+                    <label class="best_nm">'+$name["product_nm"]+'</label>\
+                    <label>'+$money_ck+'원'+'</label></li>';
+                $("#bestitem").append($best_html);
+            });
+
+            $("#bestitem>li").bind({
+                "click":function(){
+                    location.href = $(this).attr("best_url");
+                },
+                "mouseenter":function(){
+                    var $best_node = $(this).index();
+                    $(".best_img").eq($best_node).css({
+                        "transform":"scale(1.05)",
+                        "transition":"1s"
+                    });
+                    $(".best_nm").eq($best_node).css("color","cornflowerblue");
+                },
+                "mouseleave":function(){
+                    $(".best_img").css("transform","scale(1)");
+                    $(".best_nm").css("color","black");
+                }
+            });
+        }
+    });
+</script>
+<div class="best_css">
+    <span class="besttitle"><img src="./product/best_title.jpg"></span>
+    <ul class="bestitem" id="bestitem">
+
+    </ul>
+</div>

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+} 
+*,body{ @include base; }
+@mixin size($w,$h) {
+    width: $w+px; height: $h+px;
+}
+@mixin divcss {
+    display: flex; flex-direction: row; justify-content: center;
+    align-content: center; align-items: center; flex-wrap: nowrap;
+    margin: 0 auto; position: relative;
+}
+@mixin border($si) {
+    @if($si==1){
+        border: 1px solid black;
+        box-sizing: border-box;
+        border-radius: 500px;
+    }
+    @else if($si==2){
+        border-radius: 0 25px 0 25px;
+    }
+    
+}
+@mixin bgcolor($bg) {
+    background-color: $bg;
+}
+.divcss{
+    @include size(500,500); 
+    @include border(1);
+    @include divcss;
+    &>label{
+        @include size(50,50); 
+        @include bgcolor(skyblue); 
+        @include border(2);
+        position: absolute;
+        left: 50%; top: 50%;
+        transition-property: all;
+        transition-duration: 3s;
+        transition-timing-function: ease;
+        transform-origin: left top; 
+        //rotate사용시 중점을 어느기준으로 할 것인지 정하는 속성값 (transform-origin)
+    }
+    &:hover>label{
+        transform: rotate(1080deg);
+    }
+}
+@mixin boxsize($width,$height,$c,$p) {
+    width: $width+px; height: $height+px;
+    background-color: $c; position: $p;
+    border-radius: 3px;
+}
+.divbox1{
+    @include boxsize(150,150,#00aa99,absolute);
+}
+.divbox2{
+    @include boxsize(150,150,#2b3f83,absolute);
+    transition: all ease 0.8s;
+    &:hover{
+        transform: translate(20px,20px);
+    }
+}

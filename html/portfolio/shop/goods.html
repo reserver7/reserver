@@ -1,0 +1,289 @@
+<meta charset="UTF-8">
+<script>
+    $(function(){
+        const $arr = JSON.parse('<?php echo $prints; ?>');    //back-end 변수값 배열 mapping
+        $($arr[0]).each(function($bno,$bnm){
+            console.log($bnm);
+            $("#product_nm").text($bnm.product_nm);
+            $("#product_contents").text($bnm.product_nmdtc);
+            if($bnm.product_sales=="" || $bnm.product_sales=="0"){
+                $("#product_money").html("<em style='font-weight: 800;'>"+Number($bnm.product_money).toLocaleString()+" 원 </em>");
+                $("#sales").css("display","none");
+                //최종결제 금액
+                $("#total_money").text(Number($bnm.product_money).toLocaleString()+" 원");
+                $("#total_money").attr("moneys",$bnm.product_money);
+                
+            }
+            else{
+                $("#product_money").html("<s>"+Number($bnm.product_money).toLocaleString()+" 원 </s>");
+                $("#product_sales").html("<em>"+Number($bnm.product_sales).toLocaleString()+" 원 </em>");
+                $("#total_money").text(Number($bnm.product_sales).toLocaleString()+" 원");
+                $("#total_money").attr("moneys",$bnm.product_sales);
+            }
+            if($bnm.product_ea==0 || $bnm.product_ea==""){
+                $("#product_limit").text("현재 상품은 구매하실 수 없습니다.");
+                $("#buy_btn").css("display","none");
+                $("#add_btn").css("margin-left","190px");
+            }
+            else{
+                $("#product_limit").text($bnm.product_ea+" EA");
+            }
+            $("#product_delivery").prepend(Number($bnm.product_delivery).toLocaleString()+" 원");
+            $("#goodsno").text($bnm.goodsno);
+            let $p_op = 1;
+            let $ev,$ev2,$s_img;
+            do{
+                $ev = eval("$bnm.product_option"+$p_op);
+                if($ev!=""){
+                    $("#product_option").append('<option value="'+$ev+'">'+$ev+'</option>');
+                }
+                $ev2 = eval("$bnm.product_simg"+$p_op);
+                if($ev2!=""){
+                    $("#sub_img").append('<li class="sub_img"><img src="'+$ev2+'"></li>');
+                    $(".sub_img").bind({
+                        "mouseenter":function(){
+                            $s_img = $(this).index()+1;
+                            $("#main_img").attr("src",eval("$bnm.product_simg"+$s_img));
+                        },
+                        "mouseleave":function(){
+                            $("#main_img").attr("src",$bnm.product_img);
+                        }
+                    });
+                }
+                $p_op++;
+            }while($p_op<=3);
+            $("#main_img").attr("src",$bnm.product_img);
+
+            //수량 갯수별 최종금액 변경
+            $("#product_ea").change(function(){
+                var $eaval = $(this).val();
+                var $basic = Number($("#total_money").attr("moneys"));
+                $("#total_money").text(Number($basic * $eaval).toLocaleString()+" 원");
+            });
+            //상품 상세페이지
+            var $htmlcode = $bnm.product_contents1;
+                $htmlcode = $htmlcode.replace(/&lt;/g,'<');
+                $htmlcode = $htmlcode.replace(/&gt;/g,'>');
+                $htmlcode = $htmlcode.replace(/&quot;/g,'');
+            $("#information").html($htmlcode);
+
+            $("#buy_btn").click(function(){
+                var $eaval = Number($("#product_ea").val());
+                var $basic = Number($("#total_money").attr("moneys"));
+                $("#goodname").val($bnm.product_nm);
+                $("#goodea").val($eaval);
+                $("#price").val($basic * $eaval);
+                var $ot = $("#product_option>option").length;
+                if($ot>1){
+                    var $ot_val = $("#product_option").val();
+                    if($ot_val==""){
+                        alert("옵션을 선택해 주세요!");
+                        return false;        
+                    }
+                    else{
+                        order.submit();
+                    }
+                }
+                else{
+                    order.submt();
+                }
+            });
+
+            $("#add_btn").click(function(){
+                alert("해당 상품은 장바구니에 담겨졌습니다.");
+                return false;
+            });
+
+            $("#wish_btn").click(function(){
+                alert("본 서비스는 로그인을 하셔야만 사용하실 수 있습니다.");
+                return false;
+            });
+        });
+
+        $(".pro_scroll>li").click(function(){
+            var $ind = $(this).index();
+            var $off = $("#p_sc"+$ind).offset().top;
+            $("html").animate({"scrollTop":$off},100);
+            console.log($off);
+        });
+
+        $("#product_url").click(function(){
+            var $host = window.location.href;
+            clipboard($host);
+        });
+    });
+    function clipboard(host){   //공유 url copy 파트
+        var copyurl = document.createElement("textarea"); //url 길이로 인해서 (textarea)
+        document.body.appendChild(copyurl);
+        copyurl.value = host;
+        copyurl.select();
+        document.execCommand("copy");
+        document.body.removeChild(copyurl);
+        alert("URL을 복사 하였습니다.");
+    }
+</script>
+<form name="order" id="order" method="POST" action="buy.html" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="goodsno" value="<?php echo $_GET['goodsno']?>">
+<input type="hidden" name="version" value="1.0">
+<input type="hidden" name="mid" value="">
+<input type="hidden" name="goodname" id="goodname" value=""><!---->
+<input type="hidden" name="oid" value="">
+<input type="hidden" name="price" id="price" value=""><!---->
+<input type="hidden" name="goodea" id="goodea" value=""><!---->
+<input type="hidden" name="currency" value="WON">
+<input type="hidden" name="buyername" value="">
+<input type="hidden" name="mKey" value="">
+<input type="hidden" name="gopaymethod" value="">
+<input type="hidden" name="offerPeriod" value="">
+<input type="hidden" name="payViewType" value="overlay">
+<input type="hidden" name="charset" value="UTF-8">
+
+<aside class="goods_outline">
+    <div class="goods_img_outline">
+        <span class="goods_top" id="goods_top">
+            <img src="" id="main_img">
+        </span>
+        <div class="goods_bottom">
+            <span></span>
+            <ul id="sub_img">
+
+            </ul>
+            <span><img src="./images/gv-next.png"></span>
+        </div>
+    </div>
+    <div class="goods_title">
+        <span class="goods_subject">
+            <label id="product_nm"></label>
+            <label id="product_url">공유</label>
+        </span>
+        <div class="goods_info">
+            <ol>
+                <li>
+                    <label>짧은설명</label>
+                    <span id="product_contents"></span>
+                </li>
+                <li>
+                    <label>판매가</label>
+                    <span id="product_money"></span>
+                </li>
+                <li id="sales">
+                    <label>세일가</label>
+                    <span id="product_sales"><em></em></span>
+                </li>
+                <li>
+                    <label>판매수량</label>
+                    <span id="product_limit"></span>
+                </li>
+                <li class="goods_delivery">
+                    <label>배송비</label>
+                    <span id="product_delivery">
+                        <button type="button">조건별 배송</button>
+                    </span>
+                    
+                </li>
+                <li>
+                    <label></label>
+                    <span>주문시결제(선결제)</span>
+                </li>
+                <li>
+                    <label>상품코드</label>
+                    <span id="goodsno">10000000003</span>
+                </li>
+            </ol>
+        </div>
+        <span class="goods_option" style="border-bottom: 0px; padding-bottom: 0px;">
+            <label>옵션선택</label>
+            <span>
+                <select name="product_option" id="product_option">
+                    <option value="">옵션을 선택해 주세요!</option>
+                </select>
+            </span>
+        </span>
+        <span class="goods_option" style="border-top: 0px;">
+            <label>구매갯수</label>
+            <span>
+                <select id="product_ea">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <em>EA</em>
+            </span>
+        </span>
+        <span class="goods_total">
+            <label>총 결제금액</label>
+            <span id="total_money" datas="moneys"></span>
+        </span>
+        <span class="goods_btn">
+            <button type="button" id="buy_btn">BUY NOW</button>
+            <button type="button" id="add_btn">ADD TO CART</button>
+            <button type="button" id="wish_btn">WISH LIST</button>
+        </span>
+    </div>
+</aside>
+</form>
+<!-- 상품 상세 설명 페이지 -->
+<div class="product_dtc">
+    <span class="product_box" id="p_sc0">
+        <ul class="product_details pro_scroll" id="product_details">
+            <li>상품상세정보</li>
+            <li>배송/교환/환불</li>
+            <li>상품후기</li>
+            <li>상품문의</li>
+        </ul>
+    </span>
+    <label class="img_label">
+        <div class="information" id="information">
+
+        </div>
+    </label>
+    <span class="product_box" id="p_sc1">
+        <ul class="product_change pro_scroll" id="product_change">
+            <li>상품상세정보</li>
+            <li>배송/교환/환불</li>
+            <li>상품후기</li>
+            <li>상품문의</li>
+        </ul>
+    </span>
+    <label id="p_txt"></label>
+    <span class="product_box" id="p_sc2">
+        <ul class="product_review pro_scroll" id="product_review">
+            <li>상품상세정보</li>
+            <li>배송/교환/환불</li>
+            <li>상품후기</li>
+            <li>상품문의</li>
+        </ul>
+    </span>
+    <div class="p_write">
+        <span class="p_btn">
+            <button type="button">상품후기 전체보기</button>
+            <button type="button">상품후기 글쓰기</button>
+        </span>
+        <div> 등록된 상품후기가 없습니다. </div>
+    </div>
+    <span class="product_box" id="p_sc3">
+        <ul class="product_ask pro_scroll" id="product_ask">
+            <li>상품상세정보</li>
+            <li>배송/교환/환불</li>
+            <li>상품후기</li>
+            <li>상품문의</li>
+        </ul>
+    </span>
+    <div class="p_write">
+        <span class="p_btn">
+            <button type="button">상품문의 전체보기</button>
+            <button type="button">상품문의 글쓰기</button>
+        </span>
+        <div> 등록된 상품문의가 없습니다. </div>
+    </div>
+</div>
+<script>
+    var p_txt = new XMLHttpRequest();
+    p_txt.open("GET","./delivery.txt?v=3",true);
+    p_txt.onload = function(){
+        var p_txt2 = p_txt.responseText;
+        document.getElementById("p_txt").innerHTML = p_txt2;
+    }
+    p_txt.send();
+</script>

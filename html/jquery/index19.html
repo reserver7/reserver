@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 5일차 - (함수 값 넘기기)</title>
+<script src="./jquery.js"></script>
+<script>
+//jquery > $.fn을 이용해 핸들링 함수 처리
+//jquery > $.fn을 이용해 return 할 수 있음
+//jquery > javascript(document.ready 밖에다 코드 이용) > 핸들링 함수 처리
+//jquery > javascript핸들링 > return (jquery)로 처리
+    function abc(a,b){
+        var c = a * b;
+        return c;
+    }
+
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            var $a = 100;
+            var $b = 200;
+            //$.fn.abc($a,$b); jquery 에서 jquery로 보내는 형태
+            var $cc = abc($a,$b); //jquery 에서 javascript로 보내는 형태
+            alert($cc);
+        });
+
+        //jquery abc function을 추가하는 형태 .fn을 무조건 써야함
+        $.fn.abc = function($aaa,$bbb){ //aaa는 다른 함수의 값을 받아오는 파라미터 임
+            var $c = $aaa * $bbb;
+            //$.fn.ccc($c);
+            var $msg = $.fn.ccc($c);
+            alert($msg);
+        }
+
+        $.fn.ccc = function($c){
+            return $c;
+        }
+    });
+</script>
+<style>
+    body { margin: 0; padding: 0;}
+</style>
+</head>
+<body>
+<input type="button" value="확인" id="btn">
+</body>
+</html>

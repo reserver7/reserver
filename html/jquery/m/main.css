@@ -1,0 +1,10 @@
+@charset "UTF-8";
+:root{
+    --list:none;
+    --margin:0;
+    --padding:0;
+    --left:left;
+    --center:center;
+    --margin-c:0 auto;
+}
+body { margin: 0; padding: 0; }

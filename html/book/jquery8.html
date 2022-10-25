@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Jquery8</title>
+    <script src="../jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            
+            $("#btn1").click(function(){    //노드추가(맨앞)
+                var $node = "<li>노드0</li>";
+                $("#ulid").prepend($node);
+            });
+
+            $("#btn2").click(function(){  //노드추가(맨뒤)
+                var $node = "<li>노드0</li>";
+                $("#ulid").append($node);
+            });
+
+            $("#btn3").click(function(){ //노드삭제(맨앞)
+                $("#ulid>li").eq(0).remove();
+            });
+
+            $("#btn4").click(function(){    //노드삭제(맨뒤)
+                var $nodes = $("#ulid>li").length - 1;
+                $("#ulid>li").eq($nodes).remove();
+            });
+        });
+    </script>
+</head>
+<body>
+<ul id="ulid">
+  <li>노드1</li>  
+  <li>노드2</li>  
+  <li>노드3</li>  
+  <li>노드4</li>  
+  <li>노드5</li>  
+  <li>노드6</li>  
+</ul>
+<button type="button" id="btn1">노드추가(맨앞)</button>
+<button type="button" id="btn2">노드추가(맨뒤)</button>
+<button type="button" id="btn3">노드삭제(맨앞)</button>
+<button type="button" id="btn4">노드삭제(맨뒤)</button>
+</body>
+</html>

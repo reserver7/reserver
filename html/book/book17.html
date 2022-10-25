@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + css ch-8</title>
+<style>
+    body{ margin: 0; padding: 0; background-color: black;}
+    .ulcss {
+        width: 100%; height: auto; list-style: none;
+        margin: 0; padding: 0;
+    }
+    .ulcss > li{
+        width: 140px; height: 46px; border-radius: 5px 5px 0 0;
+        background-image: url("http://reduck.dothome.co.kr/image/menu.png");
+        background-repeat: no-repeat; cursor: pointer;
+        background-size: cover;
+    }
+    .ulcss >li:nth-child(1){
+        background-position: 0 0; 
+    } 
+    .ulcss >li:nth-child(2){
+        background-position:0 calc(-50 * 1px); 
+    }
+    .ulcss >li:nth-child(3){
+        background-position:0 calc(-50 * 2px); 
+    }
+    .ulcss >li:nth-child(4){
+        background-position:0 calc(-50 * 3px); 
+    }
+    .ulcss >li:nth-child(5){
+        background-position:0 calc(-50 * 4px); 
+    }
+    .ulcss >li:nth-child(6){
+        background-position:0 calc(-50 * 5px); 
+    }
+    .ulcss >li:nth-child(7){
+        background-position:0 calc(-50 * 6px); 
+    }
+    .ulcss >li:nth-child(1):hover{
+        background-position:0 calc(-50 * 7px); 
+    }
+    .ulcss >li:nth-child(2):hover{
+        background-position:0 calc(-50 * 8px); 
+    }
+    .ulcss >li:nth-child(3):hover{
+        background-position:0 calc(-50 * 9px); 
+    }
+    .ulcss >li:nth-child(4):hover{
+        background-position:0 calc(-50 * 10px); 
+    }
+    .ulcss >li:nth-child(5):hover{
+        background-position:0 calc(-50 * 11px); 
+    }
+    .ulcss >li:nth-child(6):hover{
+        background-position:0 calc(-50 * 12px); 
+    }
+    .ulcss >li:nth-child(7):hover{
+        background-position:0 calc(-50 * 13px); 
+    }
+</style>
+</head>
+<body>
+<!--
+    응용문제17 html + css
+    메뉴 이미지 경로는 다음과 같습니다.
+    http://reduck.dothome.co.kr/image/menu.png
+    메뉴 사이즈는 다음과 같습니다 각각 (140*46)이며
+    메뉴 순서 : 지역, 쇼핑, 문화, 여행, 레저, 추천, 전체보기
+    마우스 포인터 오버시 : 오버되는 메뉴 이미지로 변경 되도록 하시오
+-->
+<ul class="ulcss">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

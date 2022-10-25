@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>문제6</title>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            var $timer;
+            var $num = 5;
+            $(".skip_btn1").text("SKIP "+$num+" 초 후");
+            $timer = setTimeout(function bbb(){
+                $(".skip_btn1").text("SKIP "+$num+" 초 후");
+                $num--;
+                if($num<0){
+                    clearTimeout($timer);
+                    $(".skip_btn1").css("display","none");
+                    $(".skip_btn2").css("display","block");
+                    $(".skip_btn2").click(function(){
+                        location.href="https://www.youtube.com/";
+                    });
+                }
+                $timer = setTimeout(bbb,1000);
+            },1000);
+           
+        });
+    </script>
+    <!-- 문제6
+    동영상 skip 버튼을 사용할 수 있도록 합니다.
+    최초 skip_btn1 에 5,4,3,2,1 형태로 카운터가 나오게 됩니다.
+    그리고 나서 skip_btn2 출력되어 클릭시 https://www.youtube.com/ 이동 되도록
+    합니다.
+    -->
+    <style>
+        body { margin: 0; padding: 0;}
+        .video { width:800px; height:600px; background-color: black;
+        margin: 0 auto; margin-top:30px; position: relative;
+        }
+        .skip_btn { width: 100px; height: 30px; border:1px solid #fff;
+        color: white; display: block; line-height: 30px;
+        text-align: center; font-size: 13px; position: absolute;
+        right: 20px; bottom: 20px;
+        }
+        .skip_btn1 { display: block;}
+        .skip_btn2 { display: none; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div class="video">
+        <span class="skip_btn skip_btn1">SKIP 5초 후</span>
+        <span class="skip_btn skip_btn2">SKIP&nbsp;&nbsp;▶▶</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제1)</title>
+<script>
+/*
+    function aaa(){
+        //node개념 : 0부터 시작,  nth-child(1)부터
+        var a = f.a.length;
+        var b = 0;
+        var ok = "no";
+        do{
+            if(f.a[b].checked==true){
+                ok = "yes";
+            }
+            b++;
+        }while(b<a);
+
+        if(ok=="no"){
+            alert("결제하실 파트를 선택해 주세요!");
+        }
+        else{
+            //사용자가 선택한 파트를 다함수를 이용 알맞는 곳으로 보냄
+        }
+    }
+*/
+
+/* 응용문제1.
+    다음과 같이 결제할 시스템을 구성하는 페이지를 작성해야 함
+    단, 해당 페이지는 이미 퍼블리셔 & 백엔드와 상의가 끝난 상황입니디.
+    "4가지 결제파트 중 한가지는 무조건 선택 후 해당 페이지로 이동" 되는
+    결제 시스템을 만들어 주시길 바랍니다.
+    신용카드를 선택 후 결제하기 버튼 클릭 : http://www.inicis.com
+    무통장 선택 후 결제하기 버튼 클릭 : 자신의 도메인 사이트로 이동
+*/
+    function aaa(){
+        var a = document.getElementsByClassName("paycss").length;
+        var b = 0;  //while 사용 되는 변수
+        var c = "no";   //체크 유/무 확인
+        
+        while(b<a){
+            var d = "a" + b;  //같은 id이름에 반복적인 형태로 만드는 부분
+            if(document.getElementById(d).checked==true){
+                c = "yes";  //하나라도 체크가 되었을 경우
+                var idv = document.getElementById(d).value;
+            }   //체크된 해당 라디오에 value 값을 idv라는 변수로 전달
+            b++;
+        }
+        /* 체크 유/무 확인 후 처리 되는 부분 */
+        if(c=="no"){
+            alert("결제하실 파트를 선택해 주세요!");
+        }
+        else{
+            if(confirm("결제를 진행 하시겠습니까?")){
+                switch(idv){
+                    case "card":    //신용카드 결제부분
+                    location.href = "http://www.inicis.com";
+                    break;
+
+                    case "self":    //무통장 결제부분
+                    location.href = "http://reserver1.dothome.co.kr";
+                    break;
+                }
+            }
+        }
+    }
+</script>
+</head>
+<body>                                         
+<form name="f" id="f">
+<input type="radio" name="a[]" value="card" class="paycss" id="a0">
+<label for="a0">신용카드</label> <!--API-->
+<input type="radio" name="a[]" value="bank" class="paycss" id="a1">
+<label for="a1">계좌이체</label> <!--API-->
+<input type="radio" name="a[]" value="hps" class="paycss" id="a2">
+<label for="a2">휴대폰결제</label> <!--API-->
+<input type="radio" name="a[]" value="self" class="paycss" id="a3">
+<label for="a3">무통장입금</label>
+<input type="button" value="결제하기" onclick="aaa();">
+</form>
+
+<!--   코드 작성 순서
+
+    1. html 코드 형태
+    2. html 코드 정리
+       name, id, class 구분
+       단, name, class 중복(o) = 갯수
+       id = 노드 순서대로
+       
+    3. Javascript 함수생성
+    4. 노드의 갯수
+    5. 반복문 checked 를 true, false 확인
+    6. checked 변수를 활용하여 조건문 제작
+    7. URL 이동, 핸들링, 메세지 출력 등등
+    8. 주석 처리
+-->
+</body>
+</html>

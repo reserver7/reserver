@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>Javascript - 84p(부가사항19)</title>
+<script>
+/*
+    응용문제22
+    걸그룹 리스트 중에 해당 걸그룹이 등록되어 있는지 확인하는 코드 작성
+
+    여자친구, 에이핑크, 트와이스, 에프엑스, 레드벨벳, 러블리즈, 우주소녀, CLC
+
+    블랙핑크 를 검색 합니다.
+    "등록된 걸그룹 입니다."
+    없을 경우
+    "등록 되지 않은 걸그룹 입니다." 라고 경고메세지 창으로 띄웁니다.
+*/
+    var a = ["여자친구","에이핑크","트와이스","에프엑스","레드벨벳","러블리즈","우주소녀","CLC"];
+    var aa = "블랙핑크"
+    var aaa = "yes";    //임시변수 값
+    var b = a.length;
+    var c = 0;
+    while(c<b){
+        if(a[c]==aa){
+            alert("등록된 걸그룹 입니다."); 
+            aaa = "no";
+        }
+        c++;
+    }
+    if(aaa=="yes"){
+        alert("등록되지 않은 걸그룹 입니다."); 
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>

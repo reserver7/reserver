@@ -1,0 +1,34 @@
+body { margin:0; padding:0;}
+/* DOM 개념 */
+/*
+.ulnode li{ color:red; }
+.ulnode2 li { color:blue;}
+*/
+
+/* node 개념 */
+/*
+.ulnode2>li { color: blue;}
+.ulnode>li { color:red;}
+*/
+/*
+.ulnode > li:first-child { color:red;}
+.ulnode > li:last-child { color:blue;}
+.ulnode > li:nth-child(3) { color:green;}
+.ulnode2 > li:nth-child(2) { color:orange;}
+*/
+.box label { width:100px; height:30px; border:1px solid blue; 
+display: block; line-height: 30px; text-align: center;
+}
+.box > label:nth-child(4) { display: block; background-color: darkblue; 
+color: white;
+}
+.olcss { width:600px; height:auto; margin:0; padding:0; list-style: none; }
+.olcss li { width: 600px; height:40px; border:1px solid skyblue;}
+.olcss>li:nth-child(even) { background-color:purple;}
+.olcss>li:nth-child(odd) { background-color:pink;}
+/* even : 짝수 노드, odd : 홀수 노드 */
+.sp { width:200px; height:60px; display: block; background-color: white;
+font-size:17px; font-weight: bold; border-radius: 100px;
+line-height: 60px; text-align: center; box-shadow:0 0 10px gray;
+cursor: pointer; }
+.sp:hover { background-color:black; color:white; box-shadow: none;}

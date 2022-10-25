@@ -1,0 +1,38 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML 4일차 4.0 - style속성</title>
+</head>
+<!--
+background-color : 배경색상
+cursor : hand, pointer (마우스 포인트 모양이 핸드 모양으로 변경)
+background-image:url('경로') : 배경에 이미지를 적용할 때
+중요사항 : background-color, background-image를 함께 사용하지 못함
+margin : 여백을 말합니다.
+margin : 0; (여백을 없앰)
+-->
+<body style="margin:0;">
+<input type="submit" value="로그인" style="background-color:green; width:80px; height:40px; color:white;">
+<input type="submit" value="로그인" style="background-color:green; border:none; width:80px; height:40px; color:white;">
+<br><br><br>
+<input type="text" style="width:200px; height:50px; background-color:#eeeeee;
+border:1px solid #333333;" placeholder="인증번호 입력">
+<br>
+인증번호 받기 버튼 만들기
+1. 사이즈 (100*45)
+2. 폰트 색상 (white)
+3. 폰트 크기 (14px)
+4. 버튼 배경색상 (#04c75b)
+5. 버튼 외각선 색상 (#04ba55) 1px
+<br><br>
+<input type="button" value="인증번호 받기" style="width:100px; height:45px; color:white; font-size:14px; background-color:#04c75b; border:1px solid #04ba55; cursor: hand; cursor: pointer;">
+<br><br>
+<br><br>
+<div style="width:586px; height:57px; background-image:url('./search.png')">
+<input type="text" style="width:450px; height:50px; border:none;
+margin-top:2px; margin-left:2px;">
+</div>
+
+</body>
+</html>

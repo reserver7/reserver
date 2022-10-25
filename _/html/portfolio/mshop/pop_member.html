@@ -1,0 +1,107 @@
+<style>
+	.pop_member_bg_outline { display:none; width:360px; background-color:rgba(0,0,0,0.6); position:absolute; z-index:499; }
+	.pop_member_outline { width:330px; height:370px; background-color:white; position:absolute; z-index:500; margin:15px; z-index:500; }
+
+	.pop_member_bg_outline ul {list-style:none; margin:0; padding:0;}
+	.pop_member_bg_outline h2 {padding:0; margin:0; text-align:center; font-size:15px; padding:40px 0 25px 0;}
+
+	.d_wrap {width:360px; height:1000px; background-color:rgba(0,0,0,0.6); }
+
+	/*로그인*/
+	.d_memwrap_log { margin:0 auto; width:330px; height:370px; background:#fff; position:relative;}
+	.d_closebtn {  width:25px; height:25px;display:inline-block; position:absolute; top:10px; right:10px; }
+
+	.d_logo {width:245px; height: auto;  margin:0 auto;}
+	.d_m_input {width:245px; height:30px; font-size:15px; border:1px solid #000; margin-bottom:10px; text-indent:10px;}
+	.d_m_input2 {width:245px; height:30px; background:#000; border:none; color:#fff; font-size:14px; font-weight:bold; cursor:pointer;}
+	.d_m_input3 {width:245px; height:30px; border:1px solid #000; background:#fff; font-size:14px; font-weight:bold; cursor:pointer; }
+	.d_m_logtext {width:100%; height:30px; text-align:center; cursor:pointer; font-weight:bold; font-size:13px; line-height:20px;}
+
+</style>
+<div class="pop_member_bg_outline" id="pop_member_bg_outline">
+	<div class="pop_member_outline">
+
+
+		<!-- 회원 login -->
+		<div class="d_memwrap_log">
+		<span id="member_close" class="d_closebtn"><img src="./img/close.png" id="closebtn" onclick="login(1);" style="width:100%;"></span>
+
+		<h2>LOGIN</h2>
+
+		<div class="d_logo">
+			<ul>
+				<li><input type="text" id="d_m_nm" class="d_m_input" maxlength="10" placeholder="아이디" required></li>
+				<li><input type="password" id="d_m_pw" class="d_m_input" placeholder="비밀번호" required></li>
+				<li><button type="button" id="d_m_login" class="d_m_input2" onclick="loginbtn();">로그인</button></li>
+				<li style="width:100%; height:30px; font-size:15px; margin-top:5px; font-weight:bold;"><img src="./img/icon.png">보안접속</li>
+				<li><button type="button" id="d_m_mem" class="d_m_input3">회원가입</button></li>
+				<li style="width:100%; height:40px;"><span style="color:#a6a6a6; font-size:12px;">회원가입시 무료배송 + 2000원<span style="display:inline-block; color:red; font-size:12px;"><u>MORE</u></span></li>
+				<li></li>
+				<li class="d_m_logtext">아이디/비밀번호 찾기</li>
+				<li class="d_m_logtext" onclick="non_btn()">비회원 주문조회</li>
+			</ul>
+		</div>
+		</div>
+		
+
+	</div>
+</div>
+<script>
+    function loginbtn(){
+        let m_id = document.getElementById("d_m_nm").value;
+        let m_pw = document.getElementById("d_m_pw").value;
+        let id_ck = m_id.match(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g);
+        if(m_id==""){
+            alert("아이디를 입력해 주세요.");
+            document.getElementById("d_m_nm").focus();
+            return false;
+        }
+        else if(id_ck!=null){
+            alert("아이디는 한글을 사용할 수 없습니다.");
+            document.getElementById("d_m_nm").focus();
+            return false;
+        }
+        else if(m_pw==""){
+            alert("비밀번호를 입력해 주세요.");
+            document.getElementById("d_m_pw").focus();
+            return false;
+        }
+        else{
+            var m_data = "user_nm="+m_id+"&user_pw="+m_pw; 
+            m_ck(m_data);
+        }
+    }
+
+    function m_ck(m_data){
+        let cm;
+        function l_ck(){
+            if(window.XMLHttpRequest){
+                return new XMLHttpRequest();
+            }
+        }
+        function loginfile(){
+            if(cm.readyState==XMLHttpRequest.DONE && cm.status==200){
+                console.log(this.response);
+                if(this.response=="ok"){
+                    location.href = "./index.html";
+                }
+                else if(this.response=="cancel"){
+                    alert("해당 고객님은 가입이 되지 않으셨습니다.");
+                    return false;
+                }
+                else if(this.response=="error"){
+                    console.log("데이터 오류");
+                }
+            }
+        }
+        cm = l_ck();
+        cm.onreadystatechange = loginfile;
+        cm.open("POST","./m_login.php",true);
+        cm.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        cm.send(m_data);
+    }
+
+    function non_btn(){
+        document.getElementById("pop_nonmember_bg_outline").style.display = "block";
+    }
+</script>

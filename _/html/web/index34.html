@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(회원가입)</title>
+<script src="./index34.js?v=1"></script>
+<link type="text/css" href="./index34.css?v=1" rel="stylesheet"></link>
+<script>
+    /* 단어 검색 변경 및 공백제거  */
+    //var a = "abc ff jj z ff p";
+    //var b = a.trim(); //앞,뒤 부분만 공백을 삭제함
+    //var b = a.replace(" ",""); //여러개의 공백중 제일 첫번째 공백만 삭제
+    //var b = a.replace(/ /g,""); //여러개의 공백 모두 삭제
+    //var b = a.replace("ff","zz"); //해당 단어를 찾아서 변경 함 첫번째만
+    //var b = a.replace(/ff/g,"zz"); //해당 단어를 찾아서 모두 변경 함
+    //alert(b);
+</script>
+</head>
+<body>
+<form name="mb" id="mb">
+<input type="hidden" name="idck" value="1"> <!-- id check -->
+<input type="hidden" name="memail" value=""> <!-- email -->
+<input type="hidden" name="mbse" value="mboks"> <!-- sc code -->
+<input type="text" name="mid" class="mid" placeholder="생성할 아이디 입력" maxlength="12" onkeyup="keycheck(this.value,'mid');"><input type="button" value="중복체크" class="btn"><br>
+<input type="password" name="mpass" class="mpass" placeholder="패스워드 입력" onkeyup="keycheck(this.value);"><br>
+<input type="password" name="mpass_check" class="mpass_check" placeholder="동일한 패스워드 입력"><br>
+<input type="text" name="mnm" class="mnm" placeholder="사용자 이름 입력"><br>
+<input type="text" name="memail1" class="memail1" placeholder="이메일 입력">@<input type="text" name="memail2" class="memail2" placeholder="이메일 주소 입력"><br>
+<input type="text" name="mtel" class="mtel" placeholder="휴대폰 번호 입력 '-'는 사용하지 않습니다" maxlength="11"><br>
+<input type="text" name="maddr" class="maddr" placeholder="우편번호" readonly><input type="button" class="btn2" value="주소찾기" onclick="addpopup();"><br>
+<input type="text" name="maddr2" class="maddr2" placeholder="도로명 주소" readonly><br>
+<input type="text" name="maddr3" class="maddr3" placeholder="상세 주소">
+<br>
+<p>서비스 이용약관</p>
+<textarea class="agree" readonly></textarea><br>
+<input type="checkbox" name="magree1" id="magree1"><label for="magree1">동의함</label>
+
+<p>이메일 보안정책</p>
+<textarea class="agree" readonly ></textarea><br>
+<input type="checkbox" name="magree2" id="magree2"><label for="magree2">동의함</label>
+<br><br>
+<input type="button" value="회원가입" class="btn3" onclick="member(1);"><br>
+<input type="button" value="가입취소" class="btn4" onclick="member(2);">
+
+</form>
+</body>
+</html>

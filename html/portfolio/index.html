@@ -1,0 +1,574 @@
+<?php
+    $date = date("YmdHis");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge, Chrome=1">
+<title>Front-End 개발자 정우석 입니다</title>
+<link rel="stylesheet" href="./css/index.css?v=<?php echo $date?>" type="text/css">
+<meta name="title" content="Front-End 개발자 정우석 입니다"><!--title: 검색엔진 제목-->
+<meta name="description" content="HTML,CSS,Javascript,Jquery,ajax,vue,node,scss,frontend,front,프론트엔드">
+<!--description: 검색엔진 부가설명 부분-->
+<meta name="keywords" content="HTML,CSS,Javascript,Jquery,ajax,vue,node,scss,frontend,front,프론트엔드">
+<!--keywords: 검색어-->
+<meta name="publisher" content="Jeong Woo Seok">
+<!--publishe: 사이트제작자-->
+<meta name="robots" content="index,follow">
+<!--robots: 검색엔진이 해당 사이트를 검색 할 수 있도록 함-->
+<meta name="twitter:card" content="Front-End,프론트엔드,frontend,front">
+<meta name="twitter:description" content="HTML,CSS,Javascript,Jquery,ajax,vue,node,scss,frontend,front,프론트엔드">
+<meta name="twitter:title" content="Front-End 개발자 정우석 입니다">
+<!--
+    card: 트위터 요약정보 (사진, 영상, 요약정보)
+-->
+<meta property="og:title" content="Front-End 개발자 정우석 입니다">
+<meta property="og:description" content="HTML,CSS,Javascript,Jquery,ajax,vue,node,scss,frontend,front,프론트엔드">
+<meta property="og:site_name" content="Front-End 개발자 정우석 입니다">
+<meta property="og:author" content="Front-End 개발자 정우석 입니다">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://reserver1.dothome.co.kr">
+<meta property="og:image" content="http://reserver1.dothome.co.kr/portfolio/images/logo.png">
+<!--
+    og = open graph
+    og: Naver 블로그, 카카오톡, 네이트, zum, google 미리보기 설정
+    type: website, app, blog, shop, sns
+    url: 사이트 주소
+    site_name: 사이트명
+    author: 저자
+-->
+<meta property="al:ios:url" content="http://reserver1.dothome.co.kr">
+<meta property="al:android:url" content="http://reserver1.dothome.co.kr">
+<!--
+    ios: 아이폰으로 검색시 사용되는 url (APP스토어)
+    android: 안드로이드 검색시 사용되는 url (play스토어)
+-->
+<link rel="icon" href="./ico/icon128.png" sizes="128x128">
+<link rel="icon" href="./ico/icon64.png" sizes="64x64">
+<link rel="icon" href="./ico/icon48.png" sizes="48x48">
+<link rel="icon" href="./ico/icon32.png" sizes="32x32">
+<link rel="icon" href="./ico/icon16.png" sizes="16x16">
+<link rel="apple-touch-icon-precomposed" href="./ico/icon128.png">
+<script src="./js/jquery.js?v=20210203"></script>
+<script src="./js/index.js?v=<?php echo $date?>"></script>
+<script>
+    $(function(){
+        let $timer;
+        //alert($(window).width());
+        $.fn.banner = function(){
+            $timer = setTimeout(function retimer(){
+                var $info_width=$("#info_ul>li").eq(0).width();
+                var $info_ea=$portfolio.length;
+                $("#info_ul").css("width",($info_width*$info_ea)+"px");
+                $("#info_ul").stop().animate({
+                "margin-left":-$info_width+"px"
+                },800,function(){
+                var $clone=$("#info_ul>li").eq(0).clone();
+                $("#info_ul>li").eq(0).remove();
+                $(this).css("margin-left","0px");
+                $(this).append($clone);
+                });
+                clearTimeout($timer);
+                $timer = setTimeout(retimer,5000);
+            },5000);
+        }
+        
+        $.fn.banner();
+
+        var $menu_no = $menus.length;
+        //console.log($menu_no);
+        $("#header_link>span").click(function(){
+            let $span_index = $(this).index();
+            var $urls;
+            if($span_index==0){ $urls = "https://www.instagram.com/";}
+            else if($span_index==1){ $urls = "https://facebook.com/"; }
+            else{ $urls = "https://github.com/reserver7/apple"; }
+            window.open($urls,"_blank");
+        });
+
+        $("#m_ul>li").click(function(){
+            let $span_index = $(this).index();
+            var $urls;
+            if($span_index==0){ $urls = "https://www.instagram.com/";}
+            else if($span_index==1){ $urls = "https://facebook.com/"; }
+            else if($span_index==2){ $urls = "https://github.com/reserver7/apple"; }
+            window.open($urls,"_blank");
+        });
+        
+        var $html_s = "";
+        $($menus).each(function($no,$nm){
+            //console.log($nm);
+            $html_s += '<li title="Jeong Woo Seok '+$nm+'">'+$nm+'</li>';
+        });
+        $("#skills").append($html_s);
+        $("#m_ul").append($html_s);
+
+        $($skills).each(function($node,$key){
+            //console.log($key[Object.keys($key)]);
+            $("#myskill_ol").append("<li data="+Object.keys($key)+" title="+Object.keys($key)+">"+Object.keys($key)+"</li>");
+            $("#portfolio_css").append("<span class='p_span'><label class='label_1'>"+Object.keys($key)+"</label><label class='label_2'>"+$key[Object.keys($key)]+"</label></span> ");
+        });
+
+        $("#myskill_ol>li").click(function(){
+            var $v=null;
+            $(".p_span").css("display","none");
+            var $vnode=$(this).attr("data");
+            //console.log($vnode)
+            switch($vnode){
+                case "All":
+                $(".p_span").fadeIn();
+                break;
+
+                case "HTML":
+                $v=[0,10,11];
+                break;
+
+                case "CSS":
+                $v=[0,1,10,11];
+                break;
+
+                case "Javascript":
+                $v=[0,1,2,4,6,8,9,10,11];
+                break;
+
+                case "Jquery":
+                $v=[0,1,3,4,5,8,9,10,11];
+                break;
+
+                case "Ajax":
+                $v=[2,3,4,6,8];
+                break;
+
+                case "Scss":
+                $v=[0,1,5,6,7,10];
+                break;
+
+                case "Vue":
+                $v=[0,1,2,4,6,7,8];
+                break;
+
+                case "Git":
+                $v=[7,8,9,10,11];
+                break;
+
+                case "XML":
+                $v=[2,3,4,6,7,8];
+                break;
+
+                case "API":
+                $v=[2,3,9];
+                break;
+
+                case "Responsive":
+                $v=[0,1,5,10,11];
+                break;
+
+                case "Etc":
+                $v=[0,1,2,3,5,6,7,11];
+                break;
+            }
+            if($v!=null){
+                $.each($v,function($i,$v){
+                    $(".p_span").eq($v).fadeIn();
+                });
+            }
+        });
+
+        var $html_info;
+        $($portfolio).each(function($node,$key){
+            //console.log($key);
+            $html_info = '<li url="'+$key.url+'" node="'+$node+'">\
+                   <span class="info_img"><img src="'+$key.img+'"></span>\
+                   <span class="info_list">\
+                       <label><em>TITLE</em> '+$key.title+'</label>\
+                       <label><em>SUBTITLE</em> '+$key.subtitle+'</label>\
+                       <label><em>TOOLS</em> '+$key.tools+'</label>\
+                       <label><em>DAY</em> '+$key.Day+'</label>\
+                       <label><em>CONCEPT</em> '+$key.Concept+'</label>\
+                    </span></li>';
+            $("#info_ul").append($html_info);
+        });
+
+        $("#info_ul").bind({
+            "click":function(){
+                var $url = $("#info_ul>li").eq(0).attr("url");
+                var $nodes = $("#info_ul>li").eq(0).attr("node");
+                $.fn.gopages($url,$nodes);
+            },
+            "mouseenter":function(){
+                clearTimeout($timer);
+            },
+            "mouseleave":function(){
+                $.fn.banner();
+            }
+        })
+
+        $.fn.gopages = function($url,$nodes){
+            if($nodes=="14"){
+                window.open($url,"","width=400,height=300,resizable=no,scrollbars=auto")
+            }
+            else if($nodes=="15"){
+                window.open($url,"","width=480,height=600,resizable=no,scrollbars=auto")
+            }
+            else if($nodes=="17"){
+                window.open($url,"","width=400,height=620,resizable=no,scrollbars=auto")
+            }
+            else{
+                window.open($url,"_blank");
+            }
+        }
+
+        var $info_width=$("#info_ul>li").eq(0).width();
+        var $info_ea=$portfolio.length;
+        $("#info_ul").css("width",($info_width*$info_ea)+"px");
+
+        $("#info_rightbtn").bind({
+            "click":function(){
+                $("#info_ul").stop().animate({
+                "margin-left":-$info_width+"px"
+                },800,function(){
+                var $clone=$("#info_ul>li").eq(0).clone();
+                $("#info_ul>li").eq(0).remove();
+                $(this).css("margin-left","0px");
+                $(this).append($clone);
+                });
+            },
+            "mouseenter":function(){
+                clearTimeout($timer);
+            },
+            "mouseleave":function(){
+                $.fn.banner();
+            }
+        });
+
+        $("#info_leftbtn").bind({
+            "click":function(){
+                var $clone=$("#info_ul>li").eq($info_ea-1).clone();
+                $("#info_ul>li").eq($info_ea-1).remove();
+                $("#info_ul").css("margin-left",-$info_width+"px");
+                $("#info_ul").prepend($clone);
+                $("#info_ul").stop().animate({
+                "margin-left":"0px"
+                },800);
+            },
+            "mouseenter":function(){
+                clearTimeout($timer);
+            },
+            "mouseleave":function(){
+                $.fn.banner();
+            }
+        });
+
+        $($level).each(function($node,$key){
+            //console.log($key[Object.keys($key)]);
+            $(".graph").eq($node).text($key[Object.keys($key)]);
+            $(".graph").eq($node).stop().animate({
+                "width":$key[Object.keys($key)]
+            },$node*500);
+        });
+
+        $("#top_menus").click(function(){
+            var $mh = $("#mobile_menus").height();
+            if($mh==0){
+                $("#mobile_menus").stop().animate({
+                    "height":"250px"
+                },300);
+            }
+            else{
+                $("#mobile_menus").stop().animate({
+                    "height":"0px"
+                },300);
+            }
+        });
+
+        var $resize = $("html,body").width() - 80;
+        $("#up_page").css("left",$resize+"px");
+
+        
+        $(window).resize(function(){
+            var $resize = $("html,body").width() - 80;
+            console.log($resize);
+            $("#up_page").css("left",$resize+"px");
+        });
+
+        //스크롤
+        
+        $(window).scroll(function(){
+            var $sc = $(document).scrollTop();
+            if($sc<400){
+                $("#up_page").stop().fadeOut(300);
+            }
+            else{
+                $("#up_page").stop().fadeIn(300);
+            }
+        });
+        
+        $("#skills>li").click(function(){
+            var $ind = $(this).index();
+            var $off = $(".scroll"+$ind).offset().top;
+            $("html").stop().animate({"scrollTop":$off},400);
+            console.log($off);
+        });
+
+        $("#m_ul>li").click(function(){
+            var $ind = $(this).index()-3;
+            if($ind>=0){
+                var $off = $(".scroll"+$ind).offset().top;
+                $("html").stop().animate({"scrollTop":$off},400);
+                //console.log($off);
+            }
+        });
+        
+        $("#up_page").click(function(){
+            $("html,body").stop().animate({
+                "scrollTop":"0px"
+            },400);
+        });
+    });
+</script>
+</head>
+<body>
+<!-- 최상위로 올라가는 버튼 -->
+<div class="up_page" id="up_page">
+    <img src="./img/north.svg">
+</div>
+<!-- 모바일 상단 -->
+<div class="header_mobile">
+    <label class="top_menus" id="top_menus">
+        <img src="./img/menu.svg">
+    </label>
+    <!-- 모바일 메뉴 -->
+    <div class="mobile_menus" id="mobile_menus">
+        <ul class="m_ul" id="m_ul">
+            <li title="Jeong Woo Seok Instagram">Instagram</li>
+            <li title="Jeong Woo Seok Facebook">Facebook</li>
+            <li title="Jeong Woo Seok GitHub">GitHub</li>
+        </ul>
+    </div>
+</div>
+<!-- 모바일 상단 끝 -->
+<header id="header">
+        <div class="header_line">
+            <div class="header_link" id="header_link">
+                <span title="Jeong Woo Seok Instagram">Instagram</span>
+                <span title="Jeong Woo Seok Facebook">Facebook</span>
+                <span title="Jeong Woo Seok GitHub">GitHub</span>
+            </div>
+            <div class="header_title" title="Front-End 개발자 정우석 입니다">
+            PROFESSIONAL FRONT-END
+            </div>
+            <div class="header_domain">
+            RESERVER1.DOTHOME.CO.KR
+            </div>
+        </div>
+</header> 
+<!-- skills -->
+<nav id="nav">
+    <div class="nav_menu scroll0">
+        <ul class="ul_menu" id="skills">
+        </ul>
+    </div>
+</nav>
+<article id="title">
+    "안녕하세요 Front-End 신입 개발자 정우석 입니다"
+</article>
+<main>
+    <section id="skill">
+        <div class="myskill scroll1">
+            <ol id="myskill_ol" class="myskill_ol">
+                <li title="ALL" data="All">All</li>
+            </ol>
+        </div>
+    </section>
+    <section id="portfolio">
+        <div class="portfolio_css" id="portfolio_css">
+        </div>
+    </section>
+</main>
+<!-- 포트폴리오 부분 -->
+<section id="myinfo">
+    <div class="info_div scroll2">
+        <span class="info_title">Portfolio</span>
+        <div class="info_banner" id="info_banner">
+           <ul class="info_ul" id="info_ul">
+               
+           </ul>
+        </div>
+        <div class="info_btn">
+            <label id="info_leftbtn">◀</label><label id="info_rightbtn">▶</label>
+        </div>
+    </div>
+</section>
+<!-- 포트폴리오 부분 끝-->
+<!-- level -->
+<section id="level">
+    <div class="my_level scroll3">
+        <ol class="my_levelol">
+            <!--skill level-->
+            <li class="level_li">
+                <ul class="level_ul">
+                    <li>Name : <em>Woo-Seok Jeong</em></li>
+                    <li>Birth : <em>1995.01.06 (염소자리)</em></li>
+                    <li>E-mail : <em>reserver7@gmail.com</em></li>
+                    <li>addr : <em>서울시 성북구</em></li>
+                    <li>Keywords : <em>#HTML&CSS #Javascript #Jquery #ajax #Vue.js #scss</em></li>
+                    <li>
+                        <span>HTML & CSS</span><div><label class="graph"></label></div>
+                    </li>
+                    <li>
+                        <span>Javascript</span><div><label class="graph"></label></div>
+                    </li>
+                    <li>
+                        <span>Jquery</span><div><label class="graph"></label></div>
+                    </li>
+                    <li>
+                        <span>Ajax</span><div><label class="graph"></label></div>
+                    </li>
+                    <li>
+                        <span>SCSS</span><div><label class="graph"></label></div>
+                    </li>
+                    <li>
+                        <span>Node & Vue.js</span><div><label class="graph"></label><div>
+                    </li>
+                    <li>
+                        <span>Git</span><div><label class="graph"></label></div>
+                    </li>
+                </ul>
+            </li>
+            <!--지도 API-->
+            <li class="map_li">
+                <div id="map" class="map"></div>
+                <!--버튼-->
+                <div class="mapbtn" id="mapbtn">
+                    <label id="road" class="btn1" title="지도뷰">지도뷰</label>
+                    <label id="sky" class="btn2" title="스카이뷰">스카이뷰</label>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
+<!-- contact_us -->
+<form name="contact_f" id="contact_f">
+<input type="hidden" name="myemail" value="reserver7@naver.com">
+<section id="contact">
+    <div class="contact_div scroll4">
+        <span class="info_title">Contact US</span>
+        <div class="contact_box">
+            <span><input type="text" name="pernm" placeholder="성함을 입력해 주세요"></span>
+            <span><input type="text" name="pertel" placeholder="'-'없이 숫자만 입력해 주세요" maxlength="11"></span>
+            <span><input type="text" name="peremail" placeholder="회신 받을 메일 주소를 입력해 주세요"></span>
+            <span><textarea name="pertext" placeholder="문의하실 내용을 입력해 주세요"></textarea></span>
+            <label><button type="button" onclick="contact_btn();">문의하기</button></label>
+        </div>
+    </div>
+</section>
+</form>
+<!-- 카피라이터 -->
+<footer id="footer">
+    <label>Copyright ⓒ 2021 Woo-Seok Jeong All Rights reserved.</label>
+</footer>
+</body>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=84cb7bef77b8adf44754064e25af4d2f"></script>
+<script>
+    var $mapContainer = document.getElementById("map"), // 지도를 표시할 div 
+    $mapOption = { 
+        center: new kakao.maps.LatLng(37.6020779818971, 127.04152999769664), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var $map = new kakao.maps.Map($mapContainer, $mapOption); 
+
+    var $maker = new kakao.maps.Marker({
+        position : new kakao.maps.LatLng(37.6020779818971, 127.04152999769664)
+    });
+    $maker.setMap($map);
+    $(function(){
+        $("#mapbtn>label").click(function(){
+            let $type = $(this).attr("id");
+            if($type=="road"){
+                $map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
+            }
+            else{
+                $map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+            }
+        });
+    });
+
+    function contact_btn(){
+        var contact_info = contact_text();
+        if(contact_info[2]=="no"){
+            alert(contact_info[0]);
+            contact_info[1].focus();
+            return false;
+        }
+        else{
+            var contact_msg = contact_ck();
+            if(contact_msg[2]=="no"){
+                alert(contact_msg[0]);
+                contact_msg[1].focus();
+                return false;
+            }
+            else{
+                contact_f.method="POST";
+                contact_f.action="mailto.php";
+                contact_f.enctype = "application/x-www-form-urlencoded";
+                contact_f.submit();
+            }
+        }
+    }
+
+    function contact_text(){
+        let msg;
+        let focus;
+        let ck = "yes";
+        if(contact_f.pernm.value==""){
+            msg = "성함을 입력해 주세요";
+            focus = contact_f.pernm;
+            ck = "no";
+        }
+        else if(contact_f.pertel.value==""){
+            msg = "연락처를 입력해 주세요";
+            focus = contact_f.pertel;
+            ck = "no";
+        }
+        else if(contact_f.peremail.value==""){
+            msg = "이메일을 입력해 주세요";
+            focus = contact_f.peremail;
+            ck = "no";
+        }
+        else if(contact_f.pertext.value==""){
+            msg = "문의하실 내용을 입력해 주세요";
+            focus = contact_f.pertext;
+            ck = "no";
+        }
+        return [msg,focus,ck];
+    }
+
+    function contact_ck(){
+        let msg_ck;
+        let focus_ck;
+        let ck_ck = "yes";
+        let contact_name = contact_f.pernm.value.match(/[ㄱ-ㅎ|가-핳]/g);
+        let contact_email = contact_f.peremail.value.match(/[ㄱ-ㅎ|가-핳]/g);
+        if(contact_name==null){
+            msg_ck = "성함은 한글만 입력해 주세요";
+            focus_ck = contact_f.pernm;
+            ck_ck = "no";
+        }
+        else if(isNaN(contact_f.pertel.value)==true){
+            msg_ck = "연락처는 숫자만 입력해 주세요";
+            focus_ck = contact_f.pertel;
+            ck_ck = "no";
+        }
+        else if(contact_f.peremail.value.match(/@/)==null || contact_email!=null){
+            msg_ck = "이메일 양식을 다시 확인해 주세요";
+            focus_ck = contact_f.peremail;
+            ck_ck = "no";
+        }
+        return [msg_ck,focus_ck,ck_ck];
+    }
+</script>
+</html>

@@ -1,0 +1,58 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');
+/*font-family: 'Noto Sans KR', sans-serif;(100,300,400,500)*/
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+body,*{ @include base; }
+@mixin flex($just,$direction,$rap,$items,$content,$part) {
+    display: flex;
+    justify-content:$just;
+    flex-direction:$direction;
+    align-items: $items;
+    @if($part==1){
+        flex-wrap: $rap;
+        align-content:$content;
+    }
+}
+@mixin noto($b,$f,$w){
+    @if($b=="noto"){
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+    font-size: $f+px;
+    font-weight: $w;
+}
+.box{
+    width: 600px; height: auto; border: 1px solid black;
+    box-sizing: border-box; margin: 0 auto;
+}
+.ulcss{
+    width: 100%; height: auto; list-style: none; margin:0; padding: 0;
+    display: grid; 
+    grid-template-rows: 30px 40px;
+    grid-template-columns: 30px auto 100px 150px;
+    grid-gap: 1px;
+    //justify-content: center;  //space-evenly 모든 여백을 고르게 정렬 (부모 오브젝트 높이가 자식보다 커야함)
+    //align-content: space-evenly; //space-evenly 모든 여백을 고르게 정렬 (부모 오브젝트 높이가 자식보다 커야함)
+}
+.ulcss>li{ 
+    background-color: skyblue; display: flex;
+    justify-content: center; align-items: center;
+}
+.pagenum{
+    width: 320px; height: 60px; border: 1px solid black;
+    box-sizing: border-box;  list-style: none; 
+    margin: 0; padding: 0;
+    display: grid;
+    grid-template-rows: 30px;
+    grid-template-columns: repeat(6,30px);
+    grid-gap: 20px;
+    align-content: center;
+    justify-content: center;
+    &>li{
+        background-color: #ccc; display: flex;
+        justify-content: center; align-items: center;
+    }
+    &>li:nth-of-type(1){ background-color: skyblue; }
+}
+

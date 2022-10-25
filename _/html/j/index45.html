@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <title>Javascript 문제4 & 문제5</title>
+    <link rel="stylesheet" href="./join.css">
+</head>
+<!--
+문제4.
+회원가입 버튼을 클릭시 해당 입력 사항에 맞게 체크 되는 자바스크립트를 작성합니다.
+아이디 4~16자 영문, 숫자 조합일 경우 4자 이상 16자 이하로만 입력이 되어야 하며,
+4자 이하일 경우 "4~16자 영문, 숫자 조합으로 작성하세요" 라는 
+경고 메세지가 출력 되도록 합니다.
+비밀번호, 비밀번호 확인 시 동일한 비밀번호가 입력 되어야 합니다.
+동일한 비밀번호가 입력되지 않을 경우 "동일한 비밀번호가 입력되어야 합니다."
+라는 경고 메세지를 출력합니다.
+placeholder에 맞게 자바스크립트를 구현하도록 하십시오.
+전화번호, 휴대폰 번호는 숫자만 입력이 가능해야 합니다.
+
+문제5. 주소검색 버튼을 클릭시 popup.html 팝업창이 나와야 하며,
+팝업창 크기는 505*660 입니다. 
+해당 팝업창에서 주소 리스트를 클릭시 우편번호 및 도로명 주소가
+입력 되어야만 합니다.
+모든 입력이 완료 되면 form action이 작동 되도록 합니다.
+form 경로는
+http://mekeyace.dothome.co.kr/memberok.php 이며,
+POST형태로 전송 되도록 합니다.
+-->
+<body>
+    <form name="f" id="f">
+        <div class="joinContainer">
+            <h2 class="joinTit">회원가입</h2>
+            <div class="joinWarp">
+                <dl>
+                    <dt>아이디</dt>
+                    <dd class="input_st1">
+                        <input type="text" name="member_id" id="member_id" placeholder="4~16자 영문, 숫자 조합" minlength="4" maxlength="16">
+                        <span class="joinID"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>비밀번호</dt>
+                    <dd class="input_st1">
+                        <input type="password" name="member_pass" id="member_pass" placeholder="4~16자 영문, 숫자 조합" minlength="4" maxlength="16">
+                        <span class="joinPw1"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>비밀번호확인</dt>
+                    <dd class="input_st1">
+                        <input type="password" name="member_pass_ck" id="member_pass_ck" minlength="4" maxlength="16">
+                        <span class="joinPw2"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>이름</dt>
+                    <dd class="input_st1">
+                        <input type="text" name="member_name" id="member_name" maxlength="20">
+                        <span class="joinName"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>닉네임</dt>
+                    <dd class="input_st1">
+                        <input type="text" name="member_nick" id="member_nick" minlength="4" maxlength="16" placeholder="닉네임 입력하세요" >
+                        <span class="joinNic"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>E-mail</dt>
+                    <dd class="input_st1">
+                        <input type="text" name="member_email" id="member_email" maxlength="50" placeholder="예) example@naver.com">
+                        <span class="joinEmail"></span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>전화번호</dt>
+                    <dd class="input_st2">
+                        <input type="text" name="member_tel1" id="member_tel0" class="member_tel" maxlength="3"><span>-
+                        </span><input type="text" name="member_tel2" id="member_tel1" class="member_tel" maxlength="4"><span>-
+                        </span><input type="text" name="member_tel3" id="member_tel2" class="member_tel" maxlength="4">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>휴대폰번호</dt>
+                    <dd class="input_st2">
+                        <input type="text" name="member_hp1" id="member_hp0" class="member_hp" maxlength="3"><span>-
+                        </span><input type="text" name="member_hp2" id="member_hp1" class="member_hp" maxlength="4"><span>-
+                        </span><input type="text" name="member_hp3" id="member_hp2" class="member_hp" maxlength="4">
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>주소</dt>
+                    <dd class="input_st3">
+                        <input type="text" name="member_addrno" id="member_addrno" placeholder="우편번호" maxlength="5" readonly>
+                        <span class="joinHome"></span>
+                        <input type="button" value="주소 검색" onclick="addr();">
+                    </dd>
+                    <dd class="input_st1">
+                        <input type="text" name="member_addr" id="member_addr" maxlength="60" placeholder="도로명주소" readonly>
+                    </dd>
+                    <dd class="input_st1">
+                        <input type="text" name="member_addrdtc" id="member_addrdtc" maxlength="60" placeholder="상세주소">
+                    </dd>
+                    <dd class="input_st1 refer">
+                        <input type="text" placeholder="참고항목" disabled>
+                    </dd>
+                </dl>
+            </div>
+            <div class="buttonBox">                   
+                    <input class="joinBtn" type="button" value="회원가입" onclick="aaa();">
+                    <input class="cancelBtn" type="reset" value="취소">
+            </div>
+        </div>  
+    </form>
+    <!--
+문제4.
+회원가입 버튼을 클릭시 해당 입력 사항에 맞게 체크 되는 자바스크립트를 작성합니다.
+아이디 4~16자 영문, 숫자 조합일 경우 4자 이상 16자 이하로만 입력이 되어야 하며,
+4자 이하일 경우 "4~16자 영문, 숫자 조합으로 작성하세요" 라는 
+경고 메세지가 출력 되도록 합니다.
+비밀번호, 비밀번호 확인 시 동일한 비밀번호가 입력 되어야 합니다.
+동일한 비밀번호가 입력되지 않을 경우 "동일한 비밀번호가 입력되어야 합니다."
+라는 경고 메세지를 출력합니다.
+placeholder에 맞게 자바스크립트를 구현하도록 하십시오.
+전화번호, 휴대폰 번호는 숫자만 입력이 가능해야 합니다.
+
+문제5. 주소검색 버튼을 클릭시 popup.html 팝업창이 나와야 하며,
+팝업창 크기는 505*660 입니다. 
+해당 팝업창에서 주소 리스트를 클릭시 우편번호 및 도로명 주소가
+입력 되어야만 합니다.
+모든 입력이 완료 되면 form action이 작동 되도록 합니다.
+form 경로는
+http://mekeyace.dothome.co.kr/memberok.php 이며,
+POST형태로 전송 되도록 합니다.
+-->
+</body>
+<script>
+    function aaa(){
+        var id = f.member_id.value; //사용자가 입력한 id
+        var idnum = id.length;  //입력한 값의 갯수
+        var idck1 = id.match(/[0-9]/g); 
+        var idck2 = id.match(/[a-z|A-Z]/g); 
+        var idck3 = id.match(/[ㄱ-ㅎ ㅏ-ㅣ 가-힣]/g);    //한글 사용x
+        if(idck1==null || idck2==null){
+            alert("아이디는 4~16자 영문, 숫자 조합으로 작성하세요");
+        }
+        else{
+            if(idnum<4 || idnum>16){
+                alert("아이디는 4~16자로 작성하세요");
+            }
+            else{
+                pw_ck()
+            }
+        }
+        //console.log(idnum);
+    }
+    function pw_ck(){
+        var pw = f.member_pass.value;
+        var pwck = f.member_pass_ck.value;
+            if(pw!=pwck){
+                alert("동일한 비밀번호가 입력되어야 합니다.");
+            }
+            else{
+                tel_hp();
+            }
+    }
+    function tel_hp(){
+        var tel = document.getElementsByClassName("member_tel").length;
+        var f;
+        var telnode;
+        var telnode2;
+        var telid;
+        var telid2;
+        for(f=0;f<tel;f++){
+            telnode = "member_tel" + f;
+            telnode2 = "member_hp" + f;
+            telid = document.getElementById(telnode).value;           
+            telid2 = document.getElementById(telnode2).value;
+                if(isNaN(telid)==true || isNaN(telid2)==true){
+                alert("전화번호는 숫자만 입력이 가능합니다.");
+            }
+        }
+    }
+    function addr(){
+        window.open("popup.html","","width=505,height=660");
+    }
+</script>
+</html>

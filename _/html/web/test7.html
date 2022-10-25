@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML+Javascript+css(응용문제5)</title>
+<script>
+    function aaa(){
+        /* id 이용
+        var a = Number(document.getElementById("a0").value); //최종금액
+        var b = Number(document.getElementById("a1").value); //결제금액
+        var c = Number(document.getElementById("ck").value); //적립금
+        var ck = 16527; //적립금 가격
+        var d = a - ck; //최종금액에서 적립금을 뺀 가격
+        var e = Math.round(d/10)*10;    //적립금을 반올림 한 가격
+        document.getElementById("a1").value = e; //결제금액에 적립금반올림 한 가격을 출력
+        */
+        // name 이용
+        var a = Number(f.a.value);
+        var b = Number(f.b.value);
+        var c = a - b;
+        f.c.value = c;
+    }
+    function bbb(){
+        f.c.value = "68000";
+    }
+    function ccc(){ //고객이 직접입력한 숫자값
+        var kk = Number(f.a.value); //최종금액
+        var jj = Number(f.d.value); //고객이 직접입력한 값
+        var zz = kk - jj;
+        f.c.value = zz; 
+    }
+</script>
+</head>
+<body>
+<form name="f" id="f">
+<p>최종결제 하실 금액</p>
+최종금액 <input type="text" name="a" id="a0" value="68000" readonly>
+<input type="radio" name="b" value="" id="ck" onclick="aaa();">
+<label for="ck" onclick="aaa();">적립금 : 16,527원</label>
+<!--고객 직접입력 부분-->
+<input type="radio" name="b" id="ck2" onclick="bbb();">
+<label for="ck2" onclick="bbb();">
+직접입력 : <input type="text" name="d" id="d" onkeyup="ccc();" value="0" readonly></label>
+<!--고객 직접입력 부분-->
+<br>
+결제금액 <input type="text" name="c" id="a1" value="68000" readonly><br><br>
+<input type="button" value="결제하기">
+</form>
+<script>
+    //전역변수를 HTML 코드 아래에 해두는 형식은 HTML 코드가 생성되고 나서
+    //해당 id,name,class 모두 인식하기 때문에 자바스크립트를
+    //HTML 코드 아래에 두는 경우가 많이 있음.
+    var m = 16527;  //전역변수 (사용자 적립금)
+    f.b[0].value = m;  //라디오 버튼에 적립금이 적용됨
+                      //radio 는 name값이 같기 때문에 노드로 입력
+</script>
+</body>
+</html>

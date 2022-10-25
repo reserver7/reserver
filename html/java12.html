@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Javascript 4일차(switch문-선택문)</title>
+<script>
+//switch (설문조사, 투표, 동의함, 동의안함, 통신사, 지역번호(위치), 레벨)
+var a=1;    //선택값 (Guest)
+switch(a){  //선택값에 대한 대입
+    case 1: //선택값과 비교하는 부분 (맞는지 아닌지)
+    document.write("선택한 숫자는 1 입니다.");  //case와 선택값이 같으면 출력
+    break;  // case와 선택값이 같으면 더 이상 조회하지 않고 정지
+
+    case 2:
+    document.write("선택한 숫자는 2 입니다.");
+    break;
+
+    default:    //case외에 모든 값을 말함 (else와 비슷)
+    document.write("선택한 숫자는 3이상 입니다.");
+    break;
+};  //case 는 20개이상은 사용하지 않습니다. (5~20이하)
+
+document.write("<br>");
+
+//문자 switch
+var b="이순신";
+switch(b){
+    case "이순신":  
+    //문자와 숫자를 정확하게 구분을 하며, 스페이스바(빈공간) 정확하게 구분해야함
+    document.write("VIP등급");
+    break;
+
+    case "홍길동":
+    document.write("일반등급");
+    break;
+
+    case "유관순":
+    document.write("실버등급");
+    break;
+
+    default:
+    document.write("가입이 되지 않은 고객");
+    break;
+    //case 또는 default : if, for,  do~while, while 등 다양한 문법
+}
+document.write("<br>");
+
+//응용문제 switch~case 결제 시스템
+var c="card";
+switch(c){  
+//멀티 case 사용시 ,를 사용하는 경우 숫자만 사용 가능
+//단, Jquery 엔진을 사용시 가능하며, 문자는 Jquery를 하더라도 ,로 인식을 못함
+    case "CARD":
+    case "card":
+    case "Card":
+    case "카드": // 멀티 case 유형
+    document.write("신용카드로 결제");
+    break;
+
+    case "BANK":
+    case "계좌이체":
+    case "bank":
+    document.write("계좌이체로 결제");
+    break;
+
+    case "HP":
+    case "hp":
+    case "휴대폰결제":
+    document.write("휴대폰 결제");
+    break;
+
+    case "COUPON":
+    case "쿠폰":
+    case "적립금":
+    document.write("쿠폰결제");
+    break;
+
+    default:
+    document.write("무통장 입금");
+    break;
+}
+document.write("<br>");
+var d=1;
+var e="홍길동";
+//switch와 if 결합
+//주의사항 절대 case밖에 if,for,while등등 문구를 사용할 수 없습니다.
+switch(d){
+    case 1:
+    if(e=="홍길동"){
+        document.write("정상적인 사용자 입니다.");
+    }
+    else{
+        document.write("휴면 계정 입니다.");
+    }
+    break;
+
+    default:
+        document.write("해당 입력값은 인식을 하지 못합니다.");
+    break;
+}
+document.write("<br>");
+//응용문제 switch + if 이용 결제 사항 출력 변수값 card if 롯데,현대,삼성
+//단, 롯데,삼성은 "결제 진행 합니다." 현대는 "시스템 점검 중입니다"
+//단, card 소문자 외 다른 문자는 "올바른 값이 아닙니다."
+var aa="card";
+var bb="신한";
+switch(aa){
+    case "card":
+    if(bb=="롯데" || bb=="삼성"){
+        document.write("결제 진행 합니다.");
+    }
+    else if(bb=="현대"){
+        document.write("시스템 점검 중입니다.");
+    }
+    else {
+        document.write("해당 카드는 서비스를 준비중 입니다.");
+    }
+    break;
+    
+    default:
+        document.write("올바른 값이 아닙니다.");
+    break;
+}
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

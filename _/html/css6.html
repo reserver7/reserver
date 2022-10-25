@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Ul, Ol 추가옵션 + TABLE HTML5</title>
+</head>
+<body>
+<table border="1" style="width:400px; height:100px;">
+    <caption>[야간 근무 수당]</caption>
+    <thead>
+        <tr>
+            <th rowspan="2" scope="col">재직자</th>
+            <th colspan="3" scope="colgroup">월별</th>
+        </tr>
+        <tr>
+            <th scope="col">2020.09</th>
+            <th scope="col">2020.10</th>
+            <th scope="col">2020.11</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">이순신</th>
+            <td>10시간</td>
+            <td>-</td>
+            <td>5시간</td>
+        </tr>
+        <tr>
+            <th scope="row">강감찬</th>
+            <td>2시간</td>
+            <td>1시간</td>
+            <td>7시간</td>
+        </tr>
+        <tr>
+            <th scope="row">유관순</th>
+            <td>3시간</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
+<br><br><br>
+<!-- 
+thead, tbody, scope를 사용형태는 웹전급성 (데이터 접근, 장애인, 고령자분)
+을 사용할 때 이용합니다.
+WA: 한국웹접근성인증평가원 (스크린 리더기)
+
+th만 scope를 사용할 수 있습니다.
+(col,row,colgroup,rowgroup)
+col : 해당 열 부분 (가로)
+row : 해당 행 부분 (세로)
+colgroup : 열의 그룹 헤더 (가로)
+rowgroup : 행의 그룹 헤더(세로)
+-->
+<table border="1" style="width:400px; height:100px;">
+    <caption>[TODAY 지역별 주간 날씨]</caption>
+    <thead>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">월요일</th>
+        <th scope="col">화요일</th>
+        <th scope="col">수요일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">서울</th>
+        <td>맑음</td>
+        <td>비</td>
+        <td>흐림</td>
+    </tr>
+    </tbody>
+    <tbody>
+    <tr>
+        <th scope="row">광명</th>
+        <td>맑음</td>
+        <td>흐림</td>
+        <td>흐림</td>
+    </tr>
+    </tbody>
+    <tbody>
+    <tr>
+        <th scope="row">인천</th>
+        <td>맑음</td>
+        <td>비</td>
+        <td>비</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

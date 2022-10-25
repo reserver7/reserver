@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery - 6일차 (이벤트 핸들링 전체 구성하기-응용문제)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#btn").bind({
+            "mouseover":function(){
+               $("#text").animate({
+                    "width":"250px"
+               },1000); 
+            },
+            "click":function(){
+                if($("#text").val()==""){
+                    alert("아이디를 입력하세요.");
+                }
+                else{
+                    location.href="http://naver.com";
+                }
+            }
+        });
+    });
+</script>
+<style>
+    #text{ width: 0px; height: 30px; display: none; }
+</style>
+</head>
+<body>
+<input type="text" id="text">
+<input type="button" value="로그인" id="btn">
+</body>
+</html>

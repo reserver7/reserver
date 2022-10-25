@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>보이스 피싱 년도별 데이터 입력 및 그래프 출력[2page]</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $a = location.search;
+        var $b = $a.split("txt1=");
+        var $c = $b[1].substr(0,3); 
+                
+        var $aa = location.search;
+        var $bb = $aa.split("txt2=");
+        var $cc = $bb[1].substr(0,3);
+                  
+        var $aaa = location.search;
+        var $bbb = $aaa.split("txt3=");
+        var $ccc = $bbb[1].substr(0,3);
+            
+        var $node = $(".data").length;
+        var $f;
+        var $height;
+        var $delay;
+        for($f=0;$f<$node;$f++){
+            switch($f){
+                case 0:
+                    $height = $c/20;
+                    $delay = 0;
+                break;
+
+                case 1:
+                    $height = $cc/20;
+                    $delay = 2000;
+                break;
+
+                case 2:
+                    $height = $ccc/20;
+                    $delay = 2000;
+                break;
+            }
+            $(".data").eq($f).delay($delay).animate({
+                "height":$height
+            },1000);
+        }
+    });
+</script>
+<style>
+    .div1{ width: 1000px; height: 500px; background-image: url('./chart_bk.png'); margin: 0 auto; position: relative;}
+    .div2{ width: 500px; height: 400px; position: absolute; right: 0; bottom: 50px;}
+    span{ display: block;}
+    .data1{ width: 50px; height: 0px; background-color: #454545; position: absolute; bottom: 0; left: 80px;}
+    .data2{ width: 50px; height: 0px; background-color: #454545; position: absolute; bottom: 0; left: 50%; margin-left: -25px;}
+    .data3{ width: 50px; height: 0px; background-color: #454545; position: absolute; bottom: 0; right: 80px;}
+</style>
+</head>
+<body>
+<div class="div1">
+    <div class="div2">
+        <span class="data1 data" id="data1"></span>
+        <span class="data2 data" id="data2"></span>
+        <span class="data3 data" id="data3"></span>
+    </div>
+</div>
+</body>
+<script>
+     /*
+    $(document).ready(function(){
+        var $no = 4;
+       
+        if($no < 10 || $no > 5){
+            alert("test");
+        }
+        
+        if($no > 5 && $no < 10){    //범위를 잡을 때는 &&를 써야함
+            alert("test");
+        }
+    });
+    */
+</script>
+</html>
+<!--
+    [page1]
+    Data 형태가 GET
+    입력값은 총 3가지를 입력합니다.
+
+    2018년도 발생거수 :
+    2019년도 발생건수 :
+    2020년도 발생건수 :
+    
+    수치 최소값은 1000 이상 최대값 10000이하
+    숫자만 입력이 되도록 합니다.
+    "데이터 입력완료" 버튼을 클릭시 page2으로 넘어갑니다.
+    2018~2020년도까지 모든 데이터가 다 입력되어야 합니다.
+    "해당 데이터가 정확하게 입력 되지 않았습니다."
+    경고메세지 출력
+
+    [page2]
+    GET으로 데이터를 받아서 그래프로 전환
+    단, 이미지에 맞게 세로 막대로 그래프가 나와야 합니다.
+    숫자 1000단위 당 50px 나와야 합니다.
+    그래프의 색상 코드는 #454545 입니다
+    delay는 각 년도별로 2초 입니다.
+-->

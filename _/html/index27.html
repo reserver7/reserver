@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<mate http-equiv="X-UA-compatible" content="IE-Edge, chrome=1">
+<title>HTML5 신규태그 부분 (2차)</title>
+<style>
+.v { width:500px; height:200px;}
+.v2 { width:100px; height:100px;}
+</style>
+</head>
+<body>
+<!-- 
+video는 HTML5 전용 비디오 태그 형태로 출력합니다.
+mp4, avi, ogg, mpeg (모바일에서 최소한의 화질 및 영상을 빠르게 출력하기 위한 태그 옵션)
+source 는 영상 경로를 입력하게 됩니다. (절대,상대경로 모두 사용이 가능 단, Youtube 경로는 바로
+가져 올 수 는 없습니다.)
+
+controls : 영상 도구를 사용 부분
+autoplay : 자동으로 영상이 출력 되는 부분
+muted : 음소거를 사용할때 단, autoplay시 크롬일 때는 muted를 사용해야만 작동됨
+
+mp4 : IE, chrome, firefox, safari, opera
+WebM : 구글에서 제공하는 영상 (chrome, firefox, opera)
+ogv : 저작권 없는 영상 (chrome, firefox)
+절대경로 : absolute URL
+상대경로 : relative URL
+poster : 썸네일 이미지를 출력할 때 사용 합니다.
+loop : 반복재생 영상출력
+track : 자막을 사용할 때 이용 됩니다.
+-->
+<video poster="./mv/mvimg.jpg" class="v" controls muted loop>
+ <source src="./mv/test.mp4" type="video/mp4">
+ <track kind="subtitles" src="./mv/test.vtt" srclang="en" label="English">
+<!--
+<track kind="subtitles" src="./mv/test2.vtt" srclang="jp" label="japanese">
+-->
+</video>  
+
+
+
+</body>
+</html>

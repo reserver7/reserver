@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 6일차 - (시간타이머3)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        //$("#box").append("5");
+        //$("#box").text("5");
+
+        var $timer;
+        var $number = 5;    //기본 카운터 변수
+        $timer = setInterval(function(){
+            $("#box").text($number);    //숫자를 출력함
+            $number = $number - 1;      //1초마다 -1씩 감소
+            //$number--;
+            //$number -= 1;
+            if($number<0){      //해당 변수값이 0보다 작을경우
+                clearInterval($timer);  //시간함수를 정지
+                alert("시간이 경과 되었습니다.");
+            }
+        },1000);
+    });
+</script>
+<style>
+    :root { --box-w : 100px; --box-h : 100px; --box-b : 1px solid black; }
+    body{ margin: 0; padding: 0; }
+    .box{
+        width: var(--box-w); height: var(--box-h); border: var(--box-b);
+        font-size: 80px; text-align: center;
+    } 
+</style>
+</head>
+<body>
+<div class="box" id="box">
+    
+</div>
+</body>
+</html>

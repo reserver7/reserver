@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue 2일차 - 핸들링+조건문2</title>
+<script src="vue.js"></script>
+</head>
+<body>
+<section id="box">
+    <ul style="width: 300px; height: 40px; border: 1px solid black;">
+        <li v-if="mdata" v-on:click="aaa">{{msg1}}</li> 
+        <li v-else  v-on:click="aaa">{{msg2}}</li>
+        <!-- v-on은 HTML에 모든 태그에 사용할 수 있음 
+        v-if 반대말 또는 나머지 값 v-else
+        -->
+    </ul>
+</section>
+<section id="box2">
+    <ul style="width: 300px; height: 40px; border: 1px solid black;">
+        <li v-if="mdata && sdata==1" v-on:click="aaa">{{msg1}}</li> 
+        <li v-else-if="mdata && sdata==2"  v-on:click="aaa">{{msg2}}</li>
+        <li v-else  v-on:click="aaa">{{msg3}}</li>
+    </ul>
+</section>
+</body>
+<script>
+    let a = new Vue({
+        el:"#box",
+        data:{
+            msg1:"2021-01-13 Vue 연습중...",
+            msg2:"2021-01-14 Vue 계속 연습중...",
+            mdata:true
+        },
+        methods:{
+            aaa:function(){
+                this.mdata = !this.mdata;   //!부정의 뜻 임 즉, true 반대말을 말함
+            }
+        }
+    });
+
+    let b = new Vue({
+        el:"#box2",
+        data:{
+            msg1:"2021-01-13 Vue 연습중...",
+            msg2:"2021-01-14 Vue 계속 연습중...",
+            msg3:"2021-01-15 Vue 어려움~~...",
+            mdata:true,
+            sdata:1 //sdata를 사용한 이유는 v-if, v-else-if를 사용하기 위한 키변수
+        },
+        methods:{
+            aaa:function(){
+                this.sdata++;   //핸들링을 호출할 때 마다 키변수값을 증가 시킴
+                if(this.sdata >= 3){ //해당 키변수가 3보다 크면 sdata 초기값으로 변환
+                    //this.sdata = 1; 밑에 내용이랑 같음 대신 카운트를 1개 줄여야 함 또는 >=
+                    this.sdata = !this.sdata;
+                }
+            }
+        }
+    });
+</script>
+</html>

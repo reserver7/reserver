@@ -1,0 +1,48 @@
+body { margin:0; padding:0;}
+.divbox { width:100px; height:100px; }
+.div1 { background-color:lightblue; border-radius: 50px 0 0 0;}
+.div2 { background-color:lightcoral; border-radius: 0 50px 0 0;}
+.div3 { background-color:lightgreen; border-radius: 50px;}
+.div4 { background-color:lightslategray; border-radius: 20px 0 20px 0;}
+.div5 { background-color:lightseagreen; border-radius: 0 20px 0 20px;}
+
+.btn { width:100px; height:40px; border-radius: 15px;
+background-color: green; border:0;
+}
+/* 
+border-radius 모서리를 다듬어서 사용할 수 있습니다.
+border-radius:0 0 0 0; border-radius:50px; 
+*/
+.input1{ width:300px; height:40px; border-radius: 15px;}
+
+.divse { width:500px; height:50px; border:1px solid #cccccc;
+overflow-y:auto;
+}
+/* overflow 해당 범위 이상일 경우 오브젝트가 어떤 식으로 처리 할 것인지
+   설정 할 수 있는 CSS 속성 입니다. 
+   overflow-x (가로축) , overflow-y (세로축)
+   auto : 자동으로 오브젝트 사이즈를 체크하여 over 되었을 경우 scroll이 생성됨
+   hidden : 오브젝트 사이즈만 보이고, 나머지는 가려지도록 함
+*/
+
+.divx { width:500px; height:500px; border:1px solid red;
+overflow:hidden; border-radius: 250px;
+}
+.imgs { width:100%;}
+
+/* 썸네일 형태의 이미지 출력 */
+.box { width:200px; height:80px; border:1px solid black;
+border-radius: 40px; overflow: hidden;
+}
+.boxul { width:200px; height:80px; margin:0; padding:0; 
+list-style: none;
+}
+.boxul li { height:80px; float: left;}
+.boxli1 { width:80px; }
+.boxli2 { width:120px; font-size: 13px; font-family: "돋움체";
+text-align: center; line-height: 80px; font-weight: bold; }
+.boxlabel { width:50px; height:50px; border-radius:25px;
+border:1px solid #cccccc; display: block; overflow: hidden;
+margin:0 auto; margin-top:15px;
+}
+.boximg { width:100% }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>return 특강(연산자 함수, 생성자 함수)2</title>
+</head>
+<body>
+    <input type="hidden" name="userdata" id="userdata">
+    최종금액 : <input type="text" name="money" id="money">
+    최종금액2 : <input type="text" name="money2" id="money2">
+</body>
+<script>
+    /*  연산자 + return으로 배열 구성하여 html에 값을 태우는 형태
+    function aaa(){}
+    let a = new aaa();
+    a.unm = "이순신";
+    a.uid = "lee";
+    a.uemail = "lee@gmail.com";
+    a.ccc = function(){
+        return this;
+    }
+    document.getElementById("userdata").value = a.ccc();
+    */
+    /* 응용문제1 
+    관리자가 해당 상품가격에 할인율을 적용하여 가격을 변동하고 싶어합니다.
+    해당 가격과, 할인율 적용하면 실시간으로 반영하는 프로세스를 만들어 보시오
+    var a = 17557;
+    var b = Math.floor(a / 10) * 10;
+    console.log(b);
+    */
+    let m = new moneys(22.5,45000);
+    function moneys(p,m){
+        this.a = m * (p/100);   //할인 시킬 금액
+        this.a = m-(Math.floor(this.a/10)*10);  //전체 가격 - 할인 시킬 금액
+        this.bb = this.a.toLocaleString();
+        console.log(this.bb);
+    }
+    function moneys2(p,m){
+        this.a = m * (p/100);   //할인 시킬 금액
+        this.a = m-(Math.floor(this.a/10)*10);  //전체 가격 - 할인 시킬 금액
+        //this.a = this.a.toLocaleString();
+        this.ccc = function(){   
+            this.bb = this.a - 5000;
+            return this.bb.toLocaleString();
+        }
+        this.ddd = function(){
+            this.bb = this.a - 7000;
+            return this.bb.toLocaleString();
+        }
+    }
+    document.getElementById("money").value = m.bb;
+
+    m = new moneys2(11.7,65000);
+    document.getElementById("money2").value = m.ddd();
+</script>
+</html>
+<!--
+    면접 질문 예시 ------
+    함수형 프로그래밍에 대해서 설명해달라?
+    일반함수와 보조함수와 조합한다.
+    장점: 조건문, 반복문 최소화 하고 복잡한 부분을 피하는 형태
+
+    OOP 설명해 주세요?
+    객체지향 프로그래밍
+    매소드, 변수, 클래스 개념
+    데이터를 은닉하기 위해서 사용하는 부분
+    <form id="f" name="f" method="POST" action="index.php">
+    위 와 같은 형태를 숨김
+
+    비동기 프로그래밍?
+    Ajax : 데이터를 교환할 수 있는 통신 방식
+    ES6 - Promise, Callback(ES5) - return,reect
+
+    Javascript 원시 타입 ?? 종류 어떤것이 있습니까?
+    String, Number, null, undefined
+
+    일반함수 this와 화살표 함수의 this의 차이점??
+    일반함수,메소드,콜백함수,객체 선언되는 값을 가르키는 부분
+    $("#abc>li").click(function(){
+        $(this)
+    })
+    화살표함수의 this = 잘 모릅니다....
+
+    null 과 undefined 차이점은?
+
+    Vue와 React의 차이점은?
+    탬플릿 이용해서 컴포넌트를 사용할 수 있음
+    React는 할 수 없음
+
+
+    로직------
+    [게시판 로직]
+    데이터베이스 구축(테이블 1개) > 일반형
+    데이터베이스 구축(테이블 2개) > 계층형(답변등등 밑에 트리가 생기는 형태) > 중복되지 않는 키값을 기준으로
+    > 입력,출력,삭제,수정 > 테스트
+    pidx : 2
+
+    sidx:1 pidx:2
+    sidx:2 pidx:2
+
+    [회원관리 및 로그인 로직]
+    데이터베이스 구축 > 폼을 구성(일반회원가입,간편회원가입(최대6개),외부동기화(네이버,카카오,페이스북))
+    간편회원가입 - id,이름,패스워드,이메일,전화번호,닉네임(필수값은 아님)
+    일반회원가입 - 주소, 서비스여부(정보수신,이벤트수신,sms,email)
+
+    로그인형태 어떤것을 제작해 보았습니까?
+    중복되지 않는 키값을 기준으로 함
+    id,email 일반회원에 한해서
+    사업자번호, 회사명 (사업자회원)
+
+    쇼핑몰일 경우 상품 분류는 어떤식으로 제작해 보았습니까? (질문배려)
+    카테고리 분류 해봤습나까? (질문배려x)
+    카테고리란? 묶음
+    1차,2차,3차 등등 묶어서 나열
+
+    Javascript의 쓰레드 방식은? 싱글 쓰레드방식(비동기) 반대는 멀티 쓰레드방식(동기)
+    Javascript,Jquery는 비동기방식 
+    ajax는 비동기,동기 가능 그러나 보통은 비동기방식을 사용
+
+    동기방식 예)
+    $.ajax({
+        type:"POST",
+        url:,
+        data:,
+        async:false,  -------- 이걸 쓰면 동기방식(데이터가 안넘어와도 작동) 둘중 하나를 사용
+        success:function($result){
+            var $a = $result;
+            var $b = "ok";
+            return $b;   -------- 이걸 쓰면 동기방식(데이터가 안넘어와도 작동) 둘중 하나를 사용
+        }
+    });
+-->

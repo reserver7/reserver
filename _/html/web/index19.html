@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(각종 명령어-match,length)</title>
+<script>
+/*
+match : 단어를 검색하여 해당 단어가 있는지 확인
+search, test, indexof
+*/
+
+
+/*
+    var a = "홍길동 고객님 환영합니다.";
+    var b = a.length;
+    document.write(b);
+*/
+    function abc(){
+        var aa = document.getElementById("pw").value; 
+        var bb = aa.length;
+        //var cc = typeof(bb);
+        if(bb<5){
+            alert("최소 5자리 이상 입력하셔야 합니다.");
+        }
+    }
+// length : 노드갯수, 글자갯수, 배열갯수, 이미지의 크기(용량)
+
+    function bbb(){
+        var aaa = document.getElementById("text").value;
+        //변수를 따로따로 지정해서 사용할 때
+        //var bbb = aaa.match(/집/g);   //g : group
+        //var ccc = aaa.match(/하우스/g);
+
+        // match : 단어를 g라는 부분으로 전체 문장을 확인 후 해당 단어가 있는지
+        // 유/무를 확인하게 됩니다. 없을 경우(null)
+        // match를 사용할때 정규식 코드에 맞춰서 사용할 수 있음
+
+
+        // true, false, null 은 ""를 사용하지 않음
+        /*
+        if(bbb!=null || ccc!=null){
+            alert("해당 단어는 사용하지 못합니다.");
+        }
+        */
+        //여러단어를 한번에 검색할 때 "|" 파이프를 꼭 써야함
+        var bbb = aaa.match(/집|하우스/g);  
+        alert(bbb);
+    }
+
+    function ccc(){ //숫자 외에 문자를 체크하는 함수
+        var j = document.getElementById("tel").value;
+        var k = j.match(/[a-zA-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-히]/g);
+        //var ddd = aaa.match(/[0-9]/g) // []:구분형태 0,1~9까지의 범위
+        //한글은 자음,모음,한글단어 모두의 범위를 지정해야만 
+        //match를 이용할 수 있음
+        // |(파이프)는 범위를 구분하는 기호
+        if(k!=null){
+            alert("숫자만 입력하세요!");
+            document.getElementById("tel").value=""; //입력값을 초기화
+        }
+    }
+</Script>
+</head>
+<body>
+<input type="password" id="pw" maxlength="10">
+ * 패스워드 길이는 최소 5자리~ 최대 10자리 입니다.
+<input type="button" value="확인" onclick="abc();">
+<br><br>
+<input type="text" id="text">
+<input type="button" value="체크" onclick="bbb();">
+<br><br>
+<input type="text" id="tel" maxlength="3">
+<input type="button" value="인증번호" onclick="ccc();">
+</body>
+</html>

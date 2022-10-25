@@ -1,0 +1,75 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 18일차 - 디스크로 위치 조정 - 세로</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js?"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        $("#olcss>li").click(function(){
+            var $node = $(this).index();
+            //alert($node);
+            var $top = 100 * $node; 
+            //100 = li : 한개당 크기 (가로 또는 세로)
+
+            //$("#ulcss").css("top","-"+$top+"px");
+            $("#ulcss").animate({
+                "top":"-"+$top+"px"
+            },800);
+            
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .ulcss{
+        width: 500px; height: 100px; list-style: none; margin: 0; padding: 0;
+        position: absolute;
+    }
+    .ulcss > li{ width: 100px; height: 100px; cursor: pointer; }
+    .ulcss > li:nth-child(1){ background-color: red; }
+    .ulcss > li:nth-child(2){ background-color: green; }
+    .ulcss > li:nth-child(3){ background-color: blue; }
+    .ulcss > li:nth-child(4){ background-color: yellow; }
+    .ulcss > li:nth-child(5){ background-color: hotpink; }
+
+    .olcss{
+        width: 200px; height: 50px; list-style: none; margin: 0; padding: 0;
+    }
+    .olcss >li{ width: 30px; height: 30px; background-color: black; 
+    border-radius: 15px; display: inline-block; margin-top: 150px; cursor: pointer;
+    }
+    .banner{
+        width: 100px; height: 100px; position: relative; overflow: hidden;
+    }
+</style>
+</head>
+<body>
+<div class="banner">
+<ul class="ulcss" id="ulcss">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</div>
+<br>
+<br>
+<br><br><br>
+<ol class="olcss" id="olcss">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+</body>
+</html>

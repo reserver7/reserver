@@ -1,0 +1,140 @@
+<meta charset="utf-8">
+<!--
+    블랙스크린 형태 : box-shadow를 사용하게 됨 단, box-shadow를 사용시
+    Jquery, Javascript 에서는 click 핸들링을 사용할 수 없음
+    왜? height값이 없기 때문에 화면 전체를 임시로 가리는 형태만 사용하기 때문
+    그 대체형태는 닫기 버튼을 생성하여 box-shadow를 display none으로
+    처리하게 됨 position은 무조건 absolute를 사용해야함
+    무조건 외워야 함!!!!!!!!!!!!!!!
+-->
+<script>
+    $(document).ready(function(){
+        $(".label1").click(function(){
+            var $data = $(this).attr("data"); //label에 있는 data속성 값을 가져옴
+            $("#blackbox").css("display","block"); //블랙스크린 on
+            $("#imgplus").css("display","block"); // X 버튼 on
+            $("#imgplus").css("background-image","url("+$data+")");
+        });
+        $("#closebtn").click(function(){
+            $("#blackbox").css("display","none"); //블랙스크린 off
+            $("#imgplus").css("display","none"); // X 버튼 off
+        })
+    });
+</script>
+<style>
+    .ulcss { 
+        list-style: none; margin: 0; padding: 5px; box-sizing: border-box; 
+        width: 100%; max-width: 420px; position: relative;
+    }
+    .ulcss > li { 
+        width: 100%; height: auto; border: 1px solid gray; 
+        box-sizing: border-box; margin-bottom: 10px;
+    }
+    .label1{ width: 100%; display: block; }
+    .label1 > img { width: 100%; }
+    .label2{ box-sizing: border-box;
+        width: 100%; height: 200px; display: block; border-top: 2px dotted #333;
+    }
+    .label2 >span{ 
+        width: 100%; display: flex; flex-wrap: wrap; justify-content: center;
+        align-items: center; align-content: center;   
+    }
+    /* flex를 쓸 경우는 text-align과 같이 사용 하지 못함
+    단, 오브젝트 별도로 각각의 객체에서는 사용할 수 있음
+    */
+    .label2 >span:nth-child(1){ 
+        font-size: 20px; font-weight: bold; height: 70px; text-align: center;
+    }
+    .label2 >span:nth-child(2){ 
+        font-size: 16px; color: blue; height: 60px; text-align: center;
+        text-overflow: ellipsis; white-space: nowrap; overflow: hidden;
+    }
+    .label2 >span:nth-child(3){ 
+        font-size: 12px; color: gray; height: 20px;
+    }
+    .label2 >span:nth-child(4){ 
+        font-size: 18px; color: red; height: 50px;
+    }
+    .blackbox{ 
+    /*  모바일에서 해당 이미지, 팝업창 등 강조를 하고 싶을 때
+        뒷 배경을 블랙스크린으로 가립니다.
+        box-shadow:0 0 0 9000px 풀 해상도(모바일 기준) 전체를 사용할 때
+        이용되며, rgba를 이용하여 색상 및 투명도를 조절함
+        position: absolute는 무조건!!!! 기본으로 해야함  
+        width:100% 높이는 사용하지 않습니다!!!!!!!!!!!  
+    */
+        width: 100%; 
+        /* 아이폰 전용 safari 13버젼 이상일 경우 버그로 인하여 box-shadow
+        작동하지 않음 해당 코드로 버그를 재 수정함  */
+        height: 100vh; 
+        margin-top: -900px;
+        /* 아이폰 box-shadow 버그 수정 코드 */
+
+        box-shadow:0 0 0 9000px rgba(0,0,0,0.7); 
+        position: absolute; z-index: 100;
+        display: none;
+    }
+    .imgplus { 
+        position: fixed; z-index: 101;
+        width: 95%; height: 300px; border: 1px solid #fff;
+        margin-top: 10%; margin-left: 2%; display: none;
+        background-repeat: no-repeat; background-size: cover;
+    }
+    .closebtn{ 
+        width: 30px; height: 30px; background-color: black; color: white;
+        border-radius: 15px; line-height: 30px; text-align: center; font-size: 25px;
+        display: block; position: absolute; right: 0;
+    }
+</style>
+<!-- 이미지 확대 -->
+<div class="imgplus" id="imgplus">
+    <span class="closebtn" id="closebtn">X</span>
+</div>
+<!-- 블랙스크린 -->
+<div class="blackbox" id="blackbox"></div>
+<ul class="ulcss" id="ulcss">
+    <li>
+        <label class="label1" data="./product/s1.jpg">
+            <img src="./product/s1.jpg">
+        </label>
+        <label class="label2">
+            <span>삼성 노트북 43.2cm FHD 144Hz<br>인텔 8세대 10800K</span>
+            <span>2020년도 마지막 30% 세일 최대 14시간 수명<br>Window10 무료설치</span>
+            <span><s>1,140,000 원</s></span>
+            <span>900,000 원</span>
+        </label>
+    </li>
+    <li>
+        <label class="label1" data="./product/s2.jpg">
+            <img src="./product/s2.jpg">
+        </label>
+        <label class="label2">
+            <span>LG 노트북 39.6cm GTX1650<br>인텔 9세대 10900K</span>
+            <span>2020년도 마지막 30% 세일 최대 14시간 수명<br>Window10 무료설치</span>
+            <span><s>1,140,000 원</s></span>
+            <span>900,000 원</span>
+        </label>
+    </li>
+    <li>
+        <label class="label1" data="./product/s3.jpg">
+            <img src="./product/s3.jpg">
+        </label>
+        <label class="label2">
+            <span>HP 노트북 39.6cm<br>인텔 9세대 10900K</span>
+            <span>2020년도 마지막 30% 세일 최대 14시간 수명<br>Window10 무료설치</span>
+            <span><s>1,140,000 원</s></span>
+            <span>900,000 원</span>
+        </label>
+    </li>
+    <li>
+        <label class="label1" data="./product/s4.jpg">
+            <img src="./product/s4.jpg">
+        </label>
+        <label class="label2">
+            <span>Dell 노트북 35.6cm<br>인텔 8세대 10800K</span>
+            <span>2020년도 마지막 30% 세일 최대 14시간 수명<br>Window10 무료설치</span>
+            <span><s>1,140,000 원</s></span>
+            <span>900,000 원</span>
+        </label>
+    </li>
+</ul>

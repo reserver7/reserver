@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100;300;400;500;600;700;800;900&display=swap');
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/* 영어 font-family: 'Open Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+/* 기본셋팅 사항 */
+html,body,div,span,label,section,aside,footer,header,nav,video,table,tr,td,th{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;  
+    
+}
+a:link,a:visited,a:hover,a:active { text-decoration: none; color: black; }
+section,aside,footer,header,nav,main,span,label{
+    display: block;
+}
+body{
+    line-height: 1; 
+    -webkit-text-size-adjust: none; /* 크롬, 사파리 기준 */
+    -moz-text-size-adjust: none;    /* 모질라, 파이어폭스 기준 */
+    -ms-text-size-adjust: none;     /* 익스플로어 기준 */
+    text-size-adjust: none;         /* Edge 기준 */
+}
+ol,ul{ list-style: none; margin: 0; padding: 0; }
+* { box-sizing: border-box; } /* *:모든 태그에 적용 */

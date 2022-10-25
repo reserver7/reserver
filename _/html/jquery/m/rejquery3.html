@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <title>Jquery (메뉴) - 복습</title>
+    <script src="../jquery.js"></script>
+    <script src="./jquery-ui.js"></script>
+    <link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+    <script>
+        $(document).ready(function(){
+           
+            $("#box1").click(function(){
+                var $w = $(".menus").width();
+                if($w==0){
+                    $(".menus").css("display","block");
+                    $(".menus").animate({
+                    "width":"90%"
+                    },800);
+                }
+                else{
+                    $(".menus").animate({
+                        "width":"0%"
+                    },800,function(){
+                        $(".menus").css("display","none");
+                    });
+                }
+                
+                /*
+                $(".menus").css({
+                    "display":"block"
+                    },function(){
+                        $(this).animate({
+                        "width":"90%"
+                        },800);
+                });
+                */
+             });
+
+             $("#text").click(function(){
+                alert("test");
+             });
+             $("#box2").click(function(){
+                $("#black").css("display","block");
+                $(".login").css("display","block");
+             });
+             $("#close").click(function(){
+                $(".login").css("display","none");
+                $("#black").css("display","none");
+             });
+             $("#btn").click(function(){
+                var $mid = $("#mid").val();
+                var $mpass = $("#mpass").val();
+                var $msg;
+                if($mid==""){
+                    $msg = "아이디를 입력해 주세요!";
+                    $("#msg").text($msg);   //경고창 업이 메세지 띄우는 형태
+                }
+                else if($mpass==""){
+                    $msg = "패스워드를 입력해 주세요!";
+                    $("#msg").text($msg);   //경고창 업이 메세지 띄우는 형태
+                }
+
+                if($mid!="" && $mpass!=""){
+                    f.method="POST";
+                    f.action="http://www.naver.com";
+                    f.submit();
+                }
+             });
+        });
+    </script>
+    <style>
+        body { margin: 0; padding: 0;}
+        .headercss { 
+        width: 100%; max-width: 420px;    
+        height: 60px; background-color: black;
+        position: relative;
+        display: flex;
+        align-items: center; align-content: center;
+        flex-wrap: wrap;
+         }
+        span { display: block; }
+        .box1 { width: 40px; height: 40px; background-color: skyblue;
+        margin-left: 5px;
+        }
+        .box2 {
+            position: absolute; right: 5px;
+             width: 40px; height: 40px; background-color: yellow;}
+        .menus { width: 0; height: 100vh; 
+        background-color: skyblue;
+        display: none; position: relative;
+        }
+        /* min-width 사용시 display: inline-block를
+        사용하게 되면 100%를 사용하지 못하고 width: px값으로만 적용되어 집니다.
+        */
+        .text{
+            margin-left: 10px; display: block; min-width: 200px;
+            border: 1px solid red; 
+            /* 메뉴를 제작할 경우 px 위주로 꼭 제작 합니다 (%는 이상하게 보임) */
+        }
+        .plus{ display: inline-block; position: absolute; right: 20px; }
+        .black{
+            position: absolute; z-index: 10;
+            box-shadow: 0 0 0 9000px rgba(0,0,0,0.8); 
+            width: 100%;
+            height: 100vh;
+            margin-top: -900px; display: none;
+        }
+        .login{
+            width: 90%; max-width: 420px; background-color: white; border: 1px solid #ccc;
+            border-radius: 10px; position: absolute; z-index: 11; height: 200px;
+            top: 150px;  left: 50%; margin-left: -45%; position: fixed; text-align: center;
+            display: none;
+        }
+        .login_ul{
+            list-style: none; margin: 0; padding: 10px; box-sizing: border-box;
+            height: auto; width: 100%; 
+        }
+        .login_ul>li{
+            height: 50px; 
+        }
+        .input1{
+            width: 90%; max-width: 420px; height: 40px; border-radius: 10px; 
+            border: 1px solid #ccc; box-sizing: border-box; text-indent: 10px;
+        }
+        .w{ width: 90%; }
+        .close{ width: 50px; height: 50px; background-color: #ccc; color: white; 
+        line-height: 50px; position: absolute; text-align: center; border-radius: 50px;
+        right: 10px; top: -55px;
+        }
+        .msg { text-align: center; color: red; }
+    </style>
+</head>
+<body>
+<!-- 로그인 -->
+<form name="f" id="f">
+<div class="login">
+    <!-- 닫기 -->
+    <div class="close" id="close">X</div>
+    <ul class="login_ul">
+    <li><input type="text" name="mid" id="mid" class="input1" placeholder="아이디를 입력하세요" required></li>
+    <li><input type="password" name="mpass" id="mpass" class="input1" placeholder="패스워드를 입력하세요" required></li>
+    <li><input type="submit" value="로그인" class="input1 w" id="btn"></li>
+    <!-- required 필수 입력값 required사용시 submit 그리고 javascript를 써야함  -->
+    </ul>
+    <div class="msg" id="msg"></div>
+</div>
+</form>
+<!-- 블랙스크린 -->
+<div class="black" id="black"></div>
+<header class="headercss">
+<span class="box1" id="box1"></span>
+<span class="box2" id="box2"></span>
+</header>
+<div class="menus" id="menus">
+    <span class="text" id="text">메뉴 슬라이드 부분 <span class="plus"> + </span></span>
+</div>
+<section style="height: 1800px;">
+
+</section>
+</body>
+</html>

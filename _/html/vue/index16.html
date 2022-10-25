@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue4일차 - 애니메이션</title>
+<script src="./vue.js"></script>
+<style>
+    /* transition태그 사용시 css형태 */
+    /*
+    .tests-leave{       //효과가 최초에 시작하는 단계
+        opacity: 1;
+    }
+    .tests-leave-to{    //최초 시작단계에서 효과가 적용되는 단계
+        opacity: 0;
+    }
+    .tests-enter{   //leave가 적용되고 나서 그 다음 효과 단계를 말함
+        opacity: 0;
+    }
+    .tests-enter-to{ //enter가 시작되고 나서 효과가 끝나는 단계
+        opacity: 1;
+    }
+    */
+    .tests-leave-to,.tests-enter{
+        opacity: 0;
+    }
+    .tests-enter-active,.tests-leave-active{
+        transition: opacity 3s ease;
+    }
+    .tests{
+        width: 150px; height: 30px; text-align: center;
+        border: 1px solid black;
+    }
+</style>
+<style>
+    /*
+    .tests2-leave{
+        transform: rotate(0deg);
+    }
+    .tests2-leave-to{
+        transform: rotate(45deg);
+    }
+    .tests2-enter{
+        transform: rotate(45deg);
+    }
+    .tests2-enter-to{
+        transform: rotate(0deg);
+    }
+    */
+    .tests2-leave-to,.tests2-enter{
+        transform: rotate(45deg);
+    }
+    .tests2-leave-active,.tests2-enter-active{
+        transition: all 3s ease;
+    }
+</style>
+</head>
+<body>
+<!-- transition: vue 전용 태그이며 animation전용입니다. 
+    단 class,id를 이용하여 style에 애니메이션을 사용하지 않음 무조건 name!!!  
+-->
+<section id="box">
+    <button v-text="btn" @click="start"></button>
+    <transition name="tests">
+        <div v-if="ani" class="tests">애니메이션!!</div>
+    </transition>
+</section>
+<br>
+<section id="box2">
+    <button @click="start2" v-text="btn2"></button>
+    <transition name="tests2">
+        <div v-if="ani2" style="width:100px; height: 100px; background-color: blue;"></div>
+    </transition>
+</section>
+</body>
+<script>
+    let a = new Vue({
+        el:"#box",
+        data:{
+            btn:"작동",
+            ani:false
+        },
+        methods:{
+            start:function(){
+                this.ani = !this.ani;
+            }
+        }
+    });
+
+    let b = new Vue({
+        el:"#box2",
+        data:{
+            btn2:"적용",
+            ani2:true
+        },
+        methods:{
+            start2:function(){
+                this.ani2 = !this.ani2;
+            }
+        }
+    })
+</script>
+</html>
+<!--
+    [name,id,class] - javascript
+    [id,class] - jquery
+    vue - style 애니메이션 (name)
+
+    Publisher - Class (클래스명을 어떤식으로 만들것인지 공유해야함)
+-->

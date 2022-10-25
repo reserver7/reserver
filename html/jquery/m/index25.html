@@ -1,0 +1,137 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>jquery 18일차 - 디스크로 위치 조정 - 가로(setTimeout)</title>
+<script src="../jquery.js"></script>
+<script src="./jquery-ui.js?"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css">
+<script>
+    $(document).ready(function(){
+        //setTimeout 3초에 한번씩 배너가 움직이는 사항
+        var $timer;
+        $.fn.abc = function(){
+        $timer = setTimeout(function aaa(){
+            var $off = $("#ulcss").offset().left;
+            var $m = $off - 100;    //수식구 부분
+            //console.log($m);
+            if($off <= -400){   //해당 배너의 위치 초기화 범위
+                $m = 0; //처음으로 되돌림
+            }
+            else{   
+                $m = $off - 100;
+            }
+            $("#ulcss").animate({
+                "left":$m+"px"
+            },1000);
+            $timer = setTimeout(aaa,3000);
+        },3000);
+    }
+    $.fn.abc();
+
+        $("#ulcss>li").bind({
+            "click":function(){
+                //0 : facebook.com
+                //1 : apple.com
+                //2 : naver.com
+                //3 : daum.net
+                //4 : samsung.com
+                var $ck = $(this).index();
+                switch($ck){
+                    case 0:
+                    location.href="http://facebook.com";
+                    break;
+
+                    case 1:
+                    location.href="http://apple.com";
+                    break;
+
+                    case 2:
+                    location.href="http://naver.com";
+                    break;
+
+                    case 3:
+                    location.href="http://daum.net";
+                    break;
+
+                    case 4:
+                    location.href="http://samsung.com";
+                    break;
+                }
+                    
+            },
+            "mouseenter":function(){
+                //배너 정지
+                clearTimeout($timer);
+            },
+            "mouseleave":function(){
+                //배너 재가동
+                $timer = "";
+                $.fn.abc();
+            }
+        });
+    /*
+        $("#olcss>li").click(function(){
+            var $node = $(this).index();
+            //alert($node);
+            var $left = 100 * $node;
+
+            //$("#ulcss").css("left","-"+$left+"px");
+            $("#ulcss").animate({
+                "left":"-"+$left+"px"
+            },800);  
+        });
+        */
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    .ulcss{
+        width: 500px; height: 100px; list-style: none; margin: 0; padding: 0;
+        position: absolute;
+    }
+    .ulcss > li{ float: left; width: 100px; height: 100px; cursor: pointer; }
+    .ulcss > li:nth-child(1){ background-color: red; }
+    .ulcss > li:nth-child(2){ background-color: green; }
+    .ulcss > li:nth-child(3){ background-color: blue; }
+    .ulcss > li:nth-child(4){ background-color: yellow; }
+    .ulcss > li:nth-child(5){ background-color: hotpink; }
+
+    .olcss{
+        width: 200px; height: 50px; list-style: none; margin: 0; padding: 0;
+    }
+    .olcss >li{ width: 30px; height: 30px; background-color: black; 
+    border-radius: 15px; display: inline-block; margin-top: 150px; cursor: pointer;
+    }
+    .banner{
+        width: 100px; height: 100px; overflow: hidden; position: relative;
+    }
+</style>
+</head>
+<body>
+<div class="banner">
+<ul class="ulcss" id="ulcss">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</div>
+<br>
+<br>
+<br>
+<ol class="olcss" id="olcss">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+</body>
+</html>

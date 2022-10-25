@@ -1,0 +1,104 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scaleable=no,minimum-scale=1.0,maximum-scale=1.0">
+<title>Jquery 8일차 모바일3</title>
+<!--
+<base href="../image/"> 
+base태그 사용시 css 파일, js파일등 모두 
+해당 경로에 있어야만 가능함
+-->
+<script src="../jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="./index3.css?v=<?php echo $date?>">
+<script>
+    $(document).ready(function(){
+        $("#rightbtn").click(function(){
+            //해당 아이디의 대한 오브젝트 가로 길이를 가져올 때 사용함
+            var $width = $("#rightmenu").width();
+            var $width2 = $("#leftmenu").width();
+            if($width2 > 0){
+                $("#leftmenu").animate({
+                    "width":"0"
+                },800); 
+            }
+            if($width==0){ /* 모바일 Jquery는 width:%적용 가능 웹은 XX*/
+                $("#rightmenu").animate({
+                    "width":"95%"
+                },800);  
+            }
+            else{
+                $("#rightmenu").animate({
+                    "width":"0"
+                },800);  
+            }
+        });
+
+        $("#leftbtn").click(function(){
+            var $width = $("#leftmenu").width();
+            var $width2 = $("#rightmenu").width();
+            if($width2 > 0){
+                $("#rightmenu").animate({
+                    "width":"0"
+                },800); 
+            }
+            if($width==0){
+                $("#leftmenu").animate({
+                    "width":"95%"
+                },800);
+            }
+            else{
+                $("#leftmenu").animate({
+                    "width":"0"
+                },800);
+            }
+        });
+
+        $("#logobtn").click(function(){
+            location.reload();
+        });
+    });
+</script>
+</head>
+<body>
+<header class="top">    <!-- 시멘틱 마크업 제일 상단-->
+    <!-- 모바일 상단 로고 부분 -->
+    <div class="m_topdiv">
+        <label id="leftbtn"><img src="../image/buger.svg"></label>
+        <label id="logobtn"><img src="../image/netlogo.png"></label>
+        <label id="rightbtn"><img src="../image/help.svg"></label>
+    </div>
+
+    <!-- PC 상단 부분 -->
+    <div class="topdiv">
+        <ul>
+            <li>HOME</li>
+            <li>LOGIN</li>
+            <li>MEMBER</li>
+            <li>EVENT</li>
+        </ul>
+    </div>
+</header>
+
+<!-- help 버튼 클릭시 나오는 메뉴 -->
+<div class="rightmenu" id="rightmenu"></div>
+<!-- buger 버튼 클릭시 나오는 메뉴 -->
+<div class="leftmenu" id="leftmenu"></div>
+
+<!-- CI & BI -->
+<section class="ci">
+    <div class="logo">
+        <label class="label1"><img src="../image/netlogo.png"></label>
+        <!--
+        <label class="label2">
+            <span style="width: 100%; height: 20px; display: block; cursor: pointer;">바로가기</span>
+        </label>
+        -->
+    </div>
+</section>
+</body>
+</html>

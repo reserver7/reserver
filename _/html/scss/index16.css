@@ -1,0 +1,82 @@
+*, body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.divcss {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  margin: 0 auto;
+  position: relative;
+}
+
+.divcss > label {
+  width: 50px;
+  height: 50px;
+  background-color: skyblue;
+  border-radius: 0 25px 0 25px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 3s;
+          transition-duration: 3s;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+}
+
+.divcss:hover > label {
+  -webkit-transform: rotate(1080deg);
+          transform: rotate(1080deg);
+}
+
+.divbox1 {
+  width: 150px;
+  height: 150px;
+  background-color: #00aa99;
+  position: absolute;
+  border-radius: 3px;
+}
+
+.divbox2 {
+  width: 150px;
+  height: 150px;
+  background-color: #2b3f83;
+  position: absolute;
+  border-radius: 3px;
+  -webkit-transition: all ease 0.8s;
+  transition: all ease 0.8s;
+}
+
+.divbox2:hover {
+  -webkit-transform: translate(20px, 20px);
+          transform: translate(20px, 20px);
+}
+/*# sourceMappingURL=index16.css.map */

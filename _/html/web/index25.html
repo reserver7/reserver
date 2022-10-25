@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML + Javascript(function 및 지역,전역변수 응용3)</title>
+<script>
+    //ex) 010-2222-3333 (SKT,KT,LGT,알뜰폰(SKT,KT,LGT))
+    function abc(){
+        var aa = document.getElementById("a").value;
+        if(aa==""){
+            alert("해당 부분에 숫자값을 입력해 주세요.");
+        }
+        else{
+            bbb(aa);    //사용자가 입력한 값을 bbb라는 함수로 전달
+        }
+    }
+    function bbb(kk){   //bbb함수는 abc함수에서 전달된 값을 kk로 받아 처리
+        var bb;
+        var cc;
+        for(bb=1;bb<10;bb++){
+            cc = kk * bb;
+            document.write(kk+"*"+bb+"="+cc+"<br>");
+        }
+    }
+</script>
+</head>
+<body>
+<input type="text" id="a" maxlength="1">
+<input type="button" value="계산하기" onclick="abc();">
+</body>
+</html>

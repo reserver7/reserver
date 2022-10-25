@@ -1,0 +1,38 @@
+@charset "utf-8";
+@import url("./css11test.css");
+/* @import 단점 : 자주 수정을 할 수 없음 */
+
+.div1 {
+    width:100px; height:100px; background-color:blue;
+    padding-left:30px;
+}
+span { color:black;}
+.div2 { 
+    width:300px; height:200px; background-color:orange;
+    color: yellow; border:1px solid red;
+}
+.div2 > span { color: inherit; border:inherit; width:100px; } 
+/* 노드 기준으로 부모노드에 있는 속성 값을 
+가져와서 자식 노드에 적용할 때 이용됨 
+*/
+.olcss { list-style:decimal; margin:10px; padding:10px; }
+.olcss>li { color: red; width:100px; height:100px; border:1px solid blue;
+background-color: yellowgreen;
+}
+.olcss>li:nth-child(1) { color: unset; border:unset; }
+/* unset : 부모 노드에 적용된 사항 또는 전체 태그관련 속성이 적용되었을 때
+초기화 시키고 싶은 부분을 사용 할 수 있음 
+탭 형태 오브젝트를 on/off 할 때 사용함
+*/
+.tabcss {
+    width:400px; height:50px; 
+}
+.tabcss>li { 
+    width:100px; height:50px; text-align: center; line-height:50px;
+    background-color:blue; border:1px solid #cccccc; color: yellow;
+    float: left;
+}
+.tabcss>li:nth-child(3) { font-weight: bold; }
+.tabcss>li:nth-child(1) { color: unset; background-color: unset;}
+.tabcss>li:nth-child(2) { color: unset; background-color: unset;}
+.tabcss>li:nth-child(4) { color: unset; background-color: unset;}

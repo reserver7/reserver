@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 1일차(오브젝트+핸들링)</title>
+<script src="./jquery.js"></script> <!-- Jquery엔진 탑재(이름에 버젼을 쓸 경우 해킹의 위험노출) -->
+<script>
+    $(document).ready(function(){
+        $("#mid").fadeIn();
+        $("#btn").fadeIn();
+        $("#btn2").click(function(){
+            $("#mid").fadeOut();
+            $("#btn").fadeOut();        
+        });
+        //fadeIn,fadeOut : 서서히 나타남, 서서히 사라짐
+
+        $("#div1").mouseover(function(){    //마우스 오버 핸들링
+            //css를 직접 컨트롤 할 수 있는 기능
+            //$(this).css("color","red");
+            //$(this).css("font-weight","bold");
+            $("#div1_menu").slideDown();    //css 높이만큼 늘어남
+        }); 
+        $("#div1").mouseout(function(){ //마우스 아웃 핸들링
+            //$(this).css("color","");
+            //$(this).css("font-weight","");
+            $("#div1_menu").slideUp();  //css 높이가 0px로 줄어듬
+        }); 
+    //slideDown, Up : Jquery 기본 애니메이션 함수이름 임 (드롭 애니메이션)      
+    });
+</script>
+<style>
+    div {
+        width: 100px; height: 30px; border: 1px solid black;
+        box-sizing: border-box; float: left; text-align: center;
+        line-height: 30px; cursor: pointer; color: blue;
+        
+    }
+    #div1_menu {
+        width: 100px; height: 100px; background-color: blue;
+        clear: both; display: none; /* display: none 해야함 */
+    }
+    #mid { display: none; }
+    #btn { display: none; }
+</style>
+</head>
+<body>
+<div id="div1">메뉴1</div>
+<div id="div2">메뉴2</div>
+<div id="div3">메뉴3</div>
+<div id="div4">메뉴4</div>
+<div id="div1_menu"></div>
+<br><br>
+<input type="text" name="mid" id="mid">
+<input type="button" value="아이디 체크" id="btn">
+<input type="button" value="사라짐" id="btn2">
+</body>
+</html>
+<!--
+    IT 업계 비용
+    -서버비용 (웹호스팅)
+    -도메인비용
+    -트래픽비용
+    -보안비용(방화벽)
+
+    1개의 도메인 당 약 25만원
+    모바일, 웹페이지 별도구성 
+
+    AWS로 변경 - 아마존서버 (DDoS에 취약)
+    -보안업체 : 1년에 1대당 800만원
+
+    -인력비용
+
+    -웹 서버 (백엔드,프론트,퍼블리셔)
+    -이미지 서버 (디자인팀)
+    -DB서버 (데이터베이스 서버)
+    -Backup 서버
+-->

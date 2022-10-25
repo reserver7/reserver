@@ -1,0 +1,9 @@
+@charset "utf-8";
+body{ margin:0; padding:0; }
+
+.inputs{
+    width:150px; height:30px; border: 1px solid #cccccc;
+}
+.btns{
+    width:100px; height:32px; border: 0; background-color: blue; color: white;
+}

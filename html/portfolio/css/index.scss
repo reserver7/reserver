@@ -1,0 +1,345 @@
+@charset "UTF-8";
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 100,300,400,500) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100;300;400;500;600;700;800;900&display=swap');
+/* 한글 font-family: 'Nanum Gothic', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/* 영어 font-family: 'Open Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+html,body,div,span,label,section,aside,footer,header,nav,video,table,tr,td,th{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;  
+}
+a:link,a:visited,a:hover,a:active { text-decoration: none; color: black; }
+section,aside,footer,header,nav,main,span,label{
+    display: block;
+}
+ol,ul,dd{ list-style: none; margin: 0; padding: 0; }
+* { box-sizing: border-box;}
+input:focus { outline: none; }
+button:focus { outline: none; }
+select:focus { outline: none; }
+button { cursor: pointer; }
+p { margin: 0; padding: 0; word-break: break-all; }
+legend { position: absolute; margin: 0; padding: 0; font-size: 0; line-height: 0;
+text-indent: -9999px; overflow: hidden;}
+img { width: 100%; height: auto; object-fit: cover; }
+h1,h2,h3,h4,h5,h6,form,fieldset,img{ margin: 0; padding: 0; border: 0; }
+pre { overflow-x: scroll; font-size: 1; }
+
+@import "basic";
+
+#header{ @include html5(300px); 
+    background: url("../img/top.jpg") no-repeat center center;
+    background-size: cover;
+    filter: grayscale(50%);
+}
+#nav{ @include html5(60px); @include bg(1,#000,""); }
+#title{ @include html5(50px); display: flex; justify-content: center; align-items: center; }
+main{ height: auto;
+    //background: url("../img/middle4.jpg") no-repeat center center;
+    //background-size: cover;
+    @include bg(1,#f2f2f2,"");
+}
+#skill{ @include html5(120px); }
+#portfolio{ 
+    @include html5(auto); 
+    padding-top: 25px; padding-bottom: 25px; box-sizing: border-box;
+}
+#myinfo{ @include html5(500px); @include bg(1,#f2f2f2,""); }
+#level {@include html5(500px); @include bg(1,#f2f2f2,"");  }
+#footer{ 
+    @include html5(50px); background-color: #777; 
+    text-align: center; 
+    &>label{
+        @include font("open",500,15,#fff);
+        height: 50px; line-height: 50px;
+    }
+}
+#contact{ @include html5(300px); @include bg(1,#f2f2f2,""); padding-bottom: 25px; }
+/* 상단 */
+.header_line{
+    @include sizes(100%,30px,0,0,0); 
+    @include position("re"); background-color:#000;
+}
+.header_link{
+    @include flex(0,flex-end,row,"","","");
+    max-width: $view_width1; min-height: 30px; margin: 0 auto; 
+} 
+.header_link > span{
+    @include font("open",500,14,lightgray); letter-spacing: 0.3px;
+    min-height: 30px; line-height: 30px; padding: 0 0 0 10px; cursor: pointer;
+}
+.header_link > span:hover{
+    @include font("open",700,16,"");
+}
+.header_title{
+    @include bg(1,rgb(99, 98, 98),""); opacity: 0.8;
+    @include font("gothic",800,25,#fff);
+    @include flex(1,center,row,center,"",center);
+    max-width: 500px; height: 65px; margin: 0 auto; margin-top: 55px; cursor: pointer;
+    transition: box-shadow 0.25s ease-in-out;
+}
+.header_title:hover{
+    box-shadow: inset -250px 0 0 0 rgb(164, 164, 165),
+    inset 250px 0 0 0 rgb(164, 164, 165);
+}
+.header_domain{
+    @include bg(1,rgb(99, 98, 98),"");
+    @include font("gothic",800,14,#fff);
+    @include flex(1,center,row,center,nowrap,"");
+    width: 220px; height: 55px; cursor: pointer; margin: 0 auto; margin-top: -10px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.header_domain:hover{
+    box-shadow: 0 0 0 5px rgb(164, 164, 165) inset,
+    0 0 0 100px rgba(0,0,0,0.1) inset;
+}
+/* skills */
+.nav_menu { 
+    max-width: $view_width1;
+    margin: 0 auto;
+}
+.ul_menu { 
+    width: 100%;
+    height: 60px;
+}
+.ul_menu > li {
+    display: inline-block; line-height: 60px; height: 60px;
+    text-align: center;  
+    @include font("gothic",500,20,lightgray);
+    min-width:calc(100%/5.1);
+    box-sizing: content-box;
+    cursor: pointer;
+    //transition: box-shadow 0.25s ease-in-out;
+    transition: box-shadow 0.34s ease, background 0.34s ease;
+}
+.ul_menu > li:hover{
+    box-shadow:inset 0 0 0 5px rgb(82, 82, 82);
+    @include font("gothic",500,22,coral);
+}
+.myskill { 
+    max-width: $view_width1;
+    margin: 0 auto;
+    height: 120px; 
+    @include flex(1,center,row,center,"","");
+}
+.myskill > ol {
+    width: 100%; height: 120px;
+    min-height:120px;
+    @include flex(1,space-around,row,center,wrap,center);
+}
+.myskill > ol > li {
+    max-height: 40px; text-align: center; line-height: 40px;
+    display: inline-block; cursor: pointer;
+    //background-color: black;
+    @include font("gothic",300,15,"");
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 5px 5px 5px 0 rgba(221, 220, 220, 0.12);
+}
+.myskill > ol > li:hover{
+    @include font("gothic",300,15.5,coral);
+}
+$i:1;
+@for $i from 1 to 14{
+    .myskill_ol>li:nth-of-type(#{$i}){
+        width: nth($skill_li,$i);
+        max-width: nth($skill_li,$i);
+    }
+}
+.portfolio_css{
+    max-width: $view_width1; margin: 0 auto; height: auto;
+    text-align: center;
+    //@include flex(1,space-around,row,center,wrap,center);
+}
+.p_span{
+    @include position("re");
+    @include sizes(195px,250px,0,5px,1px solid #ccc); 
+    margin-bottom: 5px; display: inline-block; vertical-align: middle;
+    background-color: rgba(192, 184, 184, 0.5);
+}
+.label_1,.label_2{
+    width: 100%; text-align: center;
+}
+.label_1{
+    @include font("noto",700,17,coral); min-height: 30px; height: 30px; line-height: 30px;
+}
+.label_2{
+    @include font("noto",500,13,""); min-height: 220px; height: 220px;
+    @include flex(0,center,row,center,"",""); 
+    //font-size: 0.8vw;
+    //1vh = 8px
+    //1vw = 5px 가로길이가 500px
+}
+/* 포트폴리오 */
+.info_div{
+    max-width: $view_width1; margin: 0 auto; height: auto;
+    text-align: center; padding-top: 20px; box-sizing: content-box;
+}
+.info_title{
+    @include font("gothic",800,25,#555); margin-bottom: 20px;
+}
+.info_banner{
+    @include sizes(1000px,300px,auto,0,"");
+    overflow: hidden; @include bg(1,#fff,"");
+}
+.info_btn{ width: 1000px; margin: 0 auto; margin-top: 10px; }
+.info_btn>label{ width: 100px; display: inline-block; cursor: pointer; }
+.info_ul{ 
+    @include sizes(1000px,300px,0,0,0);
+    &>li{
+        @include sizes(1000px,300px,0,0,0); float: left; cursor: pointer;
+        &>span{ float: left; }
+    } 
+}
+.info_img{
+    @include sizes(40%,300px,0,10px,0);
+    @include flex(0,center,row,center,"",""); 
+    &>img{
+        @include sizes(300px,250px,0,0,0); object-fit: cover;
+        box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.12);
+    }
+}
+.info_list{
+    @include sizes(60%,300px,0,10px,0); 
+    @include flex(0,space-around,column,flex-start,"","");
+    &>label{
+        height: 30px; line-height: 30px; cursor: pointer;
+        @include flex(0,flex-start,row,center,"","");
+        @include font("gothic",600,14,#555);
+        &>em{
+            @include font("gothic",800,16,#555); margin-right: 10px;
+            font-style: normal;
+        }
+    }
+    &>label:last-of-type{
+        height: 50px; margin-top: 10px;
+        line-height: 25px; text-align: left;
+    }
+}
+@for $f from 1 to 6{
+    .info_list>label:nth-of-type(#{$f}){
+        @if($f==1){ width: 40%; }
+        @else if($f==4){ width: 20%; }
+        @else{ width: 100%; }
+    }
+}
+/* level */
+.my_level{ max-width: $view_width1; margin: 0 auto; padding-top: calc(50px/2); }
+.my_levelol{ 
+    @include sizes(100%,450px,0,0,0); @include bg(1,white,""); 
+    &>li { float: left; }
+}
+.level_li{ width: calc(100%/2); height: 450px; }
+.map_li{ 
+    @include position("re");
+    width: calc(100%/2); height: 450px; overflow: hidden; 
+}
+.map{ 
+    @include position("ab");
+    width: calc(#{$view_width1}/2); height: 450px;
+}
+.mapbtn{
+    @include position("ab"); z-index: 10; height: 30px; top: 20px; left: 10px;
+}
+.btn1,.btn2{ 
+    @include sizes(80px,30px,0,0,0); 
+    @include font("noto",400,15,#fff); text-align: center; 
+    line-height: 30px; display: inline-block; cursor: pointer;
+    background-color: #000; border-radius: 5px;
+}
+.btn2{ background-color: dimgray; }
+.level_ul{
+    @include sizes(100%,auto,0,0,0); 
+}
+.level_ul >li{
+    @include sizes(100%,25px,0,0,""); 
+    @include font("gothic",700,16,#555);
+    line-height: 25px;
+    display: flex; padding-left: 10px;
+    &>em{
+        font-style: normal; padding-left: 10px;
+        @include font("gothic",700,14,#555);
+    }
+}
+@for $z from 6 to 13{
+    .level_ul >li:nth-of-type(#{$z}){
+        @include sizes(100%,30px,0,0,""); margin-top: 15px;
+        line-height: 30px;
+        &>span{ 
+            @include sizes(30%,30px,0,0,0); padding-left: 10px;
+            @include font("gothic",700,18,cornflowerblue);
+        }
+        &>div{
+            @include sizes(50%,30px,0,0,2px solid #ccc); border-radius: 10px;
+            @include font("gothic",700,15,""); 
+            @include position("re"); box-sizing: border-box; text-align: right;
+            &>label{
+                @include position("ab"); z-index: 10;
+                height: 100%; background-color: #ccc;
+                border-radius: 10px; box-sizing: border-box; padding-right: 5px;
+                line-height: 25px;
+            }
+        }
+    }
+}
+/* contact US */
+.contact_div{ max-width: $view_width1; margin: 0 auto; padding-top: 20px;
+&>span{
+    text-align: center;
+}}
+.contact_box{
+    @include sizes(1000px,auto,auto,15px,"");
+    @include bg(1,#fff,"");
+    &>span{
+        @include sizes(100%,auto,0,0,0); margin-top: 10px;
+        &>input{
+            @include inputs(30%,30px,1px solid #ccc,5px);
+            @include bg(1,#f2f2f2,"");
+        }
+        &>textarea{
+            @include inputs(99%,80px,1px solid #ccc,5px);
+            @include bg(1,#f2f2f2,"");
+        }
+    }
+    &>span:nth-of-type(3){
+        &>input{
+            @include inputs(40%,30px,1px solid #ccc,5px);
+        }
+    }
+    &>label{
+        @include sizes(100%,auto,auto,0,0); margin-top: 10px; text-align: center;
+        &>button{
+            @include btns(120px,40px,0,#fff,#555);
+        }
+        &>button:hover{
+            @include bg(1,#333,"");
+        }
+    }
+}
+.header_mobile{ display: none; }
+.up_page{
+    @include sizes(40px,40px,0,0,0);
+    @include bg(1,#ccc,"");
+    @include position("fi");
+    z-index: 99; border-radius: 25px; top: 90%; text-align: center;
+    display: none; line-height: 40px; cursor: pointer;
+    &>img{
+        width: 20px; object-fit: cover; vertical-align: middle;
+    }
+}
+//반응형 view
+@include pc2;
+@include tab1;
+@include tab2;
+@include tab3;
+@include mob1;
+@include mob2;

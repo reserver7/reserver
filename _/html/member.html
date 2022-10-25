@@ -1,0 +1,82 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title></title>
+</head>
+<body>
+<form method="POST" action="">
+<textarea cols="80" rows="10">
+[회원가입 약관]
+제1조
+"본 서비스는"...
+</textarea>
+<br>
+<input type="radio" name="agree">동의함
+<input type="radio" name="agree" checked="true">동의안함
+<br>
+<table border="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="center" bgcolor="yellow" width="150">아이디</td>
+        <!--  placeholder : 라벨을 뜻합니다. 도움말 같은 형태로 표시합니다. (html5.0)-->
+        <td width="350"><input type="text" name="mid" value="" placeholder="아이디를 입력하세요!" maxlength="16">
+        </td>
+    </tr>
+    <tr>
+        <td align="center" bgcolor="yellow">패스워드</td>
+        <td>
+            <input type="password" name="mpass" value="" placeholder="패스워드를 입력하세요!" maxlength="10">
+        </td>
+    </tr>
+    <tr>
+        <td align="center" bgcolor="yellow">패스워드 확인</td>
+        <td>
+            <input type="password" name="mpass2" value="" placeholder="동일한 패스워드를 입력하세요!" maxlength="10">
+        </td>
+    </tr>
+    <tr>
+        <td align="center" bgcolor="yellow">이메일</td>
+        <td>
+            <input type="text" name="email1" value=""> @
+            <select name="email2">
+                <option>naver.com</option>
+                <option>nate.com</option>
+                <option>gmail.com</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" bgcolor="yellow">연락처</td>
+        <td>
+            <select name="telc">
+                <option>SKT</option>
+                <option>KT</option>
+                <option>LGT</option>
+                <option>알뜰폰</option>
+            </select>
+            <input type="text" name="tel1" maxlength="3"> -
+            <input type="text" name="tel2" maxlength="4"> -
+            <input type="text" name="tel3" maxlength="4">
+        </td>
+    </tr>
+    <tr>
+        <td align="center" colspan="2">
+        <input type="button" value="회원가입">
+        <input type="reset" value="초기화">  
+        </td>
+    </tr>
+</table>
+<br><br><br>
+<!-- readonly : 읽기전용이며, 사용자가 직접 입력하지는 못함 (백엔드에게 전달됨)-->
+<input type="checkbox" name="s1">SMS 수신
+<input type="checkbox" name="s2">이메일 수신
+<input type="checkbox" name="s3">광고, 이벤트 전화수신
+<br><br>
+<input type="text" name="addr1" readonly>
+<input type="button" value="주소찾기">
+<br><br>
+<!-- disabled : 읽기전용 + 사용하지 않는 입력값 (백엔드에게 전달하지 않음)-->
+아이디 : <input type="text" value="abcd" disabled>
+</form>
+</body>
+</html>

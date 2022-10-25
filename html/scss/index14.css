@@ -1,0 +1,71 @@
+*, body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.radios {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 500px;
+  height: 40px;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.radios > label {
+  display: block;
+  margin-right: 5px;
+  font-size: 12px;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.radiocss {
+  position: relative;
+  margin-right: 10px;
+}
+
+.radiocss::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid pink;
+  border-radius: 20px;
+  background-color: white;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+}
+
+.radiocss::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.radiocss:checked::after {
+  background-color: pink;
+}
+/*# sourceMappingURL=index14.css.map */

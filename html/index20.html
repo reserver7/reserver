@@ -1,0 +1,51 @@
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>HTML4.0 + CSS2.0 (position)</title>
+<style>
+body { margin:0; padding:0;}
+.div1 { width:100px; height:100px; background-color: blue;
+position:absolute; top:100px;
+}
+.div2 { width:100px; height:100px; background-color: red;
+position:absolute; left:100px; top:100px;
+}
+.div3 { width:100px; height:100px; background-color: green;
+position:absolute;
+}
+
+
+.divbox1 { width:50px; height:50px; background-color:black;
+position:absolute; left:-50px;
+}
+
+/* 
+display: 오브렉트를 View 할수 있도록 컨트롤
+(block:보이게, none:보이지 않음)
+*/
+/* 
+position: 각 오브젝트의 특성 변경하게 됩니다.
+(
+고정(static)-자신의 범위가 확고함
+반고정(relative)-자신의 범위는 있으나 좌,우를 편하게 움직일 수 있습니다.
+자유형태(absolute)-
+모든 페이지에 구역 없이 움직일 수 있음 (z-index,left,top,bottom,right)
+부모가 (relative) 우선순위로 하게 됩니다.
+z-index:깊이(우선순위로 보여지는 부분 숫자가 크면 앞으로 출력)
+)
+*/
+</style>
+</head>
+<body>
+<!--
+<div class="div1">
+    <div class="divbox1"></div>
+</div>
+-->
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+
+</body>
+</html>

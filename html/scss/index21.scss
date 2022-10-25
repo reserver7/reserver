@@ -1,0 +1,54 @@
+@charset "UTF-8";
+@mixin base {
+    margin: 0; padding: 0; line-height: 1; box-sizing: border-box;
+}
+body{ @include base; }
+@mixin perserve($p) {
+    width: 200px; height: 200px; transform-style: preserve-3d;
+    perspective: $p+px; position: relative; margin: 0 auto; top:100px;
+    border: 1px solid black; perspective-origin: 150% 150%;
+    //perspective-origin 원근법
+}
+.divbox1{
+    @include perserve(900); 
+}
+@mixin trans($part,$deg,$z,$color) {
+    width: 100px; height: 100px; position: absolute;
+    text-align: center; line-height: 100px; background-color: $color;
+    @if($part=="X"){
+        transform: rotateX($deg+deg) translateZ($z+px);
+    }
+    @else if($part=="Y"){
+        transform: rotateY($deg+deg) translateZ($z+px);
+    }
+    @else{
+        transform: translateZ($z+px);
+    }
+}
+@keyframes boxs{
+    0%{
+        @include trans("Z",0,50,blue);
+    }
+    100%{
+        @include trans("Z",30,100,blue);
+    }
+}
+.front{ 
+    @include trans("Z","",50,blue); opacity: 0.8;
+    animation: boxs 2s linear infinite;
+}
+.back{
+    @include trans("Y",180,50,green); 
+    }
+.right{ 
+    @include trans("Y",90,50,yellowgreen); 
+}
+.left{ 
+    @include trans("Y",-90,50,purple); 
+}
+.top{ 
+    @include trans("X",90,50,orange); 
+}
+.bottom{ 
+    @include trans("X",-90,50,pink); 
+}

@@ -1,0 +1,104 @@
+@charset "UTF-8";
+/* 폰트 */
+/* 영어&한글 font-family: 'Noto Sans KR', sans-serif; (font-weight 300,500) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500&display=swap');
+/* 한글 font-family: 'Nanum Pen Script', cursive; (400) */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+/* 영어 font-family: 'Big Shoulders Stencil Display', cursive; (100,300,400,500,600,700,800,900) */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100;300;400;500;600;700;800;900&display=swap');
+
+/* 기본셋팅 사항 */
+html,body,div,span,label,section,aside,footer,header,nav,video,table,tr,td,th{
+    margin: 0;
+    padding: 0; 
+    border: 0;
+    font-size: 100%;
+    font: inherit;  
+    /* 부모요소에서 상속 받아 사이즈, 글씨체, 색상 모든 사항을 같이 적용함 */
+}
+section,aside,footer,header,nav,main,span,label{
+    display: block;
+}
+body{
+    line-height: 1; 
+    /* 폰트 사용시 여러 단락 사용할 때 서로 높이가 맞지 않는 경우가 있음 
+    해당 부분으로 정확하게 수치를 맞춰서 높이를 잡을 수 있음
+    */
+    -webkit-text-size-adjust: none; /* 크롬, 사파리 기준 */
+    -moz-text-size-adjust: none;    /* 모질라, 파이어폭스 기준 */
+    -ms-text-size-adjust: none;     /* 익스플로어 기준 */
+    text-size-adjust: none;         /* Edge 기준 */
+}
+ol,ul{ list-style: none; margin: 0; padding: 0; }
+* { box-sizing: border-box; } /* *:모든 태그에 적용 */
+img { width: 100%; }
+
+/* FadeIn 배너 */
+.navcss { height: 500px; }
+.sectioncss{ 
+    width: 1000px; height: 500px; border: 1px solid black; 
+    margin: 0 auto; margin-top: 50px; position: relative;
+}
+.banner_ul{ width: 100%; height: 500px; position: relative; }
+.banner_ul > li{ width: 100%; height: 500px; position: absolute; display: none; }
+.banner_ul > li:nth-of-type(1){ display: block; }
+/* disc */
+.disc_ol{ 
+    width: 180px; height: 20px; position: relative; text-align: center; 
+    line-height: 20px; top: -40px; margin: 0 auto; 
+}
+.disc_ol > li { 
+    width: 40px; height: 5px; display: inline-block; background-color: black;
+    cursor: pointer; vertical-align: 4px; border-radius: 5px;
+}
+.disc_ol > li:nth-of-type(1){ background-color: tomato; }
+/* button */
+.sectioncss >span{
+    width: 40px; height: 40px; position: absolute; z-index: 10;
+    top: 50%; margin-top: -20px; cursor: pointer; display: none;
+}
+.sectioncss > span:nth-of-type(1) { left: 5px; }
+.sectioncss > span:nth-of-type(2){ right: 5px; }
+/* banner 애니메이션 부분 */
+.banner_ul > li > span{ position: absolute; }
+.banner_ul > li:nth-of-type(1) > span:nth-of-type(1){
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 34px; font-weight: 500; color: #3982ab; top: 140px; left: 80px;
+    letter-spacing: -1px; display: none;
+}
+.banner_ul > li:nth-of-type(1) > span:nth-of-type(2){
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 50px; font-weight: 500; color: #3982ab; top: 190px; left: 80px;
+    word-spacing: -2px; display: none;
+}
+.banner_ul > li:nth-of-type(1) > span:nth-of-type(3){
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px; font-weight: 300; color: #3982ab; top: 290px; left: 80px;
+    letter-spacing: -1px; display: none;
+}
+.banner_ul > li:nth-of-type(2) > span:nth-of-type(1){
+    width: 150px; height: 30px; border: 1px solid black; text-align: center; line-height: 30px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 17px; font-weight: 500; letter-spacing: -1px; 
+    top: 72%; left: 80px; display: none; cursor: pointer;
+}
+.banner_ul > li:nth-of-type(3) > span:nth-of-type(1){
+    width: 150px; height: 30px; border: 1px solid black; text-align: center; line-height: 30px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 17px; font-weight: 500; letter-spacing: -1px;
+    top: 72%; left: 80px; display: none; cursor: pointer;
+}
+.banner_ul > li:nth-of-type(4) > span:nth-of-type(1){
+    font-family: 'Nanum Pen Script'; text-align: center;
+    font-size: 50px; font-weight: 400; top: 170px; left: 38%; 
+    letter-spacing: -1px; display: none;
+}
+.banner_ul > li:nth-of-type(4) > span:nth-of-type(2){
+    font-family: 'Nanum Pen Script'; text-align: center;
+    font-size: 50px; font-weight: 400; top: 220px; left: 35%; 
+    letter-spacing: -1px; display: none;
+}
+.banner_ul > li:nth-of-type(4) > span:nth-of-type(3){
+    font-family: 'Nanum Pen Script';
+    width: 150px; height: 30px; border: 1px solid black; text-align: center; line-height: 30px;
+    font-size: 25px; font-weight: 400; top: 320px; left: 42%;
+    letter-spacing: -1px; display: none; cursor: pointer;
+}

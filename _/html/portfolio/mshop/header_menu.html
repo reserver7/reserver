@@ -1,0 +1,31 @@
+<style>
+	.header_menu_outline { width:360px; height:25px; }
+	.a_topout {width:360px; height:25px; font-size:13px; background-color:#000; color:#fff;}
+	.a_topout ul {list-style:none; padding:0; margin:0; }
+	.a_topout ul li {float:right; text-align:center; height: 25px; line-height: 25px;}
+	.a_topbar {width:10px;}
+	.a_top_menu { width:60px; cursor: pointer; }
+</style>
+<div class="header_menu_outline">
+	<div class="a_topout">
+		<ul>
+			<li id="cart" onclick="cart();" class="a_top_menu">주문조회</li>
+			<li class="a_topbar">|</li><li class="a_top_menu">회원가입</li>
+			<li class="a_topbar">|</li><li id="login-member" class="a_top_menu" onclick="login(0);">로그인</li>
+		</ul>
+	</div>
+</div>
+<script>
+    function cart(){
+        location.href = "./cart.html";
+    }
+    function login(num){
+        if(num==0){
+            document.getElementById("pop_member_bg_outline").style.display = "block";
+        }
+        else{
+            document.getElementById("pop_member_bg_outline").style.display = "none";
+        }
+
+    }
+</script>

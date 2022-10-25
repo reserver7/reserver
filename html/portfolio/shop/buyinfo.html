@@ -1,0 +1,326 @@
+<meta charset="UTF-8">
+<?php
+    include "buy.php";
+?>
+<!--결제 및 배송정보 입력 파트-->
+<nav class="order_outline">
+<form name="order_f" id="order_f">
+<input type="hidden" name="version" value="1.0">
+<input type="hidden" name="goodsno" value="<?php echo $_POST['goodsno']?>">
+<input type="hidden" name="mid" value="">
+<input type="hidden" name="goodname" id="goodname" value="<?php echo $_POST['goodname']?>"><!---->
+<input type="hidden" name="oid" value="">
+<input type="hidden" name="price" id="price" value="<?php echo $_POST['price']?>"><!---->
+<input type="hidden" name="price2" id="price2" value="">
+<input type="hidden" name="goodea" id="goodea" value="<?php echo $_POST['goodea']?>"><!---->
+<input type="hidden" name="currency" value="WON">
+<input type="hidden" name="mKey" value="">
+<input type="hidden" name="gopaymethod" value="">
+<input type="hidden" name="offerPeriod" value="">
+<input type="hidden" name="payViewType" value="overlay">
+<input type="hidden" name="charset" value="UTF-8">
+<input type="hidden" name="options" id="options" value="<?php echo $_POST['product_option']?>">
+<input type="hidden" name="returnUrl" value="http://reserver1.dothome.co.kr/portfolio/shop/return.php">
+
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+    <!-- 주문 상세내역 -->
+    <div class="order_detail">
+        <span class="order_title">ORDER</span>
+        <div class="order_view">
+            <span class="order_stitle">주문상세내역</span>
+            <ul class="order_css order_ul">
+                <li>상품/옵션 정보</li>
+                <li>수량</li>
+                <li>상품금액</li>
+                <li>할인/적립</li>
+                <li>합계금액</li>
+                <li>배송비</li>
+            </ul>
+            <ol class="order_css order_ol">
+                <li>
+                    <span id="order_img">
+                        <img style="width: 100%; object-fit: cover;">
+                    </span>
+                    <span>
+                        <label id="order_pnm"></label>
+                        <label id="order_op"></label>
+                    </span>
+                </li>
+                <li id="order_ea"></li>
+                <li id="order_money"></li>
+                <li id="order_dcnum"></li>
+                <li id="order_total1"></li>
+                <li>기본 - 금액별배송비<br>2,500원</li>
+            </ol>
+        </div>
+    </div>
+    <span class="order_basket"><a href="./cart.html">장바구니 가기</a></span>
+    <div class="order_pay">
+        <ul>
+            <li>총 상품금액 <em id="order_total2"></em>원</li>
+            <li><img src="./images/plus.png"><em style="vertical-align: 5px;">배송비</em><em style="vertical-align: 5px;">2,500원</em></li>
+            <li><img src="./images/total.png"><em id="order_total3"></em></li>
+        </ul>
+        <span>적립예정 마일리지 0원</span>
+    </div>
+    <!-- 주문 상세내역 끝 -->
+    <!-- 주문자 정보 -->
+    <div class="order_info">
+        <span class="order_stitle">주문자 정보</span>
+        <div class="order_div">
+            <ol class="info_ol">
+                <li>
+                    <span>주문하시는 분</span>
+                    <label><input type="text" name="buyername" id="buy_name" class="buy0"></label>
+                </li>
+                <li>
+                    <span>주소</span>
+                    <label><input type="text" name="order_post" id="order_post" class="buy1" maxlength="5"> <input type="text" name="order_addr1" id="order_addr1" class="buy2"> <input type="text" name="order_addr2" id="order_addr2" class="buy3"></label>
+                </li>
+                <li>
+                    <span>전화번호</span>
+                    <label><input onkeypress="keyp(this.value,'buy_tel')" type="text" name="buy_tel" id="buy_tel" class="buy4" placeholder="- 없이 입력하세요" maxlength="11"></label>
+                </li>
+                <li>
+                    <span>휴대폰 번호</span>
+                    <label><input onkeypress="keyp(this.value,'buy_hp')" type="text" name="buyertel" id="buy_hp" class="buy5" placeholder="- 없이 입력하세요" maxlength="11"></label>
+                </li>
+                <li>
+                    <span>이메일</span>
+                    <label>
+                        <input type="text" name="buyeremail" id="buy_email">
+                        <select onchange="buy_select(this.value);">
+                            <option value="" selected>직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="daum.com">daum.com</option>
+                            <option value="hanmail.com">hanmail.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                        </select>
+                    </label>
+                </li> 
+            </ol>
+        </div>
+    </div>
+    <!-- 주문자 정보 끝-->
+    <!-- 배송정보 -->
+    <div class="delivery_info">
+        <span class="order_stitle">배송정보</span>
+        <div class="delivery_div">
+            <ol class="delivery_ol">
+                <li>
+                    <span>배송지 확인</span>
+                    <label>
+                        <span>
+                            <label for="a0"><input type="radio" name="receiver_delpart" id="a0" value="기본 배송지" checked> 기본 배송지</label>
+                            <label for="a1"><input type="radio" name="receiver_delpart" id="a1" value="최근 배송지"> 최근 배송지</label>
+                            <label for="a2"><input type="radio" name="receiver_delpart" id="a2" value="신규 배송지"> 신규 배송지</label>
+                            <label for="a3"><input type="radio" name="receiver_delpart" id="a3" value="주문자정보와 동일"> 주문자정보와 동일</label>
+                            <button type="button">배송지 관리</button>
+                        </span>
+                    </label>
+                </li>
+                <li>
+                    <span>받으실 분</span>
+                    <label><input type="text" name="receiver_name" id="receiver_name" class="del0"></label>
+                </li>
+                <li>
+                    <span>받으실 곳</span>
+                    <label>
+                        <span><input type="text" name="receiver_post" id="receiver_post" class="info_post postcodify_postcode5 del1" readonly><button type="button" id="address_btn">우편번호검색</button></span>
+                        <span><input type="text" name="receiver_addr" id="receiver_addr" class="postcodify_address del2" readonly><input type="text" name="receiver_addr2" id="receiver_addr2"  class="del3"></span>
+                        <span><input type="checkbox" id="addr_ck"><label for="addr_ck">나의 배송지에 추가합니다.</label></span>
+                    </label>
+                </li>
+                <li>
+                    <span>전화번호</span>
+                    <label><input onkeypress="keyp(this.value,'receiver_tel')" type="text" name="receiver_tel" id="receiver_tel"  class="del4" placeholder="- 없이 입력하세요" maxlength="11"></label>
+                </li>
+                <li>
+                    <span>휴대폰 번호</span>
+                    <label><input onkeypress="keyp(this.value,'receiver_hp')" type="text" name="receiver_hp" id="receiver_hp"  class="del5" placeholder="- 없이 입력하세요" maxlength="11"></label>
+                </li>
+                <li>
+                    <span>요청 사항</span>
+                    <label><input type="text" name="receiver_say" id="receiver_say"></label>
+                </li>
+                <li>
+                    <span>회원정보 반영</span>
+                    <label><input type="checkbox" id="info_ck"><label for="info_ck">위 내용을 회원 정보에 반영합니다.<em>(주소/전화번호/휴대폰번호)</em></label></label>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- 배송정보 끝 -->
+    <!-- 결제정보-->
+    <div class="pay_info">
+        <span class="order_stitle">결제정보</span>
+        <div class="pay_div">
+            <ul class="pay_ul">
+                <li>
+                    <span>상품 합계 금액</span>
+                    <label id="order_total4"></label>
+                </li>
+                <li>
+                    <span>배송비</span>
+                    <label>2,500원</label>
+                </li>
+                <li>
+                    <span>할인 및 적립</span>
+                    <label>
+                        <span>할인 : <em>(-) 0원</em> <em>( 상품 0원, 회원 0원, 쿠폰 0원)</em></span>
+                        <span>적립 마일리지 : <em>(+) 0원</em> <em>( 상품 0원, 회원 0원, 쿠폰 0원)</em></span>
+                    </label>
+                </li>
+                <li>
+                    <span>쿠폰 사용</span>
+                    <label><button type="button">쿠폰 조회 및 적용</button></label>
+                </li>
+                <li>
+                    <span>마일리지 사용</span>
+                    <label>
+                        <span><input type="text" name="mileage_use" readonly> 원 <em>(보유 마일리지 : 0원)</em></span>
+                        <span>※ 0원 이상 보유해야 사용이 가능합니다.</span>
+                    </label>
+                </li>
+                <li>
+                    <span>예치금 사용</span>
+                    <label><input type="text" name="deposit_use">&nbsp;원<input type="checkbox" id="deposit_ck"><em><label for="deposit_ck">전액 사용하기</label></em><em>(보유 예치금 : 0원)</em></label>
+                </li>
+                <li>
+                    <span>최종 결제 금액</span>
+                    <label id="order_total5"><em>원</em></label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 결제정보 끝-->
+    <!-- 결제수단 선택 / 결제 -->
+    <div class="pay_choice">
+        <span class="order_stitle">결제수단 선택 / 결제</span>
+        <div class="pay_c_div">
+            <ol class="pay_c_ol">
+                <li>
+                    <span id="pays">
+                        <input type="radio" name="gopaymethod" id="basic_pay" value="directbank"><label for="basic_pay">일반결제</label>
+                        <input type="radio" name="gopaymethod" id="basic_pay2" value="Card"checked><label for="basic_pay2">카드결제</label>
+                        <input type="radio" name="gopaymethod" id="basic_pay3" value="HPP"><label for="basic_pay3">휴대폰결제</label>
+                    </span>
+                </li>
+                <li class="direct">
+                    <span><input type="radio" id="un_bank" checked> <label for="un_bank">무통장입금</label></span>
+                    <span>( 무통장 입금의 경우 입금확인 후 부터 배송단계가 진행됩니다 )</span>
+                </li>
+                <li class="direct">
+                    <span>입금자명<input type="text" name="banksend_name" id="banksend_name"></span>
+                    <span>입금은행
+                        <select id="bank_select">
+                            <option value="">선택하세요</option>
+                            <option value="국민은행">국민은행</option>
+                            <option value="농협">농협</option>
+                            <option value="신한은행">신한은행</option>
+                            <option value="우리은행">우리은행</option>
+                            <option value="카카오뱅크">카카오뱅크</option>
+                        </select>
+                    </span>
+                </li>
+                <li class="direct">
+                    <span>현금영수증/계산서 발행<input type="radio" name="choice_tax" id="choice_tax0" checked> <label for="choice_tax0">신청안함</label><input type="radio" name="choice_tax" id="choice_tax1"> <label for="choice_tax1">세금계산서</label></span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="pay_total">
+        <span>최종 결제 금액 <em id="order_total6"></em></span>
+    </div>
+    <!-- 결제수단 선택 / 결제 끝 -->
+    <!-- 결제하기 버튼  -->
+    <div class="pay_btn_box">
+        <span><input type="checkbox" value="Y" id="pay_ck"><label for="pay_ck">(필수)<em>구매하실 상품의 결제정보를 확인하였으며, 구매진행에 동의합니다.</em></label></span>
+        <span><button type="button" onclick="pay_btn();">결제하기</button></span>
+    </div>
+</form>
+</nav>
+<script>
+    $(function(){
+        const $arr = JSON.parse('<?php echo $prints; ?>');
+        console.log($arr);
+        $($arr).each(function($ono,$onm){
+            $("#order_img>img").attr("src",$onm.product_img);
+            $("#order_pnm").text($onm.product_nm);
+            $("#order_op").text("옵션사항 : "+$("#options").val());
+            $("#order_ea").text($("#goodea").val());
+            $("#order_money").text(Number($onm.product_money).toLocaleString()+"원");
+            if($onm.product_dc=="Y"){   //할인 적용
+                if($onm.product_dcpart=="P"){
+                    $("#order_dcnum").text($onm.product_dcnum+"%");
+                }
+                else{
+                    $("#order_dcnum").text(Number($onm.product_dcnum).toLocaleString()+"원");
+                }
+            }
+            else{   //할인 미적용
+                $("#order_dcnum").text(" - ");
+            }
+            //합계금액 = 총 상품금액(1,2,4), 배송비 포함 결제금액(3,5,6)
+            let $ow = 1;
+            while($ow<=6){
+                if($ow==1 || $ow==4){
+                    $("#order_total"+$ow).text(Number($("#price").val()).toLocaleString()+"원");
+                }
+                else if($ow==2){
+                    $("#order_total"+$ow).text(Number($("#price").val()).toLocaleString());
+                }
+                else{
+                    $("#order_total"+$ow).text((Number($("#price").val())+2500).toLocaleString()+"원");
+                }
+                $ow++;
+            }
+            $("#price2").val((Number($("#price").val())+2500)); //최종결제금액 백엔드 전달
+            $("#order_post").val("12345");
+            $("#order_addr1").val("서울시 종로3가 국일빌딩");
+            $("#order_addr2").val("5F 그린아트컴퓨터");
+            let $df;
+            for($df=0;$df<=3;$df++){
+                if($df==3){
+                    $("#a"+$df).click(function(){
+                        let $radio_n = 0;
+                        do{
+                            $(".del"+$radio_n).val($(".buy"+$radio_n).val());
+                            $(".del"+$radio_n).css("background-color","#eee");
+                            $(".del"+$radio_n).attr("readonly",true);
+                            $radio_n++;
+                        }while($radio_n<=5); 
+                        $("#address_btn").unbind("click");
+                    });
+                }
+                else if($df==0 || $df==2){
+                    $("#a"+$df).click(function(){
+                        let $radio_n = 0;
+                        do{
+                            $(".del"+$radio_n).val("");
+                            $(".del"+$radio_n).css("background-color","");
+                            $(".del"+$radio_n).attr("readonly",false);
+                            if($radio_n==1 || $radio_n==2){
+                                $(".del"+$radio_n).attr("readonly",true);
+                            }
+                            $radio_n++;
+                        }while($radio_n<=5);
+                        $("#address_btn").postcodifyPopUp();
+                    });
+                }
+            }
+        });
+
+        $("#pays>input").click(function(){
+            var $input_node = $(this).index();
+            if($input_node==0){
+                $(".direct").attr("style","display:flex !important");
+                //css !important(X), attr !important(O)
+            }
+            else{
+                $(".direct").attr("style","display:none !important");
+            }
+        });
+    });
+</script>

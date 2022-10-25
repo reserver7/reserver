@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/*
+@mixin boxs {
+    .box2{
+        @content;   //include에서 boxs를 호출하고, @content가 발동이 되면서 include에 있는
+        //모든 오브젝트 속성을 그대로 가져오는 형태 임
+    }
+}
+@include boxs{
+    width: 100px; height: 100px; border: 1px solid black;
+}
+*/
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media screen and (min-width: 1100px) {
+  body {
+    background-color: black;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    background-color: blue;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: green;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    background-color: yellowgreen;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  body {
+    background-color: purple;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  body {
+    background-color: pink;
+  }
+}
+/*# sourceMappingURL=index22.css.map */

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>test</title>
+<style>
+    body{ margin: 0; padding: 0;}
+    button{ cursor: pointer; box-sizing: border-box;}
+    .divcss{
+        width: 1000px; height: 400px; border: 1px solid #cccccc;
+        box-sizing: border-box; margin: 0 auto; font-size: 12px;
+    }
+    p{
+        padding-top: 20px; padding-bottom: 20px; box-sizing: border-box; 
+        font-size: 14px; font-weight: bold; padding-left: 50px;
+    }
+    .btn1{
+        width: 100px; height: 40px; background-color: #0067b8; color: #ffffff;
+        margin-left: 20px;
+    }
+    .tbcss > tr > td > div{
+        width: 120px; height: 40px; margin: 0 auto; text-align: center; color: #333333;
+        font-weight: bold; line-height: 40px;
+    }
+    .text{
+        width: 200px; height: 30px; margin-left: 10px;
+    }
+    .text2{
+        width: 400px; height: 30px; margin-left: 10px;
+    }
+    ul {
+        width: 780px; height: 30px; list-style: none; margin: 0; padding: 0;
+    }
+    .licss1{
+        width: 200px; height: 30px; 
+    }
+    .btncss{
+        width: 230px; height: 30px; margin: 0 auto; 
+    }
+    .btncss > button{
+        width: 100; height: 30px; color: #ffffff; text-align: center;
+        background-color: #0067b8;
+    }
+    .btncss > button:nth-child(2){
+        background-color: #aaaaaa; margin-left: 30px;
+    }
+
+</style>
+</head>
+<body>
+    <div class="divcss">
+        <p>간편회원가입</p>
+        <table border="1" cellpadding="0" cellspacing="0" style="border: 1px solid #0067b8; margin: 0 auto; width: 900px; height: 240px;">
+            <tbody class="tbcss">
+                <tr>
+                    <td><div>회원 아이디</div></td>
+                    <td><input type="text" class="text"><button class="btn1">중복확인</button></td>
+                </tr>
+                <tr>
+                    <td><div>패스워드</div></td>
+                    <td>
+                        <ul>
+                            <il class="ilcss1">
+                            <input type="password" class="text" style="margin-top: -3px;">
+                            </il>
+                            <li class="licss2" style="position: relative;">
+                            <div style="position: absolute; left: 400px; top: -30px;">패스워드확인<input type="password" style="margin-left: 10px;"></div>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td><div>회원인증 휴대폰</div></td>
+                    <td><input type="text" class="text">&nbsp;"-" 포함하지 않고 숫자만 입력하시면 됩니다.</td>
+                </tr>
+                <tr>
+                    <td><div>회원 이메일</div></td>
+                    <td><input type="text" class="text2"></td>
+                </tr>
+                <tr>
+                    <td><div>VIP 회원코드 번호</div></td>
+                    <td><input type="text" class="text2">※ VIP 회원코드를 가지고 계신 고객분은 입력해 주시길 바랍니다.</td>
+                </tr>
+                <tr>
+                    <td><div>구매의사 소프트웨어</div></td>
+                    <td><input type="radio" name="radio1" id="a1"><label for="a1">윈도우 10</label>
+                        <input type="radio" name="radio1" id="a2"><label for="a2">MS-OFFICE</label>
+                        <input type="radio" name="radio1" id="a3"><label for="a3">X-BOX 게임</label>
+                    </td> 
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="btncss">
+            <button>회원가입</button>
+            <button>가입취소</button>
+        </div>
+    </div>
+</body>
+</html>

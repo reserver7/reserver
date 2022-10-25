@@ -1,0 +1,28 @@
+<?php
+    $date = date("YmdHis")
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-Edge, Chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>Mobile 전용 배너</title>
+<script src="./js/jquery1.12.js"></script>
+<script src="./js/jquery-ui.js"></script>
+<script src="./js/jquery.mobile-1.4.5.js?v=1"></script>
+<link type="text/css" rel="stylesheet" href="./js/jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="./js/jquery.mobile-1.4.5.css">
+<link type="text/css" rel="stylesheet" href="./css/banner3.css?v=<?php echo $date?>">
+<script src="./js/banner3.js?v=<?php echo $date?>"></script>
+</head>
+<body>
+<header class="headercss">
+    <aside class="banner">
+        <ul class="ulcss" id="ulcss">
+
+        </ul>
+    </aside>
+</header>
+</body>
+</html>

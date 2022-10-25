@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 5일차 - (노드 + css수정)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#nodeafter").click(function(){
+            $("<li>메뉴4</li>").insertAfter("#ulcss >li:eq(1)");
+            //뒤에 문장을 기준으로 해당 노드 뒤에 오브젝트를 추가하는 형태
+            //(문장 순서가 바뀜)
+        });
+        $("#nodebefore").click(function(){
+            $("<li>메뉴4</li>").insertBefore("#ulcss >li:eq(1)");
+            //뒤에 문장을 기준으로 해당 노드 앞에 오브젝트를 추가하는 형태
+            //(문장 순서가 바뀜)
+        }); 
+        $("#nodeadd").click(function(){
+            $("#ulcss").append("<li>메뉴5</li>"); //ulcss 제일 뒤에 메뉴5를 만듬
+            $("<li>메뉴4</li>").insertBefore("#ulcss > li:eq(1)");
+            //ulcss 안에 두번째 노드 전에 메뉴4를 만듬
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0;}
+</style>
+</head>
+<body>
+<ul id="ulcss">
+    <li>메뉴1</li>
+    <li>메뉴2</li>
+    <li>메뉴3</li>
+</ul>
+<input type="button" value="노드추가1" id="nodeafter">
+<input type="button" value="노드추가2" id="nodebefore">
+<input type="button" value="노드추가3" id="nodeadd">
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vue5일차 - 배열 component 1개의 값 이상 출력 방식</title>
+<script src="./vue.js"></script>
+</head>
+<body>
+<section id="box">
+    <ul>
+        <rose :seq="item.seq"
+        :name="item.name"
+        :hp="item.hp"
+        v-for="item in npc"></rose>
+    </ul>
+</section>
+</body>
+<script>
+    Vue.component("rose",{
+        template:"<li>{{seq}}:{{name}} - {{hp}}</li>",
+        props:['seq','name','hp']
+    });
+    var list = [
+        { seq:"0", name:"슬라임", hp:"200"},
+        { seq:"1", name:"고블린", hp:"500"},
+        { seq:"2", name:"디아블로", hp:"800"}
+    ];
+    let a = new Vue({
+        el:"#box",
+        data:{
+            npc:list
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, chrome=1">
+<title>Jquery 6일차 - (시간타이머5)</title>
+<script src="./jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        var $a = location.search;
+        var $b = $a.split("data=");
+        var $c = $b[1];
+        alert($c);
+
+        $("#btn").click(function(){
+            //delay는 시간차를 두고 애니매이션을 컨트롤 하게 됨
+            $("#box").delay(2000).animate({
+                "width":"600px"
+            },1000);
+
+            $("#box2").delay(4000).animate({
+                "width":"600px"
+            },1000);
+
+            $("#box3").delay(6000).fadeOut();
+        });
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0;}
+    .box{
+        width: 0; height: 40px; background-color: red;
+    }
+    .box2{
+        width: 0; height: 40px; background-color: blue;
+    }
+    .box3{
+        width: 100px; height: 100px; background-color: black;
+    }
+</style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<div class="box2" id="box2"></div>
+<div class="box3" id="box3"></div>
+<input type="button" value="시작" id="btn">
+</body>
+</html>

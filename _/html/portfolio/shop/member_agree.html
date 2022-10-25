@@ -1,0 +1,77 @@
+<meta charset="UTF-8">
+<script>
+    function all_check(){
+        var all_agree = document.getElementById("allagree").checked;
+        if(all_agree==true){
+            document.getElementById("agree1").checked = true;
+            document.getElementById("agree2").checked = true;
+        }
+        else{
+            document.getElementById("agree1").checked = false;
+            document.getElementById("agree2").checked = false; 
+        }
+    }
+
+    function nece(){
+        var cks1 = document.getElementById("agree1").checked;
+        var cks2 = document.getElementById("agree2").checked;
+        if(cks1==false || cks2==false){
+            document.getElementById("allagree").checked = false;
+        }
+    }
+
+    function agree_btn(){
+        var cks1 = document.getElementById("agree1").checked;
+        var cks2 = document.getElementById("agree2").checked;
+        if(cks1==false || cks2==false){
+            alert("약관에 모두 동의 하셔야만 회원가입이 진행 됩니다.");
+        }
+        else{
+            member_agree.method = "POST";
+            member_agree.action = "join.html";
+            member_agree.submit();
+        }
+    }
+</script>
+<form name="member_agree" id="member_agree">
+    <div class="agree_view">
+        <p>JOIN US</p>
+        <ul class="agree_text">
+            <li><label style="cursor: unset;">약관동의</label></li>
+            <li>
+                <label><input type="checkbox" id="allagree" style="cursor: pointer;" onclick="all_check();">의 모든 약관을 확인하고 전체 동의합니다.</label>
+                <label class="stext">(전체동의 선택항목도 포함됩니다.)</label>
+            </li>
+            <li>
+                <label><input type="checkbox" name="agree1" id="agree1" style="cursor: pointer;" onclick="nece();"><b>(필수)</b> 이용약관 <u>전체보기</u></label>
+            </li>
+        </ul>
+        <span class="text_box" id="agree_txt1">
+ 
+        </span>
+        <label>
+            <input type="checkbox" name="agree2" id="agree2" style="cursor: pointer;" onclick="nece();"><b>(필수)</b> 개인정보 수집 및 이용 &nbsp;<u>전체보기</u>
+        </label>
+        <span class="text_box" id="agree_txt2">
+
+        </span>
+        <label onclick="agree_btn();">다음단계</label>
+    </div>
+</form>
+<script>
+    var agree_text1 = new XMLHttpRequest();
+    agree_text1.open("GET","agree1.txt?v=5",true);
+    agree_text1.onload = function(){
+        var txt1 = agree_text1.responseText;
+        document.getElementById("agree_txt1").innerHTML = txt1;
+    }
+    agree_text1.send();
+
+    var agree_text2 = new XMLHttpRequest();
+    agree_text2.open("GET","agree2.txt?v=5",true);
+    agree_text2.onload = function(){
+        var txt2 = agree_text2.responseText;
+        document.getElementById("agree_txt2").innerHTML = txt2;
+    }
+    agree_text2.send();
+</script>

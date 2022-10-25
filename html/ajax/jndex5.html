@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>Jquery-Ajax (2일차)-배열 + return + animate</title>
+<script src="./jquery.js"></script>
+<script src="./jquery-ui.js?v=4"></script>
+<link type="text/css" rel="stylesheet" href="./jquery-ui.css?v=1">
+<script>
+    $(function(){
+        var $array = {
+        "datas" : [
+        {"seoul":114,"gyeonggi":32,"allcity":41},
+        {"seoul":74,"gyeonggi":29,"allcity":19},
+        {"seoul":89,"gyeonggi":27,"allcity":11},
+        {"seoul":48,"gyeonggi":12,"allcity":19},
+        {"seoul":39,"gyeonggi":9,"allcity":22},
+        {"seoul":44,"gyeonggi":11,"allcity":21},
+        {"seoul":57,"gyeonggi":29,"allcity":9},
+        {"seoul":59,"gyeonggi":31,"allcity":19},
+        {"seoul":41,"gyeonggi":12,"allcity":8},
+        {"seoul":27,"gyeonggi":8,"allcity":10},
+        {"seoul":34,"gyeonggi":17,"allcity":21},
+        {"seoul":0,"gyeonggi":0,"allcity":0}
+            ]
+        }
+
+        $("#btn").click(function(){
+            var $dates = $("#date").val();
+            if($dates==""){
+                alert("검색할 날짜를 지정해 주시길 바랍니다.");
+            }
+            else{
+                //split,replace,substr 01~12문자 가져오기
+                //var $dates_ck = Number($dates.replace("2020-","")) - 1;
+                //var $dates_ck = Number($dates.split("2020-")[1]) - 1;
+                var $dates_ck = Number($dates.substr(5,2)) - 1; // 숫자 변환시 0 사라짐
+                //노드 숫자에 맞춰서 1월~12월까지를 셋팅함 (0~11)
+                var $result = $.fn.charts($dates_ck); //배열의 값을 가져오는 함수
+                $.fn.ani_g($result[0]*2,$result[1]*2,$result[2]*2);
+                //최종적으로 숫자1당 2px 계산하여 애니메이션 함수로 전달
+            }
+        });
+        
+        $.fn.charts = function($mm){
+            var $mm_ck1 = $array["datas"][$mm]["seoul"];
+            var $mm_ck2 = $array["datas"][$mm]["gyeonggi"];
+            var $mm_ck3 = $array["datas"][$mm]["allcity"];
+            return [$mm_ck1,$mm_ck2,$mm_ck3];
+        }
+
+        $("#date").datepicker({
+            //달력 부분에 적용 버튼 클릭시 년도와 월만 적용하는 방식
+            onClose:function(dateText, inst){
+                 $(this).datepicker("setDate", new Date(inst.selectedYear,inst.selectedMonth,1));
+            }            
+        }); 
+
+        //그래프 애니메이션
+        $.fn.ani_g = function($d0,$d1,$d2){
+            var $ea = $(".ani").length;
+            var $f;
+            var $node;
+            var $ch_text;
+            for($f=0;$f<$ea;$f++){
+                //반복문으로 그래프를 애니메이션 하여 적용함
+                $node = eval("$d" + $f);
+                console.log($node);
+                $(".ani").eq($f).delay(1000).animate({
+                    "width":$node + "px"
+                },1000,function(){
+                    $ch_text = $node / 2;
+                    $(".ani").eq($f).text($ch_text);
+                });
+            }
+        }
+    });
+</script>
+<style>
+    /* Jquery-ui 엔진 사용시 태그로 적용하지 말 것 */
+    body{ margin: 0; padding: 0;}
+    *{ box-sizing: border-box;}
+    span,label{ display: block;}
+    .divcss{ 
+        width: 1000px; height: 400px; margin: 0 auto; border: 1px solid black;
+    }
+    .divcss >p{text-align: center; font-weight: bold; font-size: 25px;}
+    .divcss >span { width: 400px; height: 30px; margin: 0 auto; line-height: 30px;}
+    .inp{ width: 300px; height: 30px; text-align: center;}
+    .inp2{ 
+        width: 80px; height: 30px; text-align: center; border-radius: 5px; cursor: pointer;
+        background-color: black; color: white; line-height: 30px; border: 0;
+    }
+    .ulcss{ 
+        list-style: none; margin: 0; padding: 0; margin-top: 50px;
+    }
+    .ulcss >li { 
+        width: 650px; height: 40px; position: relative;
+        margin: 0 auto; margin-top: 20px;
+    }
+    .ulcss >li>label{ height: 40px; line-height: 40px; float: left;}
+    .ulcss >li>label:nth-of-type(1){
+        width: 100px; text-align: center; background-color: darkgray; color: white;
+    }
+    .ani { position: absolute; left: 120px;}
+    .ulcss >li>label:nth-of-type(2){
+        width: 0px; background-color: skyblue;
+    }
+    .ulcss >li:nth-of-type(2)>label:nth-of-type(2){ width: 0px; background-color: lightgreen;}
+    .ulcss >li:nth-of-type(3)>label:nth-of-type(2){ width: 0px; background-color:lightsalmon;}
+
+    /* 달력에 날짜를 숨겨버릴 때 사용 */
+    .ui-datepicker-calendar { display: none;} 
+</style>
+</head>
+<body>
+<div class="divcss">
+    <p>2020년 Front-End 취업현황</p>
+    <span>
+        <input type="text" placeholder="월별검색" class="inp" id="date">
+        <input type="button" value="검색" class="inp2" id="btn">
+    </span>
+    <ul class="ulcss">
+        <li>
+            <label>서울</label>
+            <label class="ani"></label>
+        </li>
+        <li>
+            <label>경기도</label>
+            <label class="ani"></label>
+        </li>
+        <li>
+            <label>지방광역시</label>
+            <label class="ani"></label>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

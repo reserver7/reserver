@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE=Edge, Chrome=1">
+<title>Jquery-Ajax (2일차)-Ajax + animate</title>
+<script src="./jquery.js"></script>
+<script>
+    $(function(){
+        let $v;
+        $("#search_data").change(function(){
+            $v = $(this).val();
+            $.ajax({
+                url:"./total.json",
+                cache:false,
+                type:"GET",
+                dataType:"json",
+                success:function($result,$name){
+                    $.fn.arrays($result,$v);
+                },
+                error:function(){
+                    console.log("접근이 잘못 되었습니다.");
+                }
+            })
+        });
+
+        //배열분배
+        $.fn.arrays = function($array,$v){
+            //console.log($v);
+            //console.log(Object.keys($array["datas"][0]).length);
+            //console.log($array.datas[0][$v][0]);
+            //전체적으로 반복해서 데이터를 가져올때만 반복만
+            var $select_data = $array.datas[0][$v][0];
+            $.fn.animates($select_data);
+        }
+
+        //그래프 애니메이션
+        $.fn.animates=function($ani_data){
+            var $ea = Object.keys($ani_data).length;
+            var $w = 0;
+            var $data0 = $ani_data.seoul;
+            var $data1 = $ani_data.gyeonggi;
+            var $data2 = $ani_data.city;
+            var $datas;
+            do{
+                $datas = eval("$data"+$w);
+                $(".graph").eq($w).animate({
+                    "height": ($datas * 2) +"px"
+                },1000);
+                $w++;
+            }while($w<$ea);
+        }
+    });
+</script>
+<style>
+    body{ margin: 0; padding: 0; }
+    *{box-sizing: border-box;}
+    .outline{ width: 1000px; height: auto; margin: 0 auto;}
+    .p { margin: 0 auto; font-size: 28px; }
+    .select_box { width: 100px; height: 40px; margin: 0 auto; margin-top: 5px;}
+    .select_box > select { width: 100px; height: 40px; border-radius: 5px; }
+    .divbox{ 
+        width: 340px; height: 550px; margin: 0 auto; position: relative;
+    }
+    .ulcss{
+        list-style: none; margin: 0 auto; padding: 0; width: 340px; height: auto;
+    }
+    .ulcss > li {
+        width: 100px; height: 40px; float: left; position: relative;
+        margin: 0 auto; text-align: center; line-height: 40px;
+        background-color:darkgray; color: white; top: 520px;
+    }
+    .ulcss > li:nth-of-type(2){left: 20px;}
+    .ulcss > li:nth-of-type(3){left: 40px;}
+    .graph{
+        width: 50px; height: 0px; display: block; position: absolute;
+        bottom: 30px;
+    }
+    .graph:nth-of-type(1){ background-color: lightskyblue; left: 25px;}
+    .graph:nth-of-type(2){ background-color: lightgreen; left: 145px;}
+    .graph:nth-of-type(3){ background-color: lightsalmon; right: 25px;}
+</style>
+</head>
+<body>
+<fieldset class="outline">
+    <legend class="p">[ 2020년 Front-End 취업현황 ]</legend>
+    <div class="select_box">
+        <select id="search_data">
+            <option value="1" selected>1월</option>
+            <option value="2">2월</option>
+            <option value="3">3월</option>
+            <option value="4">4월</option>
+            <option value="5">5월</option>
+            <option value="6">6월</option>
+            <option value="7">7월</option>
+            <option value="8">8월</option>
+            <option value="9">9월</option>
+            <option value="10">10월</option>
+            <option value="11">11월</option>
+            <option value="12">12월</option>
+        </select>
+    </div>
+    <div class="divbox">
+        <ul class="ulcss">
+            <li>서울</li>
+            <li>경기도</li>
+            <li>지방광역시</li>
+        </ul>
+        <span class="graph"></span>
+        <span class="graph"></span>
+        <span class="graph"></span>
+    </div>
+</fieldset>
+</body>
+</html>
